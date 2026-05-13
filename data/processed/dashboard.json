@@ -1,0 +1,352 @@
+{
+  "meta": {
+    "generated": "2026-05-13T14:53:16.772Z",
+    "source": "MLSPIN via Bridge Data Output",
+    "currentYear": 2026,
+    "priorYear": 2025,
+    "closed_records": 76668,
+    "active_records": 11246
+  },
+  "regional": {
+    "ma": {
+      "sf": {
+        "2025": {
+          "price": 853489,
+          "sqft": 392,
+          "dom": 36,
+          "units": 38861
+        },
+        "2026": {
+          "price": 862422,
+          "sqft": 393,
+          "dom": 37,
+          "units": 37968
+        },
+        "supply": 1.84,
+        "active": 5837,
+        "trailing12": 37968
+      },
+      "condo": {
+        "2025": {
+          "price": 710135,
+          "sqft": 540,
+          "dom": 41,
+          "units": 16734
+        },
+        "2026": {
+          "price": 719366,
+          "sqft": 542,
+          "dom": 44,
+          "units": 16481
+        },
+        "supply": 3,
+        "active": 4119,
+        "trailing12": 16481
+      },
+      "mf": {
+        "2025": {
+          "price": 874932,
+          "sqft": 291,
+          "dom": 35,
+          "units": 5510
+        },
+        "2026": {
+          "price": 888214,
+          "sqft": 292,
+          "dom": 38,
+          "units": 5426
+        },
+        "supply": 2.85,
+        "active": 1290,
+        "trailing12": 5426
+      }
+    },
+    "boston": {
+      "sf": {
+        "2025": {
+          "price": 1299708,
+          "sqft": 585,
+          "dom": 37,
+          "units": 813
+        },
+        "2026": {
+          "price": 1284102,
+          "sqft": 581,
+          "dom": 36,
+          "units": 799
+        },
+        "supply": 2.72,
+        "active": 181,
+        "trailing12": 799
+      },
+      "condo": {
+        "2025": {
+          "price": 1091933,
+          "sqft": 898,
+          "dom": 49,
+          "units": 3473
+        },
+        "2026": {
+          "price": 1125614,
+          "sqft": 910,
+          "dom": 51,
+          "units": 3381
+        },
+        "supply": 5.28,
+        "active": 1489,
+        "trailing12": 3381
+      },
+      "mf": {
+        "2025": {
+          "price": 1452731,
+          "sqft": 426,
+          "dom": 42,
+          "units": 593
+        },
+        "2026": {
+          "price": 1479544,
+          "sqft": 426,
+          "dom": 43,
+          "units": 575
+        },
+        "supply": 5.36,
+        "active": 257,
+        "trailing12": 575
+      }
+    },
+    "essex": {
+      "sf": {
+        "2025": {
+          "price": 896083,
+          "sqft": 413,
+          "dom": 32,
+          "units": 4369
+        },
+        "2026": {
+          "price": 895042,
+          "sqft": 414,
+          "dom": 33,
+          "units": 4290
+        },
+        "supply": 1.54,
+        "active": 550,
+        "trailing12": 4290
+      },
+      "condo": {
+        "2025": {
+          "price": 541592,
+          "sqft": 412,
+          "dom": 35,
+          "units": 1926
+        },
+        "2026": {
+          "price": 541574,
+          "sqft": 410,
+          "dom": 39,
+          "units": 1915
+        },
+        "supply": 2.16,
+        "active": 345,
+        "trailing12": 1915
+      },
+      "mf": {
+        "2025": {
+          "price": 941598,
+          "sqft": 314,
+          "dom": 28,
+          "units": 573
+        },
+        "2026": {
+          "price": 980492,
+          "sqft": 314,
+          "dom": 31,
+          "units": 593
+        },
+        "supply": 2.02,
+        "active": 100,
+        "trailing12": 593
+      }
+    },
+    "nbpt": {
+      "sf": {
+        "2025": {
+          "price": 1325883,
+          "sqft": 581,
+          "dom": 34,
+          "units": 141
+        },
+        "2026": {
+          "price": 1314430,
+          "sqft": 581,
+          "dom": 32,
+          "units": 135
+        },
+        "supply": 2.67,
+        "active": 30,
+        "trailing12": 135
+      },
+      "condo": {
+        "2025": {
+          "price": 808717,
+          "sqft": 579,
+          "dom": 37,
+          "units": 122
+        },
+        "2026": {
+          "price": 820305,
+          "sqft": 591,
+          "dom": 38,
+          "units": 113
+        },
+        "supply": 2.23,
+        "active": 21,
+        "trailing12": 113
+      },
+      "mf": {
+        "2025": {
+          "price": 1311667,
+          "sqft": 438,
+          "dom": 45,
+          "units": 6
+        },
+        "2026": {
+          "price": 1157083,
+          "sqft": 375,
+          "dom": 46,
+          "units": 6
+        },
+        "supply": 4,
+        "active": 2,
+        "trailing12": 6
+      }
+    }
+  },
+  "greaterNewburyport": {
+    "towns": {
+      "Newburyport": {
+        "2025": {
+          "price": 1325883,
+          "sqft": 581,
+          "dom": 34,
+          "units": 141
+        },
+        "2026": {
+          "price": 1314430,
+          "sqft": 581,
+          "dom": 32,
+          "units": 135
+        }
+      },
+      "West Newbury": {
+        "2025": {
+          "price": 1121923,
+          "sqft": 378,
+          "dom": 32,
+          "units": 34
+        },
+        "2026": {
+          "price": 1049886,
+          "sqft": 370,
+          "dom": 40,
+          "units": 32
+        }
+      },
+      "Newbury": {
+        "2025": {
+          "price": 1084090,
+          "sqft": 510,
+          "dom": 43,
+          "units": 71
+        },
+        "2026": {
+          "price": 1036548,
+          "sqft": 494,
+          "dom": 40,
+          "units": 80
+        }
+      },
+      "Rowley": {
+        "2025": {
+          "price": 986497,
+          "sqft": 372,
+          "dom": 24,
+          "units": 39
+        },
+        "2026": {
+          "price": 1002826,
+          "sqft": 392,
+          "dom": 27,
+          "units": 35
+        }
+      },
+      "Salisbury": {
+        "2025": {
+          "price": 738684,
+          "sqft": 413,
+          "dom": 46,
+          "units": 50
+        },
+        "2026": {
+          "price": 721084,
+          "sqft": 397,
+          "dom": 43,
+          "units": 48
+        }
+      },
+      "Amesbury": {
+        "2025": {
+          "price": 753768,
+          "sqft": 372,
+          "dom": 31,
+          "units": 125
+        },
+        "2026": {
+          "price": 724794,
+          "sqft": 369,
+          "dom": 32,
+          "units": 127
+        }
+      }
+    },
+    "summary": {
+      "price": 997217,
+      "sqft": 458,
+      "dom": 35,
+      "units": 457,
+      "activeListings": 82
+    }
+  },
+  "affordability": {
+    "medianIncome": 104800,
+    "markets": {
+      "ma": {
+        "price": 862422,
+        "down": 172484,
+        "monthly": 4361,
+        "monthlyAll": 5511,
+        "income": 236176
+      },
+      "boston": {
+        "price": 1284102,
+        "down": 256820,
+        "monthly": 6493,
+        "monthlyAll": 8205,
+        "income": 351654
+      },
+      "essex": {
+        "price": 895042,
+        "down": 179008,
+        "monthly": 4526,
+        "monthlyAll": 5719,
+        "income": 245109
+      },
+      "nbpt": {
+        "price": 1314430,
+        "down": 262886,
+        "monthly": 6646,
+        "monthlyAll": 8399,
+        "income": 359959
+      }
+    }
+  }
+}

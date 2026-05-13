@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MA Housing Dashboard — local preview</title>
+  <style>body{margin:0;background:#eee;font-family:system-ui}.banner{background:#1e355e;color:#fff;padding:8px 16px;font-size:13px}</style>
+</head>
+<body>
+<div class="banner">LOCAL PREVIEW — DATA_URL is overridden to ./data/processed/dashboard.json. Open via a local server (e.g. <code>npx http-server</code> or <code>python -m http.server</code>) so fetch() works.</div>
+<script>
+  // Trick the embed into pointing at the local file by setting a global
+  // BEFORE the embed script runs.
+  window.__DATA_URL_OVERRIDE = './data/processed/dashboard.json';
+</script>
+<!-- Inline the embed but rewrite DATA_URL -->
+<script>
+  fetch('./embed.html').then(r => r.text()).then(html => {
+    // Replace the DATA_URL line so the embed loads from local file
+    html = html.replace(
+      /var DATA_URL = '[^']+';/,
+      "var DATA_URL = window.__DATA_URL_OVERRIDE || './data/processed/dashboard.json';"
+    );
+    // Strip <script src=...> for Chart.js (re-add it explicitly so it loads first)
+    // and run the rest
+    var holder = document.createElement('div');
+    holder.innerHTML = html;
+    // Append all of embed.html's content into the body
+    while (holder.firstChild) document.body.appendChild(holder.firstChild);
+    // Re-execute inline scripts (innerHTML doesn't run them)
+    Array.prototype.forEach.call(document.body.querySelectorAll('script'), function(oldScript){
+      if (oldScript.dataset.run === '1') return;
+      var s = document.createElement('script');
+      if (oldScript.src) s.src = oldScript.src;
+      else s.textContent = oldScript.textContent;
+      s.dataset.run = '1';
+      oldScript.parentNode.replaceChild(s, oldScript);
+    });
+  });
+</script>
+</body>
+</html>

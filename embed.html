@@ -1,0 +1,579 @@
+<!-- MA Housing Market Dashboard — Squarespace Code Block -->
+<!-- Paste into a CODE block (not Embed). Display Source = OFF -->
+<!-- Live data auto-refreshes from GitHub Pages dashboard.json -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+#hmd{font-family:'Inter',sans-serif;color:#1f2937;line-height:1.6;max-width:1200px;margin:0 auto;padding:0}
+#hmd *{box-sizing:border-box;margin:0;padding:0}
+#hmd .hero{background:linear-gradient(135deg,#1e355e 0%,#152744 100%);color:#fff!important;padding:50px 24px 70px;text-align:center;border-radius:14px 14px 0 0}
+#hmd .hero h2,#hmd .hero .hero-sub,#hmd .hero .stat-val,#hmd .hero .stat-label,#hmd .hero .stat-note{color:#fff!important}
+#hmd .hero h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;margin-bottom:8px;line-height:1.2}
+#hmd .hero-sub{font-size:0.95rem;opacity:0.85;max-width:520px;margin:0 auto 30px}
+#hmd .stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;max-width:700px;margin:0 auto}
+#hmd .stat-box{background:rgba(255,255,255,0.12);padding:16px 12px;border-radius:10px;text-align:center}
+#hmd .stat-label{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;opacity:0.75;margin-bottom:3px}
+#hmd .stat-val{font-size:1.3rem;font-weight:700}
+#hmd .stat-note{font-size:0.65rem;opacity:0.65;margin-top:2px}
+#hmd .nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e5e7eb;padding:10px 16px;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
+#hmd .nav::-webkit-scrollbar{display:none}
+#hmd .nav-btn{display:inline-block;padding:8px 14px;background:none;border:none;border-radius:6px;color:#4b5563;font-family:inherit;font-size:0.82rem;font-weight:500;cursor:pointer;white-space:nowrap}
+#hmd .nav-btn:hover{background:#f5f5f5;color:#1f2937}
+#hmd .nav-btn.active{background:#1e355e;color:#fff}
+#hmd .sec{padding:36px 20px;display:none;background:#f5f5f5}
+#hmd .sec.active{display:block}
+#hmd .sec-title{font-size:1.4rem;font-weight:700;margin-bottom:3px}
+#hmd .sec-desc{color:#6b7280;font-size:0.9rem;margin-bottom:14px}
+#hmd .ptabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+#hmd .ptab{padding:6px 16px;border:1px solid #d1d5db;border-radius:20px;background:#fff;color:#4b5563;font-family:inherit;font-size:0.78rem;font-weight:500;cursor:pointer}
+#hmd .ptab:hover{border-color:#1e355e;color:#1e355e}
+#hmd .ptab.active{background:#1e355e;color:#fff;border-color:#1e355e}
+#hmd .psec{display:none}
+#hmd .psec.active{display:block}
+#hmd .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:22px}
+#hmd .cards.ov{grid-template-columns:repeat(4,1fr)}
+#hmd .card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;transition:box-shadow 0.2s}
+#hmd .card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+#hmd .card.w{grid-column:span 2}
+#hmd .card.bl{border-left:4px solid #1e355e}
+#hmd .card.rl{border-left:4px solid #dc2626}
+#hmd .card.gl{border-left:4px solid #16a34a}
+#hmd .card.yl{border-left:4px solid #ca8a04}
+#hmd .cl{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;font-weight:600;margin-bottom:3px}
+#hmd .cv{font-size:1.4rem;font-weight:700;margin-bottom:8px}
+#hmd .cv.b{color:#1e355e}
+#hmd .cv.r{color:#dc2626}
+#hmd .cv.g{color:#16a34a}
+#hmd .cv.y{color:#ca8a04}
+#hmd .cg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#hmd .cm{background:#f5f5f5;padding:7px 9px;border-radius:6px}
+#hmd .cml{font-size:0.58rem;text-transform:uppercase;color:#9ca3af;margin-bottom:1px}
+#hmd .cmv{font-size:0.85rem;font-weight:600}
+#hmd .up{color:#dc2626}
+#hmd .dn{color:#16a34a}
+#hmd .cb{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:18px;margin-bottom:18px}
+#hmd .ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+#hmd .ct{font-size:0.9rem;font-weight:600}
+#hmd .cleg{display:flex;gap:12px;flex-wrap:wrap}
+#hmd .li{display:flex;align-items:center;gap:4px;font-size:0.72rem;color:#4b5563}
+#hmd .ld{width:8px;height:8px;border-radius:50%;display:inline-block}
+#hmd .ca{height:260px;position:relative}
+#hmd .ca canvas{width:100%!important;height:100%!important}
+#hmd .tw{overflow-x:auto}
+#hmd table{width:100%;border-collapse:collapse;font-size:0.72rem}
+#hmd th,#hmd td{padding:7px 6px;text-align:left;border-bottom:1px solid #e5e7eb}
+#hmd th{font-size:0.58rem;text-transform:uppercase;letter-spacing:0.05em;color:#9ca3af;font-weight:600;background:#f5f5f5}
+#hmd tr:hover td{background:#f9fafb}
+#hmd td:first-child{font-weight:600;color:#1e355e}
+#hmd .towns{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+#hmd .town{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:14px;text-align:center;transition:all 0.2s}
+#hmd .town:hover{border-color:#1e355e;box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+#hmd .tn{font-size:0.78rem;font-weight:600;margin-bottom:4px}
+#hmd .tp{font-size:1.05rem;font-weight:700;color:#1e355e;margin-bottom:4px}
+#hmd .tb{display:inline-block;font-size:0.62rem;font-weight:600;padding:2px 7px;border-radius:20px}
+#hmd .tb.up{background:#fef2f2;color:#dc2626}
+#hmd .tm{margin-top:5px;font-size:0.65rem;color:#9ca3af}
+#hmd .sbox{background:linear-gradient(135deg,#eef2f7 0%,#dce4ed 100%);border:1px solid #b4c4d9;border-radius:14px;padding:24px;margin-bottom:22px}
+#hmd .stitle{text-align:center;font-size:1.05rem;font-weight:700;color:#152744;margin-bottom:16px}
+#hmd .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+#hmd .si{text-align:center}
+#hmd .sl{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:#4b5563;margin-bottom:3px}
+#hmd .sv{font-size:1.3rem;font-weight:700}
+#hmd .sv.b{color:#1e355e}
+#hmd .sv.r{color:#dc2626}
+#hmd .sv.g{color:#16a34a}
+#hmd .sv.y{color:#ca8a04}
+#hmd .sn{font-size:0.65rem;color:#9ca3af;margin-top:2px}
+#hmd .abox{background:linear-gradient(135deg,#fefce8 0%,#fef9c3 100%);border:1px solid #fde047;border-radius:14px;padding:24px;margin-bottom:22px}
+#hmd .foot{background:#1e355e;color:#fff;padding:22px;text-align:center;border-radius:0 0 14px 14px}
+#hmd .foot p{font-size:0.78rem;opacity:0.8;margin-bottom:4px}
+#hmd .foot .fd{font-size:0.7rem;opacity:0.55}
+#hmd .live-badge{display:inline-block;font-size:0.6rem;background:#16a34a;color:#fff;padding:2px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;letter-spacing:0.05em;text-transform:uppercase;font-weight:600}
+@media(max-width:768px){
+#hmd .hero{padding:36px 16px 50px}
+#hmd .hero h2{font-size:1.4rem}
+#hmd .stats-row{grid-template-columns:repeat(2,1fr)}
+#hmd .cards.ov{grid-template-columns:repeat(2,1fr)}
+#hmd .card.w{grid-column:span 1}
+#hmd .ca{height:220px}
+#hmd .sec{padding:28px 14px}
+}
+</style>
+
+<div id="hmd">
+<header class="hero">
+<h2>Massachusetts Real Estate<br>Market Report</h2>
+<p class="hero-sub">Comprehensive MLS data for Massachusetts, Boston, Essex County, and Greater Newburyport (2014&ndash;<span id="hmd-currentyear">2026</span>).<span class="live-badge">Live</span></p>
+<div class="stats-row">
+<div class="stat-box"><div class="stat-label">MA Average</div><div class="stat-val" id="hero-ma">$836K</div><div class="stat-note" id="hero-ma-note">+108% since 2014</div></div>
+<div class="stat-box"><div class="stat-label">Newburyport</div><div class="stat-val" id="hero-nbpt">$1.10M</div><div class="stat-note" id="hero-nbpt-note">+135% since 2014</div></div>
+<div class="stat-box"><div class="stat-label">Days on Market</div><div class="stat-val" id="hero-dom">55</div><div class="stat-note" id="hero-dom-note">Was 117 in 2014</div></div>
+<div class="stat-box"><div class="stat-label">Sales Volume</div><div class="stat-val" id="hero-vol">-17%</div><div class="stat-note">Since 2014</div></div>
+</div>
+</header>
+
+<div class="nav">
+<button class="nav-btn active" data-tab="overview">Overview</button>
+<button class="nav-btn" data-tab="massachusetts">Massachusetts</button>
+<button class="nav-btn" data-tab="boston">Boston</button>
+<button class="nav-btn" data-tab="essex">Essex County</button>
+<button class="nav-btn" data-tab="greater-newburyport">Greater Newburyport</button>
+<button class="nav-btn" data-tab="newburyport">Newburyport</button>
+<button class="nav-btn" data-tab="affordability">Affordability</button>
+</div>
+
+<!-- OVERVIEW -->
+<section class="sec active" id="hmd-overview">
+<div class="sec-title">Market Overview</div>
+<p class="sec-desc">13-year comparison (2014&ndash;<span class="cy">2026</span>) <span id="hmd-asof"></span></p>
+<div class="ptabs" data-region="overview">
+<button class="ptab active" data-pt="sf">Single Family</button>
+<button class="ptab" data-pt="condo">Condominium</button>
+<button class="ptab" data-pt="mf">Multi Family</button>
+</div>
+<div id="ov-cards"></div>
+<div class="cb"><div class="ch"><div class="ct">Average Sale Price (2014&ndash;<span class="cy">2026</span>)</div><div class="cleg"><div class="li"><span class="ld" style="background:#1e355e"></span>Massachusetts</div><div class="li"><span class="ld" style="background:#dc2626"></span>Boston</div><div class="li"><span class="ld" style="background:#16a34a"></span>Essex County</div><div class="li"><span class="ld" style="background:#ca8a04"></span>Newburyport</div></div></div><div class="ca"><canvas id="hc-price"></canvas></div></div>
+<div class="cb"><div class="ch"><div class="ct">Days on Market</div></div><div class="ca"><canvas id="hc-dom"></canvas></div></div>
+<div class="cb"><div class="ch"><div class="ct">Sales Volume</div></div><div class="ca"><canvas id="hc-vol"></canvas></div></div>
+</section>
+
+<!-- MASSACHUSETTS -->
+<section class="sec" id="hmd-massachusetts">
+<div class="sec-title">Massachusetts Statewide</div>
+<p class="sec-desc">13-year trend</p>
+<div class="ptabs" data-region="ma">
+<button class="ptab active" data-pt="sf">Single Family</button>
+<button class="ptab" data-pt="condo">Condominium</button>
+<button class="ptab" data-pt="mf">Multi Family</button>
+</div>
+<div id="ma-cards"></div>
+<div class="cb"><div class="ch"><div class="ct" id="ma-chart-title">13-Year Data</div></div><div class="tw"><div id="ma-table"></div></div></div>
+</section>
+
+<!-- BOSTON -->
+<section class="sec" id="hmd-boston">
+<div class="sec-title">Boston</div>
+<p class="sec-desc">Urban core &middot; 13-year trend</p>
+<div class="ptabs" data-region="boston">
+<button class="ptab active" data-pt="sf">Single Family</button>
+<button class="ptab" data-pt="condo">Condominium</button>
+<button class="ptab" data-pt="mf">Multi Family</button>
+</div>
+<div id="boston-cards"></div>
+<div class="cb"><div class="ch"><div class="ct">13-Year Data</div></div><div class="tw"><div id="boston-table"></div></div></div>
+</section>
+
+<!-- ESSEX COUNTY -->
+<section class="sec" id="hmd-essex">
+<div class="sec-title">Essex County</div>
+<p class="sec-desc">North Shore &middot; 13-year trend</p>
+<div class="ptabs" data-region="essex">
+<button class="ptab active" data-pt="sf">Single Family</button>
+<button class="ptab" data-pt="condo">Condominium</button>
+<button class="ptab" data-pt="mf">Multi Family</button>
+</div>
+<div id="essex-cards"></div>
+<div class="cb"><div class="ch"><div class="ct">13-Year Data</div></div><div class="tw"><div id="essex-table"></div></div></div>
+</section>
+
+<!-- GREATER NEWBURYPORT -->
+<section class="sec" id="hmd-greater-newburyport">
+<div class="sec-title">Greater Newburyport</div>
+<p class="sec-desc">Newburyport, West Newbury, Newbury, Rowley, Salisbury, Amesbury</p>
+<div class="sbox"><div class="stitle">Regional Summary (<span class="cy">2026</span>)</div><div class="sgrid">
+<div class="si"><div class="sl">Avg Price</div><div class="sv b" id="gn-avg">$852K</div><div class="sn">Weighted</div></div>
+<div class="si"><div class="sl">YTD Sales</div><div class="sv g" id="gn-units">442</div><div class="sn">SF, 6 towns</div></div>
+<div class="si"><div class="sl">$/SqFt</div><div class="sv r" id="gn-sqft">$404</div><div class="sn">Avg</div></div>
+<div class="si"><div class="sl">Days on Market</div><div class="sv y" id="gn-dom">45</div><div class="sn">Avg</div></div>
+</div></div>
+<div style="font-weight:600;margin-bottom:12px;font-size:0.95rem;">Town Breakdown</div>
+<div class="towns" id="gn-towns"></div>
+<p style="margin-top:8px;font-size:0.72rem;color:#9ca3af;" id="gn-footnote">*Live YTD via MLSPIN</p>
+<div class="cb" style="margin-top:22px;"><div class="ch"><div class="ct">Town Comparison &mdash; Average Sale Price</div></div><div class="ca"><canvas id="hc-gnbpt"></canvas></div></div>
+<div class="cb"><div class="ch"><div class="ct">Year-over-Year Change (<span class="py">2025</span> &rarr; <span class="cy">2026</span>)</div></div><div class="ca"><canvas id="hc-gnbpt-yoy"></canvas></div></div>
+</section>
+
+<!-- NEWBURYPORT -->
+<section class="sec" id="hmd-newburyport">
+<div class="sec-title">Newburyport</div>
+<p class="sec-desc">Historic coastal community &middot; 13-year trend</p>
+<div class="ptabs" data-region="nbpt">
+<button class="ptab active" data-pt="sf">Single Family</button>
+<button class="ptab" data-pt="condo">Condominium</button>
+<button class="ptab" data-pt="mf">Multi Family</button>
+</div>
+<div id="nbpt-cards"></div>
+<div class="cb"><div class="ch"><div class="ct">13-Year Data</div></div><div class="tw"><div id="nbpt-table"></div></div></div>
+<div class="cb"><div class="ch"><div class="ct">Price &amp; $/SqFt (2014&ndash;<span class="cy">2026</span>)</div></div><div class="ca"><canvas id="hc-nbpt"></canvas></div></div>
+</section>
+
+<!-- AFFORDABILITY -->
+<section class="sec" id="hmd-affordability">
+<div class="sec-title">Affordability Analysis</div>
+<p class="sec-desc">Income requirements at standard lending criteria</p>
+<div class="abox"><div class="stitle" style="color:#92400e;">Newburyport &mdash; Income Requirements (Single Family)</div><div class="sgrid">
+<div class="si"><div class="sl">Home Price</div><div class="sv b" id="aff-nbpt-price">$1,104K</div></div>
+<div class="si"><div class="sl">Down (20%)</div><div class="sv y" id="aff-nbpt-down">$221K</div></div>
+<div class="si"><div class="sl">Monthly @6.5%</div><div class="sv g" id="aff-nbpt-monthly">$5,582</div></div>
+<div class="si"><div class="sl">Income Needed</div><div class="sv r" id="aff-nbpt-income">$239K</div><div class="sn">28% DTI</div></div>
+</div></div>
+<div class="cb"><div class="ch"><div class="ct">Income Required by Market</div></div><div class="ca"><canvas id="hc-income"></canvas></div></div>
+<div class="cb"><div class="ch"><div class="ct">Comparison</div></div><div class="tw"><table><thead><tr><th>Market</th><th>Price</th><th>Down</th><th>Monthly</th><th>Income</th><th>Median</th><th>Gap</th></tr></thead><tbody id="aff-table"></tbody></table></div><p style="margin-top:10px;font-size:0.72rem;color:#9ca3af;">30yr @6.5%, 20% down, 28% DTI. MA Median: <span id="aff-median-note">$104,800</span> (ACS)</p></div>
+<div class="cards">
+<div class="card rl"><div class="cl">Income Gap</div><div class="cv r" id="aff-gap-range">42&ndash;63%</div><p style="color:#4b5563;font-size:0.78rem;margin-top:5px;">Gap between median income and required income.</p></div>
+<div class="card yl"><div class="cl">Down Payment</div><div class="cv y" id="aff-down-range">$167K&ndash;$264K</div><p style="color:#4b5563;font-size:0.78rem;margin-top:5px;">1.6&ndash;2.5x median annual income.</p></div>
+<div class="card bl"><div class="cl">Newburyport Premium</div><div class="cv b" id="aff-premium">+32%</div><p style="color:#4b5563;font-size:0.78rem;margin-top:5px;">Above state average due to coastal location.</p></div>
+<div class="card gl"><div class="cl">Inventory</div><div class="cv g" id="aff-supply">1.61 mo</div><p style="color:#4b5563;font-size:0.78rem;margin-top:5px;">Balanced market = 4&ndash;6 months.</p></div>
+</div>
+</section>
+
+<footer class="foot">
+<p><strong>Data:</strong> MLS PIN (live via Bridge API) &middot; Census ACS &middot; Bankrate</p>
+<p class="fd" id="foot-stamp">Updated &middot; 13-Year Analysis</p>
+</footer>
+</div>
+
+<script>
+(function(){
+// =====================================================================
+// CONFIG — point to the GitHub Pages URL serving dashboard.json
+// =====================================================================
+var DATA_URL = 'https://duncanburns2013-dot.github.io/MA-Housing-Dashboard/data/processed/dashboard.json';
+
+// =====================================================================
+// HISTORICAL BASELINE — 2014 through 2024. These years don't change.
+// Live years are appended/overwritten from dashboard.json at load.
+// =====================================================================
+var Y=['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+var D={
+ma:{sf:{price:[401128,421081,418367,445795,469327,487016,521186,615027,676696,701487,763446,803731,835832],sqft:[198,202,207,218,232,241,252,294,331,337,363,380,384],dom:[117,125,113,86,74,76,70,43,34,47,42,47,55],units:[46099,45317,51733,53495,53352,53135,53393,54613,52859,43815,36656,38214,38149],supply:[4.19,3.80,3.01,2.29,2.04,2.33,1.58,0.67,0.62,0.82,1.24,1.52,1.61]},condo:{price:[401642,413651,420026,460548,514534,485962,558047,563686,637326,656850,698456,717151,748586],sqft:[305,316,331,356,396,384,419,451,490,498,522,537,546],dom:[88,96,84,65,56,62,62,54,43,48,45,52,62],units:[19621,18743,20677,21253,21433,20862,22076,22530,24282,19026,16613,16787,16778],supply:[2.81,2.47,2.06,1.71,1.67,2.16,1.67,1.44,0.93,1.31,1.79,2.35,2.80]},mf:{price:[352588,401148,430657,482351,483934,535487,600052,573379,693574,670588,766037,830139,889831],sqft:[122,134,148,156,173,336,192,204,249,235,264,280,287],dom:[88,101,100,73,55,57,54,46,42,48,39,40,50],units:[5765,5436,6034,6386,5744,5856,6011,5432,5283,4233,3371,3501,3248],supply:[3.92,3.77,3.18,2.31,2.02,2.03,1.45,1.37,1.09,1.19,1.62,1.99,2.72]}},
+boston:{sf:{price:[823230,643383,721870,774272,820166,848130,1067706,1091509,1117397,1004513,1061218,1293101,1320379],sqft:[326,305,362,376,414,412,449,502,524,487,507,581,570],dom:[81,82,73,55,52,53,49,49,44,51,46,52,51],units:[871,880,878,960,991,1038,952,942,1101,955,755,797,805]},condo:{price:[696811,720941,716879,839169,922263,818070,968806,873126,1010348,1054712,1109260,1149064,1253658],sqft:[568,604,636,695,745,709,784,770,833,867,884,902,937],dom:[58,63,57,52,52,59,64,69,60,60,61,66,71],units:[3765,3621,3844,3638,3254,2900,2984,2449,2773,2268,1872,1827,1748]},mf:{price:[678635,782426,824369,1110486,985709,1205972,1344153,1048447,1238106,1161356,1257496,1389105,1420567],sqft:[183,225,244,267,299,350,343,358,393,371,400,422,421],dom:[58,67,63,49,43,50,67,57,55,53,54,52,55],units:[712,620,682,602,499,422,383,281,318,248,218,200,178]}},
+essex:{sf:{price:[436550,429872,438900,471640,514554,507006,557642,666066,687859,758025,843512,857795,837280],sqft:[204,210,218,232,250,259,275,315,351,366,384,406,409],dom:[108,119,104,68,68,67,58,36,29,41,40,41,47],units:[5006,4768,5451,5684,6222,6143,6299,6080,5849,4864,3891,4315,4278]},condo:{price:[264377,281408,274045,314415,319639,340533,375003,407588,450391,486429,501088,547262,526844],sqft:[190,199,212,221,246,256,274,311,347,355,392,410,404],dom:[95,101,97,67,55,59,57,42,33,43,34,41,54],units:[2215,2090,2392,2537,2672,2469,2632,2530,2499,2046,1627,1721,1629]},mf:{price:[302936,339709,363145,403022,433866,493441,574594,638833,812485,692635,844032,880318,1078449],sqft:[107,118,131,141,158,166,191,220,261,253,289,319,314],dom:[79,98,94,58,47,48,41,31,32,49,40,30,40],units:[841,752,847,937,905,898,935,756,621,476,378,441,400]}},
+nbpt:{sf:{price:[469030,461434,567869,621926,669088,715330,755705,929287,876733,1109579,1019307,1170515,1104056],sqft:[280,303,301,305,287,339,366,412,423,508,534,572,554],dom:[102,89,164,103,68,65,81,38,36,27,31,56,36],units:[186,170,168,161,188,208,232,208,166,154,136,129,131]},condo:{price:[307429,310041,426326,442325,429223,490935,549225,557369,638350,640560,645835,838444,824935],sqft:[252,265,295,297,331,347,386,464,512,542,503,547,590],dom:[84,90,81,87,49,56,66,45,31,39,38,58,64],units:[91,83,86,55,74,76,87,60,60,49,41,37,37]},mf:{price:[574667,487500,490200,400000,0,799967,873700,1265000,1700000,0,760000,1475000,1011250],sqft:[143,217,210,189,0,281,309,436,331,0,382,563,374],dom:[158,99,62,66,0,43,30,19,15,0,126,26,17],units:[11,10,8,6,7,10,6,3,3,2,1,3,4]}}
+};
+
+// Defaults for the GN town panel (overwritten by live data)
+var gnDefaults = {
+  'Newburyport':  {price:1104056, sqft:554, dom:36, change:135},
+  'West Newbury': {price:921875,  sqft:344, dom:57, change:82},
+  'Newbury':      {price:958385,  sqft:395, dom:52, change:103},
+  'Rowley':       {price:744975,  sqft:378, dom:27, change:61},
+  'Salisbury':    {price:568719,  sqft:391, dom:61, change:53},
+  'Amesbury':     {price:641530,  sqft:359, dom:38, change:113}
+};
+var gnPrior = {
+  'Newburyport':  1170515, 'West Newbury': 1183169, 'Newbury': 1264700,
+  'Rowley':       871140,  'Salisbury':    735000,  'Amesbury': 725985
+};
+
+// Color palette
+var B='#1e355e',R='#dc2626',G='#16a34a',YL='#ca8a04',O='#ea580c',P='#7c3aed';
+var ptNames={sf:'Single Family',condo:'Condominium',mf:'Multi Family'};
+Chart.defaults.color='#6b7280';Chart.defaults.borderColor='#e5e7eb';Chart.defaults.font.family="'Inter',sans-serif";
+var kF=function(v){return v>=1000?'$'+(v/1000).toFixed(0)+'K':'$'+v};
+var charts={};
+function makeOrUpdate(id,cfg){if(charts[id]){charts[id].destroy()}charts[id]=new Chart(document.getElementById(id),cfg)}
+var curPT={overview:'sf',ma:'sf',boston:'sf',essex:'sf',nbpt:'sf'};
+var liveMeta = null;
+
+function pct(a,b){if(!b)return'N/A';var v=Math.round((a/b-1)*100);return(v>=0?'+':'')+v+'%'}
+function fmt(v){if(!v)return'$0';return v>=1000000?'$'+(v/1000000).toFixed(2)+'M':v>=1000?'$'+Math.round(v/1000)+'K':'$'+v}
+
+// =====================================================================
+// LIVE DATA OVERLAY — fetch dashboard.json and overwrite live years
+// =====================================================================
+function overlayLive(json){
+  liveMeta = json.meta;
+  var cy = json.meta.currentYear;
+  var py = json.meta.priorYear;
+  var idxCY = Y.indexOf(String(cy));
+  var idxPY = Y.indexOf(String(py));
+  if (idxCY === -1) {
+    // Year list doesn't include the current year (e.g. 2027). Extend it.
+    while (Y[Y.length-1] !== String(cy)) {
+      var next = String(parseInt(Y[Y.length-1])+1);
+      Y.push(next);
+      ['ma','boston','essex','nbpt'].forEach(function(reg){
+        ['sf','condo','mf'].forEach(function(pt){
+          if (D[reg] && D[reg][pt]) {
+            ['price','sqft','dom','units','supply'].forEach(function(k){
+              if (D[reg][pt][k]) D[reg][pt][k].push(D[reg][pt][k][D[reg][pt][k].length-1]);
+            });
+          }
+        });
+      });
+    }
+    idxCY = Y.indexOf(String(cy));
+    idxPY = Y.indexOf(String(py));
+  }
+  ['ma','boston','essex','nbpt'].forEach(function(reg){
+    ['sf','condo','mf'].forEach(function(pt){
+      var live = json.regional && json.regional[reg] && json.regional[reg][pt];
+      if (!live) return;
+      [[py, idxPY], [cy, idxCY]].forEach(function(p){
+        var yr = p[0], i = p[1];
+        if (!live[yr]) return;
+        ['price','sqft','dom','units'].forEach(function(k){
+          if (live[yr][k] != null && D[reg][pt][k]) D[reg][pt][k][i] = live[yr][k];
+        });
+      });
+      // supply (current snapshot only — single number, not a series)
+      if (live.supply != null && D[reg][pt].supply) D[reg][pt].supply[idxCY] = live.supply;
+    });
+  });
+
+  // GN town panel overlay
+  if (json.greaterNewburyport) {
+    Object.keys(gnDefaults).forEach(function(t){
+      var liveT = json.greaterNewburyport.towns && json.greaterNewburyport.towns[t];
+      if (!liveT) return;
+      var cur = liveT[cy], prev = liveT[py];
+      if (cur && cur.price) {
+        gnDefaults[t].price = cur.price;
+        if (cur.sqft) gnDefaults[t].sqft = cur.sqft;
+        if (cur.dom)  gnDefaults[t].dom  = cur.dom;
+        // % change vs 2014 baseline
+        var p2014 = D.nbpt.sf.price[0]; // approximate; we use town-level later
+        gnDefaults[t].priorYr = prev && prev.price ? prev.price : null;
+      }
+      if (prev && prev.price) gnPrior[t] = prev.price;
+    });
+  }
+}
+
+// =====================================================================
+// RENDERERS — same as original; pull from D[] which now reflects live
+// =====================================================================
+function renderHero(){
+  var i = Y.length - 1;
+  var prev = Y.length - 2;
+  document.getElementById('hero-ma').textContent = fmt(D.ma.sf.price[i]);
+  document.getElementById('hero-ma-note').textContent = pct(D.ma.sf.price[i], D.ma.sf.price[0]) + ' since 2014';
+  document.getElementById('hero-nbpt').textContent = fmt(D.nbpt.sf.price[i]);
+  document.getElementById('hero-nbpt-note').textContent = pct(D.nbpt.sf.price[i], D.nbpt.sf.price[0]) + ' since 2014';
+  document.getElementById('hero-dom').textContent = D.ma.sf.dom[i];
+  document.getElementById('hero-dom-note').textContent = 'Was ' + D.ma.sf.dom[0] + ' in 2014';
+  document.getElementById('hero-vol').textContent = pct(D.ma.sf.units[i], D.ma.sf.units[0]);
+  document.getElementById('hmd-currentyear').textContent = Y[i];
+  Array.prototype.forEach.call(document.querySelectorAll('#hmd .cy'), function(el){ el.textContent = Y[i]; });
+  Array.prototype.forEach.call(document.querySelectorAll('#hmd .py'), function(el){ el.textContent = Y[i-1]; });
+  if (liveMeta) {
+    var d = new Date(liveMeta.generated);
+    var stamp = d.toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'});
+    document.getElementById('hmd-asof').textContent = '· as of ' + stamp;
+    document.getElementById('foot-stamp').textContent = 'Updated ' + stamp + ' · 13-Year Analysis (2014–' + Y[i] + ')';
+  }
+}
+
+function renderOvCards(pt){
+var m=D.ma[pt],bo=D.boston[pt],e=D.essex[pt],n=D.nbpt[pt];
+var i=Y.length-1;
+document.getElementById('ov-cards').innerHTML='<div class="cards ov">'+
+'<div class="card bl"><div class="cl">Massachusetts</div><div class="cv b">'+fmt(m.price[i])+'</div><div class="cg"><div class="cm"><div class="cml">$/SqFt</div><div class="cmv">$'+m.sqft[i]+'</div></div><div class="cm"><div class="cml">DOM</div><div class="cmv">'+m.dom[i]+'</div></div></div></div>'+
+'<div class="card rl"><div class="cl">Boston</div><div class="cv r">'+fmt(bo.price[i])+'</div><div class="cg"><div class="cm"><div class="cml">$/SqFt</div><div class="cmv">$'+bo.sqft[i]+'</div></div><div class="cm"><div class="cml">DOM</div><div class="cmv">'+bo.dom[i]+'</div></div></div></div>'+
+'<div class="card gl"><div class="cl">Essex County</div><div class="cv g">'+fmt(e.price[i])+'</div><div class="cg"><div class="cm"><div class="cml">$/SqFt</div><div class="cmv">$'+e.sqft[i]+'</div></div><div class="cm"><div class="cml">DOM</div><div class="cmv">'+e.dom[i]+'</div></div></div></div>'+
+'<div class="card yl"><div class="cl">Newburyport</div><div class="cv y">'+fmt(n.price[i])+'</div><div class="cg"><div class="cm"><div class="cml">$/SqFt</div><div class="cmv">$'+n.sqft[i]+'</div></div><div class="cm"><div class="cml">DOM</div><div class="cmv">'+n.dom[i]+'</div></div></div></div></div>';
+}
+
+function renderOvCharts(pt){
+var m=D.ma[pt],bo=D.boston[pt],e=D.essex[pt],n=D.nbpt[pt];
+makeOrUpdate('hc-price',{type:'line',data:{labels:Y,datasets:[
+{label:'MA',data:m.price,borderColor:B,backgroundColor:'rgba(30,53,94,0.1)',borderWidth:2,tension:0.3,fill:true,pointRadius:2},
+{label:'Boston',data:bo.price,borderColor:R,backgroundColor:'rgba(220,38,38,0.05)',borderWidth:2,tension:0.3,fill:true,pointRadius:2},
+{label:'Essex',data:e.price,borderColor:G,backgroundColor:'rgba(22,163,74,0.05)',borderWidth:2,tension:0.3,fill:true,pointRadius:2},
+{label:'Newburyport',data:n.price,borderColor:YL,backgroundColor:'rgba(202,138,4,0.05)',borderWidth:2,tension:0.3,fill:true,pointRadius:2}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{ticks:{callback:kF}},x:{grid:{display:false}}}}});
+makeOrUpdate('hc-dom',{type:'bar',data:{labels:Y,datasets:[
+{label:'MA',data:m.dom,backgroundColor:B,borderRadius:3},{label:'Essex',data:e.dom,backgroundColor:G,borderRadius:3},{label:'Nbpt',data:n.dom,backgroundColor:YL,borderRadius:3}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{y:{ticks:{callback:function(v){return v+'d'}}},x:{grid:{display:false}}}}});
+makeOrUpdate('hc-vol',{type:'line',data:{labels:Y,datasets:[
+{label:'MA (÷100)',data:m.units.map(function(v){return v/100}),borderColor:B,borderWidth:2,tension:0.3,fill:true,backgroundColor:'rgba(30,53,94,0.1)',pointRadius:2},
+{label:'Essex (÷10)',data:e.units.map(function(v){return v/10}),borderColor:G,borderWidth:2,tension:0.3,pointRadius:2},
+{label:'Newburyport',data:n.units,borderColor:YL,borderWidth:2,tension:0.3,pointRadius:2}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{x:{grid:{display:false}}}}});
+}
+
+function renderRegion(region,pt){
+var d=D[region][pt];var i=Y.length-1;
+var colors={ma:['b','bl'],boston:['r','rl'],essex:['g','gl'],nbpt:['y','yl']};
+var c=colors[region]||['b','bl'];
+document.getElementById(region+'-cards').innerHTML='<div class="cards">'+
+'<div class="card '+c[1]+'"><div class="cl">Average Sale Price</div><div class="cv '+c[0]+'">'+fmt(d.price[i])+'</div><div class="cg"><div class="cm"><div class="cml">2014</div><div class="cmv">'+fmt(d.price[0])+'</div></div><div class="cm"><div class="cml">Change</div><div class="cmv '+(d.price[i]>=d.price[0]?'up':'dn')+'">'+pct(d.price[i],d.price[0])+'</div></div></div></div>'+
+'<div class="card gl"><div class="cl">$/SqFt</div><div class="cv g">$'+d.sqft[i]+'</div><div class="cg"><div class="cm"><div class="cml">2014</div><div class="cmv">$'+d.sqft[0]+'</div></div><div class="cm"><div class="cml">Change</div><div class="cmv '+(d.sqft[i]>=d.sqft[0]?'up':'dn')+'">'+pct(d.sqft[i],d.sqft[0])+'</div></div></div></div>'+
+'<div class="card rl"><div class="cl">Volume (12mo)</div><div class="cv">'+d.units[i].toLocaleString()+'</div><div class="cg"><div class="cm"><div class="cml">2014</div><div class="cmv">'+d.units[0].toLocaleString()+'</div></div><div class="cm"><div class="cml">Change</div><div class="cmv '+(d.units[i]<d.units[0]?'dn':'up')+'">'+pct(d.units[i],d.units[0])+'</div></div></div></div>'+
+'<div class="card yl"><div class="cl">Days on Market</div><div class="cv">'+d.dom[i]+'</div><div class="cg"><div class="cm"><div class="cml">2014</div><div class="cmv">'+d.dom[0]+'</div></div><div class="cm"><div class="cml">Change</div><div class="cmv '+(d.dom[i]<d.dom[0]?'dn':'up')+'">'+pct(d.dom[i],d.dom[0])+'</div></div></div></div></div>';
+var h='<table><thead><tr><th>Metric</th>';
+Y.forEach(function(y){h+='<th>'+y.slice(2)+'</th>'});
+h+='<th>Chg</th></tr></thead><tbody>';
+h+='<tr><td>Price</td>';d.price.forEach(function(v){h+='<td>'+fmt(v)+'</td>'});h+='<td class="'+(d.price[i]>=d.price[0]?'up':'dn')+'">'+pct(d.price[i],d.price[0])+'</td></tr>';
+h+='<tr><td>$/Sf</td>';d.sqft.forEach(function(v){h+='<td>$'+v+'</td>'});h+='<td class="'+(d.sqft[i]>=d.sqft[0]?'up':'dn')+'">'+pct(d.sqft[i],d.sqft[0])+'</td></tr>';
+h+='<tr><td>Units</td>';d.units.forEach(function(v){h+='<td>'+v.toLocaleString()+'</td>'});h+='<td class="'+(d.units[i]<d.units[0]?'dn':'up')+'">'+pct(d.units[i],d.units[0])+'</td></tr>';
+h+='<tr><td>DOM</td>';d.dom.forEach(function(v){h+='<td>'+v+'</td>'});h+='<td class="'+(d.dom[i]<d.dom[0]?'dn':'up')+'">'+pct(d.dom[i],d.dom[0])+'</td></tr>';
+if(d.supply){h+='<tr><td>Supply</td>';d.supply.forEach(function(v){h+='<td>'+v.toFixed(1)+'</td>'});h+='<td>'+pct(d.supply[i],d.supply[0])+'</td></tr>';}
+h+='</tbody></table>';
+document.getElementById(region+'-table').innerHTML=h;
+}
+
+function renderNbptChart(pt){
+var d=D.nbpt[pt];
+makeOrUpdate('hc-nbpt',{type:'bar',data:{labels:Y,datasets:[
+{label:'Price',data:d.price,backgroundColor:YL,borderRadius:3,yAxisID:'y'},
+{label:'$/SqFt',data:d.sqft,type:'line',borderColor:R,borderWidth:2,tension:0.3,yAxisID:'y1',pointRadius:2}
+]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{y:{position:'left',ticks:{callback:kF}},y1:{position:'right',grid:{display:false},ticks:{callback:function(v){return'$'+v}}},x:{grid:{display:false}}}}});
+}
+
+function renderGN(){
+  // Town breakdown — uses gnDefaults (live-overlaid)
+  var townsHtml = '';
+  ['Newburyport','West Newbury','Newbury','Rowley','Salisbury','Amesbury'].forEach(function(t){
+    var d = gnDefaults[t];
+    townsHtml += '<div class="town"><div class="tn">'+t+'</div>'+
+      '<div class="tp">$'+(d.price/1000).toFixed(0)+'K</div>'+
+      '<span class="tb up">+'+d.change+'% vs 2014</span>'+
+      '<div class="tm">$'+d.sqft+'/sqft · '+d.dom+' DOM</div></div>';
+  });
+  document.getElementById('gn-towns').innerHTML = townsHtml;
+
+  // Regional summary
+  var summary = (window.__liveJson && window.__liveJson.greaterNewburyport && window.__liveJson.greaterNewburyport.summary) || null;
+  if (summary) {
+    if (summary.price) document.getElementById('gn-avg').textContent = '$'+Math.round(summary.price/1000)+'K';
+    if (summary.units) document.getElementById('gn-units').textContent = summary.units;
+    if (summary.sqft)  document.getElementById('gn-sqft').textContent = '$'+summary.sqft;
+    if (summary.dom)   document.getElementById('gn-dom').textContent = summary.dom;
+  }
+
+  // Town comparison bar chart
+  var labels = ['Newburyport','West Newbury','Newbury','Rowley','Salisbury','Amesbury'];
+  var priceData = labels.map(function(t){return gnDefaults[t].price});
+  var priorData = labels.map(function(t){return gnPrior[t]||gnDefaults[t].price});
+  makeOrUpdate('hc-gnbpt',{type:'bar',data:{labels:labels,datasets:[{data:priceData,backgroundColor:[YL,P,B,G,O,R],borderRadius:5}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{callback:kF}},y:{grid:{display:false}}}}});
+  makeOrUpdate('hc-gnbpt-yoy',{type:'bar',data:{labels:labels,datasets:[
+    {label:Y[Y.length-2],data:priorData,backgroundColor:'rgba(30,53,94,0.25)',borderColor:B,borderWidth:1,borderRadius:4},
+    {label:Y[Y.length-1],data:priceData,backgroundColor:[YL,P,B,G,O,R],borderRadius:4}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{y:{ticks:{callback:kF}},x:{grid:{display:false}}}}});
+}
+
+function renderAffordability(){
+  var i = Y.length - 1;
+  var aff = (window.__liveJson && window.__liveJson.affordability) || null;
+  var medianIncome = aff ? aff.medianIncome : 104800;
+  document.getElementById('aff-median-note').textContent = '$'+medianIncome.toLocaleString();
+
+  // Build table from live D[] (SF current-year prices)
+  function calc(price){
+    if(!price) return null;
+    var down = price*0.20;
+    var loan = price-down;
+    var r = 0.065/12, n = 360;
+    var pi = loan*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+    var taxes = price*0.012/12, ins = price*0.004/12;
+    var monthly = pi+taxes+ins;
+    var income = (monthly*12)/0.28;
+    return {price:price, down:down, monthly:monthly, income:income};
+  }
+  var rows = [
+    {name:'Massachusetts', d:calc(D.ma.sf.price[i])},
+    {name:'Boston',        d:calc(D.boston.sf.price[i])},
+    {name:'Essex County',  d:calc(D.essex.sf.price[i])},
+    {name:'Newburyport',   d:calc(D.nbpt.sf.price[i])}
+  ];
+  var html = '';
+  rows.forEach(function(r){
+    if(!r.d){html+='<tr><td>'+r.name+'</td><td colspan="6">—</td></tr>';return;}
+    var gap = medianIncome - r.d.income;
+    html += '<tr>'+
+      '<td>'+r.name+'</td>'+
+      '<td>'+fmt(r.d.price)+'</td>'+
+      '<td>'+fmt(r.d.down)+'</td>'+
+      '<td>$'+Math.round(r.d.monthly).toLocaleString()+'</td>'+
+      '<td>'+fmt(r.d.income)+'</td>'+
+      '<td>'+fmt(medianIncome)+'</td>'+
+      '<td class="up">'+(gap<0?'-':'')+'$'+Math.round(Math.abs(gap)/1000)+'K</td>'+
+      '</tr>';
+  });
+  document.getElementById('aff-table').innerHTML = html;
+
+  // Newburyport affordability box
+  var nbpt = calc(D.nbpt.sf.price[i]);
+  if (nbpt) {
+    document.getElementById('aff-nbpt-price').textContent = fmt(nbpt.price);
+    document.getElementById('aff-nbpt-down').textContent  = fmt(nbpt.down);
+    document.getElementById('aff-nbpt-monthly').textContent = '$'+Math.round(nbpt.monthly).toLocaleString();
+    document.getElementById('aff-nbpt-income').textContent  = fmt(nbpt.income);
+  }
+
+  // Range cards
+  var incomes = rows.filter(function(r){return r.d}).map(function(r){return r.d.income});
+  var downs = rows.filter(function(r){return r.d}).map(function(r){return r.d.down});
+  if (incomes.length) {
+    var gapPctLow  = Math.round(100*(1 - medianIncome/Math.min.apply(null,incomes)));
+    var gapPctHigh = Math.round(100*(1 - medianIncome/Math.max.apply(null,incomes)));
+    document.getElementById('aff-gap-range').textContent = Math.min(gapPctLow,gapPctHigh)+'–'+Math.max(gapPctLow,gapPctHigh)+'%';
+    document.getElementById('aff-down-range').textContent = fmt(Math.min.apply(null,downs))+'–'+fmt(Math.max.apply(null,downs));
+  }
+  var premium = Math.round(100*(D.nbpt.sf.price[i]/D.ma.sf.price[i] - 1));
+  document.getElementById('aff-premium').textContent = (premium>=0?'+':'')+premium+'%';
+
+  // Supply
+  if (D.ma.sf.supply && D.ma.sf.supply[i] != null) {
+    document.getElementById('aff-supply').textContent = D.ma.sf.supply[i].toFixed(2)+' mo';
+  }
+
+  // Income chart
+  var labels = rows.map(function(r){return r.name});
+  var incomeData = rows.map(function(r){return r.d?r.d.income:0});
+  makeOrUpdate('hc-income',{type:'bar',data:{labels:labels,datasets:[
+    {label:'Income Needed',data:incomeData,backgroundColor:R,borderRadius:4},
+    {label:'MA Median',data:labels.map(function(){return medianIncome}),backgroundColor:B,borderRadius:4}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{y:{ticks:{callback:kF}},x:{grid:{display:false}}}}});
+}
+
+function renderAll(){
+  renderHero();
+  renderOvCards(curPT.overview);renderOvCharts(curPT.overview);
+  renderRegion('ma',curPT.ma);renderRegion('boston',curPT.boston);renderRegion('essex',curPT.essex);renderRegion('nbpt',curPT.nbpt);
+  renderNbptChart(curPT.nbpt);
+  renderGN();
+  renderAffordability();
+}
+
+// Property type tabs
+document.querySelectorAll('#hmd .ptabs').forEach(function(tabs){
+  tabs.querySelectorAll('.ptab').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      tabs.querySelectorAll('.ptab').forEach(function(b){b.classList.remove('active')});
+      btn.classList.add('active');
+      var pt=btn.getAttribute('data-pt');
+      var region=tabs.getAttribute('data-region');
+      curPT[region]=pt;
+      if(region==='overview'){renderOvCards(pt);renderOvCharts(pt);}
+      else if(region==='nbpt'){renderRegion('nbpt',pt);renderNbptChart(pt);}
+      else{renderRegion(region,pt);}
+    });
+  });
+});
+
+// Nav tabs
+document.querySelectorAll('#hmd .nav-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('#hmd .nav-btn').forEach(function(b){b.classList.remove('active')});
+    document.querySelectorAll('#hmd .sec').forEach(function(s){s.classList.remove('active')});
+    btn.classList.add('active');
+    document.getElementById('hmd-'+btn.getAttribute('data-tab')).classList.add('active');
+  });
+});
+
+// =====================================================================
+// FETCH + RENDER
+// =====================================================================
+// Render with baseline first so the page is never blank, then overlay.
+renderAll();
+
+fetch(DATA_URL + '?t=' + Date.now())
+  .then(function(r){ if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+  .then(function(json){ window.__liveJson = json; overlayLive(json); renderAll(); })
+  .catch(function(e){ console.warn('MA-Housing-Dashboard: live fetch failed, showing baseline.', e.message); });
+
+})();
+</script>
