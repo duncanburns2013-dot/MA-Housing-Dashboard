@@ -1,0 +1,384 @@
+<!-- RE/MAX Bentley's Market Leadership - LIVE EDITION -->
+<!-- Data refreshes weekly from MLSPIN via dashboard.json on GitHub Pages -->
+<style>
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes borderGlow {
+  0%, 100% { box-shadow: 0 0 20px rgba(201, 235, 252, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(201, 235, 252, 0.6); }
+}
+@keyframes barFill { from { width: 0%; } }
+@keyframes hotPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.7); }
+}
+
+.ml-page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(-45deg, #0d2137, #1a4a6e, #0f2d4a, #1e5a7e) !important;
+  background-size: 400% 400% !important;
+  animation: gradientShift 15s ease infinite;
+  border-radius: 28px;
+  padding: 60px 52px;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: white !important;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.ml-page *, .ml-page *::before, .ml-page *::after { box-sizing: border-box; }
+.ml-page::before, .ml-page::after {
+  content: ''; position: absolute; border-radius: 50%; filter: blur(60px);
+  z-index: 0; animation: float 8s ease-in-out infinite;
+}
+.ml-page::before { width: 300px; height: 300px; background: rgba(201, 235, 252, 0.15); top: -50px; right: -50px; }
+.ml-page::after { width: 250px; height: 250px; background: rgba(91, 192, 235, 0.12); bottom: 100px; left: -80px; animation-delay: 4s; }
+.ml-orb { position: absolute; border-radius: 50%; filter: blur(40px); z-index: 0; animation: pulse 6s ease-in-out infinite; }
+.ml-orb-1 { width: 150px; height: 150px; background: rgba(201, 235, 252, 0.1); top: 40%; left: 10%; animation-delay: 2s; }
+.ml-orb-2 { width: 100px; height: 100px; background: rgba(147, 225, 250, 0.08); top: 60%; right: 15%; animation-delay: 3s; }
+.ml-orb-3 { width: 180px; height: 180px; background: rgba(91, 192, 235, 0.06); bottom: 20%; left: 50%; animation-delay: 5s; }
+.ml-content { position: relative; z-index: 1; }
+.ml-header { text-align: center; margin-bottom: 48px; }
+.ml-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: #93e1fa !important; margin-bottom: 16px; animation: countUp 0.8s ease forwards; text-shadow: 0 0 20px rgba(147, 225, 250, 0.5); }
+.ml-title { font-size: 48px; font-weight: 800; letter-spacing: -1px; margin: 0; color: #ffffff !important; animation: countUp 0.8s ease 0.1s forwards; opacity: 0; }
+.ml-title span { color: #93e1fa !important; text-shadow: 0 0 30px rgba(147, 225, 250, 0.4); }
+.ml-hero { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 48px; }
+.ml-hero-stat { background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02)) !important; border: 1px solid rgba(201, 235, 252, 0.2) !important; border-radius: 20px; padding: 32px 24px; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default; position: relative; overflow: hidden; animation: scaleIn 0.6s ease forwards; opacity: 0; }
+.ml-hero-stat:nth-child(1) { animation-delay: 0.2s; }
+.ml-hero-stat:nth-child(2) { animation-delay: 0.3s; }
+.ml-hero-stat:nth-child(3) { animation-delay: 0.4s; }
+.ml-hero-stat:nth-child(4) { animation-delay: 0.5s; }
+.ml-hero-stat::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transition: left 0.5s; }
+.ml-hero-stat:hover::before { left: 100%; }
+.ml-hero-stat:hover { transform: translateY(-8px) scale(1.02); border-color: rgba(201, 235, 252, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(201, 235, 252, 0.2); }
+.ml-hero-value { font-size: 42px; font-weight: 800; color: #93e1fa !important; letter-spacing: -1px; text-shadow: 0 0 20px rgba(147, 225, 250, 0.4); }
+.ml-hero-label { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.7) !important; margin-top: 8px; }
+.ml-section-title { font-size: 14px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #93e1fa !important; margin: 48px 0 24px; padding-bottom: 12px; position: relative; text-shadow: 0 0 15px rgba(147, 225, 250, 0.3); }
+.ml-section-title::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, #93e1fa, transparent); animation: shimmer 3s linear infinite; background-size: 200% 100%; }
+.ml-chart { display: flex; flex-direction: column; gap: 10px; }
+.ml-bar-row { display: flex; align-items: center; gap: 12px; padding: 6px 10px; border-radius: 10px; transition: all 0.3s ease; }
+.ml-bar-row:hover { background: rgba(255,255,255,0.08); transform: translateX(5px); }
+.ml-bar-label { width: 120px; min-width: 120px; font-size: 12px; color: rgba(255,255,255,0.8) !important; text-align: right; flex-shrink: 0; transition: all 0.3s; }
+.ml-bar-row:hover .ml-bar-label { color: white !important; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+.ml-bar-wrap { flex: 1; height: 32px; background: rgba(255,255,255,0.08); border-radius: 8px; overflow: hidden; }
+.ml-bar { height: 100%; border-radius: 8px; display: flex; align-items: center; padding-left: 10px; font-size: 12px; font-weight: 700; color: white !important; transition: all 0.4s ease; animation: barFill 1.5s ease-out forwards; }
+.ml-bar-row:hover .ml-bar { filter: brightness(1.2); }
+.ml-bar.leader { background: linear-gradient(90deg, #1a5a7e, #5bc0eb, #93e1fa); box-shadow: 0 0 25px rgba(147, 225, 250, 0.4); animation: barFill 1.5s ease-out forwards, borderGlow 2s ease-in-out infinite; justify-content: flex-start; }
+.ml-bar.other { background: linear-gradient(90deg, rgba(91, 192, 235, 0.3), rgba(147, 225, 250, 0.4)); justify-content: flex-start; }
+.ml-bar-pct { font-size: 13px; font-weight: 700; color: #93e1fa !important; min-width: 55px; text-align: right; flex-shrink: 0; }
+.ml-towns { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.ml-town { background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(201, 235, 252, 0.15); border-radius: 16px; padding: 24px 16px; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default; }
+.ml-town:hover { transform: translateY(-10px) scale(1.05); border-color: rgba(147, 225, 250, 0.5); box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(147, 225, 250, 0.2); background: linear-gradient(145deg, rgba(147, 225, 250, 0.15), rgba(91, 192, 235, 0.05)); }
+.ml-town.top { background: linear-gradient(145deg, rgba(147, 225, 250, 0.15), rgba(91, 192, 235, 0.05)); border-color: rgba(147, 225, 250, 0.4); animation: borderGlow 3s ease-in-out infinite; }
+.ml-town-rank { font-size: 11px; font-weight: 700; color: #93e1fa; background: rgba(147, 225, 250, 0.15); width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.ml-town.top .ml-town-rank { background: #93e1fa; color: #0d2137; }
+.ml-town-name { font-size: 14px; font-weight: 600; color: white; margin-bottom: 8px; }
+.ml-town-vol { font-size: 24px; font-weight: 800; color: #93e1fa; text-shadow: 0 0 15px rgba(147, 225, 250, 0.4); }
+.ml-town-pct { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+.ml-digital { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ml-dstat { background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(201, 235, 252, 0.12); border-radius: 16px; padding: 28px 16px; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default; position: relative; overflow: hidden; }
+.ml-dstat::after { content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; background: rgba(147, 225, 250, 0.1); border-radius: 50%; transform: translate(-50%, -50%); transition: all 0.5s; }
+.ml-dstat:hover::after { width: 200%; height: 200%; }
+.ml-dstat:hover { transform: translateY(-8px); border-color: rgba(147, 225, 250, 0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.25), 0 0 25px rgba(147, 225, 250, 0.15); }
+.ml-dstat-value { font-size: 32px; font-weight: 800; color: #93e1fa; letter-spacing: -0.5px; text-shadow: 0 0 15px rgba(147, 225, 250, 0.4); position: relative; z-index: 1; }
+.ml-dstat-label { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 8px; position: relative; z-index: 1; }
+.ml-compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; }
+.ml-compare-card { text-align: center; padding: 44px 32px; border-radius: 24px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default; }
+.ml-compare-card.local { background: linear-gradient(145deg, rgba(147, 225, 250, 0.15), rgba(91, 192, 235, 0.05)); border: 2px solid rgba(147, 225, 250, 0.3); animation: borderGlow 3s ease-in-out infinite; }
+.ml-compare-card.local:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(147, 225, 250, 0.3); }
+.ml-compare-card.national { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); }
+.ml-compare-card.national:hover { transform: scale(1.02); }
+.ml-compare-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+.ml-compare-value { font-size: 72px; font-weight: 800; letter-spacing: -3px; }
+.ml-compare-card.local .ml-compare-value { color: #93e1fa; text-shadow: 0 0 30px rgba(147, 225, 250, 0.5); }
+.ml-compare-card.national .ml-compare-value { color: rgba(255,255,255,0.2); }
+.ml-compare-desc { font-size: 14px; margin-top: 12px; }
+.ml-compare-card.local .ml-compare-desc { color: rgba(255,255,255,0.7); }
+.ml-compare-card.national .ml-compare-desc { color: rgba(255,255,255,0.35); }
+.ml-vs { font-size: 16px; font-weight: 800; color: rgba(255,255,255,0.25); letter-spacing: 2px; }
+.ml-money { background: linear-gradient(145deg, rgba(147, 225, 250, 0.1), rgba(91, 192, 235, 0.05)); border: 2px solid rgba(147, 225, 250, 0.2); border-radius: 20px; padding: 40px; text-align: center; margin-top: 28px; transition: all 0.4s ease; animation: borderGlow 4s ease-in-out infinite; }
+.ml-money:hover { border-color: rgba(147, 225, 250, 0.5); box-shadow: 0 0 40px rgba(147, 225, 250, 0.2); }
+.ml-money-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.ml-money-value { font-size: 64px; font-weight: 800; color: #93e1fa; letter-spacing: -2px; margin: 12px 0; text-shadow: 0 0 30px rgba(147, 225, 250, 0.5); }
+.ml-money-text { font-size: 15px; color: rgba(255,255,255,0.6); }
+.ml-buyers { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.ml-buyer { background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(201, 235, 252, 0.12); border-radius: 14px; padding: 24px 14px; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default; }
+.ml-buyer:hover { transform: translateY(-8px) scale(1.05); border-color: rgba(147, 225, 250, 0.4); box-shadow: 0 15px 35px rgba(0,0,0,0.25), 0 0 20px rgba(147, 225, 250, 0.15); }
+.ml-buyer-range { font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.ml-buyer-count { font-size: 24px; font-weight: 800; color: #93e1fa; text-shadow: 0 0 12px rgba(147, 225, 250, 0.3); }
+.ml-heat { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.ml-heat-card { background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px 14px; text-align: center; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: default; }
+.ml-heat-card:hover { transform: translateY(-8px); }
+.ml-heat-card.hot { background: linear-gradient(145deg, rgba(255, 107, 107, 0.15), rgba(255, 71, 87, 0.05)); border-color: rgba(255, 107, 107, 0.4); border-top: 3px solid #ff6b6b; animation: hotPulse 2s ease-in-out infinite; }
+.ml-heat-card.hot:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 30px rgba(255, 107, 107, 0.3); }
+.ml-heat-card.hot .ml-heat-score { color: #ff6b6b; text-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+.ml-heat-card.comp { background: linear-gradient(145deg, rgba(255, 193, 7, 0.12), rgba(255, 152, 0, 0.05)); border-color: rgba(255, 193, 7, 0.3); border-top: 3px solid #ffc107; }
+.ml-heat-card.comp:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 25px rgba(255, 193, 7, 0.25); }
+.ml-heat-card.comp .ml-heat-score { color: #ffc107; text-shadow: 0 0 15px rgba(255, 193, 7, 0.5); }
+.ml-heat-card.cool { background: linear-gradient(145deg, rgba(100, 181, 246, 0.1), rgba(66, 165, 245, 0.05)); border-color: rgba(100, 181, 246, 0.25); border-top: 3px solid #64b5f6; }
+.ml-heat-card.cool:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.3), 0 0 20px rgba(100, 181, 246, 0.2); }
+.ml-heat-card.cool .ml-heat-score { color: #64b5f6; text-shadow: 0 0 15px rgba(100, 181, 246, 0.4); }
+.ml-heat-name { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
+.ml-heat-score { font-size: 36px; font-weight: 800; }
+.ml-heat-badge { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px; padding: 5px 10px; border-radius: 6px; display: inline-block; }
+.ml-heat-badge.hot { background: rgba(255, 107, 107, 0.25); color: #ff6b6b; }
+.ml-heat-badge.comp { background: rgba(255, 193, 7, 0.2); color: #ffc107; }
+.ml-heat-badge.cool { background: rgba(100, 181, 246, 0.2); color: #64b5f6; }
+.ml-cta { background: linear-gradient(145deg, rgba(147, 225, 250, 0.12), rgba(91, 192, 235, 0.06)); border: 2px solid transparent; border-radius: 24px; padding: 48px; text-align: center; margin-top: 48px; position: relative; overflow: hidden; transition: all 0.4s ease; }
+.ml-cta::before { content: ''; position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; background: linear-gradient(90deg, #93e1fa, #5bc0eb, #93e1fa); background-size: 200% 100%; border-radius: 26px; z-index: -1; animation: shimmer 3s linear infinite; }
+.ml-cta::after { content: ''; position: absolute; top: 2px; left: 2px; right: 2px; bottom: 2px; background: linear-gradient(145deg, #0d2137, #1a4a6e); border-radius: 22px; z-index: -1; }
+.ml-cta:hover { transform: scale(1.02); box-shadow: 0 0 50px rgba(147, 225, 250, 0.25); }
+.ml-cta-text { font-size: 26px; font-weight: 700; position: relative; z-index: 1; }
+.ml-cta-sub { font-size: 16px; color: rgba(255,255,255,0.6); margin-top: 12px; position: relative; z-index: 1; }
+.ml-source { text-align: center; font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 36px; line-height: 1.6; }
+.ml-live-badge { display: inline-block; font-size: 10px; background: #16a34a; color: #fff; padding: 3px 10px; border-radius: 20px; margin-left: 8px; vertical-align: middle; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; box-shadow: 0 0 12px rgba(22,163,74,0.6); }
+@media (max-width: 1000px) {
+  .ml-page { padding: 44px 32px; }
+  .ml-hero { grid-template-columns: repeat(2, 1fr); }
+  .ml-towns { grid-template-columns: repeat(3, 1fr); }
+  .ml-digital { grid-template-columns: repeat(2, 1fr); }
+  .ml-heat { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .ml-page { padding: 32px 20px; border-radius: 20px; }
+  .ml-title { font-size: 32px !important; }
+  .ml-hero { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .ml-hero-stat { padding: 20px 16px; }
+  .ml-hero-value { font-size: 32px; }
+  .ml-bar-label { width: 90px; min-width: 90px; font-size: 10px; }
+  .ml-towns { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .ml-town-vol { font-size: 20px; }
+  .ml-digital { grid-template-columns: repeat(2, 1fr); }
+  .ml-dstat-value { font-size: 24px; }
+  .ml-buyers { grid-template-columns: repeat(2, 1fr); }
+  .ml-buyer-count { font-size: 20px; }
+  .ml-compare { grid-template-columns: 1fr; gap: 16px; }
+  .ml-vs { display: none; }
+  .ml-compare-value { font-size: 56px; }
+  .ml-money-value { font-size: 48px; }
+  .ml-heat { grid-template-columns: repeat(2, 1fr); }
+  .ml-heat-score { font-size: 28px; }
+  .ml-cta-text { font-size: 20px; }
+}
+.ml-page, .ml-page * { color: white !important; }
+.ml-eyebrow, .ml-section-title, .ml-hero-value, .ml-town-vol, .ml-dstat-value, .ml-buyer-count, .ml-compare-card.local .ml-compare-value, .ml-money-value, .ml-bar-pct { color: #93e1fa !important; }
+.ml-hero-label, .ml-town-pct, .ml-dstat-label, .ml-buyer-range, .ml-compare-label, .ml-compare-desc, .ml-money-label, .ml-money-text, .ml-cta-sub { color: rgba(255,255,255,0.6) !important; }
+.ml-town-name, .ml-bar-label, .ml-heat-name { color: rgba(255,255,255,0.8) !important; }
+.ml-compare-card.national .ml-compare-value { color: rgba(255,255,255,0.2) !important; }
+.ml-heat-card.hot .ml-heat-score { color: #ff6b6b !important; }
+.ml-heat-card.comp .ml-heat-score { color: #ffc107 !important; }
+.ml-heat-card.cool .ml-heat-score { color: #64b5f6 !important; }
+.ml-heat-badge.hot { color: #ff6b6b !important; }
+.ml-heat-badge.comp { color: #ffc107 !important; }
+.ml-heat-badge.cool { color: #64b5f6 !important; }
+.ml-source { color: rgba(255,255,255,0.3) !important; }
+</style>
+
+<div class="ml-page">
+  <div class="ml-orb ml-orb-1"></div>
+  <div class="ml-orb ml-orb-2"></div>
+  <div class="ml-orb ml-orb-3"></div>
+
+  <div class="ml-content">
+    <div class="ml-header">
+      <div class="ml-eyebrow" id="ml-eyebrow">Greater Newburyport Real Estate<span class="ml-live-badge">Live</span></div>
+      <h2 class="ml-title">#1 in Market Share. <span id="ml-title-span">7 Years Running.</span></h2>
+    </div>
+
+    <div class="ml-hero">
+      <div class="ml-hero-stat"><div class="ml-hero-value" id="ml-hero-share">—</div><div class="ml-hero-label">Market Share</div></div>
+      <div class="ml-hero-stat"><div class="ml-hero-value" id="ml-hero-volume">—</div><div class="ml-hero-label">Sales Volume</div></div>
+      <div class="ml-hero-stat"><div class="ml-hero-value" id="ml-hero-lead">—</div><div class="ml-hero-label">Lead Over #2</div></div>
+      <div class="ml-hero-stat"><div class="ml-hero-value" id="ml-hero-years">—</div><div class="ml-hero-label">Years at #1</div></div>
+    </div>
+
+    <div class="ml-section-title">Market Share by Brokerage</div>
+    <div class="ml-chart" id="ml-chart"></div>
+
+    <div class="ml-section-title">Sales Volume by Town</div>
+    <div class="ml-towns" id="ml-towns"></div>
+
+    <div class="ml-section-title">Your Listing's Digital Reach</div>
+    <div class="ml-digital" id="ml-digital"></div>
+
+    <div class="ml-section-title">Active Buyers by Price Range</div>
+    <div class="ml-buyers" id="ml-buyers"></div>
+
+    <div class="ml-section-title">The Money Difference</div>
+    <div class="ml-compare">
+      <div class="ml-compare-card local">
+        <div class="ml-compare-label">Greater Newburyport</div>
+        <div class="ml-compare-value" id="ml-local-sl">—</div>
+        <div class="ml-compare-desc">Sellers receive close to asking price</div>
+      </div>
+      <div class="ml-vs">VS</div>
+      <div class="ml-compare-card national">
+        <div class="ml-compare-label">U.S. Average</div>
+        <div class="ml-compare-value" id="ml-natl-sl">—</div>
+        <div class="ml-compare-desc">Sellers lose ground on list price</div>
+      </div>
+    </div>
+    <div class="ml-money">
+      <div class="ml-money-label">Net Difference on a <span id="ml-money-home">$750,000</span> Home</div>
+      <div class="ml-money-value" id="ml-money-diff">—</div>
+      <div class="ml-money-text">The real-world impact of selling in a strong local market with the right representation</div>
+    </div>
+
+    <div class="ml-section-title">Market Competitiveness by Town</div>
+    <div class="ml-heat" id="ml-heat"></div>
+
+    <div class="ml-cta">
+      <div class="ml-cta-text">Every Listing Gets This Exposure — Automatically</div>
+      <div class="ml-cta-sub">No extra cost. Instant reach to thousands of qualified buyers.</div>
+    </div>
+
+    <div class="ml-source" id="ml-source">
+      Data: MLSPIN · Serving Amesbury, Newbury, Newburyport, Rowley, Salisbury, West Newbury<br>
+      All offices combined by firm · RE/MAX Bentley's includes proprietary off-market transactions
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+var DATA_URL = 'https://duncanburns2013-dot.github.io/MA-Housing-Dashboard/data/processed/market-leader.json';
+
+function fmtVolM(v){ return v >= 1e9 ? '$'+(v/1e9).toFixed(2)+'B' : '$'+(v/1e6).toFixed(1)+'M'; }
+function fmtVolHero(v){ return v >= 1e9 ? '$'+(v/1e9).toFixed(2)+'B' : '$'+Math.round(v/1e6)+'M'; }
+function fmtHome(v){ return '$'+v.toLocaleString(); }
+function fmtDiff(v){ return v >= 0 ? '$'+Math.round(v/1000).toLocaleString()+'K' : '-$'+Math.round(Math.abs(v)/1000).toLocaleString()+'K'; }
+
+function render(d) {
+  // Eyebrow + title
+  document.getElementById('ml-eyebrow').innerHTML =
+    (d.meta.labelYear ? d.meta.labelYear + ' ' : '') +
+    'Greater Newburyport Real Estate<span class="ml-live-badge">Live</span>';
+  if (d.yourFirm.yearsAtNumber1) {
+    document.getElementById('ml-title-span').textContent = d.yourFirm.yearsAtNumber1 + ' Years Running.';
+  }
+
+  // Hero
+  document.getElementById('ml-hero-share').textContent = d.yourFirm.share.toFixed(2) + '%';
+  document.getElementById('ml-hero-volume').textContent = fmtVolHero(d.yourFirm.volume);
+  document.getElementById('ml-hero-lead').textContent = d.yourFirm.leadOverSecond != null ? d.yourFirm.leadOverSecond + '%' : '—';
+  document.getElementById('ml-hero-years').textContent = d.yourFirm.yearsAtNumber1 || '—';
+
+  // Brokerage chart — leader is your firm; widths relative to leader's share
+  var chart = document.getElementById('ml-chart');
+  chart.innerHTML = '';
+  var leaderShare = d.brokerages[0] ? d.brokerages[0].share : 1;
+  d.brokerages.forEach(function(b, i) {
+    var width = Math.max(6, (b.share / leaderShare) * 100);
+    var isLeader = (i === 0 && b.name === d.yourFirm.name);
+    chart.insertAdjacentHTML('beforeend',
+      '<div class="ml-bar-row">' +
+      '  <div class="ml-bar-label">' + b.name + '</div>' +
+      '  <div class="ml-bar-wrap"><div class="ml-bar ' + (isLeader ? 'leader' : 'other') + '" style="width:' + width.toFixed(0) + '%"></div></div>' +
+      '  <div class="ml-bar-pct">' + b.share.toFixed(2) + '%</div>' +
+      '</div>'
+    );
+  });
+
+  // Towns — uses yourTowns (Bentley's slice). Top town gets .top class.
+  var towns = document.getElementById('ml-towns');
+  towns.innerHTML = '';
+  d.yourTowns.forEach(function(t, i) {
+    towns.insertAdjacentHTML('beforeend',
+      '<div class="ml-town' + (i === 0 ? ' top' : '') + '">' +
+      '  <div class="ml-town-rank">' + (i + 1) + '</div>' +
+      '  <div class="ml-town-name">' + t.name + '</div>' +
+      '  <div class="ml-town-vol">' + fmtVolM(t.volume) + '</div>' +
+      '  <div class="ml-town-pct">' + t.share.toFixed(1) + '%</div>' +
+      '</div>'
+    );
+  });
+
+  // Digital reach
+  var dStat = function(v, lbl) {
+    return '<div class="ml-dstat"><div class="ml-dstat-value">' + v + '</div><div class="ml-dstat-label">' + lbl + '</div></div>';
+  };
+  var dr = d.digitalReach || {};
+  document.getElementById('ml-digital').innerHTML =
+    dStat(dr.websiteVisits || '—', 'Website Visits') +
+    dStat(dr.adImpressions || '—', 'Ad Impressions') +
+    dStat(dr.databaseContacts || '—', 'Database Contacts') +
+    dStat(dr.adClicks || '—', 'Ad Clicks') +
+    dStat(dr.activeBuyers || '—', 'Active Buyers') +
+    dStat(dr.luxuryBuyersPlus2M || '—', 'Luxury Buyers ($2M+)') +
+    dStat(dr.clickRate || '—', 'Click Rate (3× Avg)') +
+    dStat(dr.marketLeaderYears || (d.yourFirm.yearsAtNumber1 + ' Yrs'), 'Market Leader');
+
+  // Active buyers
+  var b = d.activeBuyersByPrice || {};
+  var br = function(range, count) {
+    return '<div class="ml-buyer"><div class="ml-buyer-range">' + range + '</div><div class="ml-buyer-count">' + (count != null ? count.toLocaleString() : '—') + '</div></div>';
+  };
+  document.getElementById('ml-buyers').innerHTML =
+    br('Under $500K', b.under500K) +
+    br('$500K – $750K', b['500to750K']) +
+    br('$750K – $1M', b['750to1M']) +
+    br('$1M – $2M', b['1to2M']) +
+    br('$2M+', b.plus2M);
+
+  // Money comparison
+  document.getElementById('ml-local-sl').textContent = (d.saleToList.local != null ? d.saleToList.local : '—') + '%';
+  document.getElementById('ml-natl-sl').textContent = (d.saleToList.national != null ? d.saleToList.national : '—') + '%';
+  document.getElementById('ml-money-home').textContent = fmtHome(d.saleToList.exampleHomePrice || 750000);
+  document.getElementById('ml-money-diff').textContent = fmtDiff(d.saleToList.exampleDifference || 0);
+
+  // Competitiveness heat cards
+  var heat = document.getElementById('ml-heat');
+  heat.innerHTML = '';
+  var labels = { hot: 'Hot', comp: 'Competitive', cool: 'Cooling' };
+  d.competitiveness.forEach(function(c) {
+    heat.insertAdjacentHTML('beforeend',
+      '<div class="ml-heat-card ' + c.category + '">' +
+      '  <div class="ml-heat-name">' + c.name + '</div>' +
+      '  <div class="ml-heat-score">' + c.score.toFixed(1) + '</div>' +
+      '  <div class="ml-heat-badge ' + c.category + '">' + labels[c.category] + '</div>' +
+      '</div>'
+    );
+  });
+
+  // Source footer with timestamp
+  if (d.meta.generated) {
+    var stamp = new Date(d.meta.generated).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+    var src = document.getElementById('ml-source');
+    src.innerHTML = src.innerHTML + '<br>Updated ' + stamp;
+  }
+}
+
+fetch(DATA_URL + '?t=' + Date.now())
+  .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(render)
+  .catch(function(e){
+    console.warn('Market-leader: live fetch failed.', e.message);
+    // Soft fallback: show "loading failed" rather than blank cards
+    document.getElementById('ml-hero-share').textContent = 'N/A';
+    document.getElementById('ml-source').innerHTML += '<br><span style="color:#ff6b6b">Live data unavailable — please refresh shortly</span>';
+  });
+})();
+</script>

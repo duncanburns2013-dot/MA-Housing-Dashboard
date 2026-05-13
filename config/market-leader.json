@@ -1,0 +1,60 @@
+{
+  "_comment_about_off_market": "Two modes for off-market data:",
+  "_mode_a_simple": "Set offMarketVolumeLast12Months to a single dollar number. Pipeline distributes proportionally to per-town MLSPIN slice. Easy but towns where Bentley has 0 MLSPIN sales (e.g. Rowley currently) stay 0.",
+  "_mode_b_precise": "Set yourTownVolumeOverride with per-town totals (incl off-market). Pipeline uses these directly and ignores offMarketVolumeLast12Months. This is how to reproduce the existing page exactly.",
+  "offMarketVolumeLast12Months": 0,
+  "yourTownVolumeOverride": null,
+  "_example_override": {
+    "Newburyport": 98400000,
+    "Amesbury": 52800000,
+    "West Newbury": 28900000,
+    "Salisbury": 24300000,
+    "Newbury": 17100000,
+    "Rowley": 11700000
+  },
+
+  "_comment_about_firm_name": "How RE/MAX Bentley's appears in the chart. Pipeline matches any office name containing the keywords below (case-insensitive).",
+  "yourFirm": {
+    "displayName": "RE/MAX Bentley's",
+    "matchKeywords": ["BENTLEY"]
+  },
+
+  "_comment_about_brands": "Competitor brands. Pipeline groups every office name containing the keywords below into the canonical display name. Order doesn't matter; first-match wins per record.",
+  "brandCanonicals": [
+    { "displayName": "Keller Williams",   "matchKeywords": ["KELLER WILLIAMS"] },
+    { "displayName": "Realty One Group",  "matchKeywords": ["REALTY ONE"] },
+    { "displayName": "Lamacchia Realty",  "matchKeywords": ["LAMACCHIA"] },
+    { "displayName": "Coldwell Banker",   "matchKeywords": ["COLDWELL BANKER"] },
+    { "displayName": "William Raveis",    "matchKeywords": ["RAVEIS"] },
+    { "displayName": "Compass",           "matchKeywords": ["COMPASS"] },
+    { "displayName": "Gibson Sotheby's",  "matchKeywords": ["GIBSON SOTHEBY", "SOTHEBY"] },
+    { "displayName": "Churchill",         "matchKeywords": ["CHURCHILL"] },
+    { "displayName": "Engel & Völkers",   "matchKeywords": ["ENGEL", "VOLKERS", "VÖLKERS"] },
+    { "displayName": "Berkshire Hathaway",  "matchKeywords": ["BERKSHIRE HATHAWAY"] },
+    { "displayName": "Century 21",        "matchKeywords": ["CENTURY 21"] }
+  ],
+
+  "_comment_about_constants": "Things MLSPIN can't tell us — keep these in sync manually.",
+  "yearsAtNumber1": 7,
+  "usNationalSaleToList": 62,
+  "exampleHomePrice": 750000,
+
+  "digitalReach": {
+    "websiteVisits": "2M+",
+    "adImpressions": "1.8M+",
+    "databaseContacts": "75K+",
+    "adClicks": "56K+",
+    "activeBuyers": "21.5K+",
+    "luxuryBuyersPlus2M": "475+",
+    "clickRate": "3.07%",
+    "marketLeaderYears": "7 Yrs"
+  },
+
+  "activeBuyersByPrice": {
+    "under500K": 5732,
+    "500to750K": 5433,
+    "750to1M": 2290,
+    "1to2M": 2098,
+    "plus2M": 475
+  }
+}
