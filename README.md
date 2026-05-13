@@ -1,7 +1,7 @@
 # MA Housing Market Dashboard
 
 Live-data dashboard for the bentleysrealestate.com Massachusetts Housing
-Market Report page. Pulls MLSPIN sales via the Bridge Data Output API,
+Market Report page. Pulls MLSPIN sales,
 aggregates by region × property type × year, and serves a single
 `dashboard.json` consumed by a Squarespace code block.
 
@@ -29,9 +29,10 @@ Rendered page
 ```
 
 The historical 2014–2024 numbers are baked into `embed.html` and never
-change — Bridge doesn't reliably retain that far back. Only the current
-year and prior year (live), the Greater Newburyport town breakdown, the
-regional summary, and the affordability inputs are refreshed.
+change — MLSPIN doesn't reliably retain that far back via this feed.
+Only the current year and prior year (live), the Greater Newburyport
+town breakdown, the regional summary, and the affordability inputs are
+refreshed.
 
 ## Local setup
 

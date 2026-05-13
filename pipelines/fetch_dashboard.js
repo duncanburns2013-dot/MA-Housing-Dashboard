@@ -10,7 +10,7 @@
 //   • For Greater Newburyport, also compute current-year YTD per-town stats.
 //   • Compute affordability inputs (avg price by region → income required).
 //
-// We DO NOT try to pull 2014-2024 from Bridge — that history isn't reliably
+// We DO NOT try to pull 2014-2024 from MLSPIN — that history isn't reliably
 // retained on the feed. Historical baselines live in the embed itself; this
 // script only refreshes the live years and current-snapshot panels.
 //
@@ -340,7 +340,7 @@ function aggregateRecords(recs) {
   const out = {
     meta: {
       generated: new Date().toISOString(),
-      source: 'MLSPIN via Bridge Data Output',
+      source: 'MLSPIN',
       currentYear,
       priorYear,
       closed_records: enriched.length,
