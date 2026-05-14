@@ -5,11 +5,14 @@
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 
 <style>
-/* Outer stage — fills the Squarespace block with a branded gradient
-   so the dashboard "floats" instead of sitting on white. */
+/* Outer stage — full-bleed background. Breaks out of Squarespace's
+   content-width constraint to span the entire viewport horizontally
+   so the navy gradient fills the page instead of acting as a border. */
 #am-stage {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: 56px 24px;
   background:
     radial-gradient(ellipse at 18% 22%, rgba(201,235,252,0.10) 0%, transparent 55%),
