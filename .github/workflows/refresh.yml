@@ -34,13 +34,14 @@ jobs:
           printf 'BRIDGE_TOKEN=%s\nBRIDGE_DATASET=mlspin\n' "$BRIDGE_TOKEN" > .env
           node pipelines/fetch_dashboard.js
           node pipelines/fetch_market_leader.js
+          node pipelines/fetch_agent_map.js
           rm .env
 
       - name: Commit + push if data changed
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/processed/dashboard.json data/processed/market-leader.json
+          git add data/processed/dashboard.json data/processed/market-leader.json data/processed/agent-map.json
           if git diff --cached --quiet; then
             echo "No data changes."
           else

@@ -1,0 +1,226 @@
+// fetch_agent_map.js — pull every closed transaction for the configured
+// agents (list-side OR buy-side) with full address + lat/lng. Output is
+// consumed by the Squarespace agent-map embed.
+//
+// Usage:
+//   node pipelines/fetch_agent_map.js
+//   node pipelines/fetch_agent_map.js --no-pull   (re-aggregate cached)
+
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+
+const ROOT = path.join(__dirname, '..');
+const RAW = path.join(ROOT, 'data', 'raw');
+const OUT = path.join(ROOT, 'data', 'processed');
+const CFG = path.join(ROOT, 'config', 'agent-map.json');
+fs.mkdirSync(RAW, { recursive: true });
+fs.mkdirSync(OUT, { recursive: true });
+
+function loadEnv() {
+  const file = path.join(ROOT, '.env');
+  if (!fs.existsSync(file)) { console.error('Missing .env'); process.exit(1); }
+  const env = {};
+  for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+    if (m) env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+  }
+  return env;
+}
+
+function get(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'MA-Housing-Dashboard/1.0' } }, (res) => {
+      let body = '';
+      res.on('data', c => body += c);
+      res.on('end', () => {
+        if (res.statusCode >= 400) return reject(new Error(`HTTP ${res.statusCode}: ${body.slice(0, 300)}`));
+        try { resolve(JSON.parse(body)); } catch (e) { reject(e); }
+      });
+    }).on('error', reject);
+  });
+}
+async function getRetry(url, n = 4) {
+  let last;
+  for (let i = 0; i < n; i++) {
+    try { return await get(url); }
+    catch (e) { last = e; await new Promise(r => setTimeout(r, 1000 * Math.pow(2, i))); }
+  }
+  throw last;
+}
+
+async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
+  const all = [];
+  let lastKey = null;
+  let pages = 0;
+  if (!select.split(',').includes('ListingKey')) select = 'ListingKey,' + select;
+  while (all.length < cap) {
+    const f = lastKey ? `${filter} and ListingKey gt '${lastKey}'` : filter;
+    const u = new URL(`https://api.bridgedataoutput.com/api/v2/OData/${dataset}/Property`);
+    u.searchParams.set('access_token', token);
+    u.searchParams.set('$filter', f);
+    u.searchParams.set('$select', select);
+    u.searchParams.set('$orderby', 'ListingKey asc');
+    u.searchParams.set('$top', '200');
+    const json = await getRetry(u.toString());
+    const batch = json.value || json.bundle || [];
+    if (!batch.length) break;
+    all.push(...batch);
+    pages++;
+    process.stdout.write(`  ${label}: page ${pages}, total ${all.length}\r`);
+    if (batch.length < 200) break;
+    lastKey = batch[batch.length - 1].ListingKey;
+  }
+  process.stdout.write('\n');
+  return all;
+}
+
+(async () => {
+  const env = loadEnv();
+  const token = env.BRIDGE_TOKEN;
+  const dataset = env.BRIDGE_DATASET || 'mlspin';
+  if (!token) { console.error('BRIDGE_TOKEN missing'); process.exit(1); }
+  const cfg = JSON.parse(fs.readFileSync(CFG, 'utf8'));
+
+  const agentIds = cfg.agents.map(a => a.mlsId);
+  if (!agentIds.length) { console.error('No agents in config'); process.exit(1); }
+
+  const select = [
+    'ClosePrice', 'CloseDate',
+    'UnparsedAddress', 'StreetNumber', 'StreetName', 'City', 'StateOrProvince', 'PostalCode',
+    'Latitude', 'Longitude',
+    'PropertyType', 'PropertySubType',
+    'BedroomsTotal', 'BathroomsTotalInteger', 'LivingArea', 'YearBuilt',
+    'ListPrice', 'OriginalListPrice',
+    'ListAgentMlsId', 'BuyerAgentMlsId',
+    'StandardStatus'
+  ].join(',');
+
+  const skipPull = process.argv.includes('--no-pull');
+  const cachePath = path.join(RAW, 'mlspin_agent_sales.json');
+  let records;
+  if (skipPull && fs.existsSync(cachePath)) {
+    console.log('--no-pull: loading cached raw data');
+    records = JSON.parse(fs.readFileSync(cachePath));
+  } else {
+    // Pull list-side + buy-side per agent.
+    // Bridge OData supports `or` chaining; build one big filter for all
+    // agents on each side to minimize requests.
+    const closedOnly = "StandardStatus eq 'Closed'";
+    const listFilter = agentIds.map(id => `ListAgentMlsId eq '${id}'`).join(' or ');
+    const buyFilter  = agentIds.map(id => `BuyerAgentMlsId eq '${id}'`).join(' or ');
+
+    console.log('Pulling list-side closed transactions...');
+    const listSide = await pageMLS({ token, dataset,
+      filter: `${closedOnly} and (${listFilter})`, select, label: 'list-side' });
+
+    console.log('\nPulling buy-side closed transactions...');
+    const buySide = await pageMLS({ token, dataset,
+      filter: `${closedOnly} and (${buyFilter})`, select, label: 'buy-side' });
+
+    // Combine — same agent could be on both sides of a deal (rare). Tag each.
+    const byKey = new Map();
+    for (const r of listSide) byKey.set(r.ListingKey, { ...r, __side: 'list' });
+    for (const r of buySide) {
+      if (byKey.has(r.ListingKey)) byKey.get(r.ListingKey).__side = 'both';
+      else byKey.set(r.ListingKey, { ...r, __side: 'buy' });
+    }
+    records = [...byKey.values()];
+    fs.writeFileSync(cachePath, JSON.stringify(records));
+  }
+
+  // For each record, determine which agent it belongs to.
+  // List-side wins if both fields match different configured agents.
+  const agentById = new Map(cfg.agents.map(a => [a.mlsId, a]));
+  const out = [];
+  let withGeo = 0, withoutGeo = 0;
+  for (const r of records) {
+    if (!r.ClosePrice || !r.CloseDate) continue;
+    let agentId, side;
+    if (agentById.has(r.ListAgentMlsId)) { agentId = r.ListAgentMlsId; side = 'list'; }
+    else if (agentById.has(r.BuyerAgentMlsId)) { agentId = r.BuyerAgentMlsId; side = 'buy'; }
+    else continue;
+
+    if (r.Latitude && r.Longitude) withGeo++; else withoutGeo++;
+
+    out.push({
+      agentId,
+      side,
+      address: r.UnparsedAddress || [r.StreetNumber, r.StreetName, r.City, r.StateOrProvince].filter(Boolean).join(' '),
+      city: r.City,
+      state: r.StateOrProvince,
+      lat: r.Latitude,
+      lng: r.Longitude,
+      price: r.ClosePrice,
+      listPrice: r.ListPrice,
+      origListPrice: r.OriginalListPrice,
+      date: r.CloseDate,
+      year: r.CloseDate.slice(0, 4),
+      propertyType: r.PropertyType,
+      subType: r.PropertySubType,
+      beds: r.BedroomsTotal,
+      baths: r.BathroomsTotalInteger,
+      sqft: r.LivingArea,
+      yearBuilt: r.YearBuilt
+    });
+  }
+  // Sort newest first
+  out.sort((a, b) => b.date.localeCompare(a.date));
+
+  // Agent metadata block
+  const agents = cfg.agents.map(a => ({
+    mlsId: a.mlsId,
+    name: a.displayName,
+    title: a.title || null,
+    photoUrl: a.photoUrl || `assets/agents/${a.mlsId}.jpg`,
+    sales: out.filter(s => s.agentId === a.mlsId).length,
+    listSide: out.filter(s => s.agentId === a.mlsId && s.side === 'list').length,
+    buySide: out.filter(s => s.agentId === a.mlsId && s.side === 'buy').length,
+    totalVolume: out.filter(s => s.agentId === a.mlsId).reduce((sum, s) => sum + (s.price || 0), 0)
+  }));
+
+  // Year set
+  const years = [...new Set(out.map(s => s.year))].sort((a, b) => b.localeCompare(a));
+
+  // City breakdown
+  const cityTotals = {};
+  for (const s of out) {
+    const c = s.city || 'Unknown';
+    if (!cityTotals[c]) cityTotals[c] = { count: 0, volume: 0 };
+    cityTotals[c].count++;
+    cityTotals[c].volume += s.price || 0;
+  }
+
+  const result = {
+    meta: {
+      generated: new Date().toISOString(),
+      source: 'MLSPIN',
+      withGeocode: withGeo,
+      missingGeocode: withoutGeo,
+      totalSales: out.length,
+      years
+    },
+    agents,
+    sales: out,
+    cityTotals,
+    brand: cfg.brand || { primary: '#1e335e', accent: '#c9ebfc' }
+  };
+
+  fs.writeFileSync(path.join(OUT, 'agent-map.json'), JSON.stringify(result));
+  console.log(`\nWrote agent-map.json — ${out.length} sales (${withGeo} with lat/lng, ${withoutGeo} without)`);
+  console.log('\nPer-agent summary:');
+  for (const a of agents) {
+    console.log(`  ${a.name.padEnd(28)}  ${a.sales} sales  ($${(a.totalVolume/1e6).toFixed(1)}M)  list=${a.listSide} buy=${a.buySide}`);
+  }
+  console.log('\nYears in data:', years.join(', '));
+  console.log('\nTop cities by volume:');
+  const topCities = Object.entries(cityTotals).sort((a,b) => b[1].volume - a[1].volume).slice(0, 8);
+  for (const [city, t] of topCities) {
+    console.log(`  ${city.padEnd(20)}  ${t.count} sales  $${(t.volume/1e6).toFixed(1)}M`);
+  }
+  // Flag non-MA states
+  const states = [...new Set(out.map(s => s.state).filter(Boolean))];
+  if (states.length > 1) {
+    console.log('\nStates present:', states.join(', '), '(non-MA sales captured)');
+  }
+})().catch(e => { console.error('FAILED:', e.message); process.exit(1); });

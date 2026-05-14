@@ -1,0 +1,16 @@
+{
+  "_comment": "List of agents to render on the map. Add MLS IDs here to expand. Photo files live at assets/agents/{mlsId}.jpg or override with photoUrl.",
+  "brand": {
+    "primary": "#1e335e",
+    "accent": "#c9ebfc",
+    "highlight": "#d4af37"
+  },
+  "agents": [
+    {
+      "mlsId": "CN204745",
+      "displayName": "Alissa Christie",
+      "title": "REALTOR®",
+      "photoUrl": "assets/agents/CN204745.jpg"
+    }
+  ]
+}
