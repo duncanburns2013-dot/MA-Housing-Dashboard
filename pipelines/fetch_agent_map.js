@@ -82,8 +82,19 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
   if (!token) { console.error('BRIDGE_TOKEN missing'); process.exit(1); }
   const cfg = JSON.parse(fs.readFileSync(CFG, 'utf8'));
 
-  const agentIds = cfg.agents.map(a => a.mlsId);
-  if (!agentIds.length) { console.error('No agents in config'); process.exit(1); }
+  // An agent can have multiple MLS IDs (if they changed offices/brokerages
+  // and got a new ID). Each altId is treated as the same person — sales
+  // attributed to any altId roll up under the agent's primary mlsId.
+  const allIds = [];
+  const idToAgent = new Map();
+  for (const a of cfg.agents) {
+    const ids = [a.mlsId, ...(a.altIds || [])];
+    for (const id of ids) {
+      allIds.push(id);
+      idToAgent.set(id, a.mlsId);
+    }
+  }
+  if (!allIds.length) { console.error('No agents in config'); process.exit(1); }
 
   const select = [
     'ClosePrice', 'CloseDate',
@@ -103,12 +114,10 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
     console.log('--no-pull: loading cached raw data');
     records = JSON.parse(fs.readFileSync(cachePath));
   } else {
-    // Pull list-side + buy-side per agent.
-    // Bridge OData supports `or` chaining; build one big filter for all
-    // agents on each side to minimize requests.
+    // Pull list-side + buy-side per agent (incl. alt IDs).
     const closedOnly = "StandardStatus eq 'Closed'";
-    const listFilter = agentIds.map(id => `ListAgentMlsId eq '${id}'`).join(' or ');
-    const buyFilter  = agentIds.map(id => `BuyerAgentMlsId eq '${id}'`).join(' or ');
+    const listFilter = allIds.map(id => `ListAgentMlsId eq '${id}'`).join(' or ');
+    const buyFilter  = allIds.map(id => `BuyerAgentMlsId eq '${id}'`).join(' or ');
 
     console.log('Pulling list-side closed transactions...');
     const listSide = await pageMLS({ token, dataset,
@@ -130,15 +139,14 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
   }
 
   // For each record, determine which agent it belongs to.
-  // List-side wins if both fields match different configured agents.
-  const agentById = new Map(cfg.agents.map(a => [a.mlsId, a]));
+  // List-side wins if both fields match.
   const out = [];
   let withGeo = 0, withoutGeo = 0;
   for (const r of records) {
     if (!r.ClosePrice || !r.CloseDate) continue;
     let agentId, side;
-    if (agentById.has(r.ListAgentMlsId)) { agentId = r.ListAgentMlsId; side = 'list'; }
-    else if (agentById.has(r.BuyerAgentMlsId)) { agentId = r.BuyerAgentMlsId; side = 'buy'; }
+    if (idToAgent.has(r.ListAgentMlsId)) { agentId = idToAgent.get(r.ListAgentMlsId); side = 'list'; }
+    else if (idToAgent.has(r.BuyerAgentMlsId)) { agentId = idToAgent.get(r.BuyerAgentMlsId); side = 'buy'; }
     else continue;
 
     if (r.Latitude && r.Longitude) withGeo++; else withoutGeo++;
@@ -164,6 +172,31 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
       yearBuilt: r.YearBuilt
     });
   }
+  // Merge in any manual sales (e.g. NH deals not in MLSPIN, or pre-2018
+  // records the team-account hides). These come from config and need
+  // lat/lng to render — script geocoding is left as a TODO.
+  for (const a of cfg.agents) {
+    for (const s of (a.manualSales || [])) {
+      if (!s.lat || !s.lng) continue;
+      out.push({
+        agentId: a.mlsId,
+        side: s.side || 'list',
+        address: s.address,
+        city: s.city || null,
+        state: s.state || null,
+        lat: s.lat, lng: s.lng,
+        price: s.price,
+        date: s.date,
+        year: (s.date || '').slice(0, 4),
+        propertyType: s.propertyType || null,
+        subType: s.subType || null,
+        beds: s.beds || null, baths: s.baths || null,
+        sqft: s.sqft || null, yearBuilt: s.yearBuilt || null,
+        source: 'manual'
+      });
+    }
+  }
+
   // Sort newest first
   out.sort((a, b) => b.date.localeCompare(a.date));
 
@@ -173,6 +206,7 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
     name: a.displayName,
     title: a.title || null,
     photoUrl: a.photoUrl || `assets/agents/${a.mlsId}.jpg`,
+    externalLinks: a.externalLinks || {},
     sales: out.filter(s => s.agentId === a.mlsId).length,
     listSide: out.filter(s => s.agentId === a.mlsId && s.side === 'list').length,
     buySide: out.filter(s => s.agentId === a.mlsId && s.side === 'buy').length,

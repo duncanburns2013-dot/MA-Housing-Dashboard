@@ -1,16 +1,24 @@
 {
-  "_comment": "List of agents to render on the map. Add MLS IDs here to expand. Photo files live at assets/agents/{mlsId}.jpg or override with photoUrl.",
+  "_comment_about_altIds": "If an agent changed MLS IDs (e.g. switched brokerages and got a new ID), list the old IDs in altIds — sales are merged under the primary mlsId.",
+  "_comment_about_manualSales": "For sales MLSPIN doesn't have (e.g. NH deals on NEREN, pre-2018 records under team accounts), add them under manualSales with lat/lng. Use Google Maps to find coordinates — right-click any address, the first item in the menu is the lat/lng.",
   "brand": {
     "primary": "#1e335e",
     "accent": "#c9ebfc",
-    "highlight": "#d4af37"
+    "highlight": "#d4af37",
+    "luxury": "#ff7560"
   },
   "agents": [
     {
       "mlsId": "CN204745",
       "displayName": "Alissa Christie",
       "title": "REALTOR®",
-      "photoUrl": "assets/agents/CN204745.jpg"
+      "photoUrl": "assets/agents/CN204745.jpg",
+      "altIds": [],
+      "externalLinks": {
+        "zillowProfile": "https://www.zillow.com/profile/alissachristie",
+        "bentleysBio": "https://www.bentleysrealestate.com/team-page"
+      },
+      "manualSales": []
     }
   ]
 }

@@ -1,32 +1,34 @@
 <!-- Agent Sales Map — Squarespace Code Block -->
-<!-- Live data from MLSPIN, refreshed weekly via GitHub Pages.            -->
-<!-- Replace the entire existing code block in Squarespace with this.     -->
+<!-- Live data from MLSPIN, refreshed weekly. Paste into a Code block.    -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
 
 <style>
 #am-root {
   --navy: #1e335e;
+  --navy-2: #2a4a82;
   --cyan: #c9ebfc;
   --gold: #d4af37;
   --coral: #ff7560;
   --bg: #fafbfc;
   --ink: #1e335e;
   --ink-mute: #6b7280;
+  --ink-soft: #9ca3af;
   --border: #e5e7eb;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: var(--ink);
   background: var(--bg);
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   max-width: 100%;
   margin: 0 auto;
   border: 1px solid var(--border);
-  box-shadow: 0 10px 40px rgba(30,51,94,0.08);
+  box-shadow: 0 20px 60px rgba(30,51,94,0.12);
 }
 #am-root * { box-sizing: border-box; }
 
@@ -34,49 +36,66 @@
 #am-root .am-header {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 24px;
+  gap: 28px;
   align-items: center;
-  padding: 28px 32px;
-  background: linear-gradient(135deg, var(--navy) 0%, #2a4a82 100%);
+  padding: 32px 36px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
   color: #fff;
   position: relative;
   overflow: hidden;
 }
 #am-root .am-header::before {
-  content: ''; position: absolute; top: -100px; right: -100px;
-  width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,235,252,0.15) 0%, transparent 60%);
+  content: ''; position: absolute; top: -150px; right: -150px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,235,252,0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+#am-root .am-header::after {
+  content: ''; position: absolute; bottom: -100px; left: 30%;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 65%);
+  pointer-events: none;
 }
 #am-root .am-photo {
-  width: 80px; height: 80px; border-radius: 50%;
+  width: 96px; height: 96px; border-radius: 50%;
   background-size: cover; background-position: center;
   border: 3px solid var(--cyan);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-  background-color: #2a4a82;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25), 0 0 0 6px rgba(201,235,252,0.1);
+  background-color: var(--navy-2);
   position: relative; z-index: 1;
 }
 #am-root .am-name {
   font-family: 'Playfair Display', serif;
-  font-size: 28px; font-weight: 700; line-height: 1.1;
-  margin: 0; color: #fff !important;
+  font-size: 32px; font-weight: 700; line-height: 1.05;
+  margin: 0; color: #fff !important; letter-spacing: -0.5px;
   position: relative; z-index: 1;
 }
 #am-root .am-title {
-  font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--cyan) !important; opacity: 0.85; margin-top: 4px;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--cyan) !important; opacity: 0.85; margin-bottom: 4px;
   position: relative; z-index: 1;
 }
+#am-root .am-links {
+  margin-top: 6px; display: flex; gap: 14px; font-size: 11px;
+  position: relative; z-index: 1;
+}
+#am-root .am-links a {
+  color: var(--cyan) !important; text-decoration: none;
+  border-bottom: 1px solid rgba(201,235,252,0.3);
+  transition: border-color 0.15s;
+}
+#am-root .am-links a:hover { border-color: var(--cyan); }
 #am-root .am-stats {
-  display: flex; gap: 24px;
+  display: flex; gap: 28px;
   position: relative; z-index: 1;
 }
 #am-root .am-stat-val {
   font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 700; line-height: 1; color: #fff !important;
+  font-size: 26px; font-weight: 700; line-height: 1; color: #fff !important;
 }
 #am-root .am-stat-lbl {
-  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--cyan) !important; opacity: 0.8; margin-top: 4px;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--cyan) !important; opacity: 0.8; margin-top: 6px;
 }
 
 /* Filter bar */
@@ -87,38 +106,59 @@
   flex-wrap: wrap;
 }
 #am-root .am-filter-label {
-  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--ink-mute); font-weight: 600;
 }
 #am-root .am-select {
   appearance: none;
-  padding: 8px 32px 8px 12px;
+  padding: 9px 32px 9px 14px;
   font-family: inherit; font-size: 13px; font-weight: 500;
   color: var(--ink);
   background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M3 5l3 3 3-3" stroke="%231e335e" stroke-width="1.5" fill="none"/></svg>') no-repeat right 10px center;
   background-size: 12px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: border-color 0.15s;
+  transition: border-color 0.15s, box-shadow 0.15s;
 }
 #am-root .am-select:hover, #am-root .am-select:focus {
-  border-color: var(--navy); outline: none;
+  border-color: var(--navy); outline: none; box-shadow: 0 0 0 3px rgba(30,51,94,0.08);
 }
 #am-root .am-toggle-group {
-  display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
+  display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
 }
 #am-root .am-toggle {
-  padding: 8px 14px; font-family: inherit; font-size: 12px; font-weight: 500;
+  padding: 9px 14px; font-family: inherit; font-size: 12px; font-weight: 500;
   background: #fff; color: var(--ink-mute); border: none; cursor: pointer;
   transition: all 0.15s;
 }
 #am-root .am-toggle + .am-toggle { border-left: 1px solid var(--border); }
-#am-root .am-toggle:hover { background: #f5f7fa; }
+#am-root .am-toggle:hover { background: #f5f7fa; color: var(--ink); }
 #am-root .am-toggle.active { background: var(--navy); color: #fff; }
+#am-root .am-search {
+  flex: 0 1 220px; min-width: 140px;
+  padding: 9px 14px 9px 34px;
+  font-family: inherit; font-size: 13px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><circle cx="7" cy="7" r="5" stroke="%236b7280" stroke-width="1.5" fill="none"/><path d="M11 11l3 3" stroke="%236b7280" stroke-width="1.5"/></svg>') no-repeat 10px center;
+  background-size: 14px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+#am-root .am-search:focus {
+  border-color: var(--navy); outline: none; box-shadow: 0 0 0 3px rgba(30,51,94,0.08);
+}
+#am-root .am-play {
+  padding: 9px 14px; font-family: inherit; font-size: 12px; font-weight: 500;
+  background: var(--gold); color: #fff; border: none; border-radius: 8px;
+  cursor: pointer; transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+#am-root .am-play:hover { background: #b8932e; }
+#am-root .am-play.playing { background: var(--coral); }
+#am-root .am-play svg { width: 12px; height: 12px; fill: currentColor; }
 #am-root .am-spacer { flex: 1; }
 #am-root .am-legend {
-  display: flex; gap: 16px; align-items: center;
+  display: flex; gap: 18px; align-items: center;
   font-size: 11px; color: var(--ink-mute);
 }
 #am-root .am-legend-dot {
@@ -127,89 +167,102 @@
 }
 #am-root .am-legend-dot.list { background: var(--gold); box-shadow: 0 0 0 2px rgba(212,175,55,0.2); }
 #am-root .am-legend-dot.buy  { background: var(--navy); box-shadow: 0 0 0 2px rgba(30,51,94,0.2); }
-#am-root .am-legend-dot.lux  { background: var(--coral); box-shadow: 0 0 0 2px rgba(255,117,96,0.2); }
+#am-root .am-legend-dot.lux  {
+  background: linear-gradient(135deg, var(--coral), #d4574a);
+  box-shadow: 0 0 0 2px rgba(255,117,96,0.25), 0 0 8px rgba(255,117,96,0.5);
+}
 
 /* Map */
-#am-map { height: 600px; width: 100%; background: #e8eef5; }
+#am-map { height: 640px; width: 100%; background: #e8eef5; }
 #am-root .leaflet-popup-content-wrapper {
-  border-radius: 10px; padding: 0; box-shadow: 0 8px 24px rgba(30,51,94,0.18);
+  border-radius: 12px; padding: 0; box-shadow: 0 12px 32px rgba(30,51,94,0.22);
 }
-#am-root .leaflet-popup-content { margin: 0; min-width: 240px; font-family: inherit; }
+#am-root .leaflet-popup-content { margin: 0; min-width: 250px; max-width: 280px; font-family: inherit; }
+#am-root .leaflet-popup-tip { box-shadow: 0 4px 12px rgba(30,51,94,0.12); }
 #am-root .am-pop {
-  position: relative;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
+  background: #fff; border-radius: 12px; overflow: hidden;
+  animation: amPopIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes amPopIn {
+  from { opacity: 0; transform: translateY(6px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 #am-root .am-pop-header {
-  display: grid; grid-template-columns: 44px 1fr;
-  gap: 12px; padding: 14px 16px 10px;
-  background: linear-gradient(135deg, var(--navy), #2a4a82);
+  display: grid; grid-template-columns: 40px 1fr;
+  gap: 10px; padding: 12px 14px 10px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-2));
   color: #fff;
 }
 #am-root .am-pop.lux .am-pop-header {
   background: linear-gradient(135deg, var(--coral), #d4574a);
 }
 #am-root .am-pop-photo {
-  width: 44px; height: 44px; border-radius: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
   background-size: cover; background-position: center;
-  border: 2px solid var(--cyan); background-color: #2a4a82;
+  border: 2px solid var(--cyan); background-color: var(--navy-2);
 }
+#am-root .am-pop.lux .am-pop-photo { border-color: rgba(255,255,255,0.5); }
 #am-root .am-pop-agent {
   font-size: 13px; font-weight: 600; line-height: 1.2;
   color: #fff !important; margin: 0;
 }
 #am-root .am-pop-side {
   font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--cyan) !important; opacity: 0.9; margin-top: 2px;
+  color: var(--cyan) !important; opacity: 0.95; margin-top: 3px;
 }
 #am-root .am-pop.lux .am-pop-side { color: #fff !important; }
-#am-root .am-pop-body { padding: 12px 16px 14px; }
+#am-root .am-pop-body { padding: 13px 16px 14px; }
 #am-root .am-pop-addr {
   font-size: 13px; font-weight: 500; line-height: 1.3;
   color: var(--ink); margin-bottom: 6px;
 }
 #am-root .am-pop-price {
   font-family: 'Playfair Display', serif;
-  font-size: 20px; font-weight: 700; color: var(--ink);
+  font-size: 22px; font-weight: 700; color: var(--ink);
 }
 #am-root .am-pop.lux .am-pop-price {
-  color: var(--coral); text-shadow: 0 0 12px rgba(255,117,96,0.3);
+  color: var(--coral); text-shadow: 0 0 14px rgba(255,117,96,0.35);
 }
 #am-root .am-pop-meta {
-  font-size: 11px; color: var(--ink-mute); margin-top: 4px;
-  display: flex; gap: 10px; flex-wrap: wrap;
+  font-size: 11px; color: var(--ink-mute); margin-top: 6px;
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+#am-root .am-pop-meta span:not(:last-child)::after {
+  content: '·'; margin-left: 8px; color: var(--ink-soft);
 }
 #am-root .am-pop-link {
   display: inline-block; margin-top: 10px;
   font-size: 11px; color: var(--navy); text-decoration: none;
   border-bottom: 1px solid var(--cyan);
+  transition: color 0.15s, border-color 0.15s;
 }
-#am-root .am-pop-link:hover { color: var(--coral); }
+#am-root .am-pop-link:hover { color: var(--coral); border-color: var(--coral); }
 
-/* Custom marker (SVG-based circle) */
+/* Custom marker */
 .am-pin {
   display: block; border-radius: 50%;
   background: var(--c, #1e335e);
   border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
 }
-.am-pin:hover {
-  transform: scale(1.3);
+.am-pin:hover { transform: scale(1.4); z-index: 1000; }
+.am-pin.lux {
+  background: linear-gradient(135deg, var(--c, #d4af37), var(--c2, #b8932e));
 }
 .am-pin.lux:hover {
-  box-shadow: 0 0 0 6px rgba(255,117,96,0.3), 0 0 16px rgba(255,117,96,0.5);
+  box-shadow: 0 0 0 8px rgba(255,117,96,0.25), 0 0 24px rgba(255,117,96,0.6), 0 2px 8px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #ff7560, #d4574a);
 }
 .am-cluster {
-  background: rgba(30,51,94,0.85);
+  background: rgba(30,51,94,0.92);
   color: #fff;
   border-radius: 50%;
-  border: 2px solid var(--cyan, #c9ebfc);
+  border: 2px solid #c9ebfc;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 /* Footer */
@@ -223,20 +276,22 @@
 #am-root .am-foot a:hover { color: var(--coral); }
 #am-root .am-loading {
   display: flex; align-items: center; justify-content: center;
-  height: 600px; color: var(--ink-mute); font-size: 14px;
-  background: #f0f4f9;
+  height: 640px; color: var(--ink-mute); font-size: 14px;
+  background: linear-gradient(135deg, #f0f4f9, #e8eef5);
 }
 
 @media (max-width: 768px) {
-  #am-root .am-header { grid-template-columns: 64px 1fr; padding: 20px; gap: 16px; }
-  #am-root .am-photo { width: 64px; height: 64px; }
-  #am-root .am-name { font-size: 22px; }
-  #am-root .am-stats { grid-column: 1 / -1; gap: 14px; margin-top: 8px; }
-  #am-root .am-stat-val { font-size: 18px; }
-  #am-root .am-filters { padding: 14px 20px; }
+  #am-root { border-radius: 12px; }
+  #am-root .am-header { grid-template-columns: 72px 1fr; padding: 24px 22px; gap: 16px; }
+  #am-root .am-photo { width: 72px; height: 72px; }
+  #am-root .am-name { font-size: 24px; }
+  #am-root .am-stats { grid-column: 1 / -1; gap: 16px; margin-top: 10px; }
+  #am-root .am-stat-val { font-size: 20px; }
+  #am-root .am-filters { padding: 12px 18px; gap: 8px; }
+  #am-root .am-search { flex: 1 1 100%; }
   #am-root .am-legend { display: none; }
   #am-map { height: 480px; }
-  #am-root .am-foot { padding: 12px 20px; font-size: 10px; }
+  #am-root .am-foot { padding: 12px 18px; font-size: 10px; }
 }
 </style>
 
@@ -246,6 +301,7 @@
     <div>
       <div class="am-title" id="am-title">REALTOR®</div>
       <h2 class="am-name" id="am-name">Loading…</h2>
+      <div class="am-links" id="am-links"></div>
     </div>
     <div class="am-stats" id="am-stats"></div>
   </div>
@@ -253,12 +309,23 @@
   <div class="am-filters">
     <span class="am-filter-label">Year</span>
     <select class="am-select" id="am-year"><option value="all">All Years</option></select>
+    <button class="am-play" id="am-play" title="Play time-lapse"><svg viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>Play</button>
+
     <span class="am-filter-label" style="margin-left:8px">Side</span>
     <div class="am-toggle-group">
       <button class="am-toggle active" data-side="all">All</button>
       <button class="am-toggle" data-side="list">Sell</button>
       <button class="am-toggle" data-side="buy">Buy</button>
     </div>
+
+    <span class="am-filter-label" style="margin-left:8px">View</span>
+    <div class="am-toggle-group">
+      <button class="am-toggle active" data-view="pins">Pins</button>
+      <button class="am-toggle" data-view="heat">Heatmap</button>
+    </div>
+
+    <input type="search" class="am-search" id="am-search" placeholder="Search address or town…" autocomplete="off">
+
     <div class="am-spacer"></div>
     <div class="am-legend">
       <span><span class="am-legend-dot list"></span>Sell-side</span>
@@ -270,7 +337,7 @@
   <div id="am-map" class="am-loading">Loading map…</div>
 
   <div class="am-foot">
-    <div>Data: MLSPIN · <span id="am-foot-stamp">Updated weekly</span></div>
+    <div>Data: MLSPIN · <span id="am-foot-stamp">Updated weekly</span> · <span id="am-foot-note"></span></div>
     <div><span id="am-foot-counts"></span></div>
   </div>
 </div>
@@ -293,10 +360,9 @@ function fmtDate(s) {
   return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
 }
 function priceToRadius(p) {
-  // Min 7px, max 18px. Scales by log of price.
-  if (!p) return 8;
-  var min = 7, max = 18;
-  var t = Math.max(0, Math.min(1, (Math.log10(p) - 5.0) / 2.0)); // $100K to $10M range
+  if (!p) return 7;
+  var min = 7, max = 16;
+  var t = Math.max(0, Math.min(1, (Math.log10(p) - 5.0) / 2.0));
   return Math.round(min + (max - min) * t);
 }
 
@@ -304,31 +370,43 @@ var state = {
   data: null,
   filterYear: 'all',
   filterSide: 'all',
+  filterText: '',
+  view: 'pins',
   map: null,
-  cluster: null
+  cluster: null,
+  heat: null,
+  playing: false,
+  playTimer: null
 };
 
-function getAgent(id) {
-  return state.data.agents.find(function(a){ return a.mlsId === id; });
-}
+function getAgent(id) { return state.data.agents.find(function(a){ return a.mlsId === id; }); }
 
 function filteredSales() {
+  var q = state.filterText.toLowerCase().trim();
   return state.data.sales.filter(function(s) {
     if (state.filterYear !== 'all' && s.year !== state.filterYear) return false;
     if (state.filterSide !== 'all' && s.side !== state.filterSide) return false;
+    if (q) {
+      var hay = ((s.address || '') + ' ' + (s.city || '') + ' ' + (s.state || '')).toLowerCase();
+      if (hay.indexOf(q) === -1) return false;
+    }
     return true;
   });
 }
 
 function renderHeader() {
-  // For test run, single agent — header reflects that agent.
-  // Multi-agent UX deferred to a later iteration.
   var a = state.data.agents[0];
   if (!a) return;
   var photoUrl = a.photoUrl.indexOf('http') === 0 ? a.photoUrl : REPO_BASE + a.photoUrl;
   document.getElementById('am-photo').style.backgroundImage = 'url("' + photoUrl + '")';
   document.getElementById('am-name').textContent = a.name;
   document.getElementById('am-title').textContent = a.title || 'REALTOR®';
+
+  var links = a.externalLinks || {};
+  var linkHtml = '';
+  if (links.zillowProfile) linkHtml += '<a href="' + links.zillowProfile + '" target="_blank" rel="noopener">View Zillow profile →</a>';
+  if (links.bentleysBio) linkHtml += '<a href="' + links.bentleysBio + '" target="_blank" rel="noopener">Bentley\'s bio →</a>';
+  document.getElementById('am-links').innerHTML = linkHtml;
 
   var filtered = filteredSales();
   var total = filtered.reduce(function(s,x){ return s + (x.price || 0); }, 0);
@@ -363,50 +441,54 @@ function renderPopup(s) {
     '<div class="am-pop-body">' +
       '<div class="am-pop-addr">' + s.address + '</div>' +
       '<div class="am-pop-price">' + fmtMoneyFull(s.price) + '</div>' +
-      (meta.length ? '<div class="am-pop-meta"><span>' + fmtDate(s.date) + '</span>' + meta.map(function(m){return '<span>·</span><span>' + m + '</span>'}).join('') + '</div>' : '<div class="am-pop-meta">' + fmtDate(s.date) + '</div>') +
+      '<div class="am-pop-meta">' +
+        '<span>' + fmtDate(s.date) + '</span>' +
+        meta.map(function(m){return '<span>' + m + '</span>'}).join('') +
+      '</div>' +
       '<a class="am-pop-link" href="' + mapsLink + '" target="_blank" rel="noopener">Open in Google Maps →</a>' +
     '</div>' +
   '</div>';
 }
 
-function renderMap() {
-  if (!state.map) {
-    document.getElementById('am-map').classList.remove('am-loading');
-    document.getElementById('am-map').innerHTML = '';
-    state.map = L.map('am-map', { zoomControl: true, scrollWheelZoom: false });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '© OpenStreetMap, © CARTO',
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(state.map);
-    state.cluster = L.markerClusterGroup({
-      iconCreateFunction: function(cluster) {
-        var n = cluster.getChildCount();
-        var size = n < 10 ? 36 : n < 50 ? 44 : 52;
-        return L.divIcon({
-          html: '<div class="am-cluster" style="width:' + size + 'px;height:' + size + 'px">' + n + '</div>',
-          className: '',
-          iconSize: L.point(size, size)
-        });
-      }
-    });
-    state.map.addLayer(state.cluster);
-  }
+function ensureMap() {
+  if (state.map) return;
+  document.getElementById('am-map').classList.remove('am-loading');
+  document.getElementById('am-map').innerHTML = '';
+  state.map = L.map('am-map', { zoomControl: true, scrollWheelZoom: false });
+  // Carto Positron — minimal, elegant, no API key, free for non-heavy use
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attribution">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(state.map);
+  state.cluster = L.markerClusterGroup({
+    showCoverageOnHover: false,
+    spiderfyOnMaxZoom: true,
+    iconCreateFunction: function(cluster) {
+      var n = cluster.getChildCount();
+      var size = n < 10 ? 36 : n < 50 ? 44 : 52;
+      return L.divIcon({
+        html: '<div class="am-cluster" style="width:' + size + 'px;height:' + size + 'px">' + n + '</div>',
+        className: '',
+        iconSize: L.point(size, size)
+      });
+    }
+  });
+}
+
+function renderPins(sales) {
   state.cluster.clearLayers();
+  if (state.heat) { state.map.removeLayer(state.heat); state.heat = null; }
+  if (!state.map.hasLayer(state.cluster)) state.map.addLayer(state.cluster);
 
-  var sales = filteredSales().filter(function(s){ return s.lat && s.lng; });
-  if (!sales.length) {
-    state.map.setView([42.81, -70.87], 11);
-    return;
-  }
-
-  var bounds = L.latLngBounds([]);
   sales.forEach(function(s) {
+    if (!s.lat || !s.lng) return;
     var isLux = s.price >= 1000000;
     var color = s.side === 'list' ? '#d4af37' : '#1e335e';
+    var color2 = s.side === 'list' ? '#b8932e' : '#11254a';
     var r = priceToRadius(s.price);
     var icon = L.divIcon({
-      html: '<span class="am-pin' + (isLux ? ' lux' : '') + '" style="width:' + (r*2) + 'px;height:' + (r*2) + 'px;--c:' + color + '"></span>',
+      html: '<span class="am-pin' + (isLux ? ' lux' : '') + '" style="width:' + (r*2) + 'px;height:' + (r*2) + 'px;--c:' + color + ';--c2:' + color2 + '"></span>',
       className: '',
       iconSize: [r*2, r*2],
       iconAnchor: [r, r]
@@ -414,9 +496,39 @@ function renderMap() {
     var m = L.marker([s.lat, s.lng], { icon: icon });
     m.bindPopup(renderPopup(s), { closeButton: true, maxWidth: 320 });
     state.cluster.addLayer(m);
-    bounds.extend([s.lat, s.lng]);
   });
-  state.map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+}
+
+function renderHeat(sales) {
+  if (state.cluster && state.map.hasLayer(state.cluster)) state.map.removeLayer(state.cluster);
+  if (state.heat) state.map.removeLayer(state.heat);
+  var points = sales
+    .filter(function(s){ return s.lat && s.lng; })
+    .map(function(s){
+      // Intensity scaled by price (log) so $1M+ sales pop hotter
+      var intensity = s.price ? Math.min(1, Math.log10(s.price) / 7) : 0.4;
+      return [s.lat, s.lng, intensity];
+    });
+  state.heat = L.heatLayer(points, {
+    radius: 28,
+    blur: 22,
+    maxZoom: 14,
+    gradient: { 0.3: '#1e335e', 0.5: '#c9ebfc', 0.7: '#d4af37', 0.9: '#ff7560' }
+  }).addTo(state.map);
+}
+
+function renderMap() {
+  ensureMap();
+  var sales = filteredSales().filter(function(s){ return s.lat && s.lng; });
+  if (state.view === 'heat') renderHeat(sales);
+  else renderPins(sales);
+
+  if (sales.length) {
+    var bounds = L.latLngBounds(sales.map(function(s){ return [s.lat, s.lng]; }));
+    state.map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
+  } else {
+    state.map.setView([42.81, -70.87], 11);
+  }
 }
 
 function renderFooter() {
@@ -424,13 +536,20 @@ function renderFooter() {
     var stamp = new Date(state.data.meta.generated).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
     document.getElementById('am-foot-stamp').textContent = 'Updated ' + stamp;
   }
+  // NH note if any NH sales exist (Zillow link covers gap)
+  var states = [...new Set(state.data.sales.map(function(s){return s.state}))];
+  if (states.indexOf('NH') !== -1) {
+    var zillowLink = state.data.agents[0]?.externalLinks?.zillowProfile;
+    document.getElementById('am-foot-note').innerHTML = zillowLink
+      ? 'For complete NH sales, see <a href="' + zillowLink + '" target="_blank" rel="noopener">Zillow profile</a>'
+      : '';
+  }
   var sales = filteredSales();
-  var missing = state.data.meta.missingGeocode || 0;
   var withGeo = sales.filter(function(s){return s.lat && s.lng}).length;
-  var note = withGeo + ' of ' + sales.length + ' shown on map';
-  if (missing > 0) note += ' · ' + missing + ' total without coordinates';
-  document.getElementById('am-foot-counts').textContent = note;
+  document.getElementById('am-foot-counts').textContent = withGeo + ' of ' + sales.length + ' sales shown';
 }
+
+function rerender() { renderHeader(); renderMap(); renderFooter(); }
 
 function setupFilters() {
   var yearSel = document.getElementById('am-year');
@@ -440,17 +559,71 @@ function setupFilters() {
     yearSel.appendChild(opt);
   });
   yearSel.addEventListener('change', function() {
+    stopPlay();
     state.filterYear = yearSel.value;
-    renderHeader(); renderMap(); renderFooter();
+    rerender();
   });
-  document.querySelectorAll('.am-toggle').forEach(function(btn) {
+  // Side toggle
+  document.querySelectorAll('.am-toggle[data-side]').forEach(function(btn) {
     btn.addEventListener('click', function() {
-      document.querySelectorAll('.am-toggle').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.am-toggle[data-side]').forEach(function(b){ b.classList.remove('active'); });
       btn.classList.add('active');
       state.filterSide = btn.dataset.side;
-      renderHeader(); renderMap(); renderFooter();
+      rerender();
     });
   });
+  // View toggle (pins / heatmap)
+  document.querySelectorAll('.am-toggle[data-view]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.am-toggle[data-view]').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      state.view = btn.dataset.view;
+      rerender();
+    });
+  });
+  // Search (debounced)
+  var searchTimer = null;
+  document.getElementById('am-search').addEventListener('input', function(e) {
+    clearTimeout(searchTimer);
+    var val = e.target.value;
+    searchTimer = setTimeout(function() {
+      state.filterText = val;
+      rerender();
+    }, 200);
+  });
+  // Time-lapse play button
+  document.getElementById('am-play').addEventListener('click', togglePlay);
+}
+
+function togglePlay() {
+  if (state.playing) stopPlay();
+  else startPlay();
+}
+function startPlay() {
+  var years = state.data.meta.years.slice().reverse(); // ascending
+  if (!years.length) return;
+  state.playing = true;
+  var btn = document.getElementById('am-play');
+  btn.classList.add('playing');
+  btn.innerHTML = '<svg viewBox="0 0 12 12"><rect x="2" y="2" width="3" height="8"/><rect x="7" y="2" width="3" height="8"/></svg>Pause';
+  var i = 0;
+  function step() {
+    if (!state.playing) return;
+    var yr = years[i % years.length];
+    document.getElementById('am-year').value = yr;
+    state.filterYear = yr;
+    rerender();
+    i++;
+    state.playTimer = setTimeout(step, 1400);
+  }
+  step();
+}
+function stopPlay() {
+  state.playing = false;
+  clearTimeout(state.playTimer);
+  var btn = document.getElementById('am-play');
+  btn.classList.remove('playing');
+  btn.innerHTML = '<svg viewBox="0 0 12 12"><polygon points="2,1 11,6 2,11"/></svg>Play';
 }
 
 fetch(DATA_URL + '?t=' + Date.now())
@@ -458,13 +631,14 @@ fetch(DATA_URL + '?t=' + Date.now())
   .then(function(data) {
     state.data = data;
     if (data.brand && data.brand.primary) {
-      document.getElementById('am-root').style.setProperty('--navy', data.brand.primary);
-      document.getElementById('am-root').style.setProperty('--cyan', data.brand.accent);
+      var r = document.getElementById('am-root');
+      r.style.setProperty('--navy', data.brand.primary);
+      if (data.brand.accent) r.style.setProperty('--cyan', data.brand.accent);
+      if (data.brand.highlight) r.style.setProperty('--gold', data.brand.highlight);
+      if (data.brand.luxury) r.style.setProperty('--coral', data.brand.luxury);
     }
     setupFilters();
-    renderHeader();
-    renderMap();
-    renderFooter();
+    rerender();
   })
   .catch(function(e) {
     console.error('Agent map fetch failed:', e);
