@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Plum Bush Downs — Comparative Market Analysis | Bentley's RE/MAX Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--navy:#1e335e;--sky:#c9ebfc;--gold:#c8a44e;--white:#fff;--cream:#f5f7fa;--text:#1a1a2e;--text2:#475569;--text3:#94a3b8;--red:#dc2626;--green:#16a34a}
+html,body{width:100%;height:100%;margin:0;font-family:'Inter',sans-serif;background:#111;color:var(--text);overflow:hidden}
+
+/* ===== FLIPBOOK CONTAINER ===== */
+.flipbook{width:100vw;height:100vh;position:relative;perspective:2400px;overflow:hidden;cursor:grab}
+.fp{position:absolute;inset:0;width:100%;height:100%;overflow-y:auto;overflow-x:hidden;transform-origin:left center;transition:transform .7s cubic-bezier(.645,.045,.355,1),box-shadow .7s ease;backface-visibility:hidden;transform-style:preserve-3d;z-index:1;background:#f0f0f0}
+.fp::after{content:'';position:absolute;right:0;top:0;bottom:0;width:30px;background:linear-gradient(to left,rgba(0,0,0,.06),transparent);pointer-events:none;z-index:10}
+.fp.flipped{transform:rotateY(-150deg);box-shadow:none;pointer-events:none}
+.fp.flipped::after{display:none}
+
+/* ===== NAV ===== */
+.nav{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(30,51,94,.92);backdrop-filter:blur(12px);border-radius:30px;padding:6px 20px;display:flex;align-items:center;gap:14px;z-index:1000;box-shadow:0 4px 24px rgba(0,0,0,.4)}
+.nav button{background:none;border:none;color:#fff;cursor:pointer;font-size:20px;padding:6px 14px;border-radius:18px;transition:background .2s;user-select:none}
+.nav button:hover{background:rgba(255,255,255,.15)}
+.nav button:disabled{opacity:.25;cursor:default}
+.nav button:disabled:hover{background:none}
+.nav span{color:#fff;font-size:11px;min-width:120px;text-align:center;opacity:.65;letter-spacing:1px}
+
+/* ===== PAGE INNER CONTENT ===== */
+.page-inner{width:100%;min-height:100vh;position:relative}
+
+/* ===== COVER ===== */
+.cover{background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;min-height:100vh;position:relative}
+.cover-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.28}
+.cover-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,51,94,.88),rgba(30,51,94,.6))}
+.cover-content{position:relative;z-index:2;text-align:center;padding:60px 40px;max-width:860px}
+.cover .logo-img{max-width:260px;margin:0 auto 24px;display:block;filter:brightness(0) invert(1);opacity:.85}
+.cover .eyebrow{font-size:11px;letter-spacing:6px;opacity:.55;text-transform:uppercase;margin-bottom:12px}
+.cover .divider{width:60px;height:2px;background:var(--sky);margin:30px auto;opacity:.4}
+.cover .title{font-family:'Playfair Display',serif;font-size:clamp(40px,6.5vw,72px);font-weight:500;line-height:1.05;letter-spacing:-.5px}
+.cover .sub{font-family:'Playfair Display',serif;font-size:clamp(18px,2.4vw,26px);font-weight:300;margin-top:14px;opacity:.85;font-style:italic}
+.cover .prepared{margin-top:38px;font-size:12px;letter-spacing:3px;opacity:.55;text-transform:uppercase}
+.cover .prepared strong{color:var(--sky);font-weight:600}
+.cover .region{font-size:10px;letter-spacing:5px;text-transform:uppercase;opacity:.4;position:absolute;bottom:50px;left:50%;transform:translateX(-50%);white-space:nowrap}
+
+/* ===== HERO BANNER ===== */
+.hero-banner{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-banner-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%}
+.hero-banner-overlay{position:absolute;inset:0}
+.hero-banner-content{position:relative;z-index:2;padding:clamp(40px,6vw,80px);max-width:720px;color:#fff}
+.hero-banner-content .eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;opacity:.55;margin-bottom:14px}
+.hero-banner-content h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,46px);font-weight:500;line-height:1.2;margin-bottom:20px}
+.hero-banner-content p{font-size:14px;line-height:1.8;opacity:.9}
+
+/* ===== SECTION ===== */
+.section{padding:clamp(28px,4vw,56px) clamp(24px,5vw,80px);max-width:1400px;margin:0 auto}
+.section-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--navy);opacity:.5;margin-bottom:6px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,38px);color:var(--navy);font-weight:600;line-height:1.2}
+.section-sub{font-size:13px;color:var(--text2);margin-top:6px;line-height:1.5;max-width:760px}
+
+/* ===== PAGE PHOTO UNDERLAY ===== */
+.pg-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.045;pointer-events:none;z-index:0;filter:grayscale(30%)}
+.data-page{position:relative;overflow:hidden}
+.data-page .section{position:relative;z-index:1}
+
+/* ===== STATS ===== */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.stat{background:rgba(255,255,255,.92);border-radius:12px;padding:22px 16px;text-align:center;border:1px solid #e2e8f0;box-shadow:0 2px 10px rgba(0,0,0,.04);backdrop-filter:blur(4px);transition:transform .2s,box-shadow .2s}
+.stat:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(30,51,94,.1)}
+.stat-val{font-family:'Playfair Display',serif;font-size:clamp(22px,2.8vw,34px);color:var(--navy);font-weight:700}
+.stat-lbl{font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:3px}
+.stat-note{font-size:11px;color:var(--text3);margin-top:5px}
+
+/* ===== PROPERTY HIGHLIGHTS GRID ===== */
+.prop-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;margin:20px 0;align-items:start}
+@media(max-width:900px){.prop-grid{grid-template-columns:1fr}}
+.prop-card{background:rgba(255,255,255,.95);border-radius:14px;padding:24px;border:1px solid #e2e8f0;box-shadow:0 2px 14px rgba(0,0,0,.04)}
+.prop-card h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--navy);font-weight:600;margin-bottom:14px;border-bottom:1px solid #eee;padding-bottom:10px}
+.prop-card .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #f1f5f9;font-size:13px}
+.prop-card .row:last-child{border:none}
+.prop-card .row .k{color:var(--text2)}
+.prop-card .row .v{color:var(--navy);font-weight:600}
+.lifestyle-card{background:linear-gradient(135deg,var(--navy),#2a4478);color:#fff;border-radius:14px;padding:24px}
+.lifestyle-card h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:500;margin-bottom:14px;color:var(--sky)}
+.lifestyle-card p{font-size:13px;line-height:1.8;opacity:.92;margin-bottom:12px}
+.lifestyle-card p:last-child{margin-bottom:0}
+
+/* ===== COMP CARDS ===== */
+.comp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:20px 0}
+@media(max-width:900px){.comp-grid{grid-template-columns:1fr}}
+.comp-card{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,.04);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.comp-card:hover{transform:translateY(-3px);box-shadow:0 6px 22px rgba(0,0,0,.1)}
+.comp-img{width:100%;height:200px;object-fit:cover;object-position:center 55%;display:block;transition:transform .4s ease}
+.comp-card:hover .comp-img{transform:scale(1.04)}
+.comp-img-wrap{overflow:hidden;background:#1e335e}
+.comp-card.compact .comp-img{height:215px;object-position:center 60%}
+.comp-card.compact .comp-head{padding:10px 14px}
+.comp-card.compact .comp-head .addr-block .addr{font-size:15px}
+.comp-card.compact .comp-body{padding:8px 14px}
+.comp-card.compact .comp-spec .v{font-size:15px}
+.comp-card.compact .comp-price-row{padding:8px 14px}
+.comp-card.compact .comp-price-row .item .v{font-size:14px}
+.comp-card.compact .comp-foot{padding:8px 14px;font-size:10.5px;line-height:1.5}
+.comp-head{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 18px;border-bottom:1px solid #eee;background:linear-gradient(135deg,#fafbfc,#fff)}
+.comp-head .addr-block .addr{font-family:'Playfair Display',serif;font-size:18px;color:var(--navy);font-weight:600;line-height:1.2}
+.comp-head .addr-block .area{font-size:11px;color:var(--text3);margin-top:2px;letter-spacing:.5px;text-transform:uppercase}
+.comp-status{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:5px 10px;border-radius:14px;font-weight:600;white-space:nowrap}
+.comp-status.sold{background:var(--green);color:#fff}
+.comp-status.active{background:var(--gold);color:#fff}
+.comp-status.contingent{background:#e0b400;color:#fff}
+.comp-body{padding:16px 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.comp-spec{text-align:center;padding:4px 2px}
+.comp-spec .v{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);font-weight:700;line-height:1}
+.comp-spec .l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:4px}
+.comp-price-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:#f8fafc;border-top:1px solid #eee;padding:12px 18px}
+.comp-price-row .item{text-align:center;border-right:1px solid #e2e8f0;padding:0 4px}
+.comp-price-row .item:last-child{border-right:none}
+.comp-price-row .item .v{font-family:'Playfair Display',serif;font-size:16px;color:var(--navy);font-weight:700}
+.comp-price-row .item .v.sale{color:var(--green)}
+.comp-price-row .item .l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.comp-foot{padding:10px 18px;font-size:11px;color:var(--text2);line-height:1.6;border-top:1px solid #eee;flex:1}
+.comp-foot strong{color:var(--navy)}
+
+/* ===== PLUM ISLAND OVERVIEW ===== */
+.pi-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;margin:20px 0;align-items:start}
+@media(max-width:900px){.pi-grid{grid-template-columns:1fr}}
+.pi-prose{background:rgba(255,255,255,.94);border-radius:14px;padding:28px;border:1px solid #e2e8f0;box-shadow:0 2px 14px rgba(0,0,0,.04)}
+.pi-prose h3{font-family:'Playfair Display',serif;font-size:24px;color:var(--navy);font-weight:600;margin-bottom:14px}
+.pi-prose p{font-size:13px;line-height:1.8;color:var(--text2);margin-bottom:12px}
+.pi-prose p:last-child{margin-bottom:0}
+.pi-facts{display:flex;flex-direction:column;gap:10px}
+.pi-fact{background:#fff;border-radius:10px;padding:14px 18px;border:1px solid #e2e8f0;border-left:3px solid var(--gold);display:flex;align-items:center;gap:14px}
+.pi-fact .icon{font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);font-weight:700;line-height:1;min-width:34px;text-align:center}
+.pi-fact .body .l{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:1px}
+.pi-fact .body .v{font-size:13px;color:var(--navy);font-weight:600;margin-top:1px;line-height:1.3}
+
+/* ===== CHART ===== */
+.chart-card{background:rgba(255,255,255,.95);border-radius:12px;padding:20px;border:1px solid #e2e8f0;margin:14px 0}
+.chart-card h3{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:12px}
+.chart-canvas{position:relative;height:360px}
+.chart-canvas canvas{position:absolute;inset:0;width:100%!important;height:100%!important}
+.analysis-grid{display:grid;grid-template-columns:1.85fr 1fr;gap:18px;align-items:stretch}
+.analysis-grid .chart-card,.analysis-grid .lifestyle-card{margin:14px 0 0}
+.analysis-grid .lifestyle-card p{font-size:12.5px;line-height:1.65;margin-bottom:8px}
+@media(max-width:900px){.analysis-grid{grid-template-columns:1fr}}
+
+/* ===== PRICING STRATEGY ===== */
+.strategy-wrap{display:grid;grid-template-columns:1fr;gap:18px;margin:18px 0}
+.strategy-row{background:#fff;border-radius:14px;border:1px solid #e2e8f0;padding:22px 26px;display:grid;grid-template-columns:1fr 1.2fr 2fr;gap:24px;align-items:center;transition:transform .2s,box-shadow .2s;border-left:5px solid #e2e8f0}
+.strategy-row:hover{transform:translateX(4px);box-shadow:0 6px 22px rgba(0,0,0,.08)}
+.strategy-row.conservative{border-left-color:#94a3b8}
+.strategy-row.recommended{border-left-color:var(--gold);background:linear-gradient(135deg,#fffbf2,#fff);position:relative}
+.strategy-row.recommended::after{content:'★ RECOMMENDED';position:absolute;top:-10px;right:24px;background:var(--gold);color:#fff;padding:4px 14px;border-radius:14px;font-size:10px;font-weight:700;letter-spacing:1.5px}
+.strategy-row.aspirational{border-left-color:#3b6ea5}
+.strategy-row.sweetspot{border-left-color:var(--navy);background:linear-gradient(135deg,#1e335e,#2a4478);color:#fff;position:relative;border:none}
+.strategy-row.sweetspot::after{content:'⬥ MY TAKE';position:absolute;top:-10px;right:24px;background:#fff;color:var(--navy);padding:4px 14px;border-radius:14px;font-size:10px;font-weight:700;letter-spacing:1.5px}
+.strategy-row .label{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--navy)}
+.strategy-row.sweetspot .label{color:#fff}
+.strategy-row .price{font-family:'Playfair Display',serif;font-size:clamp(22px,2.5vw,30px);font-weight:700;color:var(--navy)}
+.strategy-row.sweetspot .price{color:var(--sky)}
+.strategy-row.recommended .price{color:var(--gold)}
+.strategy-row .reasoning{font-size:13px;color:var(--text2);line-height:1.6}
+.strategy-row.sweetspot .reasoning{color:rgba(255,255,255,.88)}
+@media(max-width:700px){.strategy-row{grid-template-columns:1fr;gap:10px}.strategy-row .label,.strategy-row .price{font-size:18px}}
+
+/* ===== AGENT ===== */
+.agent-page{position:relative;overflow:hidden;background:#dce8f0 url('https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/1563831525901-JJM0D46Y4WNF35O3WJFD/BEACH.jpg?content-type=image%2Fjpeg') center/cover no-repeat}
+.agent-page::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(225,235,245,.85),rgba(210,228,244,.78));z-index:1}
+.agent-section{display:flex;gap:48px;align-items:center;flex-wrap:wrap;margin:24px 0}
+.agent-photo{width:240px;height:240px;border-radius:50%;object-fit:cover;border:5px solid var(--sky);flex-shrink:0;box-shadow:0 8px 32px rgba(30,51,94,.15)}
+.agent-info h3{font-family:'Playfair Display',serif;font-size:34px;color:var(--navy);margin-bottom:4px;font-weight:600}
+.agent-info .agent-title{font-size:14px;color:var(--gold);font-weight:600;margin-bottom:14px}
+.agent-info p{font-size:14px;color:var(--text2);line-height:1.8;max-width:560px}
+.agent-contact{margin-top:16px;font-size:14px;color:var(--text2)}
+.agent-contact a{color:var(--navy);text-decoration:none;font-weight:500}
+.agent-cta{display:inline-block;margin-top:20px;background:var(--navy);color:#fff;padding:12px 32px;border-radius:30px;text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;transition:background .2s}
+.agent-cta:hover{background:#2a4478}
+
+/* ===== BACK COVER ===== */
+.back-cover{background:var(--navy);color:#fff;min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.back-cover .cover-bg{opacity:.15}
+.back-cover-content{position:relative;z-index:2;text-align:center;padding:60px 40px;max-width:760px}
+
+/* ===== PAGE FOOTER ===== */
+.page-foot{padding:14px clamp(24px,5vw,80px) 24px;display:flex;justify-content:space-between;font-size:9px;color:var(--text3);max-width:1400px;margin:0 auto}
+
+/* ===== BG PATTERN ===== */
+.bg-pattern{position:relative}
+.bg-pattern::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e335e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none;z-index:0}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+  .stats-row{grid-template-columns:repeat(2,1fr)}
+  .comp-body{grid-template-columns:repeat(2,1fr)}
+  .comp-price-row{grid-template-columns:1fr}
+  .comp-price-row .item{border-right:none;border-bottom:1px solid #e2e8f0;padding:6px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="flipbook" id="flipbook">
+
+<!-- ========== PAGE 1: COVER ========== -->
+<div class="fp" data-label="12 Plum Bush Downs CMA">
+<div class="page-inner cover">
+  <img class="cover-bg" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/14328ec9-1b6e-40ef-b6f5-6a207c7e4932/323R+High+Road+Newbury+MA+Plum+Island+01951+-+Alissa+SOLD.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <img class="logo-img" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/0774c95a-7bf1-403a-9b01-f59e1e7ef4ab/Bentleys+Logo+Dec+2023-smaller+SM-RE-MAX+also-01+%282%29+%281%29.png?content-type=image%2Fpng" alt="Bentley's RE/MAX Collection">
+    <div class="eyebrow">Comparative Market Analysis</div>
+    <div class="divider"></div>
+    <div class="title">12 Plum Bush Downs</div>
+    <div class="sub">Plum Island &bull; Newbury, Massachusetts</div>
+    <div class="divider"></div>
+    <div class="prepared">Prepared for <strong>Scott Miller</strong></div>
+    <div class="prepared" style="margin-top:6px">By Alissa Christie, Esq. &bull; Broker/Owner</div>
+  </div>
+  <div class="region">MAY 2026 &bull; BENTLEY'S RE/MAX COLLECTION</div>
+</div>
+</div>
+
+<!-- ========== PAGE 2: SUBJECT INTRO HERO ========== -->
+<div class="fp" data-label="The Property">
+<div class="page-inner hero-banner">
+  <img class="hero-banner-bg" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/1715878934359-OJKY72XG7NITA5YPNZJ2/2-web-or-mls-Alissa+Exteriors+%2810%29-Edit.JPG?content-type=image%2Fjpeg" alt="">
+  <div class="hero-banner-overlay" style="background:linear-gradient(90deg,rgba(30,51,94,.93) 50%,rgba(30,51,94,.35))"></div>
+  <div class="hero-banner-content">
+    <div class="eyebrow">The Subject Property</div>
+    <h2>A Rare 2.68 Acres<br>on Plum Island</h2>
+    <p>Set inside Plum Bush Downs &mdash; one of the island's most coveted enclaves &mdash; this newer-build cottage offers something almost impossible to find on Plum Island: meaningful land, soaring ceilings, and unobstructed 360-degree marsh views.</p>
+    <p style="margin-top:14px">With a recent neighborhood sale closing at $1.875M and an active market hungry for waterfront opportunity, 12 Plum Bush Downs sits at the intersection of scarcity and lifestyle &mdash; a property that doesn't quite fit any single comparable, because there aren't any quite like it.</p>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 3: PROPERTY HIGHLIGHTS ========== -->
+<div class="fp" data-label="Highlights">
+<div class="page-inner data-page bg-pattern" style="background:var(--cream);min-height:100vh">
+  <img class="pg-photo" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/60c4ccc9-f876-4ebe-93ab-b0957bc140ed/photo+%288%29.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="section">
+    <div class="section-label">Property Highlights</div>
+    <div class="section-title">12 Plum Bush Downs</div>
+    <div class="section-sub">Built 2016 &bull; 1 Bedroom + Bonus Loft &bull; 1,018 SF on 2.68 acres &bull; 2026 Assessed Value $859,600</div>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val">1,018</div><div class="stat-lbl">Square Feet</div><div class="stat-note">+ bonus loft</div></div>
+      <div class="stat"><div class="stat-val">2.68</div><div class="stat-lbl">Acres</div><div class="stat-note">Rare on PI</div></div>
+      <div class="stat"><div class="stat-val">2016</div><div class="stat-lbl">Year Built</div><div class="stat-note">Newer construction</div></div>
+      <div class="stat"><div class="stat-val">1+1</div><div class="stat-lbl">Bed / Loft</div><div class="stat-note">2 baths</div></div>
+      <div class="stat"><div class="stat-val">$1,800</div><div class="stat-lbl">Flood Insurance</div><div class="stat-note">Annual, approx.</div></div>
+    </div>
+
+    <div class="prop-grid">
+      <div class="prop-card">
+        <h3>At a Glance</h3>
+        <div class="row"><span class="k">Bedrooms</span><span class="v">1 Primary Suite + Bonus Loft</span></div>
+        <div class="row"><span class="k">Bathrooms</span><span class="v">2 (1 full ensuite + 1 add'l)</span></div>
+        <div class="row"><span class="k">Living Area</span><span class="v">1,018 SF</span></div>
+        <div class="row"><span class="k">Loft</span><span class="v">Accessed via pull-down stairs</span></div>
+        <div class="row"><span class="k">Lot Size</span><span class="v">2.68 Acres</span></div>
+        <div class="row"><span class="k">Year Built</span><span class="v">2016 &mdash; modern construction</span></div>
+        <div class="row"><span class="k">Ceilings</span><span class="v">20+ ft in main living space</span></div>
+        <div class="row"><span class="k">Fireplace</span><span class="v">Gas</span></div>
+        <div class="row"><span class="k">Outdoor</span><span class="v">Back patio + fire pit, kitchen deck</span></div>
+        <div class="row"><span class="k">Waterfront Potential</span><span class="v">Private dock build potential</span></div>
+        <div class="row"><span class="k">2026 Assessed Value</span><span class="v">$859,600</span></div>
+        <div class="row"><span class="k">Flood Insurance</span><span class="v">~$1,800/year</span></div>
+      </div>
+
+      <div class="lifestyle-card">
+        <h3>Lifestyle &amp; Setting</h3>
+        <p>Sweeping 360-degree marsh views with rare dock-build potential &mdash; a setup virtually unheard of on Plum Island today.</p>
+        <p>A clean, modern minimalist aesthetic inside: soaring 20+ foot ceilings in the main living space and a cozy gas fireplace create an atmosphere that feels both open and grounded.</p>
+        <p>Outside, the back patio with fire pit and a deck off the living room and kitchen blur the line between indoor and out &mdash; designed for golden-hour entertaining and quiet morning coffee with herons on the marsh.</p>
+        <p style="opacity:.7;font-size:12px;margin-top:14px">This is a lifestyle property. Its value is in the land, the views, and the address &mdash; not the square footage.</p>
+      </div>
+    </div>
+    <div class="page-foot"><span>Comparative Market Analysis &bull; 12 Plum Bush Downs</span><span>Bentley's | The RE/MAX Collection</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 4: PLUM ISLAND OVERVIEW HERO ========== -->
+<div class="fp" data-label="Plum Island">
+<div class="page-inner hero-banner">
+  <img class="hero-banner-bg" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/1632337195428-AGPFABUG8CJKKSG5DU8U/photo+%2824%29.jpg?content-type=image%2Fjpeg" alt="">
+  <div class="hero-banner-overlay" style="background:linear-gradient(90deg,rgba(30,51,94,.93) 55%,rgba(30,51,94,.3))"></div>
+  <div class="hero-banner-content">
+    <div class="eyebrow">Plum Island Overview</div>
+    <h2>Eleven Miles of Barrier Beach,<br>Marsh &amp; Migrating Birds</h2>
+    <p>Plum Island is one of New England's most distinctive coastal communities &mdash; a narrow barrier island stretching eleven miles from Newburyport south to Ipswich, framed by the Atlantic on one side and the Great Marsh on the other.</p>
+    <p style="margin-top:14px">Roughly three-quarters of the island is preserved as the Parker River National Wildlife Refuge, drawing over a quarter-million visitors a year for birding, beach walks, and saltwater fishing. The remaining quarter holds a tight-knit community of roughly 1,200 homes &mdash; a mix of original summer cottages, mid-century classics, and a growing inventory of modern coastal builds.</p>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 5: PLUM ISLAND DEEP DIVE ========== -->
+<div class="fp" data-label="PI Market">
+<div class="page-inner data-page bg-pattern" style="background:#fff;min-height:100vh">
+  <img class="pg-photo" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/b13f31b6-3edc-4743-b149-0614755f529b/photo+%285%29.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="section">
+    <div class="section-label">Plum Island &bull; Newbury Side</div>
+    <div class="section-title">The Lay of the Land</div>
+    <div class="section-sub">Why Plum Island commands its own pricing logic &mdash; and where Plum Bush Downs fits within it</div>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val">11 mi</div><div class="stat-lbl">Barrier Island Length</div><div class="stat-note">Newburyport &rarr; Ipswich</div></div>
+      <div class="stat"><div class="stat-val">~1,200</div><div class="stat-lbl">Total Homes</div><div class="stat-note">Year-round + seasonal</div></div>
+      <div class="stat"><div class="stat-val">75%</div><div class="stat-lbl">Protected Refuge</div><div class="stat-note">Parker River NWR</div></div>
+      <div class="stat"><div class="stat-val">300+</div><div class="stat-lbl">Bird Species</div><div class="stat-note">Atlantic Flyway</div></div>
+      <div class="stat"><div class="stat-val">$1.24M</div><div class="stat-lbl">Avg PI Sale (recent)</div><div class="stat-note">4-comp avg, 2025&ndash;26</div></div>
+    </div>
+
+    <div class="pi-grid">
+      <div class="pi-prose">
+        <h3>A Market Unto Itself</h3>
+        <p>Plum Island doesn't trade like the rest of Newbury, and it doesn't trade like Newburyport. Its inventory is fundamentally finite &mdash; the refuge means no new neighborhoods will ever be built &mdash; and that scarcity supports premium pricing well beyond what square-foot math would predict.</p>
+        <p>The four comparable Plum Island sales of the past twelve months ranged from <strong>$1.00M to $1.875M</strong>, with an average sale price of $1.24M and a median of $1.11M. Days on market have averaged just <strong>25</strong> &mdash; faster than the broader Newbury or Newburyport averages &mdash; and well-priced waterfront or marsh-view listings have repeatedly closed over ask.</p>
+        <p>Within that market, <strong>Plum Bush Downs</strong> is a notable address. The October 2025 sale of <strong>4 Plum Bush Downs</strong> &mdash; a 3-bed, 2,200 SF home on virtually no land &mdash; at <strong>$1.875M</strong> sets a clear ceiling for what the neighborhood commands, even without acreage.</p>
+        <p>12 Plum Bush Downs sells what very little of the rest of the island can offer: <strong>2.68 acres, dock-build potential, and a private 360-degree marsh setting</strong>. Those features don't show up on a $/sqft table &mdash; but they show up in offers.</p>
+      </div>
+
+      <div class="pi-facts">
+        <div class="pi-fact"><div class="icon">★</div><div class="body"><div class="l">Neighborhood Ceiling</div><div class="v">4 Plum Bush Downs sold $1.875M (Oct 2025)</div></div></div>
+        <div class="pi-fact"><div class="icon">→</div><div class="body"><div class="l">Active Comp on River</div><div class="v">58 Riverfront East listed $1.2M, 950 SF</div></div></div>
+        <div class="pi-fact"><div class="icon">↑</div><div class="body"><div class="l">Last 12mo Premium</div><div class="v">65 Plum Island Tpke sold 23% over ask</div></div></div>
+        <div class="pi-fact"><div class="icon">⏱</div><div class="body"><div class="l">Avg Days on Market</div><div class="v">25 days across PI sales</div></div></div>
+        <div class="pi-fact"><div class="icon">◇</div><div class="body"><div class="l">Subject Differentiator</div><div class="v">2.68 acres + dock potential = no peer</div></div></div>
+      </div>
+    </div>
+
+    <div class="page-foot"><span>Comparative Market Analysis &bull; 12 Plum Bush Downs</span><span>Source: MLSPIN &bull; Newbury 01951</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 6: ACTIVE COMPS ========== -->
+<div class="fp" data-label="Active">
+<div class="page-inner data-page bg-pattern" style="background:var(--cream);min-height:100vh">
+  <img class="pg-photo" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/884538e1-7dca-4122-84af-8ba4a14c0bee/photo+%289%29.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="section">
+    <div class="section-label">The Competition</div>
+    <div class="section-title">Currently For Sale</div>
+    <div class="section-sub">What buyers are seeing right now in Newbury at the $1.2M mark</div>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-val">2</div><div class="stat-lbl">Active Listings</div></div>
+      <div class="stat"><div class="stat-val">$1.20M</div><div class="stat-lbl">Avg List Price</div></div>
+      <div class="stat"><div class="stat-val">$1.20M</div><div class="stat-lbl">Median List</div></div>
+      <div class="stat"><div class="stat-val">4.5</div><div class="stat-lbl">Avg DOM</div></div>
+    </div>
+
+    <div class="comp-grid">
+      <!-- 58 Riverfront East -->
+      <div class="comp-card">
+        <div class="comp-img-wrap"><img class="comp-img" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/c10ba289-3ee7-4fdd-97b2-fecfcb8de200/58+Riverfront+East.jpeg?content-type=image%2Fjpeg" alt="58 Riverfront East"></div>
+        <div class="comp-head">
+          <div class="addr-block">
+            <div class="addr">58 Riverfront East</div>
+            <div class="area">Newbury &bull; Parker Riverfront</div>
+          </div>
+          <div class="comp-status active">New &bull; 1 DOM</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-spec"><div class="v">2</div><div class="l">Beds</div></div>
+          <div class="comp-spec"><div class="v">1.5</div><div class="l">Baths</div></div>
+          <div class="comp-spec"><div class="v">950</div><div class="l">Sq Ft</div></div>
+          <div class="comp-spec"><div class="v">0.27</div><div class="l">Acres</div></div>
+        </div>
+        <div class="comp-price-row">
+          <div class="item"><div class="v">$1.20M</div><div class="l">List Price</div></div>
+          <div class="item"><div class="v">$1,263</div><div class="l">$/Sq Ft</div></div>
+          <div class="item"><div class="v">1875</div><div class="l">Year Built</div></div>
+        </div>
+        <div class="comp-foot">
+          <strong>Riverfront cottage with private dock (rebuilt 2023).</strong> Half-century in one family &mdash; first time to market. 950 SF, screened porch facing the Parker River. Direct waterfront, but on 0.27 acres and 1875 construction. <em>Tests the $1,263/sqft ceiling for true waterfront cottages.</em>
+        </div>
+      </div>
+
+      <!-- 11 Bayview Ln -->
+      <div class="comp-card">
+        <div class="comp-img-wrap"><img class="comp-img" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/cd73b857-86d8-4a60-b4b4-a20052f7c08a/11+Bayview+Lane.jpeg?content-type=image%2Fjpeg" alt="11 Bayview Lane"></div>
+        <div class="comp-head">
+          <div class="addr-block">
+            <div class="addr">11 Bayview Ln</div>
+            <div class="area">Newbury &bull; Mainland / Marsh-abutting</div>
+          </div>
+          <div class="comp-status contingent">Contingent &bull; 8 DOM</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-spec"><div class="v">4</div><div class="l">Beds</div></div>
+          <div class="comp-spec"><div class="v">3.5</div><div class="l">Baths</div></div>
+          <div class="comp-spec"><div class="v">2,726</div><div class="l">Sq Ft</div></div>
+          <div class="comp-spec"><div class="v">4.81</div><div class="l">Acres</div></div>
+        </div>
+        <div class="comp-price-row">
+          <div class="item"><div class="v">$1.20M</div><div class="l">List Price</div></div>
+          <div class="item"><div class="v">$440</div><div class="l">$/Sq Ft</div></div>
+          <div class="item"><div class="v">1957</div><div class="l">Year Built</div></div>
+        </div>
+        <div class="comp-foot">
+          <strong>4.81 acres abutting Parker River NWR &amp; Great Marsh.</strong> 4BR/3.5BA colonial, 2,726 SF, marsh views, but mainland Newbury &mdash; not Plum Island. Went under agreement in 8 days. <em>Demonstrates how quickly large-acreage marsh properties move at this price.</em>
+        </div>
+      </div>
+    </div>
+    <div class="page-foot"><span>Comparative Market Analysis &bull; 12 Plum Bush Downs</span><span>Source: MLSPIN &bull; data as of May 2026</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 7: SOLD COMPS ========== -->
+<div class="fp" data-label="Sold">
+<div class="page-inner data-page bg-pattern" style="background:#fff;min-height:100vh">
+  <img class="pg-photo" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/a6a6a8d4-fa7d-4a86-8d16-7f8a6daf13e7/photo+%286%29.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="section" style="padding-top:clamp(20px,3vw,40px);padding-bottom:clamp(20px,3vw,40px)">
+    <div class="section-label">Recently Closed</div>
+    <div class="section-title">What's Actually Sold</div>
+    <div class="section-sub">Four closed sales, last 12 months &mdash; the truest signal of buyer behavior</div>
+
+    <div class="stats-row" style="margin:14px 0 10px">
+      <div class="stat" style="padding:14px 12px"><div class="stat-val" style="font-size:24px">4</div><div class="stat-lbl">Closed Sales</div></div>
+      <div class="stat" style="padding:14px 12px"><div class="stat-val" style="font-size:24px">$1.24M</div><div class="stat-lbl">Avg Sale</div></div>
+      <div class="stat" style="padding:14px 12px"><div class="stat-val" style="font-size:24px">$1.11M</div><div class="stat-lbl">Median Sale</div></div>
+      <div class="stat" style="padding:14px 12px"><div class="stat-val" style="font-size:24px">25</div><div class="stat-lbl">Avg DOM</div></div>
+      <div class="stat" style="padding:14px 12px"><div class="stat-val" style="font-size:24px">105%</div><div class="stat-lbl">Avg SP/LP</div></div>
+    </div>
+
+    <div class="comp-grid" style="margin:10px 0 0">
+      <!-- 4 Plum Bush Downs -->
+      <div class="comp-card compact" style="border:2px solid var(--gold)">
+        <div class="comp-img-wrap"><img class="comp-img" style="object-position:center 85%" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/cace58ca-4d51-481f-8f17-669c25027438/4+Plum+Bush+Downs.jpeg?content-type=image%2Fjpeg" alt="4 Plum Bush Downs"></div>
+        <div class="comp-head" style="background:linear-gradient(135deg,#fffbf2,#fff)">
+          <div class="addr-block">
+            <div class="addr">4 Plum Bush Downs <span style="font-size:11px;color:var(--gold);font-weight:600;letter-spacing:1px">★ NEIGHBOR</span></div>
+            <div class="area">Plum Island &bull; Plum Bush Downs &bull; Oct 2025</div>
+          </div>
+          <div class="comp-status sold">Sold $1.875M</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-spec"><div class="v">3</div><div class="l">Beds</div></div>
+          <div class="comp-spec"><div class="v">2.5</div><div class="l">Baths</div></div>
+          <div class="comp-spec"><div class="v">2,200</div><div class="l">Sq Ft</div></div>
+          <div class="comp-spec"><div class="v">~0</div><div class="l">Acres</div></div>
+        </div>
+        <div class="comp-price-row">
+          <div class="item"><div class="v">$2.165M</div><div class="l">List Price</div></div>
+          <div class="item"><div class="v sale">$1.875M</div><div class="l">Sale Price</div></div>
+          <div class="item"><div class="v">$852</div><div class="l">$/Sq Ft</div></div>
+        </div>
+        <div class="comp-foot">
+          <strong>The single most important comp.</strong> 2021-built waterfront in the exact same neighborhood &mdash; private dock, panoramic views, attached garage. Sold $1.875M with virtually no land. <em>This is the neighborhood ceiling and the strongest anchor for our pricing.</em>
+        </div>
+      </div>
+
+      <!-- 65 Plum Island Tpke -->
+      <div class="comp-card compact">
+        <div class="comp-img-wrap"><img class="comp-img" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/31272dc8-c818-4035-9785-93fdcc67928d/65+Plum+Island+Turnpike.jpeg?content-type=image%2Fjpeg" alt="65 Plum Island Turnpike"></div>
+        <div class="comp-head">
+          <div class="addr-block">
+            <div class="addr">65 Plum Island Tpke</div>
+            <div class="area">Plum Island &bull; May 2026</div>
+          </div>
+          <div class="comp-status sold">Sold $1.225M</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-spec"><div class="v">3</div><div class="l">Beds</div></div>
+          <div class="comp-spec"><div class="v">3</div><div class="l">Baths</div></div>
+          <div class="comp-spec"><div class="v">1,750</div><div class="l">Sq Ft</div></div>
+          <div class="comp-spec"><div class="v">0.99</div><div class="l">Acres</div></div>
+        </div>
+        <div class="comp-price-row">
+          <div class="item"><div class="v">$995K</div><div class="l">List Price</div></div>
+          <div class="item"><div class="v sale">$1.225M</div><div class="l">Sale Price</div></div>
+          <div class="item"><div class="v">$700</div><div class="l">$/Sq Ft</div></div>
+        </div>
+        <div class="comp-foot">
+          <strong>Sold 23% over ask.</strong> 2017-built modern with 360-degree marsh/river/ocean views &mdash; closest stylistic match to subject. Tenanted, listed strategically low, multiple offers. <em>Demonstrates the bidding behavior newer-build Plum Island marsh views attract.</em>
+        </div>
+      </div>
+
+      <!-- 20 Independence Way -->
+      <div class="comp-card compact">
+        <div class="comp-img-wrap"><img class="comp-img" style="object-position:center 75%" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/7936cf9d-77a0-468e-860c-ee2f2f5a00fb/20+Independence.jpeg?content-type=image%2Fjpeg" alt="20 Independence Way"></div>
+        <div class="comp-head">
+          <div class="addr-block">
+            <div class="addr">20 Independence Way</div>
+            <div class="area">Plum Island &bull; Jun 2025</div>
+          </div>
+          <div class="comp-status sold">Sold $1.000M</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-spec"><div class="v">2</div><div class="l">Beds</div></div>
+          <div class="comp-spec"><div class="v">2</div><div class="l">Baths</div></div>
+          <div class="comp-spec"><div class="v">1,150</div><div class="l">Sq Ft</div></div>
+          <div class="comp-spec"><div class="v">0.22</div><div class="l">Acres</div></div>
+        </div>
+        <div class="comp-price-row">
+          <div class="item"><div class="v">$979K</div><div class="l">List Price</div></div>
+          <div class="item"><div class="v sale">$1.000M</div><div class="l">Sale Price</div></div>
+          <div class="item"><div class="v">$870</div><div class="l">$/Sq Ft</div></div>
+        </div>
+        <div class="comp-foot">
+          <strong>Smallest-footprint comp.</strong> 1950s cottage on a sand-path-to-ocean lot. Closest in size to subject (1,150 vs 1,018 SF), but no land and 1950 construction. <em>Establishes a clear floor &mdash; subject's newer build, acreage, and marsh views push well above this.</em>
+        </div>
+      </div>
+
+      <!-- 24 Seaview Ln -->
+      <div class="comp-card compact">
+        <div class="comp-img-wrap"><img class="comp-img" style="object-position:center 35%" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/00f90bdb-7030-40d3-97b2-86e65aa46ed9/24+Seaview+Lane.jpeg?content-type=image%2Fjpeg" alt="24 Seaview Lane"></div>
+        <div class="comp-head">
+          <div class="addr-block">
+            <div class="addr">24 Seaview Ln</div>
+            <div class="area">Newbury &bull; Mainland &bull; Jan 2026</div>
+          </div>
+          <div class="comp-status sold">Sold $870K</div>
+        </div>
+        <div class="comp-body">
+          <div class="comp-spec"><div class="v">1</div><div class="l">Beds</div></div>
+          <div class="comp-spec"><div class="v">2.5</div><div class="l">Baths</div></div>
+          <div class="comp-spec"><div class="v">2,558</div><div class="l">Sq Ft</div></div>
+          <div class="comp-spec"><div class="v">0.49</div><div class="l">Acres</div></div>
+        </div>
+        <div class="comp-price-row">
+          <div class="item"><div class="v">$799K</div><div class="l">List Price</div></div>
+          <div class="item"><div class="v sale">$870K</div><div class="l">Sale Price</div></div>
+          <div class="item"><div class="v">$340</div><div class="l">$/Sq Ft</div></div>
+        </div>
+        <div class="comp-foot">
+          <strong>Marsh-view contemporary, mainland.</strong> 1982 build with 3-level layout, 1 bed + loft. Beautiful setting but lacks the Plum Island address. <em>Useful as a "marsh setting without the island premium" benchmark.</em>
+        </div>
+      </div>
+    </div>
+    <div class="page-foot"><span>Comparative Market Analysis &bull; 12 Plum Bush Downs</span><span>Source: MLSPIN &bull; closed sales, trailing 12 months</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 8: COMP ANALYSIS CHART ========== -->
+<div class="fp" data-label="Analysis">
+<div class="page-inner data-page bg-pattern" style="background:var(--cream);min-height:100vh">
+  <img class="pg-photo" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/f587697b-13b3-40ad-bb7a-f56219ab12aa/photo+%287%29.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="section" style="padding-top:clamp(20px,3vw,40px);padding-bottom:clamp(20px,3vw,40px)">
+    <div class="section-label">Visual Analysis</div>
+    <div class="section-title">Where 12 Plum Bush Downs Fits</div>
+    <div class="section-sub">Sale price across the six comparables &mdash; with the recommended list range and sweet spot overlaid</div>
+
+    <div class="analysis-grid">
+      <div class="chart-card" style="margin:14px 0 0">
+        <h3>Sale Price &bull; Six Comps vs. Recommended Range</h3>
+        <div class="chart-canvas" style="height:420px"><canvas id="priceChart"></canvas></div>
+      </div>
+      <div class="lifestyle-card" style="margin-top:14px">
+        <h3>The Pricing Argument</h3>
+        <p><strong style="color:var(--sky)">Size peer</strong> (20 Ind. Way): $1.00M &mdash; but 1950s, 0.22 acres, no marsh.</p>
+        <p><strong style="color:var(--sky)">Style peer</strong> (65 PI Tpke): $1.225M &mdash; 0.99 acres, sold 23% over ask.</p>
+        <p><strong style="color:var(--sky)">Neighborhood peer</strong> (4 PBD): $1.875M &mdash; bigger, but no land.</p>
+        <p style="color:var(--sky);font-weight:600;margin-top:10px;font-size:12.5px">$/sqft math says $757K. That math ignores 2.68 acres + dock potential + the Plum Bush Downs address. The recommended range reflects scarcity, conservatively.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 9: PRICING STRATEGY ========== -->
+<div class="fp" data-label="Strategy">
+<div class="page-inner data-page bg-pattern" style="background:#fff;min-height:100vh">
+  <img class="pg-photo" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/b13f31b6-3edc-4743-b149-0614755f529b/photo+%285%29.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="section">
+    <div class="section-label">Pricing Strategy</div>
+    <div class="section-title">Four Paths to Market</div>
+    <div class="section-sub">Each scenario reflects a different balance of speed, certainty, and ceiling-testing</div>
+
+    <div class="strategy-wrap">
+      <div class="strategy-row conservative">
+        <div class="label">Conservative<br><span style="font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;font-weight:600;font-family:'Inter',sans-serif">Quick Sale</span></div>
+        <div class="price">$1.190M</div>
+        <div class="reasoning">Lists alongside the two existing active comps and below the recent neighborhood sale. Expect strong activity and likely immediate buyer interest &mdash; useful if speed and certainty outweigh upside.</div>
+      </div>
+
+      <div class="strategy-row recommended">
+        <div class="label">Recommended<br><span style="font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;font-weight:600;font-family:'Inter',sans-serif">Launch Range</span></div>
+        <div class="price">$1.249M &ndash; $1.325M</div>
+        <div class="reasoning">Best balance of rarity and buyer pool. Above the comparable size sales, below the neighborhood ceiling, and squarely in the active-buyer band for Plum Island. Sets up well for offers above ask.</div>
+      </div>
+
+      <div class="strategy-row aspirational">
+        <div class="label">Aspirational<br><span style="font-size:11px;color:var(--text3);letter-spacing:1px;text-transform:uppercase;font-weight:600;font-family:'Inter',sans-serif">Test the Ceiling</span></div>
+        <div class="price">$1.349M &ndash; $1.425M</div>
+        <div class="reasoning">Works only if the setting truly wows and marketing is exceptional &mdash; professional video, drone, dock-build narrative, broker open with full reach. Higher risk of longer DOM, but real upside on the right buyer.</div>
+      </div>
+
+      <div class="strategy-row sweetspot">
+        <div class="label">My Take<br><span style="font-size:11px;color:var(--sky);letter-spacing:1px;text-transform:uppercase;font-weight:600;font-family:'Inter',sans-serif">Sweet Spot</span></div>
+        <div class="price">$1.295M</div>
+        <div class="reasoning">The premium is tied to the 2.68 acres, the marsh setting, and the dock potential &mdash; features that are hard-to-replicate, and impossible on most Plum Island parcels. $1.295M signals confidence without pricing out the active buyer pool, and leaves room for the right offer to clear ask.</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(30,51,94,.05);border-left:4px solid var(--navy);padding:18px 22px;border-radius:0 12px 12px 0;margin-top:24px">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--navy);font-weight:600;margin-bottom:6px">Tell me what you need to make this work</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.7">Every owner's situation is different &mdash; timeline, target net, comfort with marketing intensity, plans for what's next. Let's talk through which path serves <strong style="color:var(--navy)">your</strong> goals, and we'll build the launch around that.</div>
+    </div>
+    <div class="page-foot"><span>Comparative Market Analysis &bull; 12 Plum Bush Downs</span><span>Bentley's | The RE/MAX Collection</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 10: AGENT PROFILE ========== -->
+<div class="fp" data-label="Your Advisor">
+<div class="page-inner agent-page" style="min-height:100vh">
+  <div class="section" style="display:flex;flex-direction:column;justify-content:center;min-height:85vh;position:relative;z-index:2">
+    <div class="section-label">Your Local Expert</div>
+    <div class="section-title" style="margin-bottom:8px">Alissa Christie, Esq.</div>
+    <div class="agent-section">
+      <img class="agent-photo" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/1774535370766-0ZVO2633LG28UCTPH5JP/RP_AlissaChristie_032%2B%25281%2529.jpg?content-type=image%2Fjpeg" alt="Alissa Christie">
+      <div class="agent-info" style="flex:1;min-width:280px">
+        <div class="agent-title">Broker / Owner &bull; Bentley's RE/MAX Collection</div>
+        <p>A licensed attorney and Broker/Owner of Bentley's RE/MAX Collection &mdash; Greater Newburyport's #1 brokerage since 2019 &mdash; Alissa brings legal precision, contract fluency, and a deep understanding of the Massachusetts coastal market to every transaction.</p>
+        <p style="margin-top:12px">Her work is grounded in two principles: <strong>price the property where the buyers are</strong>, and <strong>negotiate as if the deal still has to clear inspection, appraisal, and closing</strong> &mdash; because it does.</p>
+        <div class="agent-contact">
+          <a href="tel:9784943807">(978) 494-3807</a> &bull;
+          <a href="mailto:Alissa@bentleysrealestate.com">Alissa@bentleysrealestate.com</a><br>
+          2A Winter Street &bull; Newburyport, MA
+        </div>
+        <a class="agent-cta" href="mailto:Alissa@bentleysrealestate.com?subject=12%20Plum%20Bush%20Downs%20%E2%80%94%20Next%20Steps">Discuss Next Steps</a>
+      </div>
+    </div>
+    <div style="display:flex;gap:18px;margin-top:32px;flex-wrap:wrap">
+      <div style="background:rgba(255,255,255,.88);border-radius:12px;padding:20px 28px;text-align:center;border:1px solid #e2e8f0;flex:1;min-width:160px">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);font-weight:700">Esq.</div>
+        <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:2px">Licensed Attorney</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px">Contracts &bull; Title &bull; Negotiation</div>
+      </div>
+      <div style="background:rgba(255,255,255,.88);border-radius:12px;padding:20px 28px;text-align:center;border:1px solid #e2e8f0;flex:1;min-width:160px">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);font-weight:700">#1</div>
+        <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:2px">Gr. Newburyport Brokerage</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px">Since 2019</div>
+      </div>
+      <div style="background:rgba(255,255,255,.88);border-radius:12px;padding:20px 28px;text-align:center;border:1px solid #e2e8f0;flex:1;min-width:160px">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);font-weight:700">Plum Island</div>
+        <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:2px">Local Expertise</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px">Newbury &bull; Newburyport &bull; PI</div>
+      </div>
+      <div style="background:rgba(255,255,255,.88);border-radius:12px;padding:20px 28px;text-align:center;border:1px solid #e2e8f0;flex:1;min-width:160px">
+        <div style="font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);font-weight:700">RE/MAX</div>
+        <div style="font-size:10px;color:var(--text2);text-transform:uppercase;letter-spacing:1px;margin-top:2px">Collection Reach</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:4px">National &bull; Global</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ========== PAGE 11: BACK COVER ========== -->
+<div class="fp" data-label="Bentley's">
+<div class="page-inner back-cover">
+  <img class="cover-bg" src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/56cb404a-0e7a-4e8f-ab1a-d24b671f2078/10+77Th+St+Newburyport+MA+Plum+Island+01950+-+Alissa+SOLD+-+END.jpeg?content-type=image%2Fjpeg" alt="">
+  <div class="back-cover-content">
+    <img src="https://images.squarespace-cdn.com/content/5a441bcdaeb625d8aac72bff/0774c95a-7bf1-403a-9b01-f59e1e7ef4ab/Bentleys+Logo+Dec+2023-smaller+SM-RE-MAX+also-01+%282%29+%281%29.png?content-type=image%2Fpng" alt="Bentley's" style="max-width:240px;margin:0 auto 24px;display:block;filter:brightness(0) invert(1);opacity:.85">
+    <div style="width:50px;height:2px;background:var(--sky);margin:24px auto;opacity:.3"></div>
+    <div style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,28px);line-height:1.4;margin-top:12px">Thank you, Scott.<br><span style="opacity:.7;font-size:.7em;font-style:italic">Let's find the right number, together.</span></div>
+    <div style="margin-top:36px;font-size:13px;opacity:.55;line-height:1.8">
+      Alissa Christie, Esq. &bull; Broker/Owner<br>
+      Bentley's RE/MAX Collection<br>
+      2A Winter Street, Newburyport, MA<br>
+      (978) 494-3807 &bull; Alissa@bentleysrealestate.com
+    </div>
+    <div style="margin-top:24px;font-size:10px;opacity:.35;line-height:1.6">
+      Data sourced from MLSPIN &bull; Single Family Residential<br>
+      Comparative Market Analysis &bull; May 2026 &bull; For informational purposes only.<br>
+      Sale prices and statistics derived from closed transactions in Newbury 01951.
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- end .flipbook -->
+
+<!-- FLOATING NAV -->
+<div class="nav">
+  <button id="prevBtn" onclick="flip(-1)">&#9664;</button>
+  <span id="navLabel">1 / 11 &bull; 12 Plum Bush Downs CMA</span>
+  <button id="nextBtn" onclick="flip(1)">&#9654;</button>
+</div>
+
+<script>
+// ============================================================
+// FLIPBOOK ENGINE (matches market-report-v3.html style)
+// ============================================================
+const pages=document.querySelectorAll('.fp');
+const total=pages.length;
+let current=0;
+let flipping=false;
+
+pages.forEach((p,i)=>{p.style.zIndex=total-i;});
+
+function flip(dir){
+  if(flipping)return;
+  if(dir===1&&current<total-1){
+    flipping=true;
+    pages[current].classList.add('flipped');
+    current++;
+  }else if(dir===-1&&current>0){
+    flipping=true;
+    current--;
+    pages[current].classList.remove('flipped');
+  }else{return}
+  updateNav();
+  setTimeout(()=>{
+    flipping=false;
+    const canvases=pages[current].querySelectorAll('canvas');
+    canvases.forEach(c=>{const ch=Chart.getChart(c);if(ch)ch.resize()});
+    animateStats(pages[current]);
+  },750);
+}
+
+function updateNav(){
+  const lbl=pages[current].dataset.label||'';
+  document.getElementById('navLabel').textContent=`${current+1} / ${total} • ${lbl}`;
+  document.getElementById('prevBtn').disabled=current===0;
+  document.getElementById('nextBtn').disabled=current===total-1;
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')flip(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')flip(-1);
+});
+
+// Mouse drag
+const fb=document.getElementById('flipbook');
+let dragStartX=0,dragStartY=0,isDragging=false;
+
+fb.addEventListener('mousedown',e=>{
+  if(e.target.closest('.nav')||e.target.closest('a')||e.target.closest('button'))return;
+  dragStartX=e.clientX;dragStartY=e.clientY;isDragging=true;
+  fb.style.cursor='grabbing';
+});
+fb.addEventListener('mousemove',e=>{
+  if(!isDragging)return;
+  const dx=e.clientX-dragStartX;
+  if(Math.abs(dx)>30){
+    const pg=pages[current];
+    if(dx<0&&current<total-1){
+      pg.style.transition='none';
+      pg.style.transform=`rotateY(${Math.max(dx/8,-25)}deg)`;
+    }
+  }
+});
+fb.addEventListener('mouseup',e=>{
+  if(!isDragging)return;
+  isDragging=false;fb.style.cursor='';
+  const dx=e.clientX-dragStartX;
+  const dy=e.clientY-dragStartY;
+  pages[current].style.transition='';
+  pages[current].style.transform='';
+  if(current>0)pages[current-1].style.transform='';
+  if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)){
+    if(dx<0)flip(1);
+    else flip(-1);
+  }
+});
+fb.addEventListener('mouseleave',()=>{
+  if(isDragging){
+    isDragging=false;fb.style.cursor='';
+    pages[current].style.transition='';
+    pages[current].style.transform='';
+  }
+});
+
+// Touch
+fb.addEventListener('touchstart',e=>{
+  if(e.target.closest('.nav')||e.target.closest('a'))return;
+  dragStartX=e.touches[0].clientX;dragStartY=e.touches[0].clientY;isDragging=true;
+},{passive:true});
+fb.addEventListener('touchend',e=>{
+  if(!isDragging)return;isDragging=false;
+  const dx=e.changedTouches[0].clientX-dragStartX;
+  const dy=e.changedTouches[0].clientY-dragStartY;
+  if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){
+    if(dx<0)flip(1);else flip(-1);
+  }
+},{passive:true});
+
+// Wheel — let tall pages scroll internally; only flip at top/bottom of page
+let wheelLock=0;
+fb.addEventListener('wheel',e=>{
+  const pg=pages[current];
+  const atTop=pg.scrollTop<=0;
+  const atBot=Math.ceil(pg.scrollTop+pg.clientHeight)>=pg.scrollHeight-1;
+  // If page can scroll in this direction, let the browser scroll it.
+  if(e.deltaY>0&&!atBot){return}
+  if(e.deltaY<0&&!atTop){return}
+  // Otherwise flip — but throttle so a single scroll gesture doesn't burn pages.
+  e.preventDefault();
+  const now=Date.now();
+  if(now-wheelLock<900)return;
+  if(Math.abs(e.deltaY)>20){
+    wheelLock=now;
+    if(e.deltaY>0)flip(1);else flip(-1);
+  }
+},{passive:false});
+
+// Animated stats — only animate numeric values
+function animateStats(page){
+  const vals=page.querySelectorAll('.stat-val');
+  vals.forEach(el=>{
+    const text=el.textContent;
+    // Match: optional $, digits/commas/decimals, optional K/M, optional ' mi' or other suffix word
+    const match=text.match(/^\$?([\d,.]+)(K|M|\+)?$/);
+    if(!match)return;
+    const target=parseFloat(match[1].replace(/,/g,''));
+    if(isNaN(target))return;
+    const suffix=match[2]||'';
+    const prefix=text.startsWith('$')?'$':'';
+    const hasDecimal=match[1].includes('.');
+    let frame=0;const frames=28;
+    const start=target*0.7;
+    function tick(){
+      frame++;
+      const progress=1-Math.pow(1-frame/frames,3);
+      const val=start+(target-start)*progress;
+      el.textContent=prefix+(hasDecimal?val.toFixed(2):val.toLocaleString('en-US',{maximumFractionDigits:0}))+suffix;
+      if(frame<frames)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+updateNav();
+// Animate the cover's first page stats (none) — but trigger for first data page on flip
+
+// ============================================================
+// CHART — comp comparison with recommended range overlay
+// ============================================================
+const navy='#1e335e',skyD='#7ab8e0',gold='#c8a44e',sky='#c9ebfc',green='#16a34a';
+
+// Comps sorted ascending by price so the chart reads as a price ladder.
+// 4 PBD highlighted gold; actives (*) in light gold; sold comps in navy.
+const compData=[
+  {label:'24 Seaview Ln',         price:870000,  status:'sold',  color:'#94a3b8'},
+  {label:'20 Independence Way',   price:1000000, status:'sold',  color:navy},
+  {label:'11 Bayview Ln*',        price:1199900, status:'active',color:'#d4b876'},
+  {label:'58 Riverfront East*',   price:1200000, status:'active',color:'#d4b876'},
+  {label:'65 Plum Island Tpke',   price:1225000, status:'sold',  color:navy},
+  {label:'4 Plum Bush Downs ★',   price:1875000, status:'sold',  color:gold}
+];
+
+const ctx=document.getElementById('priceChart');
+new Chart(ctx,{
+  type:'bar',
+  data:{
+    labels:compData.map(c=>c.label),
+    datasets:[{
+      data:compData.map(c=>c.price),
+      backgroundColor:compData.map(c=>c.color),
+      borderRadius:6,
+      borderSkipped:false,
+      barPercentage:.7,
+      categoryPercentage:.85
+    }]
+  },
+  options:{
+    indexAxis:'y',
+    responsive:true,maintainAspectRatio:false,
+    layout:{padding:{top:46,right:24,bottom:6,left:6}},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        backgroundColor:'rgba(30,51,94,.95)',padding:12,cornerRadius:8,
+        titleFont:{family:'Inter',size:12,weight:'600'},
+        bodyFont:{family:'Inter',size:12},
+        callbacks:{
+          title:c=>c[0].label.replace(/[*★]/g,'').trim(),
+          label:c=>{
+            const v=c.parsed.x;
+            const meta=compData[c.dataIndex];
+            const tag=meta.status==='active'?'List':'Sale';
+            return ' '+tag+': '+(v>=1e6?'$'+(v/1e6).toFixed(3)+'M':'$'+(v/1e3).toFixed(0)+'K');
+          }
+        }
+      }
+    },
+    scales:{
+      x:{
+        grid:{color:'rgba(0,0,0,.04)'},
+        ticks:{font:{size:11,family:'Inter'},callback:v=>'$'+(v/1e6).toFixed(2)+'M'},
+        suggestedMin:700000,
+        suggestedMax:2050000
+      },
+      y:{
+        grid:{display:false},
+        ticks:{font:{size:12,family:'Inter',weight:'500'},color:'#1e335e'}
+      }
+    }
+  },
+  plugins:[{
+    id:'priceGuides',
+    // Soft band sits BELOW bars
+    beforeDatasetsDraw:(chart)=>{
+      const {ctx,chartArea:{top,bottom},scales:{x}}=chart;
+      const xLo=x.getPixelForValue(1249000);
+      const xHi=x.getPixelForValue(1325000);
+      ctx.save();
+      ctx.fillStyle='rgba(200,164,78,.16)';
+      ctx.fillRect(xLo,top,xHi-xLo,bottom-top);
+      ctx.restore();
+    },
+    // Guide lines and label tags sit ABOVE bars, in the top padding area
+    afterDatasetsDraw:(chart)=>{
+      const {ctx,chartArea:{top,bottom},scales:{x}}=chart;
+      const xLo=x.getPixelForValue(1249000);
+      const xHi=x.getPixelForValue(1325000);
+      const xSpot=x.getPixelForValue(1295000);
+
+      ctx.save();
+      // Band edge lines (thin, dashed, gold)
+      ctx.strokeStyle=gold;
+      ctx.setLineDash([5,4]);
+      ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(xLo,top);ctx.lineTo(xLo,bottom);ctx.stroke();
+      ctx.beginPath();ctx.moveTo(xHi,top);ctx.lineTo(xHi,bottom);ctx.stroke();
+      // Sweet spot line (solid, thin, navy)
+      ctx.setLineDash([]);
+      ctx.strokeStyle=navy;
+      ctx.lineWidth=1.5;
+      ctx.beginPath();ctx.moveTo(xSpot,top);ctx.lineTo(xSpot,bottom);ctx.stroke();
+
+      // Label pills in the top padding area — never overlap bars
+      const drawPill=(text,xCenter,yMid,fill,textColor,anchor)=>{
+        ctx.font='700 10.5px Inter';
+        const padX=9;
+        const w=ctx.measureText(text).width+padX*2;
+        const h=20;
+        let x0=xCenter-w/2;
+        if(anchor==='left')x0=xCenter;
+        if(anchor==='right')x0=xCenter-w;
+        const yy=yMid-h/2;
+        ctx.fillStyle=fill;
+        ctx.beginPath();
+        if(ctx.roundRect){ctx.roundRect(x0,yy,w,h,10)}else{ctx.rect(x0,yy,w,h)}
+        ctx.fill();
+        // tiny connector tick from pill down to chart-area top
+        ctx.strokeStyle=fill;
+        ctx.lineWidth=1.5;
+        ctx.beginPath();ctx.moveTo(xCenter,yy+h);ctx.lineTo(xCenter,top);ctx.stroke();
+        // text
+        ctx.fillStyle=textColor;
+        ctx.textBaseline='middle';
+        ctx.textAlign='center';
+        ctx.fillText(text,x0+w/2,yy+h/2+1);
+      };
+
+      const yLabel=top-22;
+      const xMid=(xLo+xHi)/2;
+      // Two label pills sharing the top strip — gold range on the band, navy sweet spot offset above
+      drawPill('Recommended  $1.249M – $1.325M',xMid,yLabel-14,gold,'#fff','center');
+      drawPill('★ Sweet Spot  $1.295M',xSpot,yLabel+10,navy,'#fff','center');
+      ctx.restore();
+    }
+  }]
+});
+</script>
+</body>
+</html>
