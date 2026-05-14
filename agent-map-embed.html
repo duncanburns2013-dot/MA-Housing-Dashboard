@@ -5,6 +5,35 @@
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 
 <style>
+/* Outer stage — fills the Squarespace block with a branded gradient
+   so the dashboard "floats" instead of sitting on white. */
+#am-stage {
+  position: relative;
+  width: 100%;
+  padding: 56px 24px;
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(201,235,252,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 82% 78%, rgba(212,175,55,0.07) 0%, transparent 55%),
+    linear-gradient(135deg, #0a1929 0%, #14264a 35%, #1e335e 50%, #14264a 65%, #0a1929 100%);
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+#am-stage::before, #am-stage::after {
+  content: ''; position: absolute; border-radius: 50%;
+  filter: blur(80px); pointer-events: none; opacity: 0.5;
+}
+#am-stage::before {
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(201,235,252,0.25), transparent 70%);
+  top: -120px; left: 8%;
+}
+#am-stage::after {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
+  bottom: -100px; right: 10%;
+}
+#am-stage > * { position: relative; z-index: 1; }
+
 #am-root {
   --navy: #1e335e;
   --navy-2: #2a4a82;
@@ -21,10 +50,13 @@
   background: var(--bg);
   border-radius: 18px;
   overflow: hidden;
-  max-width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  border: 1px solid var(--border);
-  box-shadow: 0 20px 60px rgba(30,51,94,0.12);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.45),
+    0 12px 30px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(201,235,252,0.04);
 }
 #am-root * { box-sizing: border-box; }
 
@@ -302,6 +334,7 @@
 }
 
 @media (max-width: 768px) {
+  #am-stage { padding: 28px 14px; }
   #am-root { border-radius: 12px; }
   #am-root .am-header { grid-template-columns: 72px 1fr; padding: 24px 22px; gap: 16px; }
   #am-root .am-photo { width: 72px; height: 72px; }
@@ -317,6 +350,7 @@
 }
 </style>
 
+<div id="am-stage">
 <div id="am-root">
   <div class="am-header">
     <div class="am-photo" id="am-photo"></div>
@@ -364,6 +398,7 @@
     <div>Data: MLSPIN · <span id="am-foot-stamp">Updated weekly</span> · <span id="am-foot-note"></span></div>
     <div><span id="am-foot-counts"></span></div>
   </div>
+</div>
 </div>
 
 <script>
