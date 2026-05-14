@@ -149,7 +149,26 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
     else if (idToAgent.has(r.BuyerAgentMlsId)) { agentId = idToAgent.get(r.BuyerAgentMlsId); side = 'buy'; }
     else continue;
 
-    if (r.Latitude && r.Longitude) withGeo++; else withoutGeo++;
+    // Coordinate sanity check — MLSPIN occasionally has manual-entry typos
+    // that send a Salisbury MA condo to Maine. Validate the lat/lng falls
+    // within a reasonable New-England bounding box AND roughly matches the
+    // stated city/state. If not, drop the coord so the marker won't render.
+    let lat = r.Latitude, lng = r.Longitude;
+    const NE_BOX = { latMin: 41.0, latMax: 45.5, lngMin: -73.7, lngMax: -69.0 };
+    // Tighter MA box for state==MA records
+    const MA_BOX = { latMin: 41.2, latMax: 42.95, lngMin: -73.6, lngMax: -69.9 };
+    const NH_BOX = { latMin: 42.6, latMax: 45.4, lngMin: -72.7, lngMax: -70.5 };
+    const inBox = (b) => lat >= b.latMin && lat <= b.latMax && lng >= b.lngMin && lng <= b.lngMax;
+    if (lat && lng) {
+      let ok = inBox(NE_BOX);
+      if (ok && r.StateOrProvince === 'MA' && !inBox(MA_BOX)) ok = false;
+      if (ok && r.StateOrProvince === 'NH' && !inBox(NH_BOX)) ok = false;
+      if (!ok) {
+        console.log(`  bad coord rejected: ${r.UnparsedAddress} (${lat}, ${lng}) state=${r.StateOrProvince}`);
+        lat = null; lng = null;
+      }
+    }
+    if (lat && lng) withGeo++; else withoutGeo++;
 
     out.push({
       agentId,
@@ -157,8 +176,8 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
       address: r.UnparsedAddress || [r.StreetNumber, r.StreetName, r.City, r.StateOrProvince].filter(Boolean).join(' '),
       city: r.City,
       state: r.StateOrProvince,
-      lat: r.Latitude,
-      lng: r.Longitude,
+      lat: lat,
+      lng: lng,
       price: r.ClosePrice,
       listPrice: r.ListPrice,
       origListPrice: r.OriginalListPrice,

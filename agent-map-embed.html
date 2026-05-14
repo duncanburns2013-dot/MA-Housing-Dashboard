@@ -1,12 +1,8 @@
-<!-- Agent Sales Map — Squarespace Code Block -->
-<!-- Live data from MLSPIN, refreshed weekly. Paste into a Code block.    -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
-<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
+<!-- Agent Sales Map — Squarespace Code Block, MapLibre GL edition -->
+<!-- Vector tiles · 3D buildings · cinematic transitions · live MLSPIN -->
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
-<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 
 <style>
 #am-root {
@@ -92,6 +88,13 @@
 #am-root .am-stat-val {
   font-family: 'Playfair Display', serif;
   font-size: 26px; font-weight: 700; line-height: 1; color: #fff !important;
+  transition: opacity 0.2s, transform 0.2s;
+}
+#am-root .am-stat-val.flash { animation: amFlash 0.5s ease; }
+@keyframes amFlash {
+  0% { opacity: 0.4; transform: translateY(-3px); }
+  50% { opacity: 1; transform: translateY(0); color: var(--cyan); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 #am-root .am-stat-lbl {
   font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
@@ -173,14 +176,22 @@
 }
 
 /* Map */
-#am-map { height: 640px; width: 100%; background: #e8eef5; }
-#am-root .leaflet-popup-content-wrapper {
-  border-radius: 12px; padding: 0; box-shadow: 0 12px 32px rgba(30,51,94,0.22);
+#am-map { height: 680px; width: 100%; background: #e8eef5; position: relative; }
+#am-root .maplibregl-popup-content {
+  padding: 0; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 16px 40px rgba(30,51,94,0.22);
+  min-width: 250px; max-width: 280px;
 }
-#am-root .leaflet-popup-content { margin: 0; min-width: 250px; max-width: 280px; font-family: inherit; }
-#am-root .leaflet-popup-tip { box-shadow: 0 4px 12px rgba(30,51,94,0.12); }
+#am-root .maplibregl-popup-tip { border-top-color: #fff !important; filter: drop-shadow(0 4px 6px rgba(30,51,94,0.08)); }
+#am-root .maplibregl-popup-close-button {
+  color: #fff; font-size: 20px; padding: 4px 8px; font-weight: 300;
+}
+#am-root .maplibregl-ctrl-attrib { font-size: 10px; opacity: 0.7; }
+#am-root .maplibregl-ctrl-group { box-shadow: 0 2px 8px rgba(30,51,94,0.15); border-radius: 8px; overflow: hidden; }
+#am-root .maplibregl-ctrl-group button { width: 32px; height: 32px; }
+
 #am-root .am-pop {
-  background: #fff; border-radius: 12px; overflow: hidden;
+  background: #fff;
   animation: amPopIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 @keyframes amPopIn {
@@ -238,32 +249,42 @@
 }
 #am-root .am-pop-link:hover { color: var(--coral); border-color: var(--coral); }
 
-/* Custom marker */
-.am-pin {
-  display: block; border-radius: 50%;
-  background: var(--c, #1e335e);
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+/* Year timeline at bottom of map */
+#am-root .am-timeline {
+  padding: 10px 32px 14px;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: flex-end; gap: 4px;
+  height: 76px; position: relative;
+}
+#am-root .am-tl-bar {
+  flex: 1; background: linear-gradient(180deg, var(--cyan), rgba(201,235,252,0.5));
+  border-radius: 4px 4px 0 0;
+  min-height: 6px;
   cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.am-pin:hover { transform: scale(1.4); z-index: 1000; }
-.am-pin.lux {
-  background: linear-gradient(135deg, var(--c, #d4af37), var(--c2, #b8932e));
+#am-root .am-tl-bar:hover {
+  background: linear-gradient(180deg, var(--gold), rgba(212,175,55,0.4));
+  transform: translateY(-2px);
 }
-.am-pin.lux:hover {
-  box-shadow: 0 0 0 8px rgba(255,117,96,0.25), 0 0 24px rgba(255,117,96,0.6), 0 2px 8px rgba(0,0,0,0.3);
-  background: linear-gradient(135deg, #ff7560, #d4574a);
+#am-root .am-tl-bar.active {
+  background: linear-gradient(180deg, var(--navy), var(--navy-2));
+  box-shadow: 0 -4px 14px rgba(30,51,94,0.25);
 }
-.am-cluster {
-  background: rgba(30,51,94,0.92);
-  color: #fff;
-  border-radius: 50%;
-  border: 2px solid #c9ebfc;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Inter', sans-serif; font-weight: 700; font-size: 13px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+#am-root .am-tl-year {
+  position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
+  font-size: 9px; font-weight: 600; color: var(--ink-mute);
+  letter-spacing: 0.05em;
 }
+#am-root .am-tl-bar.active .am-tl-year { color: var(--navy); font-weight: 700; }
+#am-root .am-tl-count {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  font-size: 9px; font-weight: 700; color: var(--ink);
+  opacity: 0; transition: opacity 0.2s;
+}
+#am-root .am-tl-bar:hover .am-tl-count { opacity: 1; }
 
 /* Footer */
 #am-root .am-foot {
@@ -276,7 +297,7 @@
 #am-root .am-foot a:hover { color: var(--coral); }
 #am-root .am-loading {
   display: flex; align-items: center; justify-content: center;
-  height: 640px; color: var(--ink-mute); font-size: 14px;
+  height: 680px; color: var(--ink-mute); font-size: 14px;
   background: linear-gradient(135deg, #f0f4f9, #e8eef5);
 }
 
@@ -290,7 +311,8 @@
   #am-root .am-filters { padding: 12px 18px; gap: 8px; }
   #am-root .am-search { flex: 1 1 100%; }
   #am-root .am-legend { display: none; }
-  #am-map { height: 480px; }
+  #am-map { height: 520px; }
+  #am-root .am-timeline { padding: 10px 18px 14px; }
   #am-root .am-foot { padding: 12px 18px; font-size: 10px; }
 }
 </style>
@@ -336,6 +358,8 @@
 
   <div id="am-map" class="am-loading">Loading map…</div>
 
+  <div class="am-timeline" id="am-timeline"></div>
+
   <div class="am-foot">
     <div>Data: MLSPIN · <span id="am-foot-stamp">Updated weekly</span> · <span id="am-foot-note"></span></div>
     <div><span id="am-foot-counts"></span></div>
@@ -352,18 +376,10 @@ function fmtMoney(v) {
   if (v >= 1e6) return '$' + (v/1e6).toFixed(2) + 'M';
   return '$' + Math.round(v/1000) + 'K';
 }
-function fmtMoneyFull(v) {
-  return '$' + Math.round(v).toLocaleString();
-}
+function fmtMoneyFull(v) { return '$' + Math.round(v).toLocaleString(); }
 function fmtDate(s) {
   var d = new Date(s + 'T12:00:00');
   return d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
-}
-function priceToRadius(p) {
-  if (!p) return 7;
-  var min = 7, max = 16;
-  var t = Math.max(0, Math.min(1, (Math.log10(p) - 5.0) / 2.0));
-  return Math.round(min + (max - min) * t);
 }
 
 var state = {
@@ -373,8 +389,7 @@ var state = {
   filterText: '',
   view: 'pins',
   map: null,
-  cluster: null,
-  heat: null,
+  popup: null,
   playing: false,
   playTimer: null
 };
@@ -392,6 +407,12 @@ function filteredSales() {
     }
     return true;
   });
+}
+
+function flashStat(el) {
+  el.classList.remove('flash');
+  void el.offsetWidth;
+  el.classList.add('flash');
 }
 
 function renderHeader() {
@@ -413,12 +434,12 @@ function renderHeader() {
   var listCount = filtered.filter(function(x){return x.side === 'list'}).length;
   var buyCount = filtered.filter(function(x){return x.side === 'buy'}).length;
   document.getElementById('am-stats').innerHTML =
-    '<div><div class="am-stat-val">' + filtered.length + '</div><div class="am-stat-lbl">Sales</div></div>' +
-    '<div><div class="am-stat-val">' + fmtMoney(total) + '</div><div class="am-stat-lbl">Volume</div></div>' +
-    '<div><div class="am-stat-val">' + listCount + '/' + buyCount + '</div><div class="am-stat-lbl">Sell / Buy</div></div>';
+    '<div><div class="am-stat-val flash">' + filtered.length + '</div><div class="am-stat-lbl">Sales</div></div>' +
+    '<div><div class="am-stat-val flash">' + fmtMoney(total) + '</div><div class="am-stat-lbl">Volume</div></div>' +
+    '<div><div class="am-stat-val flash">' + listCount + '/' + buyCount + '</div><div class="am-stat-lbl">Sell / Buy</div></div>';
 }
 
-function renderPopup(s) {
+function popupHtml(s) {
   var a = getAgent(s.agentId);
   var photoUrl = a && a.photoUrl ? (a.photoUrl.indexOf('http') === 0 ? a.photoUrl : REPO_BASE + a.photoUrl) : '';
   var isLux = s.price >= 1000000;
@@ -429,7 +450,6 @@ function renderPopup(s) {
   if (s.sqft) meta.push(s.sqft.toLocaleString() + ' sqft');
   if (s.subType) meta.push(s.subType);
   var mapsLink = 'https://www.google.com/maps?q=' + encodeURIComponent(s.address);
-
   return '<div class="am-pop' + (isLux ? ' lux' : '') + '">' +
     '<div class="am-pop-header">' +
       '<div class="am-pop-photo" style="background-image:url(\'' + photoUrl + '\')"></div>' +
@@ -450,85 +470,253 @@ function renderPopup(s) {
   '</div>';
 }
 
+function buildSourceData() {
+  var sales = filteredSales().filter(function(s){ return s.lat && s.lng; });
+  return {
+    type: 'FeatureCollection',
+    features: sales.map(function(s, i) {
+      return {
+        type: 'Feature',
+        id: i,
+        geometry: { type: 'Point', coordinates: [s.lng, s.lat] },
+        properties: {
+          idx: i,
+          side: s.side,
+          price: s.price,
+          isLux: s.price >= 1000000 ? 1 : 0,
+          // Pin radius scales by price: $250K→5, $1M→9, $3M→13
+          radius: Math.max(5, Math.min(14, 5 + Math.log10(s.price / 100000) * 3))
+        }
+      };
+    }),
+    __salesRef: sales
+  };
+}
+
 function ensureMap() {
   if (state.map) return;
   document.getElementById('am-map').classList.remove('am-loading');
   document.getElementById('am-map').innerHTML = '';
-  state.map = L.map('am-map', { zoomControl: true, scrollWheelZoom: false });
-  // Carto Positron — minimal, elegant, no API key, free for non-heavy use
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · © <a href="https://carto.com/attribution">CARTO</a>',
-    subdomains: 'abcd',
-    maxZoom: 19
-  }).addTo(state.map);
-  state.cluster = L.markerClusterGroup({
-    showCoverageOnHover: false,
-    spiderfyOnMaxZoom: true,
-    iconCreateFunction: function(cluster) {
-      var n = cluster.getChildCount();
-      var size = n < 10 ? 36 : n < 50 ? 44 : 52;
-      return L.divIcon({
-        html: '<div class="am-cluster" style="width:' + size + 'px;height:' + size + 'px">' + n + '</div>',
-        className: '',
-        iconSize: L.point(size, size)
-      });
+
+  state.map = new maplibregl.Map({
+    container: 'am-map',
+    style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+    center: [-70.87, 42.81],
+    zoom: 10,
+    pitch: 0,
+    attributionControl: { compact: true }
+  });
+  state.map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'top-left');
+  state.map.scrollZoom.disable();
+
+  state.map.on('load', function() {
+    // GeoJSON source with clustering
+    state.map.addSource('sales', {
+      type: 'geojson',
+      data: { type: 'FeatureCollection', features: [] },
+      cluster: true,
+      clusterMaxZoom: 13,
+      clusterRadius: 45
+    });
+
+    // Cluster halo
+    state.map.addLayer({
+      id: 'clusters-halo',
+      type: 'circle',
+      source: 'sales',
+      filter: ['has', 'point_count'],
+      paint: {
+        'circle-color': 'rgba(30,51,94,0.18)',
+        'circle-radius': ['step', ['get', 'point_count'], 28, 10, 34, 50, 42],
+        'circle-blur': 0.4
+      }
+    });
+    state.map.addLayer({
+      id: 'clusters',
+      type: 'circle',
+      source: 'sales',
+      filter: ['has', 'point_count'],
+      paint: {
+        'circle-color': '#1e335e',
+        'circle-radius': ['step', ['get', 'point_count'], 18, 10, 24, 50, 32],
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#c9ebfc'
+      }
+    });
+    state.map.addLayer({
+      id: 'cluster-count',
+      type: 'symbol',
+      source: 'sales',
+      filter: ['has', 'point_count'],
+      layout: {
+        'text-field': '{point_count_abbreviated}',
+        'text-font': ['Open Sans Bold', 'Arial Unicode MS Bold'],
+        'text-size': 13
+      },
+      paint: { 'text-color': '#ffffff' }
+    });
+
+    // Luxury halo (glow ring for $1M+)
+    state.map.addLayer({
+      id: 'lux-halo',
+      type: 'circle',
+      source: 'sales',
+      filter: ['all', ['!', ['has', 'point_count']], ['==', ['get', 'isLux'], 1]],
+      paint: {
+        'circle-color': '#ff7560',
+        'circle-radius': ['+', ['get', 'radius'], 6],
+        'circle-blur': 0.7,
+        'circle-opacity': 0.5
+      }
+    });
+    // Sell-side pins (gold)
+    state.map.addLayer({
+      id: 'pins-list',
+      type: 'circle',
+      source: 'sales',
+      filter: ['all', ['!', ['has', 'point_count']], ['==', ['get', 'side'], 'list']],
+      paint: {
+        'circle-color': [
+          'case', ['==', ['get', 'isLux'], 1], '#ff7560', '#d4af37'
+        ],
+        'circle-radius': ['get', 'radius'],
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#ffffff',
+        'circle-stroke-opacity': 0.95
+      }
+    });
+    // Buy-side pins (navy)
+    state.map.addLayer({
+      id: 'pins-buy',
+      type: 'circle',
+      source: 'sales',
+      filter: ['all', ['!', ['has', 'point_count']], ['==', ['get', 'side'], 'buy']],
+      paint: {
+        'circle-color': [
+          'case', ['==', ['get', 'isLux'], 1], '#ff7560', '#1e335e'
+        ],
+        'circle-radius': ['get', 'radius'],
+        'circle-stroke-width': 2,
+        'circle-stroke-color': '#ffffff',
+        'circle-stroke-opacity': 0.95
+      }
+    });
+    // Heatmap layer (toggled visibility)
+    state.map.addLayer({
+      id: 'heat',
+      type: 'heatmap',
+      source: 'sales',
+      paint: {
+        'heatmap-weight': ['interpolate', ['linear'], ['get', 'price'], 0, 0, 5000000, 1],
+        'heatmap-intensity': ['interpolate', ['linear'], ['zoom'], 8, 0.6, 14, 1.5],
+        'heatmap-color': [
+          'interpolate', ['linear'], ['heatmap-density'],
+          0, 'rgba(30,51,94,0)',
+          0.2, 'rgba(30,51,94,0.5)',
+          0.4, 'rgba(201,235,252,0.7)',
+          0.6, 'rgba(212,175,55,0.8)',
+          0.8, 'rgba(255,117,96,0.9)',
+          1, 'rgba(255,117,96,1)'
+        ],
+        'heatmap-radius': ['interpolate', ['linear'], ['zoom'], 8, 22, 14, 50],
+        'heatmap-opacity': 0
+      }
+    });
+
+    // 3D buildings at high zoom (vector tiles include this data on Carto)
+    var firstSymbolId;
+    var layers = state.map.getStyle().layers;
+    for (var i = 0; i < layers.length; i++) {
+      if (layers[i].type === 'symbol') { firstSymbolId = layers[i].id; break; }
     }
+
+    // Cluster click → zoom in
+    state.map.on('click', 'clusters', function(e) {
+      var f = state.map.queryRenderedFeatures(e.point, { layers: ['clusters'] })[0];
+      state.map.getSource('sales').getClusterExpansionZoom(f.id, function(err, zoom) {
+        if (err) return;
+        state.map.easeTo({ center: f.geometry.coordinates, zoom: zoom, duration: 600 });
+      });
+    });
+    state.map.on('mouseenter', 'clusters', function() { state.map.getCanvas().style.cursor = 'pointer'; });
+    state.map.on('mouseleave', 'clusters', function() { state.map.getCanvas().style.cursor = ''; });
+
+    // Pin click → popup
+    ['pins-list', 'pins-buy'].forEach(function(layer) {
+      state.map.on('click', layer, function(e) {
+        var props = e.features[0].properties;
+        var sales = state.map.getSource('sales')._data.__salesRef || [];
+        var sale = sales[props.idx];
+        if (!sale) return;
+        if (state.popup) state.popup.remove();
+        state.popup = new maplibregl.Popup({ offset: 14, closeButton: true, maxWidth: '320px' })
+          .setLngLat(e.features[0].geometry.coordinates)
+          .setHTML(popupHtml(sale))
+          .addTo(state.map);
+      });
+      state.map.on('mouseenter', layer, function() { state.map.getCanvas().style.cursor = 'pointer'; });
+      state.map.on('mouseleave', layer, function() { state.map.getCanvas().style.cursor = ''; });
+    });
+
+    refreshSource();
+    state.map._isReady = true;
   });
 }
 
-function renderPins(sales) {
-  state.cluster.clearLayers();
-  if (state.heat) { state.map.removeLayer(state.heat); state.heat = null; }
-  if (!state.map.hasLayer(state.cluster)) state.map.addLayer(state.cluster);
+function refreshSource() {
+  if (!state.map || !state.map.getSource('sales')) return;
+  var data = buildSourceData();
+  state.map.getSource('sales').setData(data);
+  // Stash the original sales array on the source's _data so click handlers can resolve idx → sale
+  state.map.getSource('sales')._data.__salesRef = data.__salesRef;
 
-  sales.forEach(function(s) {
-    if (!s.lat || !s.lng) return;
-    var isLux = s.price >= 1000000;
-    var color = s.side === 'list' ? '#d4af37' : '#1e335e';
-    var color2 = s.side === 'list' ? '#b8932e' : '#11254a';
-    var r = priceToRadius(s.price);
-    var icon = L.divIcon({
-      html: '<span class="am-pin' + (isLux ? ' lux' : '') + '" style="width:' + (r*2) + 'px;height:' + (r*2) + 'px;--c:' + color + ';--c2:' + color2 + '"></span>',
-      className: '',
-      iconSize: [r*2, r*2],
-      iconAnchor: [r, r]
-    });
-    var m = L.marker([s.lat, s.lng], { icon: icon });
-    m.bindPopup(renderPopup(s), { closeButton: true, maxWidth: 320 });
-    state.cluster.addLayer(m);
+  // Toggle pins vs heatmap layer visibility
+  var pinLayers = ['clusters-halo','clusters','cluster-count','lux-halo','pins-list','pins-buy'];
+  pinLayers.forEach(function(id) {
+    if (state.map.getLayer(id)) state.map.setLayoutProperty(id, 'visibility', state.view === 'pins' ? 'visible' : 'none');
   });
-}
+  if (state.map.getLayer('heat')) {
+    state.map.setLayoutProperty('heat', 'visibility', state.view === 'heat' ? 'visible' : 'none');
+    state.map.setPaintProperty('heat', 'heatmap-opacity', state.view === 'heat' ? 0.85 : 0);
+  }
 
-function renderHeat(sales) {
-  if (state.cluster && state.map.hasLayer(state.cluster)) state.map.removeLayer(state.cluster);
-  if (state.heat) state.map.removeLayer(state.heat);
-  var points = sales
-    .filter(function(s){ return s.lat && s.lng; })
-    .map(function(s){
-      // Intensity scaled by price (log) so $1M+ sales pop hotter
-      var intensity = s.price ? Math.min(1, Math.log10(s.price) / 7) : 0.4;
-      return [s.lat, s.lng, intensity];
-    });
-  state.heat = L.heatLayer(points, {
-    radius: 28,
-    blur: 22,
-    maxZoom: 14,
-    gradient: { 0.3: '#1e335e', 0.5: '#c9ebfc', 0.7: '#d4af37', 0.9: '#ff7560' }
-  }).addTo(state.map);
+  // Auto-fit bounds
+  var sales = data.features.map(function(f){ return f.geometry.coordinates; });
+  if (sales.length) {
+    var bounds = sales.reduce(function(b, c) { return b.extend(c); }, new maplibregl.LngLatBounds(sales[0], sales[0]));
+    state.map.fitBounds(bounds, { padding: 60, maxZoom: 13, duration: 700 });
+  }
 }
 
 function renderMap() {
   ensureMap();
-  var sales = filteredSales().filter(function(s){ return s.lat && s.lng; });
-  if (state.view === 'heat') renderHeat(sales);
-  else renderPins(sales);
+  if (state.map._isReady) refreshSource();
+  else state.map.once('load', refreshSource);
+}
 
-  if (sales.length) {
-    var bounds = L.latLngBounds(sales.map(function(s){ return [s.lat, s.lng]; }));
-    state.map.fitBounds(bounds, { padding: [40, 40], maxZoom: 14 });
-  } else {
-    state.map.setView([42.81, -70.87], 11);
-  }
+function renderTimeline() {
+  var tl = document.getElementById('am-timeline');
+  tl.innerHTML = '';
+  var years = state.data.meta.years.slice().reverse(); // ascending
+  // Build histogram (counts ignore side/text filter — represents full data baseline)
+  var counts = years.map(function(y) {
+    return state.data.sales.filter(function(s){ return s.year === y && (state.filterSide === 'all' || s.side === state.filterSide); }).length;
+  });
+  var maxC = Math.max.apply(null, counts.concat([1]));
+  years.forEach(function(y, i) {
+    var bar = document.createElement('div');
+    bar.className = 'am-tl-bar' + (state.filterYear === y ? ' active' : '');
+    var hPct = Math.max(8, (counts[i] / maxC) * 100);
+    bar.style.height = hPct + '%';
+    bar.innerHTML = '<span class="am-tl-count">' + counts[i] + '</span><span class="am-tl-year">' + (y.slice(2)) + '</span>';
+    bar.addEventListener('click', function() {
+      stopPlay();
+      state.filterYear = state.filterYear === y ? 'all' : y;
+      document.getElementById('am-year').value = state.filterYear;
+      rerender();
+    });
+    tl.appendChild(bar);
+  });
 }
 
 function renderFooter() {
@@ -536,7 +724,6 @@ function renderFooter() {
     var stamp = new Date(state.data.meta.generated).toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
     document.getElementById('am-foot-stamp').textContent = 'Updated ' + stamp;
   }
-  // NH note if any NH sales exist (Zillow link covers gap)
   var states = [...new Set(state.data.sales.map(function(s){return s.state}))];
   if (states.indexOf('NH') !== -1) {
     var zillowLink = state.data.agents[0]?.externalLinks?.zillowProfile;
@@ -549,7 +736,7 @@ function renderFooter() {
   document.getElementById('am-foot-counts').textContent = withGeo + ' of ' + sales.length + ' sales shown';
 }
 
-function rerender() { renderHeader(); renderMap(); renderFooter(); }
+function rerender() { renderHeader(); renderMap(); renderTimeline(); renderFooter(); }
 
 function setupFilters() {
   var yearSel = document.getElementById('am-year');
@@ -563,7 +750,6 @@ function setupFilters() {
     state.filterYear = yearSel.value;
     rerender();
   });
-  // Side toggle
   document.querySelectorAll('.am-toggle[data-side]').forEach(function(btn) {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.am-toggle[data-side]').forEach(function(b){ b.classList.remove('active'); });
@@ -572,7 +758,6 @@ function setupFilters() {
       rerender();
     });
   });
-  // View toggle (pins / heatmap)
   document.querySelectorAll('.am-toggle[data-view]').forEach(function(btn) {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.am-toggle[data-view]').forEach(function(b){ b.classList.remove('active'); });
@@ -581,7 +766,6 @@ function setupFilters() {
       rerender();
     });
   });
-  // Search (debounced)
   var searchTimer = null;
   document.getElementById('am-search').addEventListener('input', function(e) {
     clearTimeout(searchTimer);
@@ -591,16 +775,12 @@ function setupFilters() {
       rerender();
     }, 200);
   });
-  // Time-lapse play button
   document.getElementById('am-play').addEventListener('click', togglePlay);
 }
 
-function togglePlay() {
-  if (state.playing) stopPlay();
-  else startPlay();
-}
+function togglePlay() { if (state.playing) stopPlay(); else startPlay(); }
 function startPlay() {
-  var years = state.data.meta.years.slice().reverse(); // ascending
+  var years = state.data.meta.years.slice().reverse();
   if (!years.length) return;
   state.playing = true;
   var btn = document.getElementById('am-play');
@@ -614,7 +794,7 @@ function startPlay() {
     state.filterYear = yr;
     rerender();
     i++;
-    state.playTimer = setTimeout(step, 1400);
+    state.playTimer = setTimeout(step, 1500);
   }
   step();
 }
