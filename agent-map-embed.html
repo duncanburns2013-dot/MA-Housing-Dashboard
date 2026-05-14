@@ -545,13 +545,14 @@ function ensureMap() {
   state.map.scrollZoom.disable();
 
   state.map.on('load', function() {
-    // GeoJSON source with clustering
+    // GeoJSON source with clustering. Smaller radius keeps clusters from
+    // spanning the Merrimack River (centroid would land in the water).
     state.map.addSource('sales', {
       type: 'geojson',
       data: { type: 'FeatureCollection', features: [] },
       cluster: true,
-      clusterMaxZoom: 13,
-      clusterRadius: 45
+      clusterMaxZoom: 12,
+      clusterRadius: 28
     });
 
     // Cluster halo
@@ -665,13 +666,24 @@ function ensureMap() {
       if (layers[i].type === 'symbol') { firstSymbolId = layers[i].id; break; }
     }
 
-    // Cluster click → zoom in
+    // Cluster click → zoom in. MapLibre 4.x uses Promises (was callback in 3.x).
     state.map.on('click', 'clusters', function(e) {
       var f = state.map.queryRenderedFeatures(e.point, { layers: ['clusters'] })[0];
-      state.map.getSource('sales').getClusterExpansionZoom(f.id, function(err, zoom) {
-        if (err) return;
-        state.map.easeTo({ center: f.geometry.coordinates, zoom: zoom, duration: 600 });
-      });
+      if (!f) return;
+      var src = state.map.getSource('sales');
+      var result = src.getClusterExpansionZoom(f.id);
+      // Support both Promise (4.x) and callback (3.x) APIs
+      if (result && typeof result.then === 'function') {
+        result.then(function(zoom) {
+          state.map.easeTo({ center: f.geometry.coordinates, zoom: zoom + 0.5, duration: 700 });
+        });
+      } else {
+        // Fall back to callback signature
+        src.getClusterExpansionZoom(f.id, function(err, zoom) {
+          if (err) return;
+          state.map.easeTo({ center: f.geometry.coordinates, zoom: zoom + 0.5, duration: 700 });
+        });
+      }
     });
     state.map.on('mouseenter', 'clusters', function() { state.map.getCanvas().style.cursor = 'pointer'; });
     state.map.on('mouseleave', 'clusters', function() { state.map.getCanvas().style.cursor = ''; });
