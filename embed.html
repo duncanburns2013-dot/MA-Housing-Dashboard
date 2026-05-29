@@ -6,7 +6,8 @@
 <style>
 #hmd{font-family:'Inter',sans-serif;color:#1f2937;line-height:1.6;max-width:1200px;margin:0 auto;padding:0}
 #hmd *{box-sizing:border-box;margin:0;padding:0}
-#hmd .hero{background:linear-gradient(135deg,#1e355e 0%,#152744 100%);color:#fff!important;padding:50px 24px 70px;text-align:center;border-radius:14px 14px 0 0}
+#hmd .hero{background:linear-gradient(135deg,#1e355e 0%,#152744 100%);background-position:center;background-size:cover;background-repeat:no-repeat;color:#fff!important;padding:50px 24px 70px;text-align:center;border-radius:14px 14px 0 0;position:relative}
+#hmd .hero.has-photo{background:linear-gradient(135deg,rgba(30,53,94,0.78) 0%,rgba(21,39,68,0.85) 100%),var(--hero-img) center/cover no-repeat}
 #hmd .hero h2,#hmd .hero .hero-sub,#hmd .hero .stat-val,#hmd .hero .stat-label,#hmd .hero .stat-note{color:#fff!important}
 #hmd .hero h2{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;margin-bottom:8px;line-height:1.2}
 #hmd .hero-sub{font-size:0.95rem;opacity:0.85;max-width:520px;margin:0 auto 30px}
@@ -289,9 +290,28 @@
 <script>
 (function(){
 // =====================================================================
-// CONFIG — point to the GitHub Pages URL serving dashboard.json
+// CONFIG
 // =====================================================================
 var DATA_URL = 'https://duncanburns2013-dot.github.io/MA-Housing-Dashboard/data/processed/dashboard.json';
+
+// ---------- HERO PHOTO ----------
+// To add a background photo behind the hero text, paste the image URL below.
+// Recommended: 1600x900 or larger, focal point centered, sized for web.
+// Easiest source: upload to Squarespace (Settings → Asset Library → copy URL),
+// or paste any public image URL (Unsplash, your own CDN, etc.).
+// Leave as empty string '' to keep the current solid navy gradient.
+var HERO_IMAGE_URL = '';
+// Example:
+// var HERO_IMAGE_URL = 'https://images.squarespace-cdn.com/content/v1/.../newburyport-harbor.jpg';
+
+// Apply hero photo if set
+if (HERO_IMAGE_URL) {
+  var heroEl = document.querySelector('#hmd .hero');
+  if (heroEl) {
+    heroEl.style.setProperty('--hero-img', 'url("' + HERO_IMAGE_URL + '")');
+    heroEl.classList.add('has-photo');
+  }
+}
 
 // =====================================================================
 // HISTORICAL BASELINE — 2014 through 2024. These years don't change.
