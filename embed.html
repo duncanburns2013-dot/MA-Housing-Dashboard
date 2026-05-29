@@ -120,6 +120,7 @@
 <button class="nav-btn" data-tab="greater-newburyport">Greater Newburyport</button>
 <button class="nav-btn" data-tab="newburyport">Newburyport</button>
 <button class="nav-btn" data-tab="affordability">Affordability</button>
+<button class="nav-btn" data-tab="neighborhoods">Neighborhoods</button>
 <button class="nav-btn" data-tab="market-share">Market Share</button>
 </div>
 
@@ -238,6 +239,22 @@
 </div>
 </section>
 
+<!-- NEIGHBORHOODS -->
+<section class="sec" id="hmd-neighborhoods">
+<div class="sec-title">Sub-Neighborhood Breakdown</div>
+<p class="sec-desc">MLSPIN-tagged areas inside our territory towns &middot; Single-Family, prior year vs. trailing 12 mo. <span id="nh-asof"></span></p>
+<div class="ptabs" data-region="nh">
+<button class="ptab active" data-nh="Newburyport">Newburyport</button>
+<button class="ptab" data-nh="Newbury">Newbury</button>
+<button class="ptab" data-nh="Salisbury">Salisbury</button>
+<button class="ptab" data-nh="Ipswich">Ipswich</button>
+</div>
+<div id="nh-cards"></div>
+<div class="cb" id="nh-chart-box"><div class="ch"><div class="ct">Price comparison &mdash; town center vs. named neighborhoods</div></div><div class="ca"><canvas id="hc-nh-price"></canvas></div></div>
+<div class="cb" id="nh-yoy-box"><div class="ch"><div class="ct">Year-over-Year change by area</div></div><div class="ca"><canvas id="hc-nh-yoy"></canvas></div></div>
+<p style="margin-top:8px;font-size:0.72rem;color:#9ca3af;">Areas with fewer than 5 sales in both windows are suppressed.</p>
+</section>
+
 <!-- MARKET SHARE -->
 <section class="sec" id="hmd-market-share">
 <div class="sec-title">Brokerage Market Share</div>
@@ -260,6 +277,7 @@
 <div class="cb"><div class="ch"><div class="ct">Top 12 brokerages by sales volume ($)</div></div><div class="ca" style="height:340px;"><canvas id="hc-ms-volume"></canvas></div></div>
 <div class="cb"><div class="ch"><div class="ct">Top 12 brokerages by listing count (sides)</div></div><div class="ca" style="height:340px;"><canvas id="hc-ms-sides"></canvas></div></div>
 <div class="cb"><div class="ch"><div class="ct">Full ranking &mdash; every office</div></div><div class="tw"><table><thead><tr><th>Office</th><th>City</th><th>Sides</th><th>Sides %</th><th>Volume</th><th>Vol %</th></tr></thead><tbody id="ms-table"></tbody></table></div></div>
+<p style="margin-top:8px;font-size:0.72rem;color:#6b7280;line-height:1.5;"><strong>Note:</strong> Figures reflect MLS-PIN-recorded transactions only. RE/MAX Bentley's regularly completes a meaningful share of business off-market &mdash; proprietary buyer-and-seller matches outside the public MLS &mdash; which is not represented here. The firm's true market share is higher than shown.</p>
 </section>
 
 <footer class="foot">
@@ -529,13 +547,23 @@ function renderNbptYoY(pt){
 }
 
 function renderGN(){
-  // Town breakdown — uses gnDefaults (live-overlaid)
+  // Town breakdown — uses gnDefaults (live-overlaid) + adds a YoY chip
+  // computed from gnPrior (prior-year price). Color: green if up, red if down.
   var townsHtml = '';
   ['Newburyport','West Newbury','Newbury','Rowley','Salisbury','Amesbury'].forEach(function(t){
     var d = gnDefaults[t];
+    var prev = gnPrior[t];
+    var yoyHtml = '';
+    if (prev && d.price) {
+      var pct = Math.round(((d.price - prev) / prev) * 1000) / 10;
+      var sign = pct >= 0 ? '+' : '';
+      var clr = pct >= 0 ? '#16a34a' : '#dc2626';
+      var bg  = pct >= 0 ? '#ecfdf5' : '#fef2f2';
+      yoyHtml = '<span class="tb" style="background:'+bg+';color:'+clr+';margin-left:4px;">' + sign + pct + '% YoY</span>';
+    }
     townsHtml += '<div class="town"><div class="tn">'+t+'</div>'+
       '<div class="tp">$'+(d.price/1000).toFixed(0)+'K</div>'+
-      '<span class="tb up">+'+d.change+'% vs 2014</span>'+
+      '<span class="tb up">+'+d.change+'% vs 2014</span>'+ yoyHtml +
       '<div class="tm">$'+d.sqft+'/sqft · '+d.dom+' DOM</div></div>';
   });
   document.getElementById('gn-towns').innerHTML = townsHtml;
@@ -634,6 +662,129 @@ function renderAffordability(){
     {label:'MA Median',data:labels.map(function(){return medianIncome}),backgroundColor:B,borderRadius:4}
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{y:{ticks:{callback:kF}},x:{grid:{display:false}}}}});
 }
+
+// =====================================================================
+// NEIGHBORHOODS — reads dashboard.json.neighborhoods[town]
+// =====================================================================
+var curNH = 'Newburyport';
+function renderNeighborhoods() {
+  var nh = (window.__liveJson && window.__liveJson.neighborhoods) || null;
+  if (!nh) {
+    document.getElementById('nh-cards').innerHTML =
+      '<p style="color:#9ca3af;text-align:center;padding:18px;">Neighborhood data not yet available. The dashboard pipeline refreshes nightly.</p>';
+    return;
+  }
+  var town = nh[curNH];
+  if (!town) {
+    document.getElementById('nh-cards').innerHTML =
+      '<p style="color:#9ca3af;text-align:center;padding:18px;">No sub-neighborhood data for ' + curNH + '.</p>';
+    return;
+  }
+  var msMeta = window.__liveJson.marketShare;
+  if (msMeta && msMeta.generated) {
+    var d = new Date(msMeta.generated);
+    document.getElementById('nh-asof').textContent =
+      '· as of ' + d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  }
+  // Identify the year keys (priorYear / currentYear). Each area subobject has
+  // exactly two numeric-string year keys plus a _label string.
+  function yearKeys(area) {
+    return Object.keys(area).filter(function(k){ return /^\d{4}$/.test(k); }).sort();
+  }
+  // Pull town-center + every neighborhood (skip _townCenter prefix; render last)
+  var areaKeys = Object.keys(town).filter(function(k){ return k !== '_townCenter'; }).sort();
+
+  // ---- Cards ----
+  var cardsHtml = '<div class="cards">';
+  function makeCard(label, areaData, special) {
+    if (!areaData) return '';
+    var yk = yearKeys(areaData);
+    if (yk.length < 2) return '';
+    var py = yk[0], cy = yk[1];
+    var prior = areaData[py] || {};
+    var cur   = areaData[cy] || {};
+    var pricePct = (prior.price && cur.price) ? Math.round(((cur.price - prior.price) / prior.price) * 1000) / 10 : null;
+    var sign = pricePct != null && pricePct >= 0 ? '+' : '';
+    var color = pricePct == null ? '#9ca3af' : (pricePct >= 0 ? '#16a34a' : '#dc2626');
+    var cls = special ? 'card bl' : 'card';
+    return '<div class="' + cls + '">' +
+      '<div class="cl">' + label + '</div>' +
+      '<div class="cv b">' + (cur.price ? '$' + Math.round(cur.price/1000) + 'K' : '—') + '</div>' +
+      '<div class="cg">' +
+        '<div class="cm"><div class="cml">' + py + '</div><div class="cmv">' + (prior.price ? '$' + Math.round(prior.price/1000) + 'K' : '—') + '</div></div>' +
+        '<div class="cm"><div class="cml">YoY</div><div class="cmv" style="color:' + color + ';">' + (pricePct != null ? sign + pricePct + '%' : '—') + '</div></div>' +
+        '<div class="cm"><div class="cml">Sales (' + cy + ')</div><div class="cmv">' + (cur.units || 0) + '</div></div>' +
+        '<div class="cm"><div class="cml">DOM</div><div class="cmv">' + (cur.dom || '—') + '</div></div>' +
+      '</div>' +
+    '</div>';
+  }
+  // Named neighborhoods first
+  areaKeys.forEach(function(area){ cardsHtml += makeCard(area, town[area], false); });
+  // Town center last (anchored to bottom-right visually)
+  if (town._townCenter) cardsHtml += makeCard(curNH + ' (town center)', town._townCenter, true);
+  cardsHtml += '</div>';
+  document.getElementById('nh-cards').innerHTML = cardsHtml;
+
+  // ---- Charts ----
+  var allKeys = areaKeys.concat(['_townCenter']);
+  var labels = areaKeys.concat([curNH + ' (town center)']);
+  function pickYear(obj, idx){
+    var yk = yearKeys(obj);
+    if (yk.length < 2) return null;
+    return (obj[yk[idx]] || {}).price || null;
+  }
+  var priorPrices = allKeys.map(function(k){ return pickYear(town[k], 0); });
+  var curPrices   = allKeys.map(function(k){ return pickYear(town[k], 1); });
+  var pctChanges  = allKeys.map(function(k){
+    var p = pickYear(town[k], 0), c = pickYear(town[k], 1);
+    if (!p || !c) return null;
+    return Math.round(((c - p) / p) * 1000) / 10;
+  });
+
+  makeOrUpdate('hc-nh-price', {
+    type: 'bar',
+    data: { labels: labels, datasets: [
+      { label: 'Prior year', data: priorPrices, backgroundColor: 'rgba(30,53,94,0.25)', borderColor: B, borderWidth: 1, borderRadius: 4 },
+      { label: 'Current (trailing 12mo)', data: curPrices, backgroundColor: [YL, G, R, P, O, B].slice(0, labels.length), borderRadius: 4 }
+    ]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'top', labels: { boxWidth: 8, padding: 10, font: { size: 10 }}},
+        tooltip: { callbacks: { label: function(c){ return c.dataset.label + ': $' + Math.round(c.parsed.y/1000) + 'K'; }}}
+      },
+      scales: { y: { ticks: { callback: kF }}, x: { grid: { display: false }}}
+    }
+  });
+
+  makeOrUpdate('hc-nh-yoy', {
+    type: 'bar',
+    data: { labels: labels, datasets: [{
+      data: pctChanges,
+      backgroundColor: pctChanges.map(function(p){ return p == null ? '#9ca3af' : (p >= 0 ? '#16a34a' : '#dc2626'); }),
+      borderRadius: 4
+    }]},
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: function(c){ return (c.parsed.y >= 0 ? '+' : '') + c.parsed.y + '% YoY'; }}}
+      },
+      scales: {
+        y: { ticks: { callback: function(v){ return v + '%'; }}, title: { display: true, text: 'YoY price change' }},
+        x: { grid: { display: false }}
+      }
+    }
+  });
+}
+document.querySelectorAll('#hmd-neighborhoods .ptab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('#hmd-neighborhoods .ptab').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    curNH = btn.getAttribute('data-nh');
+    renderNeighborhoods();
+  });
+});
 
 // =====================================================================
 // MARKET SHARE — reads dashboard.json.marketShare.officeLevel[region]
@@ -744,6 +895,7 @@ function renderAll(){
   renderNbptYoY(curPT.nbpt);
   renderGN();
   renderAffordability();
+  renderNeighborhoods();
   renderMarketShare();
 }
 

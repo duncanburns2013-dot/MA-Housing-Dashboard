@@ -25,23 +25,29 @@ jobs:
       - name: Refresh MLSPIN data
         env:
           BRIDGE_TOKEN: ${{ secrets.BRIDGE_TOKEN }}
+          FUB_API_KEY: ${{ secrets.FUB_API_KEY }}
         run: |
           if [ -z "$BRIDGE_TOKEN" ]; then
             echo "::warning::BRIDGE_TOKEN secret not set — skipping refresh."
             echo "Add it at Settings → Secrets and variables → Actions."
             exit 0
           fi
-          printf 'BRIDGE_TOKEN=%s\nBRIDGE_DATASET=mlspin\n' "$BRIDGE_TOKEN" > .env
+          printf 'BRIDGE_TOKEN=%s\nBRIDGE_DATASET=mlspin\nFUB_API_KEY=%s\n' "$BRIDGE_TOKEN" "$FUB_API_KEY" > .env
           node pipelines/fetch_dashboard.js
           node pipelines/fetch_market_leader.js
           node pipelines/fetch_agent_map.js
+          if [ -n "$FUB_API_KEY" ]; then
+            node pipelines/fetch_fub.js || echo "::warning::FUB pull failed; continuing."
+          else
+            echo "::warning::FUB_API_KEY secret not set — skipping FUB pull."
+          fi
           rm .env
 
       - name: Commit + push if data changed
         run: |
           git config user.name  'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/processed/dashboard.json data/processed/market-leader.json data/processed/agent-map.json
+          git add data/processed/dashboard.json data/processed/market-leader.json data/processed/agent-map.json data/processed/fub-stats.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No data changes."
           else

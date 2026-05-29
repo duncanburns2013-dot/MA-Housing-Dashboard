@@ -200,7 +200,7 @@ function aggregateRecords(recs) {
     'City', 'PropertyType', 'PropertySubType',
     'ClosePrice', 'CloseDate',
     'MLSPIN_MARKET_TIME', 'MLSPIN_SOLD_PRICE_PER_SQFT',
-    'LivingArea'
+    'LivingArea', 'MLSAreaMajor'
   ].join(',');
   const activeSelect = [
     'City', 'PropertyType', 'PropertySubType',
@@ -332,6 +332,50 @@ function aggregateRecords(recs) {
     BEYOND_TOWNS.map(s => s.toUpperCase()).includes((r.City || '').toUpperCase()));
   beyondSummary.activeListings = beyondActive.length;
 
+  // ---- Sub-neighborhoods (MLSAreaMajor field) ----
+  // MLS PIN tags Plum Island, Joppa, Salisbury Beach, Byfield, Great Neck,
+  // Linebrook, etc. in MLSAreaMajor. Most town records leave it blank
+  // ("town-center / mainland"). We compute prior-year vs trailing-12mo for
+  // every neighborhood with >=5 sales in either window. Tracks SF only.
+  const NEIGHBORHOOD_TOWNS = ['Newburyport', 'Newbury', 'Salisbury', 'Ipswich'];
+  const neighborhoods = {};
+  for (const town of NEIGHBORHOOD_TOWNS) {
+    const tu = town.toUpperCase();
+    const townRecsPrior = enriched.filter(r =>
+      r.__pt === 'sf' && r.__yr === priorYear && (r.City || '').toUpperCase() === tu);
+    const townRecsT12 = enriched.filter(r =>
+      r.__pt === 'sf' && r.CloseDate >= cutoffT12 && (r.City || '').toUpperCase() === tu);
+
+    // Collect all distinct MLSAreaMajor values seen (excluding blank/null)
+    const areaSet = new Set();
+    for (const r of townRecsPrior.concat(townRecsT12)) {
+      const a = (r.MLSAreaMajor || '').trim();
+      if (a) areaSet.add(a);
+    }
+
+    const townOut = { _townCenter: { _label: `${town} (town center)` } };
+    // Town center = records with no MLSAreaMajor tag
+    const centerPrior = townRecsPrior.filter(r => !((r.MLSAreaMajor || '').trim()));
+    const centerT12 = townRecsT12.filter(r => !((r.MLSAreaMajor || '').trim()));
+    townOut._townCenter[priorYear] = aggregateRecords(centerPrior);
+    townOut._townCenter[currentYear] = aggregateRecords(centerT12);
+
+    // Per-neighborhood
+    for (const area of Array.from(areaSet).sort()) {
+      const au = area.toUpperCase();
+      const aPrior = townRecsPrior.filter(r => (r.MLSAreaMajor || '').trim().toUpperCase() === au);
+      const aT12 = townRecsT12.filter(r => (r.MLSAreaMajor || '').trim().toUpperCase() === au);
+      // Skip very thin neighborhoods (less than 5 sales in either window)
+      if (aPrior.length < 5 && aT12.length < 5) continue;
+      townOut[area] = {
+        _label: `${town} — ${area}`,
+        [priorYear]: aggregateRecords(aPrior),
+        [currentYear]: aggregateRecords(aT12)
+      };
+    }
+    neighborhoods[town] = townOut;
+  }
+
   // ---- affordability (uses MA median household income — ACS) ----
   // Income required at 28% DTI for {avg price × 80% LTV × 6.5% × 30yr} +
   // taxes/insurance approx. We embed the formula in the page; here we just
@@ -395,6 +439,7 @@ function aggregateRecords(recs) {
       towns: beyondTowns,
       summary: beyondSummary
     },
+    neighborhoods,
     affordability,
     marketShare
   };
@@ -425,6 +470,17 @@ function aggregateRecords(recs) {
     const v = beyondTowns[t][currentYear]?.price;
     const n = beyondTowns[t][currentYear]?.units || 0;
     console.log(`  ${t.padEnd(16)} ${v ? '$' + Math.round(v/1000) + 'K' : '—'} (n=${n})`);
+  }
+  console.log('\n  SUB-NEIGHBORHOODS — SF current-year');
+  for (const town of NEIGHBORHOOD_TOWNS) {
+    if (!neighborhoods[town]) continue;
+    for (const key of Object.keys(neighborhoods[town])) {
+      const entry = neighborhoods[town][key];
+      const v = entry[currentYear]?.price;
+      const n = entry[currentYear]?.units || 0;
+      if (n === 0) continue;
+      console.log(`  ${entry._label.padEnd(40)} ${v ? '$' + Math.round(v/1000) + 'K' : '—'} (n=${n})`);
+    }
   }
   if (marketShare && marketShare.officeLevel) {
     const gn = marketShare.officeLevel.greaterNewburyport;
