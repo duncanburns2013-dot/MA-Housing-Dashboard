@@ -120,6 +120,7 @@
 <button class="nav-btn" data-tab="greater-newburyport">Greater Newburyport</button>
 <button class="nav-btn" data-tab="newburyport">Newburyport</button>
 <button class="nav-btn" data-tab="affordability">Affordability</button>
+<button class="nav-btn" data-tab="market-share">Market Share</button>
 </div>
 
 <!-- OVERVIEW -->
@@ -225,6 +226,30 @@
 <div class="card bl"><div class="cl">Newburyport Premium</div><div class="cv b" id="aff-premium">+32%</div><p style="color:#4b5563;font-size:0.78rem;margin-top:5px;">Above state average due to coastal location.</p></div>
 <div class="card gl"><div class="cl">Inventory</div><div class="cv g" id="aff-supply">1.61 mo</div><p style="color:#4b5563;font-size:0.78rem;margin-top:5px;">Balanced market = 4&ndash;6 months.</p></div>
 </div>
+</section>
+
+<!-- MARKET SHARE -->
+<section class="sec" id="hmd-market-share">
+<div class="sec-title">Brokerage Market Share</div>
+<p class="sec-desc">Closed listing-side share, trailing 12 months &middot; MLS PIN <span id="ms-asof"></span></p>
+<div class="ptabs" data-region="ms">
+<button class="ptab active" data-ms="newburyport">Newburyport</button>
+<button class="ptab" data-ms="greaterNewburyport">Greater Newburyport (6)</button>
+<button class="ptab" data-ms="beyond">"&amp; Beyond" (4)</button>
+<button class="ptab" data-ms="territory">Whole Territory (10)</button>
+</div>
+<div class="sbox">
+<div class="stitle">Bentley's position in this region</div>
+<div class="sgrid">
+<div class="si"><div class="sl">Volume Rank</div><div class="sv b" id="ms-bent-volrank">&mdash;</div></div>
+<div class="si"><div class="sl">Volume Share</div><div class="sv g" id="ms-bent-volpct">&mdash;</div></div>
+<div class="si"><div class="sl">Sides Rank</div><div class="sv y" id="ms-bent-sidesrank">&mdash;</div></div>
+<div class="si"><div class="sl">Sides Share</div><div class="sv r" id="ms-bent-sidespct">&mdash;</div></div>
+</div>
+</div>
+<div class="cb"><div class="ch"><div class="ct">Top 12 brokerages by sales volume ($)</div></div><div class="ca" style="height:340px;"><canvas id="hc-ms-volume"></canvas></div></div>
+<div class="cb"><div class="ch"><div class="ct">Top 12 brokerages by listing count (sides)</div></div><div class="ca" style="height:340px;"><canvas id="hc-ms-sides"></canvas></div></div>
+<div class="cb"><div class="ch"><div class="ct">Full ranking &mdash; every office</div></div><div class="tw"><table><thead><tr><th>Office</th><th>City</th><th>Sides</th><th>Sides %</th><th>Volume</th><th>Vol %</th></tr></thead><tbody id="ms-table"></tbody></table></div></div>
 </section>
 
 <footer class="foot">
@@ -529,6 +554,107 @@ function renderAffordability(){
   ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{y:{ticks:{callback:kF}},x:{grid:{display:false}}}}});
 }
 
+// =====================================================================
+// MARKET SHARE — reads dashboard.json.marketShare.officeLevel[region]
+// =====================================================================
+var curMS = 'newburyport';
+function renderMarketShare(){
+  var ms = (window.__liveJson && window.__liveJson.marketShare && window.__liveJson.marketShare.officeLevel) || null;
+  if (!ms) {
+    var tbl = document.getElementById('ms-table');
+    if (tbl) tbl.innerHTML = '<tr><td colspan="6" style="color:#9ca3af;text-align:center;padding:18px;">Market share data not yet available. The dashboard pipeline refreshes nightly.</td></tr>';
+    return;
+  }
+  var region = ms[curMS]; if (!region) return;
+  var msMeta = window.__liveJson.marketShare;
+  if (msMeta && msMeta.generated) {
+    var d = new Date(msMeta.generated);
+    document.getElementById('ms-asof').textContent =
+      ' · as of ' + d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  }
+  var bentByVol   = region.byVolume.findIndex(function(o){ return o.isBentleys; });
+  var bentBySides = region.bySides.findIndex(function(o){ return o.isBentleys; });
+  var bent = region.byVolume.find(function(o){ return o.isBentleys; });
+  document.getElementById('ms-bent-volrank').textContent   = bent ? ('#' + (bentByVol + 1)) : '—';
+  document.getElementById('ms-bent-volpct').textContent    = bent ? (bent.volumePct.toFixed(1) + '%') : '—';
+  document.getElementById('ms-bent-sidesrank').textContent = bent ? ('#' + (bentBySides + 1)) : '—';
+  document.getElementById('ms-bent-sidespct').textContent  = bent ? (bent.sidesPct.toFixed(1) + '%') : '—';
+  var topVol = region.byVolume.slice(0, 12);
+  makeOrUpdate('hc-ms-volume', {
+    type: 'bar',
+    data: {
+      labels: topVol.map(function(o){ return o.displayName; }),
+      datasets: [{
+        data: topVol.map(function(o){ return o.volume / 1000000; }),
+        backgroundColor: topVol.map(function(o){ return o.isBentleys ? '#1e355e' : '#9ca3af'; }),
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: function(c){
+          var o = topVol[c.dataIndex];
+          return '$' + o.volume.toLocaleString() + '  (' + o.volumePct.toFixed(1) + '%)';
+        }}}
+      },
+      scales: {
+        x: { ticks: { callback: function(v){ return '$' + v + 'M'; } } },
+        y: { ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+  var topSides = region.bySides.slice(0, 12);
+  makeOrUpdate('hc-ms-sides', {
+    type: 'bar',
+    data: {
+      labels: topSides.map(function(o){ return o.displayName; }),
+      datasets: [{
+        data: topSides.map(function(o){ return o.sides; }),
+        backgroundColor: topSides.map(function(o){ return o.isBentleys ? '#1e355e' : '#9ca3af'; }),
+        borderRadius: 4
+      }]
+    },
+    options: {
+      indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: function(c){
+          var o = topSides[c.dataIndex];
+          return o.sides + ' sides  (' + o.sidesPct.toFixed(1) + '%)';
+        }}}
+      },
+      scales: {
+        x: { title: { display: true, text: 'Listing sides (12 mo.)' } },
+        y: { ticks: { font: { size: 10 } } }
+      }
+    }
+  });
+  var h = '';
+  region.byVolume.forEach(function(o){
+    var hi = o.isBentleys ? ' style="background:#fef3c7;font-weight:700;"' : '';
+    h += '<tr' + hi + '>' +
+      '<td>' + o.officeName + '</td>' +
+      '<td>' + (o.officeCity || '') + '</td>' +
+      '<td>' + o.sides + '</td>' +
+      '<td>' + o.sidesPct.toFixed(1) + '%</td>' +
+      '<td>$' + (o.volume / 1000000).toFixed(1) + 'M</td>' +
+      '<td>' + o.volumePct.toFixed(1) + '%</td>' +
+    '</tr>';
+  });
+  document.getElementById('ms-table').innerHTML = h;
+}
+// Wire region sub-tabs for Market Share
+document.querySelectorAll('#hmd-market-share .ptab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('#hmd-market-share .ptab').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    curMS = btn.getAttribute('data-ms');
+    renderMarketShare();
+  });
+});
+
 function renderAll(){
   renderHero();
   renderOvCards(curPT.overview);renderOvCharts(curPT.overview);
@@ -536,6 +662,7 @@ function renderAll(){
   renderNbptChart(curPT.nbpt);
   renderGN();
   renderAffordability();
+  renderMarketShare();
 }
 
 // Property type tabs

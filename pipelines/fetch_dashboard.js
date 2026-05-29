@@ -25,6 +25,7 @@
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
+const { buildMarketShare } = require('./market_share');
 
 const ROOT = path.join(__dirname, '..');
 const RAW = path.join(ROOT, 'data', 'raw');
@@ -56,6 +57,10 @@ const ESSEX_TOWNS = [
 const ESSEX_SET = new Set(ESSEX_TOWNS.map(s => s.toUpperCase()));
 
 const GN_TOWNS = ['Newburyport', 'West Newbury', 'Newbury', 'Rowley', 'Salisbury', 'Amesbury'];
+
+// "& beyond" — the 4 surrounding Essex County towns Bentley's is expanding into.
+// Same per-town breakdown as GN_TOWNS but emitted under a separate `beyond` key.
+const BEYOND_TOWNS = ['Ipswich', 'Georgetown', 'Groveland', 'Merrimac'];
 
 // ---------- property type buckets ----------
 // MLSPIN PropertySubType values vary slightly; match on common patterns.
@@ -305,6 +310,28 @@ function aggregateRecords(recs) {
     GN_TOWNS.map(s => s.toUpperCase()).includes((r.City || '').toUpperCase()));
   gnSummary.activeListings = gnActive.length;
 
+  // ---- "& beyond" per-town breakdown (Ipswich, Georgetown, Groveland, Merrimac) ----
+  // Same shape as gnTowns. Lets the page show the expansion-frontier towns.
+  const beyondTowns = {};
+  for (const t of BEYOND_TOWNS) {
+    const tu = t.toUpperCase();
+    beyondTowns[t] = {};
+    const prior = enriched.filter(r =>
+      r.__pt === 'sf' && r.__yr === priorYear && (r.City || '').toUpperCase() === tu);
+    const t12 = enriched.filter(r =>
+      r.__pt === 'sf' && r.CloseDate >= cutoffT12 && (r.City || '').toUpperCase() === tu);
+    beyondTowns[t][priorYear] = aggregateRecords(prior);
+    beyondTowns[t][currentYear] = aggregateRecords(t12);
+  }
+  const beyondAll = enriched.filter(r =>
+    r.__pt === 'sf' && r.CloseDate >= cutoffT12 &&
+    BEYOND_TOWNS.map(s => s.toUpperCase()).includes((r.City || '').toUpperCase()));
+  const beyondSummary = aggregateRecords(beyondAll) || { price: null, sqft: null, dom: null, units: 0 };
+  const beyondActive = activeEnriched.filter(r =>
+    r.__pt === 'sf' &&
+    BEYOND_TOWNS.map(s => s.toUpperCase()).includes((r.City || '').toUpperCase()));
+  beyondSummary.activeListings = beyondActive.length;
+
   // ---- affordability (uses MA median household income — ACS) ----
   // Income required at 28% DTI for {avg price × 80% LTV × 6.5% × 30yr} +
   // taxes/insurance approx. We embed the formula in the page; here we just
@@ -336,6 +363,19 @@ function aggregateRecords(recs) {
     }
   };
 
+  // ---- brokerage market share (office-level + firm-level cuts, all 10 towns) ----
+  // Self-contained module: makes its own MLS pulls (Office lookup + closed sales
+  // per-town filter), so it doesn't depend on the `enriched` / `closed` arrays
+  // above. Runs in parallel with the rest of the aggregation here.
+  console.log('\nBuilding brokerage market share...');
+  let marketShare = null;
+  try {
+    marketShare = await buildMarketShare(token);
+  } catch (e) {
+    console.warn(`[fetch_dashboard] market share build failed: ${e.message}`);
+    marketShare = { error: e.message, generated: new Date().toISOString() };
+  }
+
   // ---- output ----
   const out = {
     meta: {
@@ -351,7 +391,12 @@ function aggregateRecords(recs) {
       towns: gnTowns,
       summary: gnSummary
     },
-    affordability
+    beyond: {
+      towns: beyondTowns,
+      summary: beyondSummary
+    },
+    affordability,
+    marketShare
   };
 
   fs.writeFileSync(path.join(OUT, 'dashboard.json'), JSON.stringify(out, null, 2));
@@ -374,5 +419,17 @@ function aggregateRecords(recs) {
     const v = gnTowns[t][currentYear]?.price;
     const n = gnTowns[t][currentYear]?.units || 0;
     console.log(`  ${t.padEnd(16)} ${v ? '$' + Math.round(v/1000) + 'K' : '—'} (n=${n})`);
+  }
+  console.log('\n  & BEYOND — SF current-year avg');
+  for (const t of BEYOND_TOWNS) {
+    const v = beyondTowns[t][currentYear]?.price;
+    const n = beyondTowns[t][currentYear]?.units || 0;
+    console.log(`  ${t.padEnd(16)} ${v ? '$' + Math.round(v/1000) + 'K' : '—'} (n=${n})`);
+  }
+  if (marketShare && marketShare.officeLevel) {
+    const gn = marketShare.officeLevel.greaterNewburyport;
+    if (gn && gn.byVolume && gn.byVolume[0]) {
+      console.log(`\n  MARKET SHARE leader (GN, by volume): ${gn.byVolume[0].displayName} — ${gn.byVolume[0].volumePct}%`);
+    }
   }
 })().catch(e => { console.error('FAILED:', e.message); process.exit(1); });

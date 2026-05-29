@@ -2,9 +2,9 @@ name: Refresh dashboard data
 
 on:
   schedule:
-    # 07:00 UTC every Sunday (~3am ET). Offset from Greater-Newburyport (06:30)
+    # 07:00 UTC nightly (~3am ET). Offset from Greater-Newburyport (06:30)
     # so they don't both hit MLSPIN at the same minute.
-    - cron: '0 7 * * 0'
+    - cron: '0 7 * * *'
   workflow_dispatch:
 
 permissions:
