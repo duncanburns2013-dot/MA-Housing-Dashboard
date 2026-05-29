@@ -35,14 +35,6 @@ const GN_CORE_TOWNS = ['Newburyport', 'West Newbury', 'Newbury', 'Rowley', 'Sali
 const BEYOND_TOWNS  = ['Ipswich', 'Georgetown', 'Groveland', 'Merrimac'];
 const TERRITORY     = [...GN_CORE_TOWNS, ...BEYOND_TOWNS];
 
-// Cities where competitor offices register but that aren't in the territory.
-// Needed for the Office lookup so we get clean display names for KW Andover, etc.
-const NEIGHBORING_REGISTRATION_CITIES = [
-  'Andover', 'North Andover', 'Boxford', 'Haverhill', 'Topsfield',
-  'Boston', 'Beverly', 'Marblehead', 'Manchester', 'Lynnfield', 'Wenham',
-  'Hamilton', 'Essex', 'Rockport', 'Gloucester'
-];
-
 // -----------------------------------------------------------------------------
 // HTTP / pagination
 // -----------------------------------------------------------------------------
@@ -135,27 +127,42 @@ function firmGroup(officeName) {
 // Data fetching
 // -----------------------------------------------------------------------------
 
+// Pull ALL MA offices via keyset pagination on OfficeKey. Statewide because
+// plenty of offices registered outside the territory (Boston, Lawrence,
+// Methuen, Salem, etc.) list properties in our market — without their record
+// in the lookup, those sales render as "Unknown".
 async function fetchOfficeLookup(token) {
-  const cities = [...TERRITORY, ...NEIGHBORING_REGISTRATION_CITIES];
   const map = new Map();
-
-  for (const city of cities) {
-    const filter = `OfficeCity eq '${city.replace(/'/g, "''")}' and OfficeStateOrProvince eq 'MA'`;
-    const select = 'OfficeMlsId,OfficeName,OfficeCity';
-    const url = `${BRIDGE_BASE}/Office?access_token=${token}&$select=${select}&$top=200&$filter=${encodeURIComponent(filter)}`;
-    try {
-      const offices = await pageAll(url, token);
-      for (const o of offices) {
-        if (o.OfficeMlsId) {
-          map.set(o.OfficeMlsId, {
-            officeName: o.OfficeName || 'Unknown',
-            officeCity: o.OfficeCity || ''
-          });
-        }
-      }
-    } catch (e) {
-      console.warn(`[market_share] Office lookup failed for ${city}: ${e.message}`);
+  const select = 'OfficeKey,OfficeMlsId,OfficeName,OfficeCity,OfficeStateOrProvince';
+  const baseFilter = `OfficeStateOrProvince eq 'MA'`;
+  let lastKey = null;
+  let page = 0;
+  while (page < 250) {
+    const filter = lastKey ? `${baseFilter} and OfficeKey gt '${lastKey}'` : baseFilter;
+    const url = `${BRIDGE_BASE}/Office?access_token=${token}` +
+                `&$select=${select}` +
+                `&$top=200` +
+                `&$orderby=${encodeURIComponent('OfficeKey asc')}` +
+                `&$filter=${encodeURIComponent(filter)}`;
+    let resp;
+    try { resp = await getRetry(url); }
+    catch (e) {
+      console.warn(`[market_share] Office page ${page} failed: ${e.message}`);
+      break;
     }
+    const batch = resp.value || [];
+    if (!batch.length) break;
+    for (const o of batch) {
+      if (o.OfficeMlsId) {
+        map.set(o.OfficeMlsId, {
+          officeName: o.OfficeName || '',
+          officeCity: o.OfficeCity || ''
+        });
+      }
+    }
+    page++;
+    if (batch.length < 200) break;
+    lastKey = batch[batch.length - 1].OfficeKey;
   }
   return map;
 }
@@ -199,7 +206,11 @@ function aggregateOfficeLevel(records, officeLookup) {
     if (!grouped.has(officeId)) {
       const isBentleys = officeId === BENTLEY_CANONICAL_ID;
       const lookup = officeLookup.get(officeId) || {};
-      const officeName = isBentleys ? BENTLEY_DISPLAY_NAME : cleanOfficeName(lookup.officeName);
+      const rawName = lookup.officeName && lookup.officeName.trim() ? lookup.officeName : null;
+      // Fall back to MLS ID when no name is registered (rare — discontinued/inactive offices)
+      const officeName = isBentleys
+        ? BENTLEY_DISPLAY_NAME
+        : (rawName ? cleanOfficeName(rawName) : `Office ${officeId}`);
       const officeCity = lookup.officeCity || '';
       const displayName = officeCity ? `${officeName} — ${officeCity}` : officeName;
 
@@ -251,9 +262,10 @@ function aggregateFirmLevel(records, officeLookup) {
     if (BENTLEY_IDS.includes(officeId)) officeId = BENTLEY_CANONICAL_ID;
 
     const lookup = officeLookup.get(officeId) || {};
+    const rawName = lookup.officeName && lookup.officeName.trim() ? lookup.officeName : null;
     const officeName = officeId === BENTLEY_CANONICAL_ID
       ? BENTLEY_DISPLAY_NAME
-      : (lookup.officeName || 'Unknown');
+      : (rawName || `Office ${officeId}`);
     const firmName = firmGroup(officeName);
 
     if (!grouped.has(firmName)) {

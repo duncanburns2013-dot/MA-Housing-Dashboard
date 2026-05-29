@@ -204,6 +204,16 @@
 <button class="ptab" data-pt="mf">Multi Family</button>
 </div>
 <div id="nbpt-cards"></div>
+
+<!-- Year-over-Year (prior year vs current year) -->
+<div class="sbox" id="nbpt-yoy-box"><div class="stitle">Year-over-Year &mdash; <span class="py">2025</span> &rarr; <span class="cy">2026</span></div><div class="sgrid">
+<div class="si"><div class="sl">Avg Price</div><div class="sv b" id="nbpt-yoy-price">&mdash;</div><div class="sn" id="nbpt-yoy-price-pct">&mdash;</div></div>
+<div class="si"><div class="sl">$/SqFt</div><div class="sv g" id="nbpt-yoy-sqft">&mdash;</div><div class="sn" id="nbpt-yoy-sqft-pct">&mdash;</div></div>
+<div class="si"><div class="sl">Days on Market</div><div class="sv y" id="nbpt-yoy-dom">&mdash;</div><div class="sn" id="nbpt-yoy-dom-pct">&mdash;</div></div>
+<div class="si"><div class="sl">Units Sold</div><div class="sv r" id="nbpt-yoy-units">&mdash;</div><div class="sn" id="nbpt-yoy-units-pct">&mdash;</div></div>
+</div></div>
+<div class="cb"><div class="ch"><div class="ct">Year-over-Year &mdash; prior year vs current year</div></div><div class="ca"><canvas id="hc-nbpt-yoy"></canvas></div></div>
+
 <div class="cb"><div class="ch"><div class="ct">13-Year Data</div></div><div class="tw"><div id="nbpt-table"></div></div></div>
 <div class="cb"><div class="ch"><div class="ct">Price &amp; $/SqFt (2014&ndash;<span class="cy">2026</span>)</div></div><div class="ca"><canvas id="hc-nbpt"></canvas></div></div>
 </section>
@@ -447,6 +457,77 @@ makeOrUpdate('hc-nbpt',{type:'bar',data:{labels:Y,datasets:[
 ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:8,padding:10,font:{size:10}}}},scales:{y:{position:'left',ticks:{callback:kF}},y1:{position:'right',grid:{display:false},ticks:{callback:function(v){return'$'+v}}},x:{grid:{display:false}}}}});
 }
 
+// Newburyport YoY (prior year vs current year) — cards + chart
+function renderNbptYoY(pt){
+  var d = D.nbpt[pt];
+  var i = Y.length - 1;
+  var py = i - 1;
+  var cur = { price:d.price[i], sqft:d.sqft[i], dom:d.dom[i], units:d.units[i] };
+  var prv = { price:d.price[py], sqft:d.sqft[py], dom:d.dom[py], units:d.units[py] };
+
+  function chg(a,b){ if(!a||!b) return '—'; var p=Math.round(((a-b)/b)*100); return (p>=0?'+':'')+p+'%'; }
+  function color(a,b,goodDir){ if(!a||!b) return ''; var p=(a-b)/b; if (p===0) return '';
+    return (goodDir==='up' ? (p>0?'#16a34a':'#dc2626') : (p<0?'#16a34a':'#dc2626')); }
+
+  document.getElementById('nbpt-yoy-price').textContent = cur.price ? '$'+Math.round(cur.price/1000)+'K' : '—';
+  document.getElementById('nbpt-yoy-sqft').textContent  = cur.sqft  ? '$'+cur.sqft : '—';
+  document.getElementById('nbpt-yoy-dom').textContent   = cur.dom   ? cur.dom+'d' : '—';
+  document.getElementById('nbpt-yoy-units').textContent = cur.units ? cur.units : '—';
+
+  var pe = document.getElementById('nbpt-yoy-price-pct');
+  var se = document.getElementById('nbpt-yoy-sqft-pct');
+  var de = document.getElementById('nbpt-yoy-dom-pct');
+  var ue = document.getElementById('nbpt-yoy-units-pct');
+  pe.textContent = chg(cur.price, prv.price) + ' YoY';
+  se.textContent = chg(cur.sqft,  prv.sqft)  + ' YoY';
+  de.textContent = chg(cur.dom,   prv.dom)   + ' YoY';
+  ue.textContent = chg(cur.units, prv.units) + ' YoY';
+  // Color: up is good for price/sqft, down is good for DOM
+  pe.style.color = color(cur.price, prv.price, 'up');
+  se.style.color = color(cur.sqft,  prv.sqft,  'up');
+  de.style.color = color(cur.dom,   prv.dom,   'down');
+  ue.style.color = color(cur.units, prv.units, 'up');
+
+  // Side-by-side bar chart — prior vs current, indexed (% of prior) so all 4 metrics fit one y-axis
+  function idx(a,b){ return (a && b) ? +((a/b)*100).toFixed(0) : null; }
+  var labels = ['Avg Price','$/SqFt','Days on Market','Units Sold'];
+  var priorIdx = [100,100,100,100];  // baseline = 100% of itself
+  var curIdx = [
+    idx(cur.price, prv.price),
+    idx(cur.sqft,  prv.sqft),
+    idx(cur.dom,   prv.dom),
+    idx(cur.units, prv.units)
+  ];
+  var pctChange = [
+    cur.price && prv.price ? Math.round(((cur.price-prv.price)/prv.price)*100) : 0,
+    cur.sqft  && prv.sqft  ? Math.round(((cur.sqft-prv.sqft)/prv.sqft)*100) : 0,
+    cur.dom   && prv.dom   ? Math.round(((cur.dom-prv.dom)/prv.dom)*100) : 0,
+    cur.units && prv.units ? Math.round(((cur.units-prv.units)/prv.units)*100) : 0
+  ];
+  makeOrUpdate('hc-nbpt-yoy', {
+    type:'bar',
+    data:{ labels:labels, datasets:[
+      { label:Y[py], data:priorIdx, backgroundColor:'rgba(30,53,94,0.25)', borderColor:B, borderWidth:1, borderRadius:4 },
+      { label:Y[i],  data:curIdx,   backgroundColor:[YL,G,YL,B], borderRadius:4 }
+    ]},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{ position:'top', labels:{ boxWidth:8, padding:10, font:{ size:10 }}},
+        tooltip:{ callbacks:{ label:function(c){
+          if (c.datasetIndex === 0) return Y[py] + ' baseline (100)';
+          var p = pctChange[c.dataIndex];
+          return Y[i] + ': ' + c.parsed.y + ' = ' + (p>=0?'+':'') + p + '% YoY';
+        }}}
+      },
+      scales:{
+        y:{ ticks:{ callback:function(v){ return v + '%'; }}, title:{ display:true, text:'Indexed to prior year (100%)' }},
+        x:{ grid:{ display:false }}
+      }
+    }
+  });
+}
+
 function renderGN(){
   // Town breakdown — uses gnDefaults (live-overlaid)
   var townsHtml = '';
@@ -660,6 +741,7 @@ function renderAll(){
   renderOvCards(curPT.overview);renderOvCharts(curPT.overview);
   renderRegion('ma',curPT.ma);renderRegion('boston',curPT.boston);renderRegion('essex',curPT.essex);renderRegion('nbpt',curPT.nbpt);
   renderNbptChart(curPT.nbpt);
+  renderNbptYoY(curPT.nbpt);
   renderGN();
   renderAffordability();
   renderMarketShare();
@@ -675,7 +757,7 @@ document.querySelectorAll('#hmd .ptabs').forEach(function(tabs){
       var region=tabs.getAttribute('data-region');
       curPT[region]=pt;
       if(region==='overview'){renderOvCards(pt);renderOvCharts(pt);}
-      else if(region==='nbpt'){renderRegion('nbpt',pt);renderNbptChart(pt);}
+      else if(region==='nbpt'){renderRegion('nbpt',pt);renderNbptChart(pt);renderNbptYoY(pt);}
       else{renderRegion(region,pt);}
     });
   });
