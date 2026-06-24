@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          # Full history so the commit step can rebase onto an advanced main.
+          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v5
@@ -57,5 +60,20 @@ jobs:
           else
             STAMP=$(date -u +'%Y-%m-%d')
             git commit -m "chore(data): weekly refresh ${STAMP}"
-            git push
+            # The remote main can advance while this run is in flight (a manual
+            # commit, or an overlapping run). Rebase our data commit on top of
+            # the latest main and retry the push instead of failing outright.
+            pushed=false
+            for attempt in 1 2 3; do
+              if git pull --rebase origin main && git push; then
+                pushed=true
+                break
+              fi
+              echo "push attempt ${attempt} rejected; re-fetching and retrying..."
+              sleep 5
+            done
+            if [ "$pushed" != true ]; then
+              echo "::error::could not push data refresh after 3 attempts"
+              exit 1
+            fi
           fi
