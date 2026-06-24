@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '20'
 
@@ -33,9 +33,13 @@ jobs:
             exit 0
           fi
           printf 'BRIDGE_TOKEN=%s\nBRIDGE_DATASET=mlspin\nFUB_API_KEY=%s\n' "$BRIDGE_TOKEN" "$FUB_API_KEY" > .env
+          # dashboard.json is the primary artifact — keep it fatal.
           node pipelines/fetch_dashboard.js
-          node pipelines/fetch_market_leader.js
-          node pipelines/fetch_agent_map.js
+          # The secondary feeds are independent JSON files consumed by other
+          # embeds. Don't let a transient failure in one (e.g. an API rate
+          # limit) abort the whole step and block committing the others.
+          node pipelines/fetch_market_leader.js || echo "::warning::market-leader refresh failed; continuing with last-good market-leader.json."
+          node pipelines/fetch_agent_map.js || echo "::warning::agent-map refresh failed; continuing with last-good agent-map.json."
           if [ -n "$FUB_API_KEY" ]; then
             node pipelines/fetch_fub.js || echo "::warning::FUB pull failed; continuing."
           else
