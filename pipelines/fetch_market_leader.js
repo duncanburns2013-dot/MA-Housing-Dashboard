@@ -8,6 +8,15 @@
 // Usage:
 //   node pipelines/fetch_market_leader.js
 //   node pipelines/fetch_market_leader.js --no-pull   (reuse cached raw)
+//
+// 2026-06 CHANGE — rate-limit fix:
+//   This script used to pull the ENTIRE statewide MLSPIN Office directory
+//   (~23k offices, ~115 paged requests) every run just to map office IDs to
+//   names. Running right after fetch_dashboard.js (which already pulls tens of
+//   thousands of records), that duplicate scan blew past the Bridge request
+//   quota and the run died with HTTP 429. We now resolve names only for the
+//   offices that actually appear in the GN closed sales (~150), via batched
+//   OfficeMlsId filters (~4 requests). getRetry is also 429-aware.
 
 const fs = require('fs');
 const path = require('path');
@@ -22,6 +31,9 @@ fs.mkdirSync(OUT, { recursive: true });
 
 const GN_TOWNS = ['Newburyport', 'West Newbury', 'Newbury', 'Rowley', 'Salisbury', 'Amesbury'];
 const GN_UC = new Set(GN_TOWNS.map(s => s.toUpperCase()));
+
+// How many OfficeMlsId values to OR together per Office request.
+const OFFICE_ID_CHUNK = 40;
 
 // ---------- env loader ----------
 function loadEnv() {
@@ -48,11 +60,33 @@ function get(url) {
     }).on('error', reject);
   });
 }
-async function getRetry(url, n = 4) {
+
+// Parse the reset timestamp out of a Bridge 429 body, e.g.
+//   "...Your limit will reset on Mon Jun 22 2026 12:52:36 GMT+0000 (...)"
+function parseResetMs(msg) {
+  const m = /reset on (.+?)(?:"|\}|$)/i.exec(msg || '');
+  if (!m) return null;
+  const t = Date.parse(m[1].trim());
+  return Number.isNaN(t) ? null : t;
+}
+
+// 429-aware retry. On a rate-limit, wait until the quota resets (clamped).
+async function getRetry(url, n = 5) {
   let last;
   for (let i = 0; i < n; i++) {
     try { return await get(url); }
-    catch (e) { last = e; await new Promise(r => setTimeout(r, 1000 * Math.pow(2, i))); }
+    catch (e) {
+      last = e;
+      if (i === n - 1) break;
+      let wait = 1000 * Math.pow(2, i);
+      if (/HTTP 429/.test(e.message)) {
+        const resetMs = parseResetMs(e.message);
+        const until = resetMs ? (resetMs - Date.now() + 2000) : 60000;
+        wait = Math.min(Math.max(until, 5000), 120000); // clamp 5s..120s
+        console.warn(`  rate limited (429); waiting ${Math.round(wait / 1000)}s before retry ${i + 1}/${n}`);
+      }
+      await new Promise(r => setTimeout(r, wait));
+    }
   }
   throw last;
 }
@@ -84,32 +118,32 @@ async function pageMLS({ token, dataset, filter, select, label, cap = 50000 }) {
   return all;
 }
 
-// ---------- Office pager (by OfficeKey) ----------
-// MLSPIN Property only exposes ListOfficeMlsId (no name). Pull the Office
-// resource once to build an id→name lookup.
-async function pageOffices({ token, dataset, label = 'offices' }) {
-  const all = [];
-  let lastKey = null;
-  let pages = 0;
-  while (all.length < 50000) {
-    const filter = lastKey ? `OfficeKey gt '${lastKey}'` : '';
+// ---------- targeted Office name lookup (by OfficeMlsId) ----------
+// MLSPIN Property only exposes ListOfficeMlsId (no name). Resolve names for
+// just the offices that appear in our closed sales, in OR'd batches, instead
+// of scanning the whole statewide Office directory.
+async function fetchOfficesByIds({ token, dataset, ids, label = 'offices' }) {
+  const out = [];
+  const unique = [...new Set((ids || []).filter(Boolean))];
+  let done = 0;
+  for (let i = 0; i < unique.length; i += OFFICE_ID_CHUNK) {
+    const slice = unique.slice(i, i + OFFICE_ID_CHUNK);
+    const clause = slice.map(id => `OfficeMlsId eq '${String(id).replace(/'/g, "''")}'`).join(' or ');
     const u = new URL(`https://api.bridgedataoutput.com/api/v2/OData/${dataset}/Office`);
     u.searchParams.set('access_token', token);
-    if (filter) u.searchParams.set('$filter', filter);
     u.searchParams.set('$select', 'OfficeKey,OfficeMlsId,OfficeName,MainOfficeKey');
-    u.searchParams.set('$orderby', 'OfficeKey asc');
     u.searchParams.set('$top', '200');
-    const json = await getRetry(u.toString());
+    u.searchParams.set('$filter', `(${clause})`);
+    let json;
+    try { json = await getRetry(u.toString()); }
+    catch (e) { console.warn(`  ${label}: chunk ${Math.floor(i / OFFICE_ID_CHUNK)} failed: ${e.message}`); continue; }
     const batch = json.value || [];
-    if (!batch.length) break;
-    all.push(...batch);
-    pages++;
-    process.stdout.write(`  ${label}: page ${pages}, total ${all.length}\r`);
-    if (batch.length < 200) break;
-    lastKey = batch[batch.length - 1].OfficeKey;
+    out.push(...batch);
+    done += slice.length;
+    process.stdout.write(`  ${label}: ${out.length} names for ${done}/${unique.length} ids\r`);
   }
   process.stdout.write('\n');
-  return all;
+  return out;
 }
 
 // ---------- brokerage normalization ----------
@@ -179,8 +213,9 @@ function classifyBrokerage(officeName, cfg) {
     });
     fs.writeFileSync(closedCache, JSON.stringify(closed));
 
-    console.log(`\nPulling MLSPIN Office directory for name lookup...`);
-    offices = await pageOffices({ token, dataset });
+    console.log(`\nResolving office names for offices that appear in GN sales...`);
+    const officeIds = [...new Set(closed.map(r => r.ListOfficeMlsId).filter(Boolean))];
+    offices = await fetchOfficesByIds({ token, dataset, ids: officeIds, label: 'offices' });
     fs.writeFileSync(officeCache, JSON.stringify(offices));
   }
 
