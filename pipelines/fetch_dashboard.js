@@ -21,6 +21,10 @@
 // Output:
 //   data/processed/dashboard.json   — public, consumed by embed
 //   data/raw/bridge_*.json          — raw pulls, gitignored
+//
+// 2026-06 CHANGE: getRetry is now 429-aware (waits out the Bridge request-quota
+// reset instead of crashing), and the gnSummary / affordability blocks are
+// guarded against empty-data null dereferences.
 
 const fs = require('fs');
 const path = require('path');
@@ -104,14 +108,34 @@ function get(url) {
     }).on('error', reject);
   });
 }
-async function getRetry(url, n = 4) {
+
+// Parse the reset timestamp out of a Bridge 429 body, e.g.
+//   "...Your limit will reset on Mon Jun 22 2026 12:52:36 GMT+0000 (...)"
+function parseResetMs(msg) {
+  const m = /reset on (.+?)(?:"|\}|$)/i.exec(msg || '');
+  if (!m) return null;
+  const t = Date.parse(m[1].trim());
+  return Number.isNaN(t) ? null : t;
+}
+
+// 429-aware retry. On a rate-limit response we wait until the quota resets
+// (clamped to a sane window) instead of burning the normal short backoffs.
+async function getRetry(url, n = 5) {
   let last;
   for (let i = 0; i < n; i++) {
     try { return await get(url); }
     catch (e) {
       last = e;
-      const wait = 1000 * Math.pow(2, i);
-      console.warn(`  retry ${i + 1}/${n} after ${wait}ms: ${e.message}`);
+      if (i === n - 1) break;
+      let wait = 1000 * Math.pow(2, i);
+      if (/HTTP 429/.test(e.message)) {
+        const resetMs = parseResetMs(e.message);
+        const until = resetMs ? (resetMs - Date.now() + 2000) : 60000;
+        wait = Math.min(Math.max(until, 5000), 120000); // clamp 5s..120s
+        console.warn(`  rate limited (429); waiting ${Math.round(wait / 1000)}s before retry ${i + 1}/${n}`);
+      } else {
+        console.warn(`  retry ${i + 1}/${n} after ${wait}ms: ${e.message}`);
+      }
       await new Promise(r => setTimeout(r, wait));
     }
   }
@@ -304,7 +328,8 @@ function aggregateRecords(recs) {
   const gnAll = enriched.filter(r =>
     r.__pt === 'sf' && r.CloseDate >= cutoffT12 &&
     GN_TOWNS.map(s => s.toUpperCase()).includes((r.City || '').toUpperCase()));
-  const gnSummary = aggregateRecords(gnAll);
+  // Guard against empty data: aggregateRecords returns null with zero records.
+  const gnSummary = aggregateRecords(gnAll) || { price: null, sqft: null, dom: null, units: 0 };
   const gnActive = activeEnriched.filter(r =>
     r.__pt === 'sf' &&
     GN_TOWNS.map(s => s.toUpperCase()).includes((r.City || '').toUpperCase()));
@@ -397,13 +422,15 @@ function aggregateRecords(recs) {
     const income = yearly / 0.28;
     return { down: Math.round(down), monthly: Math.round(pi), monthlyAll: Math.round(monthly), income: Math.round(income) };
   }
+  // Optional chaining guards against a region with no trailing-12 records
+  // (aggregateRecords → null). incomeNeeded(undefined) already returns null.
   const affordability = {
     medianIncome: MA_MEDIAN_INCOME,
     markets: {
-      ma: { price: regional.ma.sf[currentYear].price, ...incomeNeeded(regional.ma.sf[currentYear].price) },
-      boston: { price: regional.boston.sf[currentYear].price, ...incomeNeeded(regional.boston.sf[currentYear].price) },
-      essex: { price: regional.essex.sf[currentYear].price, ...incomeNeeded(regional.essex.sf[currentYear].price) },
-      nbpt: { price: regional.nbpt.sf[currentYear].price, ...incomeNeeded(regional.nbpt.sf[currentYear].price) }
+      ma:     { price: regional.ma.sf[currentYear]?.price ?? null,     ...incomeNeeded(regional.ma.sf[currentYear]?.price) },
+      boston: { price: regional.boston.sf[currentYear]?.price ?? null, ...incomeNeeded(regional.boston.sf[currentYear]?.price) },
+      essex:  { price: regional.essex.sf[currentYear]?.price ?? null,  ...incomeNeeded(regional.essex.sf[currentYear]?.price) },
+      nbpt:   { price: regional.nbpt.sf[currentYear]?.price ?? null,   ...incomeNeeded(regional.nbpt.sf[currentYear]?.price) }
     }
   };
 
