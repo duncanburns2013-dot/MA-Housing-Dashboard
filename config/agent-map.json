@@ -1,24 +1,304 @@
-{
-  "_comment_about_altIds": "If an agent changed MLS IDs (e.g. switched brokerages and got a new ID), list the old IDs in altIds — sales are merged under the primary mlsId.",
-  "_comment_about_manualSales": "For sales MLSPIN doesn't have (e.g. NH deals on NEREN, pre-2018 records under team accounts), add them under manualSales with lat/lng. Use Google Maps to find coordinates — right-click any address, the first item in the menu is the lat/lng.",
-  "brand": {
-    "primary": "#1e335e",
-    "accent": "#c9ebfc",
-    "highlight": "#d4af37",
-    "luxury": "#ff7560"
-  },
-  "agents": [
-    {
-      "mlsId": "CN204745",
-      "displayName": "Alissa Christie",
-      "title": "REALTOR®",
-      "photoUrl": "assets/agents/CN204745.jpg",
-      "altIds": [],
-      "externalLinks": {
-        "zillowProfile": "https://www.zillow.com/profile/alissachristie",
-        "bentleysBio": "https://www.bentleysrealestate.com/team-page"
-      },
-      "manualSales": []
-    }
-  ]
+// fetch_agent_map.js — pull every closed transaction for the configured
+// agents (list-side OR buy-side) with full address + lat/lng. Output is
+// consumed by the Squarespace agent-map embed.
+//
+// Usage:
+//   node pipelines/fetch_agent_map.js
+//   node pipelines/fetch_agent_map.js --no-pull   (re-aggregate cached)
+//
+// 2026-06 CHANGE: getRetry is now 429-aware (waits out the Bridge request-quota
+// reset instead of crashing).
+
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+
+const ROOT = path.join(__dirname, '..');
+const RAW = path.join(ROOT, 'data', 'raw');
+const OUT = path.join(ROOT, 'data', 'processed');
+const CFG = path.join(ROOT, 'config', 'agent-map.json');
+fs.mkdirSync(RAW, { recursive: true });
+fs.mkdirSync(OUT, { recursive: true });
+
+function loadEnv() {
+  const file = path.join(ROOT, '.env');
+  if (!fs.existsSync(file)) { console.error('Missing .env'); process.exit(1); }
+  const env = {};
+  for (const line of fs.readFileSync(file, 'utf8').split(/\r?\n/)) {
+    const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*?)\s*$/);
+    if (m) env[m[1]] = m[2].replace(/^["']|["']$/g, '');
+  }
+  return env;
 }
+
+function get(url) {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers: { 'User-Agent': 'MA-Housing-Dashboard/1.0' } }, (res) => {
+      let body = '';
+      res.on('data', c => body += c);
+      res.on('end', () => {
+        if (res.statusCode >= 400) return reject(new Error(`HTTP ${res.statusCode}: ${body.slice(0, 300)}`));
+        try { resolve(JSON.parse(body)); } catch (e) { reject(e); }
+      });
+    }).on('error', reject);
+  });
+}
+
+// Parse the reset timestamp out of a Bridge 429 body, e.g.
+//   "...Your limit will reset on Mon Jun 22 2026 12:52:36 GMT+0000 (...)"
+function parseResetMs(msg) {
+  const m = /reset on (.+?)(?:"|\}|$)/i.exec(msg || '');
+  if (!m) return null;
+  const t = Date.parse(m[1].trim());
+  return Number.isNaN(t) ? null : t;
+}
+
+// 429-aware retry. On a rate-limit, wait until the quota resets (clamped).
+async function getRetry(url, n = 5) {
+  let last;
+  for (let i = 0; i < n; i++) {
+    try { return await get(url); }
+    catch (e) {
+      last = e;
+      if (i === n - 1) break;
+      let wait = 1000 * Math.pow(2, i);
+      if (/HTTP 429/.test(e.message)) {
+        const resetMs = parseResetMs(e.message);
+        const until = resetMs ? (resetMs - Date.now() + 2000) : 60000;
+        wait = Math.min(Math.max(until, 5000), 120000); // clamp 5s..120s
+        console.warn(`  rate limited (429); waiting ${Math.round(wait / 1000)}s before retry ${i + 1}/${n}`);
+      }
+      await new Promise(r => setTimeout(r, wait));
+    }
+  }
+  throw last;
+}
+
+async function pageMLS({ token, dataset, filter, select, label, cap = 20000 }) {
+  const all = [];
+  let lastKey = null;
+  let pages = 0;
+  if (!select.split(',').includes('ListingKey')) select = 'ListingKey,' + select;
+  while (all.length < cap) {
+    const f = lastKey ? `${filter} and ListingKey gt '${lastKey}'` : filter;
+    const u = new URL(`https://api.bridgedataoutput.com/api/v2/OData/${dataset}/Property`);
+    u.searchParams.set('access_token', token);
+    u.searchParams.set('$filter', f);
+    u.searchParams.set('$select', select);
+    u.searchParams.set('$orderby', 'ListingKey asc');
+    u.searchParams.set('$top', '200');
+    const json = await getRetry(u.toString());
+    const batch = json.value || json.bundle || [];
+    if (!batch.length) break;
+    all.push(...batch);
+    pages++;
+    process.stdout.write(`  ${label}: page ${pages}, total ${all.length}\r`);
+    if (batch.length < 200) break;
+    lastKey = batch[batch.length - 1].ListingKey;
+  }
+  process.stdout.write('\n');
+  return all;
+}
+
+(async () => {
+  const env = loadEnv();
+  const token = env.BRIDGE_TOKEN;
+  const dataset = env.BRIDGE_DATASET || 'mlspin';
+  if (!token) { console.error('BRIDGE_TOKEN missing'); process.exit(1); }
+  const cfg = JSON.parse(fs.readFileSync(CFG, 'utf8'));
+
+  // An agent can have multiple MLS IDs (if they changed offices/brokerages
+  // and got a new ID). Each altId is treated as the same person — sales
+  // attributed to any altId roll up under the agent's primary mlsId.
+  const allIds = [];
+  const idToAgent = new Map();
+  for (const a of cfg.agents) {
+    const ids = [a.mlsId, ...(a.altIds || [])];
+    for (const id of ids) {
+      allIds.push(id);
+      idToAgent.set(id, a.mlsId);
+    }
+  }
+  if (!allIds.length) { console.error('No agents in config'); process.exit(1); }
+
+  const select = [
+    'ClosePrice', 'CloseDate',
+    'UnparsedAddress', 'StreetNumber', 'StreetName', 'City', 'StateOrProvince', 'PostalCode',
+    'Latitude', 'Longitude',
+    'PropertyType', 'PropertySubType',
+    'BedroomsTotal', 'BathroomsTotalInteger', 'LivingArea', 'YearBuilt',
+    'ListPrice', 'OriginalListPrice',
+    'ListAgentMlsId', 'BuyerAgentMlsId',
+    'StandardStatus'
+  ].join(',');
+
+  const skipPull = process.argv.includes('--no-pull');
+  const cachePath = path.join(RAW, 'mlspin_agent_sales.json');
+  let records;
+  if (skipPull && fs.existsSync(cachePath)) {
+    console.log('--no-pull: loading cached raw data');
+    records = JSON.parse(fs.readFileSync(cachePath));
+  } else {
+    // Pull list-side + buy-side per agent (incl. alt IDs).
+    const closedOnly = "StandardStatus eq 'Closed'";
+    const listFilter = allIds.map(id => `ListAgentMlsId eq '${id}'`).join(' or ');
+    const buyFilter  = allIds.map(id => `BuyerAgentMlsId eq '${id}'`).join(' or ');
+
+    console.log('Pulling list-side closed transactions...');
+    const listSide = await pageMLS({ token, dataset,
+      filter: `${closedOnly} and (${listFilter})`, select, label: 'list-side' });
+
+    console.log('\nPulling buy-side closed transactions...');
+    const buySide = await pageMLS({ token, dataset,
+      filter: `${closedOnly} and (${buyFilter})`, select, label: 'buy-side' });
+
+    // Combine — same agent could be on both sides of a deal (rare). Tag each.
+    const byKey = new Map();
+    for (const r of listSide) byKey.set(r.ListingKey, { ...r, __side: 'list' });
+    for (const r of buySide) {
+      if (byKey.has(r.ListingKey)) byKey.get(r.ListingKey).__side = 'both';
+      else byKey.set(r.ListingKey, { ...r, __side: 'buy' });
+    }
+    records = [...byKey.values()];
+    fs.writeFileSync(cachePath, JSON.stringify(records));
+  }
+
+  // For each record, determine which agent it belongs to.
+  // List-side wins if both fields match.
+  const out = [];
+  let withGeo = 0, withoutGeo = 0;
+  for (const r of records) {
+    if (!r.ClosePrice || !r.CloseDate) continue;
+    let agentId, side;
+    if (idToAgent.has(r.ListAgentMlsId)) { agentId = idToAgent.get(r.ListAgentMlsId); side = 'list'; }
+    else if (idToAgent.has(r.BuyerAgentMlsId)) { agentId = idToAgent.get(r.BuyerAgentMlsId); side = 'buy'; }
+    else continue;
+
+    // Coordinate sanity check — MLSPIN occasionally has manual-entry typos
+    // that send a Salisbury MA condo to Maine. Validate the lat/lng falls
+    // within a reasonable New-England bounding box AND roughly matches the
+    // stated city/state. If not, drop the coord so the marker won't render.
+    let lat = r.Latitude, lng = r.Longitude;
+    const NE_BOX = { latMin: 41.0, latMax: 45.5, lngMin: -73.7, lngMax: -69.0 };
+    // Tighter MA box for state==MA records
+    const MA_BOX = { latMin: 41.2, latMax: 42.95, lngMin: -73.6, lngMax: -69.9 };
+    const NH_BOX = { latMin: 42.6, latMax: 45.4, lngMin: -72.7, lngMax: -70.5 };
+    const inBox = (b) => lat >= b.latMin && lat <= b.latMax && lng >= b.lngMin && lng <= b.lngMax;
+    if (lat && lng) {
+      let ok = inBox(NE_BOX);
+      if (ok && r.StateOrProvince === 'MA' && !inBox(MA_BOX)) ok = false;
+      if (ok && r.StateOrProvince === 'NH' && !inBox(NH_BOX)) ok = false;
+      if (!ok) {
+        console.log(`  bad coord rejected: ${r.UnparsedAddress} (${lat}, ${lng}) state=${r.StateOrProvince}`);
+        lat = null; lng = null;
+      }
+    }
+    if (lat && lng) withGeo++; else withoutGeo++;
+
+    out.push({
+      agentId,
+      side,
+      address: r.UnparsedAddress || [r.StreetNumber, r.StreetName, r.City, r.StateOrProvince].filter(Boolean).join(' '),
+      city: r.City,
+      state: r.StateOrProvince,
+      lat: lat,
+      lng: lng,
+      price: r.ClosePrice,
+      listPrice: r.ListPrice,
+      origListPrice: r.OriginalListPrice,
+      date: r.CloseDate,
+      year: r.CloseDate.slice(0, 4),
+      propertyType: r.PropertyType,
+      subType: r.PropertySubType,
+      beds: r.BedroomsTotal,
+      baths: r.BathroomsTotalInteger,
+      sqft: r.LivingArea,
+      yearBuilt: r.YearBuilt
+    });
+  }
+  // Merge in any manual sales (e.g. NH deals not in MLSPIN, or pre-2018
+  // records the team-account hides). These come from config and need
+  // lat/lng to render — script geocoding is left as a TODO.
+  for (const a of cfg.agents) {
+    for (const s of (a.manualSales || [])) {
+      if (!s.lat || !s.lng) continue;
+      out.push({
+        agentId: a.mlsId,
+        side: s.side || 'list',
+        address: s.address,
+        city: s.city || null,
+        state: s.state || null,
+        lat: s.lat, lng: s.lng,
+        price: s.price,
+        date: s.date,
+        year: (s.date || '').slice(0, 4),
+        propertyType: s.propertyType || null,
+        subType: s.subType || null,
+        beds: s.beds || null, baths: s.baths || null,
+        sqft: s.sqft || null, yearBuilt: s.yearBuilt || null,
+        source: 'manual'
+      });
+    }
+  }
+
+  // Sort newest first
+  out.sort((a, b) => b.date.localeCompare(a.date));
+
+  // Agent metadata block
+  const agents = cfg.agents.map(a => ({
+    mlsId: a.mlsId,
+    name: a.displayName,
+    title: a.title || null,
+    photoUrl: a.photoUrl || `assets/agents/${a.mlsId}.jpg`,
+    externalLinks: a.externalLinks || {},
+    sales: out.filter(s => s.agentId === a.mlsId).length,
+    listSide: out.filter(s => s.agentId === a.mlsId && s.side === 'list').length,
+    buySide: out.filter(s => s.agentId === a.mlsId && s.side === 'buy').length,
+    totalVolume: out.filter(s => s.agentId === a.mlsId).reduce((sum, s) => sum + (s.price || 0), 0)
+  }));
+
+  // Year set
+  const years = [...new Set(out.map(s => s.year))].sort((a, b) => b.localeCompare(a));
+
+  // City breakdown
+  const cityTotals = {};
+  for (const s of out) {
+    const c = s.city || 'Unknown';
+    if (!cityTotals[c]) cityTotals[c] = { count: 0, volume: 0 };
+    cityTotals[c].count++;
+    cityTotals[c].volume += s.price || 0;
+  }
+
+  const result = {
+    meta: {
+      generated: new Date().toISOString(),
+      source: 'MLSPIN',
+      withGeocode: withGeo,
+      missingGeocode: withoutGeo,
+      totalSales: out.length,
+      years
+    },
+    agents,
+    sales: out,
+    cityTotals,
+    brand: cfg.brand || { primary: '#1e335e', accent: '#c9ebfc' }
+  };
+
+  fs.writeFileSync(path.join(OUT, 'agent-map.json'), JSON.stringify(result));
+  console.log(`\nWrote agent-map.json — ${out.length} sales (${withGeo} with lat/lng, ${withoutGeo} without)`);
+  console.log('\nPer-agent summary:');
+  for (const a of agents) {
+    console.log(`  ${a.name.padEnd(28)}  ${a.sales} sales  ($${(a.totalVolume/1e6).toFixed(1)}M)  list=${a.listSide} buy=${a.buySide}`);
+  }
+  console.log('\nYears in data:', years.join(', '));
+  console.log('\nTop cities by volume:');
+  const topCities = Object.entries(cityTotals).sort((a,b) => b[1].volume - a[1].volume).slice(0, 8);
+  for (const [city, t] of topCities) {
+    console.log(`  ${city.padEnd(20)}  ${t.count} sales  $${(t.volume/1e6).toFixed(1)}M`);
+  }
+  // Flag non-MA states
+  const states = [...new Set(out.map(s => s.state).filter(Boolean))];
+  if (states.length > 1) {
+    console.log('\nStates present:', states.join(', '), '(non-MA sales captured)');
+  }
+})().catch(e => { console.error('FAILED:', e.message); process.exit(1); });
