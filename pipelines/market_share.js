@@ -19,6 +19,14 @@
 //      brokerage bar chart on the Market Leader sales-presentation page.
 //
 // Exports: buildMarketShare(token) → Promise<object>
+//
+// 2026-06 CHANGE — rate-limit fix:
+//   Previously this fetched the ENTIRE statewide MA Office directory
+//   (~23k offices, ~115 paged requests) on every run, which combined with
+//   fetch_market_leader.js's duplicate office scan pushed the pipeline over
+//   the Bridge request quota (HTTP 429). We now resolve office names only for
+//   the offices that actually appear in the territory's closed sales (~180),
+//   via batched OfficeMlsId filters (~5 requests). getRetry is also 429-aware.
 // =============================================================================
 
 const https = require('https');
@@ -34,6 +42,11 @@ const BENTLEY_DISPLAY_NAME = "RE/MAX Bentley's";
 const GN_CORE_TOWNS = ['Newburyport', 'West Newbury', 'Newbury', 'Rowley', 'Salisbury', 'Amesbury'];
 const BEYOND_TOWNS  = ['Ipswich', 'Georgetown', 'Groveland', 'Merrimac'];
 const TERRITORY     = [...GN_CORE_TOWNS, ...BEYOND_TOWNS];
+
+// How many OfficeMlsId values to OR together per Office request. Keeps the
+// query string comfortably short while still resolving ~180 offices in a
+// handful of calls.
+const OFFICE_ID_CHUNK = 40;
 
 // -----------------------------------------------------------------------------
 // HTTP / pagination
@@ -55,13 +68,32 @@ function get(url) {
   });
 }
 
-async function getRetry(url, n = 4) {
+// Parse the reset timestamp out of a Bridge 429 body, e.g.
+//   "...Your limit will reset on Mon Jun 22 2026 12:52:36 GMT+0000 (...)"
+function parseResetMs(msg) {
+  const m = /reset on (.+?)(?:"|\}|$)/i.exec(msg || '');
+  if (!m) return null;
+  const t = Date.parse(m[1].trim());
+  return Number.isNaN(t) ? null : t;
+}
+
+// 429-aware retry. On a rate-limit response we wait until the quota resets
+// (clamped to a sane window) instead of burning the normal short backoffs.
+async function getRetry(url, n = 5) {
   let lastErr;
   for (let i = 0; i < n; i++) {
     try { return await get(url); }
     catch (e) {
       lastErr = e;
-      await new Promise(r => setTimeout(r, 500 * Math.pow(2, i)));
+      if (i === n - 1) break;
+      let wait = 500 * Math.pow(2, i);
+      if (/HTTP 429/.test(e.message)) {
+        const resetMs = parseResetMs(e.message);
+        const until = resetMs ? (resetMs - Date.now() + 2000) : 60000;
+        wait = Math.min(Math.max(until, 5000), 120000); // clamp 5s..120s
+        console.warn(`[market_share] rate limited (429); waiting ${Math.round(wait / 1000)}s before retry ${i + 1}/${n}`);
+      }
+      await new Promise(r => setTimeout(r, wait));
     }
   }
   throw lastErr;
@@ -127,32 +159,29 @@ function firmGroup(officeName) {
 // Data fetching
 // -----------------------------------------------------------------------------
 
-// Pull ALL MA offices via keyset pagination on OfficeKey. Statewide because
-// plenty of offices registered outside the territory (Boston, Lawrence,
-// Methuen, Salem, etc.) list properties in our market — without their record
-// in the lookup, those sales render as "Unknown".
-async function fetchOfficeLookup(token) {
+// Resolve office names for a specific set of OfficeMlsIds. Batches the IDs into
+// OR'd $filter chunks so we make ~5 requests instead of scanning all ~23k MA
+// offices. Offices that don't resolve (discontinued/inactive, not in the Office
+// resource) simply won't appear in the map; callers already fall back to the
+// raw MLS id for those.
+async function fetchOfficesByIds(token, ids) {
   const map = new Map();
+  const unique = [...new Set((ids || []).filter(Boolean))];
   const select = 'OfficeKey,OfficeMlsId,OfficeName,OfficeCity,OfficeStateOrProvince';
-  const baseFilter = `OfficeStateOrProvince eq 'MA'`;
-  let lastKey = null;
-  let page = 0;
-  while (page < 250) {
-    const filter = lastKey ? `${baseFilter} and OfficeKey gt '${lastKey}'` : baseFilter;
+  for (let i = 0; i < unique.length; i += OFFICE_ID_CHUNK) {
+    const slice = unique.slice(i, i + OFFICE_ID_CHUNK);
+    const clause = slice.map(id => `OfficeMlsId eq '${String(id).replace(/'/g, "''")}'`).join(' or ');
     const url = `${BRIDGE_BASE}/Office?access_token=${token}` +
-                `&$select=${select}` +
+                `&$select=${encodeURIComponent(select)}` +
                 `&$top=200` +
-                `&$orderby=${encodeURIComponent('OfficeKey asc')}` +
-                `&$filter=${encodeURIComponent(filter)}`;
+                `&$filter=${encodeURIComponent(`(${clause})`)}`;
     let resp;
     try { resp = await getRetry(url); }
     catch (e) {
-      console.warn(`[market_share] Office page ${page} failed: ${e.message}`);
-      break;
+      console.warn(`[market_share] office chunk ${Math.floor(i / OFFICE_ID_CHUNK)} failed: ${e.message}`);
+      continue;
     }
-    const batch = resp.value || [];
-    if (!batch.length) break;
-    for (const o of batch) {
+    for (const o of (resp.value || [])) {
       if (o.OfficeMlsId) {
         map.set(o.OfficeMlsId, {
           officeName: o.OfficeName || '',
@@ -160,9 +189,6 @@ async function fetchOfficeLookup(token) {
         });
       }
     }
-    page++;
-    if (batch.length < 200) break;
-    lastKey = batch[batch.length - 1].OfficeKey;
   }
   return map;
 }
@@ -318,13 +344,17 @@ function aggregateFirmLevel(records, officeLookup) {
 async function buildMarketShare(token) {
   console.log('[market_share] Building...');
 
-  console.log('[market_share] Fetching office lookup...');
-  const officeLookup = await fetchOfficeLookup(token);
-  console.log(`[market_share]   ${officeLookup.size} offices indexed`);
-
+  // Pull the closed sales FIRST so we know exactly which offices we need names
+  // for — then resolve only those (instead of scanning the whole state).
   console.log('[market_share] Fetching 12mo closed sales for the territory...');
   const closed = await fetchClosedSales(token, 12);
   console.log(`[market_share]   ${closed.length} closed records`);
+
+  const officeIds = closed.map(r => r.ListOfficeMlsId).filter(Boolean);
+  officeIds.push(...BENTLEY_IDS); // ensure Bentley always resolvable
+  console.log('[market_share] Resolving office names for offices that appear in the data...');
+  const officeLookup = await fetchOfficesByIds(token, officeIds);
+  console.log(`[market_share]   ${officeLookup.size} offices indexed`);
 
   const slices = {
     newburyport:        closed.filter(r => r.City === 'Newburyport'),
