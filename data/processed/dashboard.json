@@ -1,30 +1,30 @@
 {
   "meta": {
-    "generated": "2026-07-24T09:25:10.353Z",
+    "generated": "2026-07-25T09:04:50.012Z",
     "source": "MLSPIN",
     "currentYear": 2026,
     "priorYear": 2025,
-    "closed_records": 92382,
-    "active_records": 13304
+    "closed_records": 92678,
+    "active_records": 13227
   },
   "regional": {
     "ma": {
       "sf": {
         "2025": {
-          "price": 853462,
+          "price": 853460,
           "sqft": 392,
           "dom": 36,
-          "units": 38870
+          "units": 38869
         },
         "2026": {
-          "price": 862076,
+          "price": 862257,
           "sqft": 395,
           "dom": 38,
-          "units": 38392
+          "units": 38407
         },
-        "supply": 2.26,
-        "active": 7220,
-        "trailing12": 38392
+        "supply": 2.23,
+        "active": 7133,
+        "trailing12": 38407
       },
       "condo": {
         "2025": {
@@ -34,14 +34,14 @@
           "units": 16735
         },
         "2026": {
-          "price": 720572,
+          "price": 721899,
           "sqft": 545,
           "dom": 45,
-          "units": 16827
+          "units": 16849
         },
-        "supply": 3.17,
-        "active": 4442,
-        "trailing12": 16827
+        "supply": 3.16,
+        "active": 4443,
+        "trailing12": 16849
       },
       "mf": {
         "2025": {
@@ -51,14 +51,14 @@
           "units": 5512
         },
         "2026": {
-          "price": 883608,
-          "sqft": 391,
+          "price": 883682,
+          "sqft": 390,
           "dom": 39,
-          "units": 5466
+          "units": 5474
         },
-        "supply": 3.6,
-        "active": 1642,
-        "trailing12": 5466
+        "supply": 3.62,
+        "active": 1651,
+        "trailing12": 5474
       }
     },
     "boston": {
@@ -70,14 +70,14 @@
           "units": 813
         },
         "2026": {
-          "price": 1317631,
-          "sqft": 588,
-          "dom": 38,
-          "units": 810
+          "price": 1315041,
+          "sqft": 587,
+          "dom": 39,
+          "units": 809
         },
-        "supply": 2.83,
-        "active": 191,
-        "trailing12": 810
+        "supply": 2.77,
+        "active": 187,
+        "trailing12": 809
       },
       "condo": {
         "2025": {
@@ -87,14 +87,14 @@
           "units": 3474
         },
         "2026": {
-          "price": 1131434,
-          "sqft": 913,
+          "price": 1137965,
+          "sqft": 914,
           "dom": 51,
-          "units": 3424
+          "units": 3420
         },
-        "supply": 5.04,
-        "active": 1438,
-        "trailing12": 3424
+        "supply": 5,
+        "active": 1426,
+        "trailing12": 3420
       },
       "mf": {
         "2025": {
@@ -104,7 +104,7 @@
           "units": 594
         },
         "2026": {
-          "price": 1440978,
+          "price": 1440709,
           "sqft": 420,
           "dom": 44,
           "units": 590
@@ -123,14 +123,14 @@
           "units": 4369
         },
         "2026": {
-          "price": 902968,
-          "sqft": 415,
+          "price": 904189,
+          "sqft": 416,
           "dom": 34,
-          "units": 4289
+          "units": 4290
         },
-        "supply": 2.03,
-        "active": 726,
-        "trailing12": 4289
+        "supply": 2.01,
+        "active": 717,
+        "trailing12": 4290
       },
       "condo": {
         "2025": {
@@ -140,14 +140,14 @@
           "units": 1926
         },
         "2026": {
-          "price": 548451,
-          "sqft": 410,
+          "price": 549266,
+          "sqft": 411,
           "dom": 40,
-          "units": 1982
+          "units": 1987
         },
-        "supply": 2.48,
-        "active": 409,
-        "trailing12": 1982
+        "supply": 2.46,
+        "active": 408,
+        "trailing12": 1987
       },
       "mf": {
         "2025": {
@@ -157,14 +157,14 @@
           "units": 573
         },
         "2026": {
-          "price": 938119,
+          "price": 937334,
           "sqft": 314,
           "dom": 32,
-          "units": 615
+          "units": 614
         },
         "supply": 2.97,
         "active": 152,
-        "trailing12": 615
+        "trailing12": 614
       }
     },
     "nbpt": {
@@ -176,14 +176,14 @@
           "units": 141
         },
         "2026": {
-          "price": 1262987,
-          "sqft": 577,
-          "dom": 32,
-          "units": 124
+          "price": 1266743,
+          "sqft": 578,
+          "dom": 33,
+          "units": 123
         },
-        "supply": 3.97,
+        "supply": 4,
         "active": 41,
-        "trailing12": 124
+        "trailing12": 123
       },
       "condo": {
         "2025": {
@@ -193,14 +193,14 @@
           "units": 122
         },
         "2026": {
-          "price": 808947,
-          "sqft": 577,
+          "price": 814982,
+          "sqft": 576,
           "dom": 38,
-          "units": 116
+          "units": 117
         },
-        "supply": 2.17,
+        "supply": 2.15,
         "active": 21,
-        "trailing12": 116
+        "trailing12": 117
       },
       "mf": {
         "2025": {
@@ -231,10 +231,10 @@
           "units": 141
         },
         "2026": {
-          "price": 1262987,
-          "sqft": 577,
-          "dom": 32,
-          "units": 124
+          "price": 1266743,
+          "sqft": 578,
+          "dom": 33,
+          "units": 123
         }
       },
       "West Newbury": {
@@ -245,10 +245,10 @@
           "units": 34
         },
         "2026": {
-          "price": 1142823,
-          "sqft": 365,
+          "price": 1124854,
+          "sqft": 364,
           "dom": 38,
-          "units": 37
+          "units": 38
         }
       },
       "Newbury": {
@@ -259,10 +259,10 @@
           "units": 71
         },
         "2026": {
-          "price": 1036764,
-          "sqft": 486,
+          "price": 1031744,
+          "sqft": 484,
           "dom": 40,
-          "units": 90
+          "units": 91
         }
       },
       "Rowley": {
@@ -301,15 +301,15 @@
           "units": 125
         },
         "2026": {
-          "price": 736914,
+          "price": 733533,
           "sqft": 383,
-          "dom": 32,
-          "units": 135
+          "dom": 33,
+          "units": 134
         }
       }
     },
     "summary": {
-      "price": 983182,
+      "price": 981137,
       "sqft": 459,
       "dom": 36,
       "units": 465,
@@ -326,10 +326,10 @@
           "units": 106
         },
         "2026": {
-          "price": 1087217,
+          "price": 1093038,
           "sqft": 457,
           "dom": 46,
-          "units": 106
+          "units": 104
         }
       },
       "Georgetown": {
@@ -376,11 +376,11 @@
       }
     },
     "summary": {
-      "price": 870813,
+      "price": 871368,
       "sqft": 398,
       "dom": 36,
-      "units": 313,
-      "activeListings": 44
+      "units": 311,
+      "activeListings": 43
     }
   },
   "neighborhoods": {
@@ -393,10 +393,10 @@
           "units": 112
         },
         "2026": {
-          "price": 1269189,
+          "price": 1273779,
           "sqft": 554,
           "dom": 33,
-          "units": 103
+          "units": 102
         },
         "_label": "Newburyport (town center)"
       },
@@ -519,10 +519,10 @@
           "units": 90
         },
         "2026": {
-          "price": 1101574,
+          "price": 1106226,
           "sqft": 427,
           "dom": 46,
-          "units": 94
+          "units": 93
         },
         "_label": "Ipswich (town center)"
       },
@@ -549,10 +549,10 @@
           "units": 5
         },
         "2026": {
-          "price": 798333,
-          "sqft": 461,
-          "dom": 22,
-          "units": 3
+          "price": 747500,
+          "sqft": 504,
+          "dom": 19,
+          "units": 2
         },
         "_label": "Ipswich — Linebrook"
       }
@@ -562,38 +562,38 @@
     "medianIncome": 104800,
     "markets": {
       "ma": {
-        "price": 862076,
-        "down": 172415,
-        "monthly": 4359,
-        "monthlyAll": 5509,
-        "income": 236081
+        "price": 862257,
+        "down": 172451,
+        "monthly": 4360,
+        "monthlyAll": 5510,
+        "income": 236131
       },
       "boston": {
-        "price": 1317631,
-        "down": 263526,
-        "monthly": 6663,
-        "monthlyAll": 8420,
-        "income": 360836
+        "price": 1315041,
+        "down": 263008,
+        "monthly": 6650,
+        "monthlyAll": 8403,
+        "income": 360126
       },
       "essex": {
-        "price": 902968,
-        "down": 180594,
-        "monthly": 4566,
-        "monthlyAll": 5770,
-        "income": 247279
+        "price": 904189,
+        "down": 180838,
+        "monthly": 4572,
+        "monthlyAll": 5778,
+        "income": 247614
       },
       "nbpt": {
-        "price": 1262987,
-        "down": 252597,
-        "monthly": 6386,
-        "monthlyAll": 8070,
-        "income": 345871
+        "price": 1266743,
+        "down": 253349,
+        "monthly": 6405,
+        "monthlyAll": 8094,
+        "income": 346900
       }
     }
   },
   "marketShare": {
     "window": "12 months trailing",
-    "generated": "2026-07-24T09:25:10.353Z",
+    "generated": "2026-07-25T09:04:50.012Z",
     "coreTowns": [
       "Newburyport",
       "West Newbury",
@@ -611,19 +611,19 @@
     "officeLevel": {
       "newburyport": {
         "totalSides": 241,
-        "totalVolume": 250948209,
-        "officeCount": 61,
+        "totalVolume": 251662209,
+        "officeCount": 60,
         "bySides": [
           {
             "officeId": "AN8279",
             "officeName": "RE/MAX Bentley's",
             "officeCity": "Newburyport",
             "displayName": "RE/MAX Bentley's — Newburyport",
-            "sides": 45,
-            "volume": 52280300,
+            "sides": 46,
+            "volume": 53795300,
             "isBentleys": true,
-            "sidesPct": 18.67,
-            "volumePct": 20.83
+            "sidesPct": 19.09,
+            "volumePct": 21.38
           },
           {
             "officeId": "AN6420",
@@ -634,7 +634,7 @@
             "volume": 45353300,
             "isBentleys": false,
             "sidesPct": 14.11,
-            "volumePct": 18.07
+            "volumePct": 18.02
           },
           {
             "officeId": "AN6888",
@@ -645,7 +645,7 @@
             "volume": 31339396,
             "isBentleys": false,
             "sidesPct": 12.03,
-            "volumePct": 12.49
+            "volumePct": 12.45
           },
           {
             "officeId": "AN7944",
@@ -656,7 +656,7 @@
             "volume": 27809700,
             "isBentleys": false,
             "sidesPct": 9.96,
-            "volumePct": 11.08
+            "volumePct": 11.05
           },
           {
             "officeId": "AN4850",
@@ -667,7 +667,7 @@
             "volume": 19694900,
             "isBentleys": false,
             "sidesPct": 7.05,
-            "volumePct": 7.85
+            "volumePct": 7.83
           },
           {
             "officeId": "AN8750",
@@ -700,7 +700,7 @@
             "volume": 4190000,
             "isBentleys": false,
             "sidesPct": 2.07,
-            "volumePct": 1.67
+            "volumePct": 1.66
           },
           {
             "officeId": "C95098",
@@ -711,7 +711,7 @@
             "volume": 2347000,
             "isBentleys": false,
             "sidesPct": 1.66,
-            "volumePct": 0.94
+            "volumePct": 0.93
           },
           {
             "officeId": "AN6958",
@@ -755,7 +755,7 @@
             "volume": 2400000,
             "isBentleys": false,
             "sidesPct": 0.83,
-            "volumePct": 0.96
+            "volumePct": 0.95
           },
           {
             "officeId": "AN8751",
@@ -766,7 +766,7 @@
             "volume": 1220000,
             "isBentleys": false,
             "sidesPct": 0.83,
-            "volumePct": 0.49
+            "volumePct": 0.48
           },
           {
             "officeId": "AC2087",
@@ -843,18 +843,7 @@
             "volume": 1420000,
             "isBentleys": false,
             "sidesPct": 0.83,
-            "volumePct": 0.57
-          },
-          {
-            "officeId": "NB3534",
-            "officeName": "Redfin Corp.",
-            "officeCity": "Burlington",
-            "displayName": "Redfin Corp. — Burlington",
-            "sides": 1,
-            "volume": 801000,
-            "isBentleys": false,
-            "sidesPct": 0.41,
-            "volumePct": 0.32
+            "volumePct": 0.56
           },
           {
             "officeId": "AN8678",
@@ -986,7 +975,7 @@
             "volume": 2124113,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.85
+            "volumePct": 0.84
           },
           {
             "officeId": "AN2383",
@@ -1052,7 +1041,7 @@
             "volume": 590000,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.24
+            "volumePct": 0.23
           },
           {
             "officeId": "AC2204",
@@ -1228,7 +1217,7 @@
             "volume": 2000000,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.8
+            "volumePct": 0.79
           },
           {
             "officeId": "BB5522",
@@ -1261,7 +1250,7 @@
             "volume": 1545000,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.62
+            "volumePct": 0.61
           },
           {
             "officeId": "AN1475",
@@ -1292,11 +1281,11 @@
             "officeName": "RE/MAX Bentley's",
             "officeCity": "Newburyport",
             "displayName": "RE/MAX Bentley's — Newburyport",
-            "sides": 45,
-            "volume": 52280300,
+            "sides": 46,
+            "volume": 53795300,
             "isBentleys": true,
-            "sidesPct": 18.67,
-            "volumePct": 20.83
+            "sidesPct": 19.09,
+            "volumePct": 21.38
           },
           {
             "officeId": "AN6420",
@@ -1307,7 +1296,7 @@
             "volume": 45353300,
             "isBentleys": false,
             "sidesPct": 14.11,
-            "volumePct": 18.07
+            "volumePct": 18.02
           },
           {
             "officeId": "AN6888",
@@ -1318,7 +1307,7 @@
             "volume": 31339396,
             "isBentleys": false,
             "sidesPct": 12.03,
-            "volumePct": 12.49
+            "volumePct": 12.45
           },
           {
             "officeId": "AN7944",
@@ -1329,7 +1318,7 @@
             "volume": 27809700,
             "isBentleys": false,
             "sidesPct": 9.96,
-            "volumePct": 11.08
+            "volumePct": 11.05
           },
           {
             "officeId": "AN4850",
@@ -1340,7 +1329,7 @@
             "volume": 19694900,
             "isBentleys": false,
             "sidesPct": 7.05,
-            "volumePct": 7.85
+            "volumePct": 7.83
           },
           {
             "officeId": "AN7000",
@@ -1373,7 +1362,7 @@
             "volume": 4190000,
             "isBentleys": false,
             "sidesPct": 2.07,
-            "volumePct": 1.67
+            "volumePct": 1.66
           },
           {
             "officeId": "AN8161",
@@ -1406,7 +1395,7 @@
             "volume": 2400000,
             "isBentleys": false,
             "sidesPct": 0.83,
-            "volumePct": 0.96
+            "volumePct": 0.95
           },
           {
             "officeId": "C95098",
@@ -1417,7 +1406,7 @@
             "volume": 2347000,
             "isBentleys": false,
             "sidesPct": 1.66,
-            "volumePct": 0.94
+            "volumePct": 0.93
           },
           {
             "officeId": "C95283",
@@ -1439,7 +1428,7 @@
             "volume": 2124113,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.85
+            "volumePct": 0.84
           },
           {
             "officeId": "AC0342",
@@ -1461,7 +1450,7 @@
             "volume": 2000000,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.8
+            "volumePct": 0.79
           },
           {
             "officeId": "AN3160",
@@ -1516,7 +1505,7 @@
             "volume": 1545000,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.62
+            "volumePct": 0.61
           },
           {
             "officeId": "AC2087",
@@ -1549,7 +1538,7 @@
             "volume": 1420000,
             "isBentleys": false,
             "sidesPct": 0.83,
-            "volumePct": 0.57
+            "volumePct": 0.56
           },
           {
             "officeId": "AN7938",
@@ -1571,7 +1560,7 @@
             "volume": 1220000,
             "isBentleys": false,
             "sidesPct": 0.83,
-            "volumePct": 0.49
+            "volumePct": 0.48
           },
           {
             "officeId": "AN8507",
@@ -1695,17 +1684,6 @@
             "volumePct": 0.33
           },
           {
-            "officeId": "NB3534",
-            "officeName": "Redfin Corp.",
-            "officeCity": "Burlington",
-            "displayName": "Redfin Corp. — Burlington",
-            "sides": 1,
-            "volume": 801000,
-            "isBentleys": false,
-            "sidesPct": 0.41,
-            "volumePct": 0.32
-          },
-          {
             "officeId": "AN8678",
             "officeName": "Coldwell Banker Realty - Ipswich",
             "officeCity": "Ipswich",
@@ -1813,7 +1791,7 @@
             "volume": 590000,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.24
+            "volumePct": 0.23
           },
           {
             "officeId": "AN9500",
@@ -1961,8 +1939,8 @@
         ]
       },
       "greaterNewburyport": {
-        "totalSides": 788,
-        "totalVolume": 661853635,
+        "totalSides": 789,
+        "totalVolume": 662417635,
         "officeCount": 182,
         "bySides": [
           {
@@ -1971,10 +1949,10 @@
             "officeCity": "Newburyport",
             "displayName": "RE/MAX Bentley's — Newburyport",
             "sides": 96,
-            "volume": 97078200,
+            "volume": 97403200,
             "isBentleys": true,
-            "sidesPct": 12.18,
-            "volumePct": 14.67
+            "sidesPct": 12.17,
+            "volumePct": 14.7
           },
           {
             "officeId": "AN6888",
@@ -1984,8 +1962,8 @@
             "sides": 64,
             "volume": 62199845,
             "isBentleys": false,
-            "sidesPct": 8.12,
-            "volumePct": 9.4
+            "sidesPct": 8.11,
+            "volumePct": 9.39
           },
           {
             "officeId": "AN6420",
@@ -1995,8 +1973,8 @@
             "sides": 63,
             "volume": 67947800,
             "isBentleys": false,
-            "sidesPct": 7.99,
-            "volumePct": 10.27
+            "sidesPct": 7.98,
+            "volumePct": 10.26
           },
           {
             "officeId": "AN7944",
@@ -2018,7 +1996,7 @@
             "volume": 24724950,
             "isBentleys": false,
             "sidesPct": 4.31,
-            "volumePct": 3.74
+            "volumePct": 3.73
           },
           {
             "officeId": "AN4850",
@@ -2028,8 +2006,8 @@
             "sides": 30,
             "volume": 29965900,
             "isBentleys": false,
-            "sidesPct": 3.81,
-            "volumePct": 4.53
+            "sidesPct": 3.8,
+            "volumePct": 4.52
           },
           {
             "officeId": "AN8751",
@@ -2039,7 +2017,7 @@
             "sides": 30,
             "volume": 19250999,
             "isBentleys": false,
-            "sidesPct": 3.81,
+            "sidesPct": 3.8,
             "volumePct": 2.91
           },
           {
@@ -2061,7 +2039,7 @@
             "sides": 17,
             "volume": 11428000,
             "isBentleys": false,
-            "sidesPct": 2.16,
+            "sidesPct": 2.15,
             "volumePct": 1.73
           },
           {
@@ -2069,11 +2047,11 @@
             "officeName": "Coldwell Banker Realty - Haverhill",
             "officeCity": "Haverhill",
             "displayName": "Coldwell Banker Realty - Haverhill — Haverhill",
-            "sides": 14,
-            "volume": 8583000,
+            "sides": 16,
+            "volume": 9623000,
             "isBentleys": false,
-            "sidesPct": 1.78,
-            "volumePct": 1.3
+            "sidesPct": 2.03,
+            "volumePct": 1.45
           },
           {
             "officeId": "C95098",
@@ -2105,7 +2083,7 @@
             "sides": 11,
             "volume": 6376600,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 0.96
           },
           {
@@ -2116,7 +2094,7 @@
             "sides": 11,
             "volume": 7322129,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 1.11
           },
           {
@@ -2127,7 +2105,7 @@
             "sides": 11,
             "volume": 6487100,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 0.98
           },
           {
@@ -2160,7 +2138,7 @@
             "sides": 8,
             "volume": 6409000,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 0.97
           },
           {
@@ -2171,7 +2149,7 @@
             "sides": 8,
             "volume": 5896500,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 0.89
           },
           {
@@ -2182,7 +2160,7 @@
             "sides": 8,
             "volume": 7369800,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 1.11
           },
           {
@@ -2216,7 +2194,7 @@
             "volume": 4203000,
             "isBentleys": false,
             "sidesPct": 0.76,
-            "volumePct": 0.64
+            "volumePct": 0.63
           },
           {
             "officeId": "AN8161",
@@ -2238,7 +2216,7 @@
             "volume": 3409000,
             "isBentleys": false,
             "sidesPct": 0.76,
-            "volumePct": 0.52
+            "volumePct": 0.51
           },
           {
             "officeId": "AN6144",
@@ -2250,17 +2228,6 @@
             "isBentleys": false,
             "sidesPct": 0.76,
             "volumePct": 0.4
-          },
-          {
-            "officeId": "NB3534",
-            "officeName": "Redfin Corp.",
-            "officeCity": "Burlington",
-            "displayName": "Redfin Corp. — Burlington",
-            "sides": 5,
-            "volume": 5308500,
-            "isBentleys": false,
-            "sidesPct": 0.63,
-            "volumePct": 0.8
           },
           {
             "officeId": "AN8678",
@@ -2349,6 +2316,17 @@
             "isBentleys": false,
             "sidesPct": 0.51,
             "volumePct": 0.26
+          },
+          {
+            "officeId": "NB3534",
+            "officeName": "Redfin Corp.",
+            "officeCity": "Burlington",
+            "displayName": "Redfin Corp. — Burlington",
+            "sides": 4,
+            "volume": 4507500,
+            "isBentleys": false,
+            "sidesPct": 0.51,
+            "volumePct": 0.68
           },
           {
             "officeId": "AN4281",
@@ -3975,10 +3953,10 @@
             "officeCity": "Newburyport",
             "displayName": "RE/MAX Bentley's — Newburyport",
             "sides": 96,
-            "volume": 97078200,
+            "volume": 97403200,
             "isBentleys": true,
-            "sidesPct": 12.18,
-            "volumePct": 14.67
+            "sidesPct": 12.17,
+            "volumePct": 14.7
           },
           {
             "officeId": "AN6420",
@@ -3988,8 +3966,8 @@
             "sides": 63,
             "volume": 67947800,
             "isBentleys": false,
-            "sidesPct": 7.99,
-            "volumePct": 10.27
+            "sidesPct": 7.98,
+            "volumePct": 10.26
           },
           {
             "officeId": "AN6888",
@@ -3999,8 +3977,8 @@
             "sides": 64,
             "volume": 62199845,
             "isBentleys": false,
-            "sidesPct": 8.12,
-            "volumePct": 9.4
+            "sidesPct": 8.11,
+            "volumePct": 9.39
           },
           {
             "officeId": "AN7944",
@@ -4021,8 +3999,8 @@
             "sides": 30,
             "volume": 29965900,
             "isBentleys": false,
-            "sidesPct": 3.81,
-            "volumePct": 4.53
+            "sidesPct": 3.8,
+            "volumePct": 4.52
           },
           {
             "officeId": "AN8750",
@@ -4033,7 +4011,7 @@
             "volume": 24724950,
             "isBentleys": false,
             "sidesPct": 4.31,
-            "volumePct": 3.74
+            "volumePct": 3.73
           },
           {
             "officeId": "AN8751",
@@ -4043,7 +4021,7 @@
             "sides": 30,
             "volume": 19250999,
             "isBentleys": false,
-            "sidesPct": 3.81,
+            "sidesPct": 3.8,
             "volumePct": 2.91
           },
           {
@@ -4065,7 +4043,7 @@
             "sides": 17,
             "volume": 11428000,
             "isBentleys": false,
-            "sidesPct": 2.16,
+            "sidesPct": 2.15,
             "volumePct": 1.73
           },
           {
@@ -4073,11 +4051,11 @@
             "officeName": "Coldwell Banker Realty - Haverhill",
             "officeCity": "Haverhill",
             "displayName": "Coldwell Banker Realty - Haverhill — Haverhill",
-            "sides": 14,
-            "volume": 8583000,
+            "sides": 16,
+            "volume": 9623000,
             "isBentleys": false,
-            "sidesPct": 1.78,
-            "volumePct": 1.3
+            "sidesPct": 2.03,
+            "volumePct": 1.45
           },
           {
             "officeId": "AN8613",
@@ -4098,7 +4076,7 @@
             "sides": 8,
             "volume": 7369800,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 1.11
           },
           {
@@ -4109,7 +4087,7 @@
             "sides": 11,
             "volume": 7322129,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 1.11
           },
           {
@@ -4153,7 +4131,7 @@
             "sides": 11,
             "volume": 6487100,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 0.98
           },
           {
@@ -4164,7 +4142,7 @@
             "sides": 8,
             "volume": 6409000,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 0.97
           },
           {
@@ -4175,7 +4153,7 @@
             "sides": 11,
             "volume": 6376600,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 0.96
           },
           {
@@ -4197,7 +4175,7 @@
             "sides": 8,
             "volume": 5896500,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 0.89
           },
           {
@@ -4207,17 +4185,6 @@
             "displayName": "Applewood Realty — Chelmsford",
             "sides": 5,
             "volume": 5314117,
-            "isBentleys": false,
-            "sidesPct": 0.63,
-            "volumePct": 0.8
-          },
-          {
-            "officeId": "NB3534",
-            "officeName": "Redfin Corp.",
-            "officeCity": "Burlington",
-            "displayName": "Redfin Corp. — Burlington",
-            "sides": 5,
-            "volume": 5308500,
             "isBentleys": false,
             "sidesPct": 0.63,
             "volumePct": 0.8
@@ -4245,6 +4212,17 @@
             "volumePct": 0.74
           },
           {
+            "officeId": "NB3534",
+            "officeName": "Redfin Corp.",
+            "officeCity": "Burlington",
+            "displayName": "Redfin Corp. — Burlington",
+            "sides": 4,
+            "volume": 4507500,
+            "isBentleys": false,
+            "sidesPct": 0.51,
+            "volumePct": 0.68
+          },
+          {
             "officeId": "AN6566",
             "officeName": "Berkshire Hathaway HomeServices Verani Realty",
             "officeCity": "Newburyport",
@@ -4253,7 +4231,7 @@
             "volume": 4203000,
             "isBentleys": false,
             "sidesPct": 0.76,
-            "volumePct": 0.64
+            "volumePct": 0.63
           },
           {
             "officeId": "AN8678",
@@ -4308,7 +4286,7 @@
             "volume": 3409000,
             "isBentleys": false,
             "sidesPct": 0.76,
-            "volumePct": 0.52
+            "volumePct": 0.51
           },
           {
             "officeId": "AN8458",
@@ -5974,8 +5952,8 @@
         ]
       },
       "beyond": {
-        "totalSides": 399,
-        "totalVolume": 327921233,
+        "totalSides": 398,
+        "totalVolume": 326681233,
         "officeCount": 146,
         "bySides": [
           {
@@ -5986,8 +5964,8 @@
             "sides": 28,
             "volume": 21496250,
             "isBentleys": false,
-            "sidesPct": 7.02,
-            "volumePct": 6.56
+            "sidesPct": 7.04,
+            "volumePct": 6.58
           },
           {
             "officeId": "AN6886",
@@ -5997,8 +5975,8 @@
             "sides": 16,
             "volume": 12384600,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.78
+            "sidesPct": 4.02,
+            "volumePct": 3.79
           },
           {
             "officeId": "AN6420",
@@ -6008,8 +5986,8 @@
             "sides": 15,
             "volume": 12422700,
             "isBentleys": false,
-            "sidesPct": 3.76,
-            "volumePct": 3.79
+            "sidesPct": 3.77,
+            "volumePct": 3.8
           },
           {
             "officeId": "AN6818",
@@ -6019,19 +5997,8 @@
             "sides": 13,
             "volume": 18384000,
             "isBentleys": false,
-            "sidesPct": 3.26,
-            "volumePct": 5.61
-          },
-          {
-            "officeId": "C95098",
-            "officeName": "Keller Williams Realty Evolution",
-            "officeCity": "Beverly",
-            "displayName": "Keller Williams Realty Evolution — Beverly",
-            "sides": 12,
-            "volume": 9207950,
-            "isBentleys": false,
-            "sidesPct": 3.01,
-            "volumePct": 2.81
+            "sidesPct": 3.27,
+            "volumePct": 5.63
           },
           {
             "officeId": "AC1087",
@@ -6042,7 +6009,18 @@
             "volume": 10390500,
             "isBentleys": false,
             "sidesPct": 2.76,
-            "volumePct": 3.17
+            "volumePct": 3.18
+          },
+          {
+            "officeId": "C95098",
+            "officeName": "Keller Williams Realty Evolution",
+            "officeCity": "Beverly",
+            "displayName": "Keller Williams Realty Evolution — Beverly",
+            "sides": 11,
+            "volume": 8307950,
+            "isBentleys": false,
+            "sidesPct": 2.76,
+            "volumePct": 2.54
           },
           {
             "officeId": "AN8279",
@@ -6053,7 +6031,7 @@
             "volume": 8482000,
             "isBentleys": true,
             "sidesPct": 2.51,
-            "volumePct": 2.59
+            "volumePct": 2.6
           },
           {
             "officeId": "AC0342",
@@ -6071,11 +6049,11 @@
             "officeName": "Windhill Realty, LLC",
             "officeCity": "Ipswich",
             "displayName": "Windhill Realty, LLC — Ipswich",
-            "sides": 9,
-            "volume": 6972000,
+            "sides": 8,
+            "volume": 6303000,
             "isBentleys": false,
-            "sidesPct": 2.26,
-            "volumePct": 2.13
+            "sidesPct": 2.01,
+            "volumePct": 1.93
           },
           {
             "officeId": "AC2087",
@@ -6086,7 +6064,7 @@
             "volume": 6992110,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.13
+            "volumePct": 2.14
           },
           {
             "officeId": "AN7944",
@@ -6097,7 +6075,7 @@
             "volume": 6619000,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.02
+            "volumePct": 2.03
           },
           {
             "officeId": "AN3418",
@@ -6108,7 +6086,7 @@
             "volume": 6846500,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.09
+            "volumePct": 2.1
           },
           {
             "officeId": "AN6212",
@@ -6130,7 +6108,7 @@
             "volume": 7931000,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.42
+            "volumePct": 2.43
           },
           {
             "officeId": "AN8447",
@@ -6140,7 +6118,7 @@
             "sides": 7,
             "volume": 5365000,
             "isBentleys": false,
-            "sidesPct": 1.75,
+            "sidesPct": 1.76,
             "volumePct": 1.64
           },
           {
@@ -6151,8 +6129,8 @@
             "sides": 7,
             "volume": 5349000,
             "isBentleys": false,
-            "sidesPct": 1.75,
-            "volumePct": 1.63
+            "sidesPct": 1.76,
+            "volumePct": 1.64
           },
           {
             "officeId": "AN8161",
@@ -6162,8 +6140,8 @@
             "sides": 6,
             "volume": 6916000,
             "isBentleys": false,
-            "sidesPct": 1.5,
-            "volumePct": 2.11
+            "sidesPct": 1.51,
+            "volumePct": 2.12
           },
           {
             "officeId": "AN6958",
@@ -6173,7 +6151,7 @@
             "sides": 6,
             "volume": 4977000,
             "isBentleys": false,
-            "sidesPct": 1.5,
+            "sidesPct": 1.51,
             "volumePct": 1.52
           },
           {
@@ -6184,8 +6162,8 @@
             "sides": 5,
             "volume": 7107000,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 2.17
+            "sidesPct": 1.26,
+            "volumePct": 2.18
           },
           {
             "officeId": "C95243",
@@ -6195,7 +6173,7 @@
             "sides": 5,
             "volume": 3461000,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 1.06
           },
           {
@@ -6206,7 +6184,7 @@
             "sides": 5,
             "volume": 4021000,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 1.23
           },
           {
@@ -6217,8 +6195,8 @@
             "sides": 5,
             "volume": 3524000,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 1.07
+            "sidesPct": 1.26,
+            "volumePct": 1.08
           },
           {
             "officeId": "AN8750",
@@ -6228,7 +6206,7 @@
             "sides": 5,
             "volume": 2577200,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 0.79
           },
           {
@@ -6239,8 +6217,8 @@
             "sides": 5,
             "volume": 3490500,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 1.06
+            "sidesPct": 1.26,
+            "volumePct": 1.07
           },
           {
             "officeId": "AN7000",
@@ -6250,7 +6228,7 @@
             "sides": 4,
             "volume": 3100000,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 0.95
           },
           {
@@ -6261,7 +6239,7 @@
             "sides": 4,
             "volume": 2355000,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 0.72
           },
           {
@@ -6272,8 +6250,8 @@
             "sides": 4,
             "volume": 3024000,
             "isBentleys": false,
-            "sidesPct": 1,
-            "volumePct": 0.92
+            "sidesPct": 1.01,
+            "volumePct": 0.93
           },
           {
             "officeId": "AN5941",
@@ -6283,8 +6261,8 @@
             "sides": 4,
             "volume": 2963250,
             "isBentleys": false,
-            "sidesPct": 1,
-            "volumePct": 0.9
+            "sidesPct": 1.01,
+            "volumePct": 0.91
           },
           {
             "officeId": "AN6191",
@@ -6294,7 +6272,7 @@
             "sides": 4,
             "volume": 3540000,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 1.08
           },
           {
@@ -6305,7 +6283,7 @@
             "sides": 4,
             "volume": 4738900,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 1.45
           },
           {
@@ -6317,7 +6295,7 @@
             "volume": 3785000,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 1.15
+            "volumePct": 1.16
           },
           {
             "officeId": "AN4850",
@@ -6339,7 +6317,7 @@
             "volume": 2697500,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 0.82
+            "volumePct": 0.83
           },
           {
             "officeId": "AN6220",
@@ -6350,7 +6328,7 @@
             "volume": 3480000,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 1.06
+            "volumePct": 1.07
           },
           {
             "officeId": "AN6521",
@@ -6383,7 +6361,18 @@
             "volume": 2434900,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 0.74
+            "volumePct": 0.75
+          },
+          {
+            "officeId": "AN4634",
+            "officeName": "MP Realty Group",
+            "officeCity": "Saugus",
+            "displayName": "MP Realty Group — Saugus",
+            "sides": 3,
+            "volume": 941000,
+            "isBentleys": false,
+            "sidesPct": 0.75,
+            "volumePct": 0.29
           },
           {
             "officeId": "AN8827",
@@ -6405,7 +6394,7 @@
             "volume": 4035000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 1.23
+            "volumePct": 1.24
           },
           {
             "officeId": "AN8509",
@@ -6416,7 +6405,7 @@
             "volume": 1195000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.36
+            "volumePct": 0.37
           },
           {
             "officeId": "AN5155",
@@ -6449,7 +6438,7 @@
             "volume": 704800,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.21
+            "volumePct": 0.22
           },
           {
             "officeId": "AN6133",
@@ -6482,7 +6471,7 @@
             "volume": 2310000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.7
+            "volumePct": 0.71
           },
           {
             "officeId": "AN6617",
@@ -6504,7 +6493,7 @@
             "volume": 1294000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.39
+            "volumePct": 0.4
           },
           {
             "officeId": "AN7874",
@@ -6537,7 +6526,7 @@
             "volume": 1425000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.43
+            "volumePct": 0.44
           },
           {
             "officeId": "AN6314",
@@ -6614,7 +6603,7 @@
             "volume": 1522000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.46
+            "volumePct": 0.47
           },
           {
             "officeId": "AN1202",
@@ -6637,17 +6626,6 @@
             "isBentleys": false,
             "sidesPct": 0.5,
             "volumePct": 0.48
-          },
-          {
-            "officeId": "AN4634",
-            "officeName": "MP Realty Group",
-            "officeCity": "Saugus",
-            "displayName": "MP Realty Group — Saugus",
-            "sides": 2,
-            "volume": 612000,
-            "isBentleys": false,
-            "sidesPct": 0.5,
-            "volumePct": 0.19
           },
           {
             "officeId": "C95287",
@@ -6779,7 +6757,7 @@
             "volume": 900000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.27
+            "volumePct": 0.28
           },
           {
             "officeId": "AN8136",
@@ -7076,7 +7054,7 @@
             "volume": 705000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.21
+            "volumePct": 0.22
           },
           {
             "officeId": "AN5767",
@@ -7594,8 +7572,8 @@
             "sides": 28,
             "volume": 21496250,
             "isBentleys": false,
-            "sidesPct": 7.02,
-            "volumePct": 6.56
+            "sidesPct": 7.04,
+            "volumePct": 6.58
           },
           {
             "officeId": "AN6818",
@@ -7605,8 +7583,8 @@
             "sides": 13,
             "volume": 18384000,
             "isBentleys": false,
-            "sidesPct": 3.26,
-            "volumePct": 5.61
+            "sidesPct": 3.27,
+            "volumePct": 5.63
           },
           {
             "officeId": "AN6420",
@@ -7616,8 +7594,8 @@
             "sides": 15,
             "volume": 12422700,
             "isBentleys": false,
-            "sidesPct": 3.76,
-            "volumePct": 3.79
+            "sidesPct": 3.77,
+            "volumePct": 3.8
           },
           {
             "officeId": "AN6886",
@@ -7627,8 +7605,8 @@
             "sides": 16,
             "volume": 12384600,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.78
+            "sidesPct": 4.02,
+            "volumePct": 3.79
           },
           {
             "officeId": "AC1087",
@@ -7639,18 +7617,7 @@
             "volume": 10390500,
             "isBentleys": false,
             "sidesPct": 2.76,
-            "volumePct": 3.17
-          },
-          {
-            "officeId": "C95098",
-            "officeName": "Keller Williams Realty Evolution",
-            "officeCity": "Beverly",
-            "displayName": "Keller Williams Realty Evolution — Beverly",
-            "sides": 12,
-            "volume": 9207950,
-            "isBentleys": false,
-            "sidesPct": 3.01,
-            "volumePct": 2.81
+            "volumePct": 3.18
           },
           {
             "officeId": "AN8279",
@@ -7661,7 +7628,18 @@
             "volume": 8482000,
             "isBentleys": true,
             "sidesPct": 2.51,
-            "volumePct": 2.59
+            "volumePct": 2.6
+          },
+          {
+            "officeId": "C95098",
+            "officeName": "Keller Williams Realty Evolution",
+            "officeCity": "Beverly",
+            "displayName": "Keller Williams Realty Evolution — Beverly",
+            "sides": 11,
+            "volume": 8307950,
+            "isBentleys": false,
+            "sidesPct": 2.76,
+            "volumePct": 2.54
           },
           {
             "officeId": "AN2691",
@@ -7672,7 +7650,7 @@
             "volume": 7931000,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.42
+            "volumePct": 2.43
           },
           {
             "officeId": "BB5919",
@@ -7682,8 +7660,8 @@
             "sides": 5,
             "volume": 7107000,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 2.17
+            "sidesPct": 1.26,
+            "volumePct": 2.18
           },
           {
             "officeId": "AC0342",
@@ -7705,18 +7683,7 @@
             "volume": 6992110,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.13
-          },
-          {
-            "officeId": "C95171",
-            "officeName": "Windhill Realty, LLC",
-            "officeCity": "Ipswich",
-            "displayName": "Windhill Realty, LLC — Ipswich",
-            "sides": 9,
-            "volume": 6972000,
-            "isBentleys": false,
-            "sidesPct": 2.26,
-            "volumePct": 2.13
+            "volumePct": 2.14
           },
           {
             "officeId": "AN8161",
@@ -7726,8 +7693,8 @@
             "sides": 6,
             "volume": 6916000,
             "isBentleys": false,
-            "sidesPct": 1.5,
-            "volumePct": 2.11
+            "sidesPct": 1.51,
+            "volumePct": 2.12
           },
           {
             "officeId": "AN3418",
@@ -7738,7 +7705,7 @@
             "volume": 6846500,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.09
+            "volumePct": 2.1
           },
           {
             "officeId": "AN7944",
@@ -7749,7 +7716,18 @@
             "volume": 6619000,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.02
+            "volumePct": 2.03
+          },
+          {
+            "officeId": "C95171",
+            "officeName": "Windhill Realty, LLC",
+            "officeCity": "Ipswich",
+            "displayName": "Windhill Realty, LLC — Ipswich",
+            "sides": 8,
+            "volume": 6303000,
+            "isBentleys": false,
+            "sidesPct": 2.01,
+            "volumePct": 1.93
           },
           {
             "officeId": "AN6212",
@@ -7770,7 +7748,7 @@
             "sides": 7,
             "volume": 5365000,
             "isBentleys": false,
-            "sidesPct": 1.75,
+            "sidesPct": 1.76,
             "volumePct": 1.64
           },
           {
@@ -7781,8 +7759,8 @@
             "sides": 7,
             "volume": 5349000,
             "isBentleys": false,
-            "sidesPct": 1.75,
-            "volumePct": 1.63
+            "sidesPct": 1.76,
+            "volumePct": 1.64
           },
           {
             "officeId": "AN6958",
@@ -7792,7 +7770,7 @@
             "sides": 6,
             "volume": 4977000,
             "isBentleys": false,
-            "sidesPct": 1.5,
+            "sidesPct": 1.51,
             "volumePct": 1.52
           },
           {
@@ -7803,7 +7781,7 @@
             "sides": 4,
             "volume": 4738900,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 1.45
           },
           {
@@ -7826,7 +7804,7 @@
             "volume": 4035000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 1.23
+            "volumePct": 1.24
           },
           {
             "officeId": "NB3534",
@@ -7836,7 +7814,7 @@
             "sides": 5,
             "volume": 4021000,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 1.23
           },
           {
@@ -7848,7 +7826,7 @@
             "volume": 3785000,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 1.15
+            "volumePct": 1.16
           },
           {
             "officeId": "AN4824",
@@ -7869,7 +7847,7 @@
             "sides": 4,
             "volume": 3540000,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 1.08
           },
           {
@@ -7880,8 +7858,8 @@
             "sides": 5,
             "volume": 3524000,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 1.07
+            "sidesPct": 1.26,
+            "volumePct": 1.08
           },
           {
             "officeId": "AN8751",
@@ -7891,8 +7869,8 @@
             "sides": 5,
             "volume": 3490500,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 1.06
+            "sidesPct": 1.26,
+            "volumePct": 1.07
           },
           {
             "officeId": "AN6220",
@@ -7903,7 +7881,7 @@
             "volume": 3480000,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 1.06
+            "volumePct": 1.07
           },
           {
             "officeId": "C95243",
@@ -7913,7 +7891,7 @@
             "sides": 5,
             "volume": 3461000,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 1.06
           },
           {
@@ -7935,7 +7913,7 @@
             "sides": 4,
             "volume": 3100000,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 0.95
           },
           {
@@ -7946,8 +7924,8 @@
             "sides": 4,
             "volume": 3024000,
             "isBentleys": false,
-            "sidesPct": 1,
-            "volumePct": 0.92
+            "sidesPct": 1.01,
+            "volumePct": 0.93
           },
           {
             "officeId": "AN5941",
@@ -7957,8 +7935,8 @@
             "sides": 4,
             "volume": 2963250,
             "isBentleys": false,
-            "sidesPct": 1,
-            "volumePct": 0.9
+            "sidesPct": 1.01,
+            "volumePct": 0.91
           },
           {
             "officeId": "AN0949",
@@ -7969,7 +7947,7 @@
             "volume": 2697500,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 0.82
+            "volumePct": 0.83
           },
           {
             "officeId": "AN8750",
@@ -7979,7 +7957,7 @@
             "sides": 5,
             "volume": 2577200,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 0.79
           },
           {
@@ -7991,7 +7969,7 @@
             "volume": 2434900,
             "isBentleys": false,
             "sidesPct": 0.75,
-            "volumePct": 0.74
+            "volumePct": 0.75
           },
           {
             "officeId": "AN4866",
@@ -8001,7 +7979,7 @@
             "sides": 4,
             "volume": 2355000,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 0.72
           },
           {
@@ -8013,7 +7991,7 @@
             "volume": 2310000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.7
+            "volumePct": 0.71
           },
           {
             "officeId": "AN8613",
@@ -8145,7 +8123,7 @@
             "volume": 1522000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.46
+            "volumePct": 0.47
           },
           {
             "officeId": "AN2968",
@@ -8167,7 +8145,7 @@
             "volume": 1425000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.43
+            "volumePct": 0.44
           },
           {
             "officeId": "AN1202",
@@ -8222,7 +8200,7 @@
             "volume": 1294000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.39
+            "volumePct": 0.4
           },
           {
             "officeId": "AN8509",
@@ -8233,7 +8211,7 @@
             "volume": 1195000,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.36
+            "volumePct": 0.37
           },
           {
             "officeId": "M95385",
@@ -8390,6 +8368,17 @@
             "volumePct": 0.29
           },
           {
+            "officeId": "AN4634",
+            "officeName": "MP Realty Group",
+            "officeCity": "Saugus",
+            "displayName": "MP Realty Group — Saugus",
+            "sides": 3,
+            "volume": 941000,
+            "isBentleys": false,
+            "sidesPct": 0.75,
+            "volumePct": 0.29
+          },
+          {
             "officeId": "C80006",
             "officeName": "J. Barrett & Company",
             "officeCity": "Gloucester",
@@ -8409,7 +8398,7 @@
             "volume": 900000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.27
+            "volumePct": 0.28
           },
           {
             "officeId": "AN4224",
@@ -8695,7 +8684,7 @@
             "volume": 705000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.21
+            "volumePct": 0.22
           },
           {
             "officeId": "B30601",
@@ -8706,7 +8695,7 @@
             "volume": 704800,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.21
+            "volumePct": 0.22
           },
           {
             "officeId": "C91600",
@@ -8838,17 +8827,6 @@
             "volume": 620000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.19
-          },
-          {
-            "officeId": "AN4634",
-            "officeName": "MP Realty Group",
-            "officeCity": "Saugus",
-            "displayName": "MP Realty Group — Saugus",
-            "sides": 2,
-            "volume": 612000,
-            "isBentleys": false,
-            "sidesPct": 0.5,
             "volumePct": 0.19
           },
           {
@@ -9196,7 +9174,7 @@
       },
       "territory": {
         "totalSides": 1187,
-        "totalVolume": 989774868,
+        "totalVolume": 989098868,
         "officeCount": 252,
         "bySides": [
           {
@@ -9205,10 +9183,10 @@
             "officeCity": "Newburyport",
             "displayName": "RE/MAX Bentley's — Newburyport",
             "sides": 106,
-            "volume": 105560200,
+            "volume": 105885200,
             "isBentleys": true,
             "sidesPct": 8.93,
-            "volumePct": 10.67
+            "volumePct": 10.71
           },
           {
             "officeId": "AN6888",
@@ -9230,7 +9208,7 @@
             "volume": 80370500,
             "isBentleys": false,
             "sidesPct": 6.57,
-            "volumePct": 8.12
+            "volumePct": 8.13
           },
           {
             "officeId": "AN7944",
@@ -9241,7 +9219,7 @@
             "volume": 58337700,
             "isBentleys": false,
             "sidesPct": 4.38,
-            "volumePct": 5.89
+            "volumePct": 5.9
           },
           {
             "officeId": "AN8750",
@@ -9274,7 +9252,7 @@
             "volume": 33200900,
             "isBentleys": false,
             "sidesPct": 2.78,
-            "volumePct": 3.35
+            "volumePct": 3.36
           },
           {
             "officeId": "AN6886",
@@ -9288,15 +9266,15 @@
             "volumePct": 1.99
           },
           {
-            "officeId": "C95098",
-            "officeName": "Keller Williams Realty Evolution",
-            "officeCity": "Beverly",
-            "displayName": "Keller Williams Realty Evolution — Beverly",
+            "officeId": "AN6212",
+            "officeName": "Coldwell Banker Realty - Haverhill",
+            "officeCity": "Haverhill",
+            "displayName": "Coldwell Banker Realty - Haverhill — Haverhill",
             "sides": 24,
-            "volume": 15768950,
+            "volume": 15022999,
             "isBentleys": false,
             "sidesPct": 2.02,
-            "volumePct": 1.59
+            "volumePct": 1.52
           },
           {
             "officeId": "AN7000",
@@ -9310,6 +9288,17 @@
             "volumePct": 1.97
           },
           {
+            "officeId": "C95098",
+            "officeName": "Keller Williams Realty Evolution",
+            "officeCity": "Beverly",
+            "displayName": "Keller Williams Realty Evolution — Beverly",
+            "sides": 23,
+            "volume": 14868950,
+            "isBentleys": false,
+            "sidesPct": 1.94,
+            "volumePct": 1.5
+          },
+          {
             "officeId": "AN6958",
             "officeName": "Churchill Properties",
             "officeCity": "Newburyport",
@@ -9319,17 +9308,6 @@
             "isBentleys": false,
             "sidesPct": 1.94,
             "volumePct": 1.66
-          },
-          {
-            "officeId": "AN6212",
-            "officeName": "Coldwell Banker Realty - Haverhill",
-            "officeCity": "Haverhill",
-            "displayName": "Coldwell Banker Realty - Haverhill — Haverhill",
-            "sides": 22,
-            "volume": 13982999,
-            "isBentleys": false,
-            "sidesPct": 1.85,
-            "volumePct": 1.41
           },
           {
             "officeId": "AC0342",
@@ -9453,28 +9431,6 @@
             "volumePct": 0.66
           },
           {
-            "officeId": "C95171",
-            "officeName": "Windhill Realty, LLC",
-            "officeCity": "Ipswich",
-            "displayName": "Windhill Realty, LLC — Ipswich",
-            "sides": 11,
-            "volume": 7912000,
-            "isBentleys": false,
-            "sidesPct": 0.93,
-            "volumePct": 0.8
-          },
-          {
-            "officeId": "NB3534",
-            "officeName": "Redfin Corp.",
-            "officeCity": "Burlington",
-            "displayName": "Redfin Corp. — Burlington",
-            "sides": 10,
-            "volume": 9329500,
-            "isBentleys": false,
-            "sidesPct": 0.84,
-            "volumePct": 0.94
-          },
-          {
             "officeId": "AN0949",
             "officeName": "William Raveis R.E. & Home Services",
             "officeCity": "Andover",
@@ -9486,6 +9442,17 @@
             "volumePct": 0.94
           },
           {
+            "officeId": "C95171",
+            "officeName": "Windhill Realty, LLC",
+            "officeCity": "Ipswich",
+            "displayName": "Windhill Realty, LLC — Ipswich",
+            "sides": 10,
+            "volume": 7243000,
+            "isBentleys": false,
+            "sidesPct": 0.84,
+            "volumePct": 0.73
+          },
+          {
             "officeId": "AN6664",
             "officeName": "Today Real Estate, Inc.",
             "officeCity": "Georgetown",
@@ -9495,6 +9462,17 @@
             "isBentleys": false,
             "sidesPct": 0.76,
             "volumePct": 0.53
+          },
+          {
+            "officeId": "NB3534",
+            "officeName": "Redfin Corp.",
+            "officeCity": "Burlington",
+            "displayName": "Redfin Corp. — Burlington",
+            "sides": 9,
+            "volume": 8528500,
+            "isBentleys": false,
+            "sidesPct": 0.76,
+            "volumePct": 0.86
           },
           {
             "officeId": "AN2691",
@@ -9736,7 +9714,7 @@
             "volume": 1732000,
             "isBentleys": false,
             "sidesPct": 0.34,
-            "volumePct": 0.17
+            "volumePct": 0.18
           },
           {
             "officeId": "AN6724",
@@ -10023,6 +10001,17 @@
             "isBentleys": false,
             "sidesPct": 0.25,
             "volumePct": 0.19
+          },
+          {
+            "officeId": "AN4634",
+            "officeName": "MP Realty Group",
+            "officeCity": "Saugus",
+            "displayName": "MP Realty Group — Saugus",
+            "sides": 3,
+            "volume": 941000,
+            "isBentleys": false,
+            "sidesPct": 0.25,
+            "volumePct": 0.1
           },
           {
             "officeId": "AN1237",
@@ -10606,17 +10595,6 @@
             "isBentleys": false,
             "sidesPct": 0.17,
             "volumePct": 0.16
-          },
-          {
-            "officeId": "AN4634",
-            "officeName": "MP Realty Group",
-            "officeCity": "Saugus",
-            "displayName": "MP Realty Group — Saugus",
-            "sides": 2,
-            "volume": 612000,
-            "isBentleys": false,
-            "sidesPct": 0.17,
-            "volumePct": 0.06
           },
           {
             "officeId": "AN4733",
@@ -11979,10 +11957,10 @@
             "officeCity": "Newburyport",
             "displayName": "RE/MAX Bentley's — Newburyport",
             "sides": 106,
-            "volume": 105560200,
+            "volume": 105885200,
             "isBentleys": true,
             "sidesPct": 8.93,
-            "volumePct": 10.67
+            "volumePct": 10.71
           },
           {
             "officeId": "AN6888",
@@ -12004,7 +11982,7 @@
             "volume": 80370500,
             "isBentleys": false,
             "sidesPct": 6.57,
-            "volumePct": 8.12
+            "volumePct": 8.13
           },
           {
             "officeId": "AN7944",
@@ -12015,7 +11993,7 @@
             "volume": 58337700,
             "isBentleys": false,
             "sidesPct": 4.38,
-            "volumePct": 5.89
+            "volumePct": 5.9
           },
           {
             "officeId": "AN4850",
@@ -12026,7 +12004,7 @@
             "volume": 33200900,
             "isBentleys": false,
             "sidesPct": 2.78,
-            "volumePct": 3.35
+            "volumePct": 3.36
           },
           {
             "officeId": "AN8750",
@@ -12095,26 +12073,26 @@
             "volumePct": 1.66
           },
           {
-            "officeId": "C95098",
-            "officeName": "Keller Williams Realty Evolution",
-            "officeCity": "Beverly",
-            "displayName": "Keller Williams Realty Evolution — Beverly",
-            "sides": 24,
-            "volume": 15768950,
-            "isBentleys": false,
-            "sidesPct": 2.02,
-            "volumePct": 1.59
-          },
-          {
             "officeId": "AN6212",
             "officeName": "Coldwell Banker Realty - Haverhill",
             "officeCity": "Haverhill",
             "displayName": "Coldwell Banker Realty - Haverhill — Haverhill",
-            "sides": 22,
-            "volume": 13982999,
+            "sides": 24,
+            "volume": 15022999,
             "isBentleys": false,
-            "sidesPct": 1.85,
-            "volumePct": 1.41
+            "sidesPct": 2.02,
+            "volumePct": 1.52
+          },
+          {
+            "officeId": "C95098",
+            "officeName": "Keller Williams Realty Evolution",
+            "officeCity": "Beverly",
+            "displayName": "Keller Williams Realty Evolution — Beverly",
+            "sides": 23,
+            "volume": 14868950,
+            "isBentleys": false,
+            "sidesPct": 1.94,
+            "volumePct": 1.5
           },
           {
             "officeId": "AC0342",
@@ -12205,17 +12183,6 @@
             "volumePct": 0.94
           },
           {
-            "officeId": "NB3534",
-            "officeName": "Redfin Corp.",
-            "officeCity": "Burlington",
-            "displayName": "Redfin Corp. — Burlington",
-            "sides": 10,
-            "volume": 9329500,
-            "isBentleys": false,
-            "sidesPct": 0.84,
-            "volumePct": 0.94
-          },
-          {
             "officeId": "AN5155",
             "officeName": "Cameron Prestige - Amesbury",
             "officeCity": "Amesbury",
@@ -12225,6 +12192,17 @@
             "isBentleys": false,
             "sidesPct": 1.01,
             "volumePct": 0.87
+          },
+          {
+            "officeId": "NB3534",
+            "officeName": "Redfin Corp.",
+            "officeCity": "Burlington",
+            "displayName": "Redfin Corp. — Burlington",
+            "sides": 9,
+            "volume": 8528500,
+            "isBentleys": false,
+            "sidesPct": 0.76,
+            "volumePct": 0.86
           },
           {
             "officeId": "AN2691",
@@ -12238,17 +12216,6 @@
             "volumePct": 0.84
           },
           {
-            "officeId": "C95171",
-            "officeName": "Windhill Realty, LLC",
-            "officeCity": "Ipswich",
-            "displayName": "Windhill Realty, LLC — Ipswich",
-            "sides": 11,
-            "volume": 7912000,
-            "isBentleys": false,
-            "sidesPct": 0.93,
-            "volumePct": 0.8
-          },
-          {
             "officeId": "AN4866",
             "officeName": "Real Broker MA, LLC",
             "officeCity": "Boston",
@@ -12258,6 +12225,17 @@
             "isBentleys": false,
             "sidesPct": 1.1,
             "volumePct": 0.76
+          },
+          {
+            "officeId": "C95171",
+            "officeName": "Windhill Realty, LLC",
+            "officeCity": "Ipswich",
+            "displayName": "Windhill Realty, LLC — Ipswich",
+            "sides": 10,
+            "volume": 7243000,
+            "isBentleys": false,
+            "sidesPct": 0.84,
+            "volumePct": 0.73
           },
           {
             "officeId": "AN2383",
@@ -12939,7 +12917,7 @@
             "volume": 1732000,
             "isBentleys": false,
             "sidesPct": 0.34,
-            "volumePct": 0.17
+            "volumePct": 0.18
           },
           {
             "officeId": "AN8509",
@@ -13591,6 +13569,17 @@
             "volumePct": 0.1
           },
           {
+            "officeId": "AN4634",
+            "officeName": "MP Realty Group",
+            "officeCity": "Saugus",
+            "displayName": "MP Realty Group — Saugus",
+            "sides": 3,
+            "volume": 941000,
+            "isBentleys": false,
+            "sidesPct": 0.25,
+            "volumePct": 0.1
+          },
+          {
             "officeId": "AN9455",
             "officeName": "Serhant",
             "officeCity": "Boston",
@@ -14160,17 +14149,6 @@
             "volume": 615000,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.06
-          },
-          {
-            "officeId": "AN4634",
-            "officeName": "MP Realty Group",
-            "officeCity": "Saugus",
-            "displayName": "MP Realty Group — Saugus",
-            "sides": 2,
-            "volume": 612000,
-            "isBentleys": false,
-            "sidesPct": 0.17,
             "volumePct": 0.06
           },
           {
@@ -14751,20 +14729,20 @@
     "firmLevel": {
       "newburyport": {
         "totalSides": 241,
-        "totalVolume": 250948209,
-        "firmCount": 37,
+        "totalVolume": 251662209,
+        "firmCount": 36,
         "bySides": [
           {
             "firmName": "RE/MAX Bentley's",
             "displayName": "RE/MAX Bentley's",
             "name": "RE/MAX Bentley's",
-            "sides": 45,
-            "volume": 52280300,
+            "sides": 46,
+            "volume": 53795300,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 18.67,
-            "volumePct": 20.83,
-            "share": 20.83
+            "sidesPct": 19.09,
+            "volumePct": 21.38,
+            "share": 21.38
           },
           {
             "firmName": "Keller Williams",
@@ -14775,8 +14753,8 @@
             "officeCount": 8,
             "isBentleys": false,
             "sidesPct": 17.01,
-            "volumePct": 15.48,
-            "share": 15.48
+            "volumePct": 15.44,
+            "share": 15.44
           },
           {
             "firmName": "Realty One Group Nest",
@@ -14787,8 +14765,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 14.11,
-            "volumePct": 18.07,
-            "share": 18.07
+            "volumePct": 18.02,
+            "share": 18.02
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -14799,8 +14777,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 9.96,
-            "volumePct": 11.08,
-            "share": 11.08
+            "volumePct": 11.05,
+            "share": 11.05
           },
           {
             "firmName": "William Raveis",
@@ -14811,8 +14789,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 7.88,
-            "volumePct": 8.7,
-            "share": 8.7
+            "volumePct": 8.68,
+            "share": 8.68
           },
           {
             "firmName": "Lamacchia Realty",
@@ -14823,8 +14801,8 @@
             "officeCount": 4,
             "isBentleys": false,
             "sidesPct": 5.39,
-            "volumePct": 4.21,
-            "share": 4.21
+            "volumePct": 4.2,
+            "share": 4.2
           },
           {
             "firmName": "Compass",
@@ -14835,8 +14813,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 3.73,
-            "volumePct": 3.5,
-            "share": 3.5
+            "volumePct": 3.49,
+            "share": 3.49
           },
           {
             "firmName": "eXp Realty",
@@ -14847,8 +14825,8 @@
             "officeCount": 2,
             "isBentleys": false,
             "sidesPct": 3.32,
-            "volumePct": 2.49,
-            "share": 2.49
+            "volumePct": 2.48,
+            "share": 2.48
           },
           {
             "firmName": "Coldwell Banker",
@@ -14859,8 +14837,8 @@
             "officeCount": 7,
             "isBentleys": false,
             "sidesPct": 2.9,
-            "volumePct": 3.18,
-            "share": 3.18
+            "volumePct": 3.17,
+            "share": 3.17
           },
           {
             "firmName": "Engel & Volkers",
@@ -14959,18 +14937,6 @@
             "share": 0.21
           },
           {
-            "firmName": "Redfin",
-            "displayName": "Redfin",
-            "name": "Redfin",
-            "sides": 1,
-            "volume": 801000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.41,
-            "volumePct": 0.32,
-            "share": 0.32
-          },
-          {
             "firmName": "Moor Realty Group",
             "displayName": "Moor Realty Group",
             "name": "Moor Realty Group",
@@ -15063,8 +15029,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.85,
-            "share": 0.85
+            "volumePct": 0.84,
+            "share": 0.84
           },
           {
             "firmName": "Today Real Estate, Inc.",
@@ -15099,8 +15065,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.24,
-            "share": 0.24
+            "volumePct": 0.23,
+            "share": 0.23
           },
           {
             "firmName": "RE/MAX (other offices)",
@@ -15171,8 +15137,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.62,
-            "share": 0.62
+            "volumePct": 0.61,
+            "share": 0.61
           },
           {
             "firmName": "LAER Realty Partners",
@@ -15204,13 +15170,13 @@
             "firmName": "RE/MAX Bentley's",
             "displayName": "RE/MAX Bentley's",
             "name": "RE/MAX Bentley's",
-            "sides": 45,
-            "volume": 52280300,
+            "sides": 46,
+            "volume": 53795300,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 18.67,
-            "volumePct": 20.83,
-            "share": 20.83
+            "sidesPct": 19.09,
+            "volumePct": 21.38,
+            "share": 21.38
           },
           {
             "firmName": "Realty One Group Nest",
@@ -15221,8 +15187,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 14.11,
-            "volumePct": 18.07,
-            "share": 18.07
+            "volumePct": 18.02,
+            "share": 18.02
           },
           {
             "firmName": "Keller Williams",
@@ -15233,8 +15199,8 @@
             "officeCount": 8,
             "isBentleys": false,
             "sidesPct": 17.01,
-            "volumePct": 15.48,
-            "share": 15.48
+            "volumePct": 15.44,
+            "share": 15.44
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -15245,8 +15211,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 9.96,
-            "volumePct": 11.08,
-            "share": 11.08
+            "volumePct": 11.05,
+            "share": 11.05
           },
           {
             "firmName": "William Raveis",
@@ -15257,8 +15223,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 7.88,
-            "volumePct": 8.7,
-            "share": 8.7
+            "volumePct": 8.68,
+            "share": 8.68
           },
           {
             "firmName": "Lamacchia Realty",
@@ -15269,8 +15235,8 @@
             "officeCount": 4,
             "isBentleys": false,
             "sidesPct": 5.39,
-            "volumePct": 4.21,
-            "share": 4.21
+            "volumePct": 4.2,
+            "share": 4.2
           },
           {
             "firmName": "Compass",
@@ -15281,8 +15247,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 3.73,
-            "volumePct": 3.5,
-            "share": 3.5
+            "volumePct": 3.49,
+            "share": 3.49
           },
           {
             "firmName": "Coldwell Banker",
@@ -15293,8 +15259,8 @@
             "officeCount": 7,
             "isBentleys": false,
             "sidesPct": 2.9,
-            "volumePct": 3.18,
-            "share": 3.18
+            "volumePct": 3.17,
+            "share": 3.17
           },
           {
             "firmName": "eXp Realty",
@@ -15305,8 +15271,8 @@
             "officeCount": 2,
             "isBentleys": false,
             "sidesPct": 3.32,
-            "volumePct": 2.49,
-            "share": 2.49
+            "volumePct": 2.48,
+            "share": 2.48
           },
           {
             "firmName": "Engel & Volkers",
@@ -15365,8 +15331,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.85,
-            "share": 0.85
+            "volumePct": 0.84,
+            "share": 0.84
           },
           {
             "firmName": "Barrett Sotheby's International Realty",
@@ -15389,8 +15355,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.62,
-            "share": 0.62
+            "volumePct": 0.61,
+            "share": 0.61
           },
           {
             "firmName": "J. Barrett & Company",
@@ -15465,18 +15431,6 @@
             "share": 0.34
           },
           {
-            "firmName": "Redfin",
-            "displayName": "Redfin",
-            "name": "Redfin",
-            "sides": 1,
-            "volume": 801000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.41,
-            "volumePct": 0.32,
-            "share": 0.32
-          },
-          {
             "firmName": "Chinatti Realty Group, Inc.",
             "displayName": "Chinatti Realty Group, Inc.",
             "name": "Chinatti Realty Group, Inc.",
@@ -15545,8 +15499,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.41,
-            "volumePct": 0.24,
-            "share": 0.24
+            "volumePct": 0.23,
+            "share": 0.23
           },
           {
             "firmName": "Northeast Properties Real Estate LLC",
@@ -15647,8 +15601,8 @@
         ]
       },
       "greaterNewburyport": {
-        "totalSides": 788,
-        "totalVolume": 661853635,
+        "totalSides": 789,
+        "totalVolume": 662417635,
         "firmCount": 102,
         "bySides": [
           {
@@ -15659,21 +15613,21 @@
             "volume": 92032874,
             "officeCount": 12,
             "isBentleys": false,
-            "sidesPct": 14.09,
-            "volumePct": 13.91,
-            "share": 13.91
+            "sidesPct": 14.07,
+            "volumePct": 13.89,
+            "share": 13.89
           },
           {
             "firmName": "RE/MAX Bentley's",
             "displayName": "RE/MAX Bentley's",
             "name": "RE/MAX Bentley's",
             "sides": 96,
-            "volume": 97078200,
+            "volume": 97403200,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 12.18,
-            "volumePct": 14.67,
-            "share": 14.67
+            "sidesPct": 12.17,
+            "volumePct": 14.7,
+            "share": 14.7
           },
           {
             "firmName": "Lamacchia Realty",
@@ -15683,9 +15637,9 @@
             "volume": 52229949,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 9.39,
-            "volumePct": 7.89,
-            "share": 7.89
+            "sidesPct": 9.38,
+            "volumePct": 7.88,
+            "share": 7.88
           },
           {
             "firmName": "Realty One Group Nest",
@@ -15695,21 +15649,21 @@
             "volume": 69582800,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 8.25,
-            "volumePct": 10.51,
-            "share": 10.51
+            "sidesPct": 8.24,
+            "volumePct": 10.5,
+            "share": 10.5
           },
           {
             "firmName": "Coldwell Banker",
             "displayName": "Coldwell Banker",
             "name": "Coldwell Banker",
-            "sides": 58,
-            "volume": 46047600,
+            "sides": 60,
+            "volume": 47087600,
             "officeCount": 21,
             "isBentleys": false,
-            "sidesPct": 7.36,
-            "volumePct": 6.96,
-            "share": 6.96
+            "sidesPct": 7.6,
+            "volumePct": 7.11,
+            "share": 7.11
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -15719,9 +15673,9 @@
             "volume": 52483700,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 5.71,
-            "volumePct": 7.93,
-            "share": 7.93
+            "sidesPct": 5.7,
+            "volumePct": 7.92,
+            "share": 7.92
           },
           {
             "firmName": "William Raveis",
@@ -15731,9 +15685,9 @@
             "volume": 37758800,
             "officeCount": 4,
             "isBentleys": false,
-            "sidesPct": 4.95,
-            "volumePct": 5.71,
-            "share": 5.71
+            "sidesPct": 4.94,
+            "volumePct": 5.7,
+            "share": 5.7
           },
           {
             "firmName": "Compass",
@@ -15827,7 +15781,7 @@
             "volume": 6487100,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 0.98,
             "share": 0.98
           },
@@ -15851,7 +15805,7 @@
             "volume": 6409000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 0.97,
             "share": 0.97
           },
@@ -15890,18 +15844,6 @@
             "sidesPct": 0.76,
             "volumePct": 0.67,
             "share": 0.67
-          },
-          {
-            "firmName": "Redfin",
-            "displayName": "Redfin",
-            "name": "Redfin",
-            "sides": 5,
-            "volume": 5308500,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.63,
-            "volumePct": 0.8,
-            "share": 0.8
           },
           {
             "firmName": "Leading Edge Real Estate",
@@ -15950,6 +15892,18 @@
             "sidesPct": 0.51,
             "volumePct": 0.26,
             "share": 0.26
+          },
+          {
+            "firmName": "Redfin",
+            "displayName": "Redfin",
+            "name": "Redfin",
+            "sides": 4,
+            "volume": 4507500,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.51,
+            "volumePct": 0.68,
+            "share": 0.68
           },
           {
             "firmName": "Aluxety",
@@ -16882,12 +16836,12 @@
             "displayName": "RE/MAX Bentley's",
             "name": "RE/MAX Bentley's",
             "sides": 96,
-            "volume": 97078200,
+            "volume": 97403200,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 12.18,
-            "volumePct": 14.67,
-            "share": 14.67
+            "sidesPct": 12.17,
+            "volumePct": 14.7,
+            "share": 14.7
           },
           {
             "firmName": "Keller Williams",
@@ -16897,9 +16851,9 @@
             "volume": 92032874,
             "officeCount": 12,
             "isBentleys": false,
-            "sidesPct": 14.09,
-            "volumePct": 13.91,
-            "share": 13.91
+            "sidesPct": 14.07,
+            "volumePct": 13.89,
+            "share": 13.89
           },
           {
             "firmName": "Realty One Group Nest",
@@ -16909,9 +16863,9 @@
             "volume": 69582800,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 8.25,
-            "volumePct": 10.51,
-            "share": 10.51
+            "sidesPct": 8.24,
+            "volumePct": 10.5,
+            "share": 10.5
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -16921,9 +16875,9 @@
             "volume": 52483700,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 5.71,
-            "volumePct": 7.93,
-            "share": 7.93
+            "sidesPct": 5.7,
+            "volumePct": 7.92,
+            "share": 7.92
           },
           {
             "firmName": "Lamacchia Realty",
@@ -16933,21 +16887,21 @@
             "volume": 52229949,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 9.39,
-            "volumePct": 7.89,
-            "share": 7.89
+            "sidesPct": 9.38,
+            "volumePct": 7.88,
+            "share": 7.88
           },
           {
             "firmName": "Coldwell Banker",
             "displayName": "Coldwell Banker",
             "name": "Coldwell Banker",
-            "sides": 58,
-            "volume": 46047600,
+            "sides": 60,
+            "volume": 47087600,
             "officeCount": 21,
             "isBentleys": false,
-            "sidesPct": 7.36,
-            "volumePct": 6.96,
-            "share": 6.96
+            "sidesPct": 7.6,
+            "volumePct": 7.11,
+            "share": 7.11
           },
           {
             "firmName": "William Raveis",
@@ -16957,9 +16911,9 @@
             "volume": 37758800,
             "officeCount": 4,
             "isBentleys": false,
-            "sidesPct": 4.95,
-            "volumePct": 5.71,
-            "share": 5.71
+            "sidesPct": 4.94,
+            "volumePct": 5.7,
+            "share": 5.7
           },
           {
             "firmName": "Compass",
@@ -17065,7 +17019,7 @@
             "volume": 6487100,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.4,
+            "sidesPct": 1.39,
             "volumePct": 0.98,
             "share": 0.98
           },
@@ -17077,7 +17031,7 @@
             "volume": 6409000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.02,
+            "sidesPct": 1.01,
             "volumePct": 0.97,
             "share": 0.97
           },
@@ -17087,18 +17041,6 @@
             "name": "Applewood Realty",
             "sides": 5,
             "volume": 5314117,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.63,
-            "volumePct": 0.8,
-            "share": 0.8
-          },
-          {
-            "firmName": "Redfin",
-            "displayName": "Redfin",
-            "name": "Redfin",
-            "sides": 5,
-            "volume": 5308500,
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.63,
@@ -17116,6 +17058,18 @@
             "sidesPct": 1.14,
             "volumePct": 0.78,
             "share": 0.78
+          },
+          {
+            "firmName": "Redfin",
+            "displayName": "Redfin",
+            "name": "Redfin",
+            "sides": 4,
+            "volume": 4507500,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.51,
+            "volumePct": 0.68,
+            "share": 0.68
           },
           {
             "firmName": "Tom Saab Real Estate",
@@ -18104,21 +18058,21 @@
         ]
       },
       "beyond": {
-        "totalSides": 399,
-        "totalVolume": 327921233,
+        "totalSides": 398,
+        "totalVolume": 326681233,
         "firmCount": 81,
         "bySides": [
           {
             "firmName": "Keller Williams",
             "displayName": "Keller Williams",
             "name": "Keller Williams",
-            "sides": 64,
-            "volume": 48222800,
+            "sides": 63,
+            "volume": 47322800,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 16.04,
-            "volumePct": 14.71,
-            "share": 14.71
+            "sidesPct": 15.83,
+            "volumePct": 14.49,
+            "share": 14.49
           },
           {
             "firmName": "Coldwell Banker",
@@ -18128,9 +18082,9 @@
             "volume": 27761899,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 8.52,
-            "volumePct": 8.47,
-            "share": 8.47
+            "sidesPct": 8.54,
+            "volumePct": 8.5,
+            "share": 8.5
           },
           {
             "firmName": "J. Barrett & Company",
@@ -18140,9 +18094,9 @@
             "volume": 26052260,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 6.77,
-            "volumePct": 7.94,
-            "share": 7.94
+            "sidesPct": 6.78,
+            "volumePct": 7.97,
+            "share": 7.97
           },
           {
             "firmName": "Compass",
@@ -18152,9 +18106,9 @@
             "volume": 34042900,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 6.52,
-            "volumePct": 10.38,
-            "share": 10.38
+            "sidesPct": 6.53,
+            "volumePct": 10.42,
+            "share": 10.42
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -18164,9 +18118,9 @@
             "volume": 16640000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.26,
-            "volumePct": 5.07,
-            "share": 5.07
+            "sidesPct": 4.27,
+            "volumePct": 5.09,
+            "share": 5.09
           },
           {
             "firmName": "Churchill Properties",
@@ -18176,9 +18130,9 @@
             "volume": 15406500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.26,
-            "volumePct": 4.7,
-            "share": 4.7
+            "sidesPct": 4.27,
+            "volumePct": 4.72,
+            "share": 4.72
           },
           {
             "firmName": "eXp Realty",
@@ -18188,9 +18142,9 @@
             "volume": 12068250,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.68,
-            "share": 3.68
+            "sidesPct": 4.02,
+            "volumePct": 3.69,
+            "share": 3.69
           },
           {
             "firmName": "Realty One Group Nest",
@@ -18200,9 +18154,9 @@
             "volume": 12972700,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.96,
-            "share": 3.96
+            "sidesPct": 4.02,
+            "volumePct": 3.97,
+            "share": 3.97
           },
           {
             "firmName": "Lamacchia Realty",
@@ -18212,9 +18166,9 @@
             "volume": 10111700,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.08,
-            "share": 3.08
+            "sidesPct": 4.02,
+            "volumePct": 3.1,
+            "share": 3.1
           },
           {
             "firmName": "William Raveis",
@@ -18225,8 +18179,8 @@
             "officeCount": 6,
             "isBentleys": false,
             "sidesPct": 2.76,
-            "volumePct": 3.1,
-            "share": 3.1
+            "volumePct": 3.11,
+            "share": 3.11
           },
           {
             "firmName": "RE/MAX Bentley's",
@@ -18237,8 +18191,8 @@
             "officeCount": 1,
             "isBentleys": true,
             "sidesPct": 2.51,
-            "volumePct": 2.59,
-            "share": 2.59
+            "volumePct": 2.6,
+            "share": 2.6
           },
           {
             "firmName": "Berkshire Hathaway",
@@ -18249,20 +18203,20 @@
             "officeCount": 5,
             "isBentleys": false,
             "sidesPct": 2.51,
-            "volumePct": 1.73,
-            "share": 1.73
+            "volumePct": 1.74,
+            "share": 1.74
           },
           {
             "firmName": "Windhill Realty, LLC",
             "displayName": "Windhill Realty, LLC",
             "name": "Windhill Realty, LLC",
-            "sides": 9,
-            "volume": 6972000,
+            "sides": 8,
+            "volume": 6303000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 2.26,
-            "volumePct": 2.13,
-            "share": 2.13
+            "sidesPct": 2.01,
+            "volumePct": 1.93,
+            "share": 1.93
           },
           {
             "firmName": "RE/MAX (other offices)",
@@ -18273,8 +18227,8 @@
             "officeCount": 6,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 1.5,
-            "share": 1.5
+            "volumePct": 1.51,
+            "share": 1.51
           },
           {
             "firmName": "Heather Klosowski Real Estate",
@@ -18285,8 +18239,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.42,
-            "share": 2.42
+            "volumePct": 2.43,
+            "share": 2.43
           },
           {
             "firmName": "Ocean's Edge Real Estate",
@@ -18296,7 +18250,7 @@
             "volume": 5365000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.75,
+            "sidesPct": 1.76,
             "volumePct": 1.64,
             "share": 1.64
           },
@@ -18308,9 +18262,9 @@
             "volume": 7575500,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 1.75,
-            "volumePct": 2.31,
-            "share": 2.31
+            "sidesPct": 1.76,
+            "volumePct": 2.32,
+            "share": 2.32
           },
           {
             "firmName": "Redfin",
@@ -18320,7 +18274,7 @@
             "volume": 4021000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 1.23,
             "share": 1.23
           },
@@ -18332,7 +18286,7 @@
             "volume": 2520000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 0.77,
             "share": 0.77
           },
@@ -18344,9 +18298,9 @@
             "volume": 3524000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 1.07,
-            "share": 1.07
+            "sidesPct": 1.26,
+            "volumePct": 1.08,
+            "share": 1.08
           },
           {
             "firmName": "Real Broker",
@@ -18356,7 +18310,7 @@
             "volume": 2355000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 0.72,
             "share": 0.72
           },
@@ -18368,9 +18322,9 @@
             "volume": 2700000,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 1,
-            "volumePct": 0.82,
-            "share": 0.82
+            "sidesPct": 1.01,
+            "volumePct": 0.83,
+            "share": 0.83
           },
           {
             "firmName": "Lyv Realty",
@@ -18395,6 +18349,18 @@
             "sidesPct": 0.75,
             "volumePct": 0.45,
             "share": 0.45
+          },
+          {
+            "firmName": "MP Realty Group",
+            "displayName": "MP Realty Group",
+            "name": "MP Realty Group",
+            "sides": 3,
+            "volume": 941000,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.75,
+            "volumePct": 0.29,
+            "share": 0.29
           },
           {
             "firmName": "Cameron Real Estate Group",
@@ -18429,8 +18395,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.21,
-            "share": 0.21
+            "volumePct": 0.22,
+            "share": 0.22
           },
           {
             "firmName": "Citylight Homes LLC",
@@ -18491,18 +18457,6 @@
             "sidesPct": 0.5,
             "volumePct": 0.4,
             "share": 0.4
-          },
-          {
-            "firmName": "MP Realty Group",
-            "displayName": "MP Realty Group",
-            "name": "MP Realty Group",
-            "sides": 2,
-            "volume": 612000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.5,
-            "volumePct": 0.19,
-            "share": 0.19
           },
           {
             "firmName": "Jewett Real Estate",
@@ -18597,8 +18551,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.27,
-            "share": 0.27
+            "volumePct": 0.28,
+            "share": 0.28
           },
           {
             "firmName": "GLN & Company, LLC",
@@ -18753,8 +18707,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.21,
-            "share": 0.21
+            "volumePct": 0.22,
+            "share": 0.22
           },
           {
             "firmName": "Shore Real Estate LLC",
@@ -19086,13 +19040,13 @@
             "firmName": "Keller Williams",
             "displayName": "Keller Williams",
             "name": "Keller Williams",
-            "sides": 64,
-            "volume": 48222800,
+            "sides": 63,
+            "volume": 47322800,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 16.04,
-            "volumePct": 14.71,
-            "share": 14.71
+            "sidesPct": 15.83,
+            "volumePct": 14.49,
+            "share": 14.49
           },
           {
             "firmName": "Compass",
@@ -19102,9 +19056,9 @@
             "volume": 34042900,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 6.52,
-            "volumePct": 10.38,
-            "share": 10.38
+            "sidesPct": 6.53,
+            "volumePct": 10.42,
+            "share": 10.42
           },
           {
             "firmName": "Coldwell Banker",
@@ -19114,9 +19068,9 @@
             "volume": 27761899,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 8.52,
-            "volumePct": 8.47,
-            "share": 8.47
+            "sidesPct": 8.54,
+            "volumePct": 8.5,
+            "share": 8.5
           },
           {
             "firmName": "J. Barrett & Company",
@@ -19126,9 +19080,9 @@
             "volume": 26052260,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 6.77,
-            "volumePct": 7.94,
-            "share": 7.94
+            "sidesPct": 6.78,
+            "volumePct": 7.97,
+            "share": 7.97
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -19138,9 +19092,9 @@
             "volume": 16640000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.26,
-            "volumePct": 5.07,
-            "share": 5.07
+            "sidesPct": 4.27,
+            "volumePct": 5.09,
+            "share": 5.09
           },
           {
             "firmName": "Churchill Properties",
@@ -19150,9 +19104,9 @@
             "volume": 15406500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.26,
-            "volumePct": 4.7,
-            "share": 4.7
+            "sidesPct": 4.27,
+            "volumePct": 4.72,
+            "share": 4.72
           },
           {
             "firmName": "Realty One Group Nest",
@@ -19162,9 +19116,9 @@
             "volume": 12972700,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.96,
-            "share": 3.96
+            "sidesPct": 4.02,
+            "volumePct": 3.97,
+            "share": 3.97
           },
           {
             "firmName": "eXp Realty",
@@ -19174,9 +19128,9 @@
             "volume": 12068250,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.68,
-            "share": 3.68
+            "sidesPct": 4.02,
+            "volumePct": 3.69,
+            "share": 3.69
           },
           {
             "firmName": "William Raveis",
@@ -19187,8 +19141,8 @@
             "officeCount": 6,
             "isBentleys": false,
             "sidesPct": 2.76,
-            "volumePct": 3.1,
-            "share": 3.1
+            "volumePct": 3.11,
+            "share": 3.11
           },
           {
             "firmName": "Lamacchia Realty",
@@ -19198,9 +19152,9 @@
             "volume": 10111700,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 4.01,
-            "volumePct": 3.08,
-            "share": 3.08
+            "sidesPct": 4.02,
+            "volumePct": 3.1,
+            "share": 3.1
           },
           {
             "firmName": "RE/MAX Bentley's",
@@ -19211,8 +19165,8 @@
             "officeCount": 1,
             "isBentleys": true,
             "sidesPct": 2.51,
-            "volumePct": 2.59,
-            "share": 2.59
+            "volumePct": 2.6,
+            "share": 2.6
           },
           {
             "firmName": "Heather Klosowski Real Estate",
@@ -19223,8 +19177,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 2.42,
-            "share": 2.42
+            "volumePct": 2.43,
+            "share": 2.43
           },
           {
             "firmName": "Engel & Volkers",
@@ -19234,21 +19188,21 @@
             "volume": 7575500,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 1.75,
-            "volumePct": 2.31,
-            "share": 2.31
+            "sidesPct": 1.76,
+            "volumePct": 2.32,
+            "share": 2.32
           },
           {
             "firmName": "Windhill Realty, LLC",
             "displayName": "Windhill Realty, LLC",
             "name": "Windhill Realty, LLC",
-            "sides": 9,
-            "volume": 6972000,
+            "sides": 8,
+            "volume": 6303000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 2.26,
-            "volumePct": 2.13,
-            "share": 2.13
+            "sidesPct": 2.01,
+            "volumePct": 1.93,
+            "share": 1.93
           },
           {
             "firmName": "Berkshire Hathaway",
@@ -19259,8 +19213,8 @@
             "officeCount": 5,
             "isBentleys": false,
             "sidesPct": 2.51,
-            "volumePct": 1.73,
-            "share": 1.73
+            "volumePct": 1.74,
+            "share": 1.74
           },
           {
             "firmName": "Ocean's Edge Real Estate",
@@ -19270,7 +19224,7 @@
             "volume": 5365000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.75,
+            "sidesPct": 1.76,
             "volumePct": 1.64,
             "share": 1.64
           },
@@ -19283,8 +19237,8 @@
             "officeCount": 6,
             "isBentleys": false,
             "sidesPct": 2.01,
-            "volumePct": 1.5,
-            "share": 1.5
+            "volumePct": 1.51,
+            "share": 1.51
           },
           {
             "firmName": "Redfin",
@@ -19294,7 +19248,7 @@
             "volume": 4021000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 1.23,
             "share": 1.23
           },
@@ -19318,9 +19272,9 @@
             "volume": 3524000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.25,
-            "volumePct": 1.07,
-            "share": 1.07
+            "sidesPct": 1.26,
+            "volumePct": 1.08,
+            "share": 1.08
           },
           {
             "firmName": "Lyv Realty",
@@ -19342,9 +19296,9 @@
             "volume": 2700000,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 1,
-            "volumePct": 0.82,
-            "share": 0.82
+            "sidesPct": 1.01,
+            "volumePct": 0.83,
+            "share": 0.83
           },
           {
             "firmName": "Century 21",
@@ -19354,7 +19308,7 @@
             "volume": 2520000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 1.25,
+            "sidesPct": 1.26,
             "volumePct": 0.77,
             "share": 0.77
           },
@@ -19366,7 +19320,7 @@
             "volume": 2355000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1,
+            "sidesPct": 1.01,
             "volumePct": 0.72,
             "share": 0.72
           },
@@ -19551,6 +19505,18 @@
             "share": 0.29
           },
           {
+            "firmName": "MP Realty Group",
+            "displayName": "MP Realty Group",
+            "name": "MP Realty Group",
+            "sides": 3,
+            "volume": 941000,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.75,
+            "volumePct": 0.29,
+            "share": 0.29
+          },
+          {
             "firmName": "The Aland Realty Group LLC",
             "displayName": "The Aland Realty Group LLC",
             "name": "The Aland Realty Group LLC",
@@ -19559,8 +19525,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.27,
-            "share": 0.27
+            "volumePct": 0.28,
+            "share": 0.28
           },
           {
             "firmName": "BENJAMIN Apartments + Cityside Homes",
@@ -19739,8 +19705,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.21,
-            "share": 0.21
+            "volumePct": 0.22,
+            "share": 0.22
           },
           {
             "firmName": "Boardwalk Real Estate",
@@ -19751,8 +19717,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.5,
-            "volumePct": 0.21,
-            "share": 0.21
+            "volumePct": 0.22,
+            "share": 0.22
           },
           {
             "firmName": "Rowley Realty",
@@ -19823,18 +19789,6 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.19,
-            "share": 0.19
-          },
-          {
-            "firmName": "MP Realty Group",
-            "displayName": "MP Realty Group",
-            "name": "MP Realty Group",
-            "sides": 2,
-            "volume": 612000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.5,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -20058,44 +20012,44 @@
       },
       "territory": {
         "totalSides": 1187,
-        "totalVolume": 989774868,
+        "totalVolume": 989098868,
         "firmCount": 142,
         "bySides": [
           {
             "firmName": "Keller Williams",
             "displayName": "Keller Williams",
             "name": "Keller Williams",
-            "sides": 175,
-            "volume": 140255674,
+            "sides": 174,
+            "volume": 139355674,
             "officeCount": 15,
             "isBentleys": false,
-            "sidesPct": 14.74,
-            "volumePct": 14.17,
-            "share": 14.17
+            "sidesPct": 14.66,
+            "volumePct": 14.09,
+            "share": 14.09
           },
           {
             "firmName": "RE/MAX Bentley's",
             "displayName": "RE/MAX Bentley's",
             "name": "RE/MAX Bentley's",
             "sides": 106,
-            "volume": 105560200,
+            "volume": 105885200,
             "officeCount": 1,
             "isBentleys": true,
             "sidesPct": 8.93,
-            "volumePct": 10.67,
-            "share": 10.67
+            "volumePct": 10.71,
+            "share": 10.71
           },
           {
             "firmName": "Coldwell Banker",
             "displayName": "Coldwell Banker",
             "name": "Coldwell Banker",
-            "sides": 92,
-            "volume": 73809499,
+            "sides": 94,
+            "volume": 74849499,
             "officeCount": 22,
             "isBentleys": false,
-            "sidesPct": 7.75,
-            "volumePct": 7.46,
-            "share": 7.46
+            "sidesPct": 7.92,
+            "volumePct": 7.57,
+            "share": 7.57
           },
           {
             "firmName": "Lamacchia Realty",
@@ -20118,8 +20072,8 @@
             "officeCount": 2,
             "isBentleys": false,
             "sidesPct": 6.82,
-            "volumePct": 8.34,
-            "share": 8.34
+            "volumePct": 8.35,
+            "share": 8.35
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -20130,8 +20084,8 @@
             "officeCount": 6,
             "isBentleys": false,
             "sidesPct": 5.22,
-            "volumePct": 6.98,
-            "share": 6.98
+            "volumePct": 6.99,
+            "share": 6.99
           },
           {
             "firmName": "Compass",
@@ -20154,8 +20108,8 @@
             "officeCount": 7,
             "isBentleys": false,
             "sidesPct": 4.21,
-            "volumePct": 4.84,
-            "share": 4.84
+            "volumePct": 4.85,
+            "share": 4.85
           },
           {
             "firmName": "eXp Realty",
@@ -20190,8 +20144,8 @@
             "officeCount": 5,
             "isBentleys": false,
             "sidesPct": 2.78,
-            "volumePct": 3.03,
-            "share": 3.03
+            "volumePct": 3.04,
+            "share": 3.04
           },
           {
             "firmName": "Berkshire Hathaway",
@@ -20281,25 +20235,13 @@
             "firmName": "Windhill Realty, LLC",
             "displayName": "Windhill Realty, LLC",
             "name": "Windhill Realty, LLC",
-            "sides": 11,
-            "volume": 7912000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.93,
-            "volumePct": 0.8,
-            "share": 0.8
-          },
-          {
-            "firmName": "Redfin",
-            "displayName": "Redfin",
-            "name": "Redfin",
             "sides": 10,
-            "volume": 9329500,
+            "volume": 7243000,
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.84,
-            "volumePct": 0.94,
-            "share": 0.94
+            "volumePct": 0.73,
+            "share": 0.73
           },
           {
             "firmName": "Today Real Estate, Inc.",
@@ -20312,6 +20254,18 @@
             "sidesPct": 0.76,
             "volumePct": 0.53,
             "share": 0.53
+          },
+          {
+            "firmName": "Redfin",
+            "displayName": "Redfin",
+            "name": "Redfin",
+            "sides": 9,
+            "volume": 8528500,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.76,
+            "volumePct": 0.86,
+            "share": 0.86
           },
           {
             "firmName": "Heather Klosowski Real Estate",
@@ -20564,6 +20518,18 @@
             "sidesPct": 0.25,
             "volumePct": 0.15,
             "share": 0.15
+          },
+          {
+            "firmName": "MP Realty Group",
+            "displayName": "MP Realty Group",
+            "name": "MP Realty Group",
+            "sides": 3,
+            "volume": 941000,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.25,
+            "volumePct": 0.1,
+            "share": 0.1
           },
           {
             "firmName": "Moor Realty Group",
@@ -20852,18 +20818,6 @@
             "sidesPct": 0.17,
             "volumePct": 0.19,
             "share": 0.19
-          },
-          {
-            "firmName": "MP Realty Group",
-            "displayName": "MP Realty Group",
-            "name": "MP Realty Group",
-            "sides": 2,
-            "volume": 612000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.17,
-            "volumePct": 0.06,
-            "share": 0.06
           },
           {
             "firmName": "Granite Coast Realty, LLC",
@@ -21771,25 +21725,25 @@
             "firmName": "Keller Williams",
             "displayName": "Keller Williams",
             "name": "Keller Williams",
-            "sides": 175,
-            "volume": 140255674,
+            "sides": 174,
+            "volume": 139355674,
             "officeCount": 15,
             "isBentleys": false,
-            "sidesPct": 14.74,
-            "volumePct": 14.17,
-            "share": 14.17
+            "sidesPct": 14.66,
+            "volumePct": 14.09,
+            "share": 14.09
           },
           {
             "firmName": "RE/MAX Bentley's",
             "displayName": "RE/MAX Bentley's",
             "name": "RE/MAX Bentley's",
             "sides": 106,
-            "volume": 105560200,
+            "volume": 105885200,
             "officeCount": 1,
             "isBentleys": true,
             "sidesPct": 8.93,
-            "volumePct": 10.67,
-            "share": 10.67
+            "volumePct": 10.71,
+            "share": 10.71
           },
           {
             "firmName": "Realty One Group Nest",
@@ -21800,20 +21754,20 @@
             "officeCount": 2,
             "isBentleys": false,
             "sidesPct": 6.82,
-            "volumePct": 8.34,
-            "share": 8.34
+            "volumePct": 8.35,
+            "share": 8.35
           },
           {
             "firmName": "Coldwell Banker",
             "displayName": "Coldwell Banker",
             "name": "Coldwell Banker",
-            "sides": 92,
-            "volume": 73809499,
+            "sides": 94,
+            "volume": 74849499,
             "officeCount": 22,
             "isBentleys": false,
-            "sidesPct": 7.75,
-            "volumePct": 7.46,
-            "share": 7.46
+            "sidesPct": 7.92,
+            "volumePct": 7.57,
+            "share": 7.57
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -21824,8 +21778,8 @@
             "officeCount": 6,
             "isBentleys": false,
             "sidesPct": 5.22,
-            "volumePct": 6.98,
-            "share": 6.98
+            "volumePct": 6.99,
+            "share": 6.99
           },
           {
             "firmName": "Lamacchia Realty",
@@ -21860,8 +21814,8 @@
             "officeCount": 7,
             "isBentleys": false,
             "sidesPct": 4.21,
-            "volumePct": 4.84,
-            "share": 4.84
+            "volumePct": 4.85,
+            "share": 4.85
           },
           {
             "firmName": "Churchill Properties",
@@ -21884,8 +21838,8 @@
             "officeCount": 5,
             "isBentleys": false,
             "sidesPct": 2.78,
-            "volumePct": 3.03,
-            "share": 3.03
+            "volumePct": 3.04,
+            "share": 3.04
           },
           {
             "firmName": "eXp Realty",
@@ -21963,13 +21917,13 @@
             "firmName": "Redfin",
             "displayName": "Redfin",
             "name": "Redfin",
-            "sides": 10,
-            "volume": 9329500,
+            "sides": 9,
+            "volume": 8528500,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.84,
-            "volumePct": 0.94,
-            "share": 0.94
+            "sidesPct": 0.76,
+            "volumePct": 0.86,
+            "share": 0.86
           },
           {
             "firmName": "Heather Klosowski Real Estate",
@@ -21984,18 +21938,6 @@
             "share": 0.84
           },
           {
-            "firmName": "Windhill Realty, LLC",
-            "displayName": "Windhill Realty, LLC",
-            "name": "Windhill Realty, LLC",
-            "sides": 11,
-            "volume": 7912000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.93,
-            "volumePct": 0.8,
-            "share": 0.8
-          },
-          {
             "firmName": "Real Broker",
             "displayName": "Real Broker",
             "name": "Real Broker",
@@ -22006,6 +21948,18 @@
             "sidesPct": 1.1,
             "volumePct": 0.76,
             "share": 0.76
+          },
+          {
+            "firmName": "Windhill Realty, LLC",
+            "displayName": "Windhill Realty, LLC",
+            "name": "Windhill Realty, LLC",
+            "sides": 10,
+            "volume": 7243000,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.84,
+            "volumePct": 0.73,
+            "share": 0.73
           },
           {
             "firmName": "Monarch Property Group, LLC",
@@ -22680,6 +22634,18 @@
             "share": 0.1
           },
           {
+            "firmName": "MP Realty Group",
+            "displayName": "MP Realty Group",
+            "name": "MP Realty Group",
+            "sides": 3,
+            "volume": 941000,
+            "officeCount": 1,
+            "isBentleys": false,
+            "sidesPct": 0.25,
+            "volumePct": 0.1,
+            "share": 0.1
+          },
+          {
             "firmName": "Serhant",
             "displayName": "Serhant",
             "name": "Serhant",
@@ -23048,18 +23014,6 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.06,
-            "share": 0.06
-          },
-          {
-            "firmName": "MP Realty Group",
-            "displayName": "MP Realty Group",
-            "name": "MP Realty Group",
-            "sides": 2,
-            "volume": 612000,
-            "officeCount": 1,
-            "isBentleys": false,
-            "sidesPct": 0.17,
             "volumePct": 0.06,
             "share": 0.06
           },
