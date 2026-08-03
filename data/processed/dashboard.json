@@ -1,11 +1,11 @@
 {
   "meta": {
-    "generated": "2026-08-02T07:53:16.328Z",
+    "generated": "2026-08-03T08:16:55.004Z",
     "source": "MLSPIN",
     "currentYear": 2026,
     "priorYear": 2025,
-    "closed_records": 94670,
-    "active_records": 12871
+    "closed_records": 94755,
+    "active_records": 12807
   },
   "regional": {
     "ma": {
@@ -17,14 +17,14 @@
           "units": 38869
         },
         "2026": {
-          "price": 863187,
+          "price": 863204,
           "sqft": 396,
           "dom": 38,
-          "units": 38136
+          "units": 38181
         },
-        "supply": 2.18,
-        "active": 6943,
-        "trailing12": 38136
+        "supply": 2.17,
+        "active": 6895,
+        "trailing12": 38181
       },
       "condo": {
         "2025": {
@@ -34,14 +34,14 @@
           "units": 16735
         },
         "2026": {
-          "price": 720950,
+          "price": 721125,
           "sqft": 544,
           "dom": 45,
-          "units": 16788
+          "units": 16815
         },
-        "supply": 3.1,
-        "active": 4330,
-        "trailing12": 16788
+        "supply": 3.07,
+        "active": 4308,
+        "trailing12": 16815
       },
       "mf": {
         "2025": {
@@ -51,14 +51,14 @@
           "units": 5512
         },
         "2026": {
-          "price": 886457,
+          "price": 885907,
           "sqft": 391,
           "dom": 39,
-          "units": 5454
+          "units": 5465
         },
         "supply": 3.52,
-        "active": 1598,
-        "trailing12": 5454
+        "active": 1604,
+        "trailing12": 5465
       }
     },
     "boston": {
@@ -70,14 +70,14 @@
           "units": 813
         },
         "2026": {
-          "price": 1304847,
+          "price": 1304650,
           "sqft": 587,
           "dom": 39,
-          "units": 805
+          "units": 807
         },
-        "supply": 2.74,
-        "active": 184,
-        "trailing12": 805
+        "supply": 2.72,
+        "active": 183,
+        "trailing12": 807
       },
       "condo": {
         "2025": {
@@ -87,14 +87,14 @@
           "units": 3474
         },
         "2026": {
-          "price": 1138495,
-          "sqft": 915,
+          "price": 1137718,
+          "sqft": 914,
           "dom": 51,
-          "units": 3378
+          "units": 3385
         },
-        "supply": 4.86,
-        "active": 1368,
-        "trailing12": 3378
+        "supply": 4.83,
+        "active": 1363,
+        "trailing12": 3385
       },
       "mf": {
         "2025": {
@@ -109,8 +109,8 @@
           "dom": 43,
           "units": 591
         },
-        "supply": 5.3,
-        "active": 261,
+        "supply": 5.32,
+        "active": 262,
         "trailing12": 591
       }
     },
@@ -123,14 +123,14 @@
           "units": 4369
         },
         "2026": {
-          "price": 904298,
-          "sqft": 416,
+          "price": 904788,
+          "sqft": 417,
           "dom": 34,
-          "units": 4245
+          "units": 4250
         },
         "supply": 1.88,
         "active": 665,
-        "trailing12": 4245
+        "trailing12": 4250
       },
       "condo": {
         "2025": {
@@ -140,14 +140,14 @@
           "units": 1926
         },
         "2026": {
-          "price": 550487,
+          "price": 550576,
           "sqft": 411,
           "dom": 41,
-          "units": 1988
+          "units": 1992
         },
-        "supply": 2.4,
-        "active": 398,
-        "trailing12": 1988
+        "supply": 2.39,
+        "active": 397,
+        "trailing12": 1992
       },
       "mf": {
         "2025": {
@@ -157,14 +157,14 @@
           "units": 573
         },
         "2026": {
-          "price": 932311,
+          "price": 932196,
           "sqft": 313,
           "dom": 32,
-          "units": 608
+          "units": 609
         },
         "supply": 2.94,
         "active": 149,
-        "trailing12": 608
+        "trailing12": 609
       }
     },
     "nbpt": {
@@ -181,8 +181,8 @@
           "dom": 34,
           "units": 125
         },
-        "supply": 3.46,
-        "active": 36,
+        "supply": 3.26,
+        "active": 34,
         "trailing12": 125
       },
       "condo": {
@@ -301,19 +301,19 @@
           "units": 125
         },
         "2026": {
-          "price": 733860,
+          "price": 738945,
           "sqft": 385,
-          "dom": 32,
-          "units": 130
+          "dom": 33,
+          "units": 131
         }
       }
     },
     "summary": {
-      "price": 979303,
+      "price": 980208,
       "sqft": 459,
       "dom": 36,
-      "units": 464,
-      "activeListings": 95
+      "units": 465,
+      "activeListings": 94
     }
   },
   "beyond": {
@@ -380,7 +380,7 @@
       "sqft": 397,
       "dom": 37,
       "units": 304,
-      "activeListings": 42
+      "activeListings": 41
     }
   },
   "neighborhoods": {
@@ -562,25 +562,25 @@
     "medianIncome": 104800,
     "markets": {
       "ma": {
-        "price": 863187,
-        "down": 172637,
+        "price": 863204,
+        "down": 172641,
         "monthly": 4365,
         "monthlyAll": 5516,
-        "income": 236385
+        "income": 236390
       },
       "boston": {
-        "price": 1304847,
-        "down": 260969,
-        "monthly": 6598,
-        "monthlyAll": 8338,
-        "income": 357335
+        "price": 1304650,
+        "down": 260930,
+        "monthly": 6597,
+        "monthlyAll": 8337,
+        "income": 357281
       },
       "essex": {
-        "price": 904298,
-        "down": 180860,
-        "monthly": 4573,
-        "monthlyAll": 5778,
-        "income": 247644
+        "price": 904788,
+        "down": 180958,
+        "monthly": 4575,
+        "monthlyAll": 5781,
+        "income": 247778
       },
       "nbpt": {
         "price": 1250755,
@@ -593,7 +593,7 @@
   },
   "marketShare": {
     "window": "12 months trailing",
-    "generated": "2026-08-02T07:53:16.328Z",
+    "generated": "2026-08-03T08:16:55.004Z",
     "coreTowns": [
       "Newburyport",
       "West Newbury",
@@ -1917,8 +1917,8 @@
         ]
       },
       "greaterNewburyport": {
-        "totalSides": 792,
-        "totalVolume": 662270685,
+        "totalSides": 793,
+        "totalVolume": 663670685,
         "officeCount": 184,
         "bySides": [
           {
@@ -1929,8 +1929,8 @@
             "sides": 97,
             "volume": 98266400,
             "isBentleys": true,
-            "sidesPct": 12.25,
-            "volumePct": 14.84
+            "sidesPct": 12.23,
+            "volumePct": 14.81
           },
           {
             "officeId": "AN6420",
@@ -1940,8 +1940,8 @@
             "sides": 66,
             "volume": 70576800,
             "isBentleys": false,
-            "sidesPct": 8.33,
-            "volumePct": 10.66
+            "sidesPct": 8.32,
+            "volumePct": 10.63
           },
           {
             "officeId": "AN6888",
@@ -1951,19 +1951,19 @@
             "sides": 64,
             "volume": 61673895,
             "isBentleys": false,
-            "sidesPct": 8.08,
-            "volumePct": 9.31
+            "sidesPct": 8.07,
+            "volumePct": 9.29
           },
           {
             "officeId": "AN7944",
             "officeName": "Gibson Sotheby's International Realty",
             "officeCity": "Newburyport",
             "displayName": "Gibson Sotheby's International Realty — Newburyport",
-            "sides": 45,
-            "volume": 51373700,
+            "sides": 46,
+            "volume": 52773700,
             "isBentleys": false,
-            "sidesPct": 5.68,
-            "volumePct": 7.76
+            "sidesPct": 5.8,
+            "volumePct": 7.95
           },
           {
             "officeId": "AN8750",
@@ -1973,7 +1973,7 @@
             "sides": 35,
             "volume": 25724950,
             "isBentleys": false,
-            "sidesPct": 4.42,
+            "sidesPct": 4.41,
             "volumePct": 3.88
           },
           {
@@ -1984,8 +1984,8 @@
             "sides": 30,
             "volume": 19250999,
             "isBentleys": false,
-            "sidesPct": 3.79,
-            "volumePct": 2.91
+            "sidesPct": 3.78,
+            "volumePct": 2.9
           },
           {
             "officeId": "AN4850",
@@ -1995,8 +1995,8 @@
             "sides": 28,
             "volume": 28885900,
             "isBentleys": false,
-            "sidesPct": 3.54,
-            "volumePct": 4.36
+            "sidesPct": 3.53,
+            "volumePct": 4.35
           },
           {
             "officeId": "AN7000",
@@ -2006,8 +2006,8 @@
             "sides": 20,
             "volume": 18187725,
             "isBentleys": false,
-            "sidesPct": 2.53,
-            "volumePct": 2.75
+            "sidesPct": 2.52,
+            "volumePct": 2.74
           },
           {
             "officeId": "AN6958",
@@ -2018,7 +2018,7 @@
             "volume": 10708000,
             "isBentleys": false,
             "sidesPct": 2.02,
-            "volumePct": 1.62
+            "volumePct": 1.61
           },
           {
             "officeId": "AN6212",
@@ -2039,7 +2039,7 @@
             "sides": 12,
             "volume": 6561000,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 0.99
           },
           {
@@ -2050,7 +2050,7 @@
             "sides": 12,
             "volume": 6623600,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 1
           },
           {
@@ -2061,7 +2061,7 @@
             "sides": 12,
             "volume": 7969000,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 1.2
           },
           {
@@ -2073,7 +2073,7 @@
             "volume": 7322129,
             "isBentleys": false,
             "sidesPct": 1.39,
-            "volumePct": 1.11
+            "volumePct": 1.1
           },
           {
             "officeId": "AN9011",
@@ -2116,7 +2116,7 @@
             "sides": 9,
             "volume": 7364000,
             "isBentleys": false,
-            "sidesPct": 1.14,
+            "sidesPct": 1.13,
             "volumePct": 1.11
           },
           {
@@ -2227,7 +2227,7 @@
             "volume": 3743000,
             "isBentleys": false,
             "sidesPct": 0.63,
-            "volumePct": 0.57
+            "volumePct": 0.56
           },
           {
             "officeId": "AN5852",
@@ -2270,7 +2270,7 @@
             "sides": 4,
             "volume": 3432500,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.52
           },
           {
@@ -2281,7 +2281,7 @@
             "sides": 4,
             "volume": 1694500,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.26
           },
           {
@@ -2292,7 +2292,7 @@
             "sides": 4,
             "volume": 3369000,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.51
           },
           {
@@ -2491,7 +2491,7 @@
             "volume": 2286100,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.35
+            "volumePct": 0.34
           },
           {
             "officeId": "AN1475",
@@ -2579,7 +2579,7 @@
             "volume": 1492000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.23
+            "volumePct": 0.22
           },
           {
             "officeId": "AN4351",
@@ -2810,7 +2810,7 @@
             "volume": 630000,
             "isBentleys": false,
             "sidesPct": 0.13,
-            "volumePct": 0.1
+            "volumePct": 0.09
           },
           {
             "officeId": "AN7768",
@@ -3525,7 +3525,7 @@
             "volume": 630000,
             "isBentleys": false,
             "sidesPct": 0.13,
-            "volumePct": 0.1
+            "volumePct": 0.09
           },
           {
             "officeId": "AN2885",
@@ -3955,8 +3955,8 @@
             "sides": 97,
             "volume": 98266400,
             "isBentleys": true,
-            "sidesPct": 12.25,
-            "volumePct": 14.84
+            "sidesPct": 12.23,
+            "volumePct": 14.81
           },
           {
             "officeId": "AN6420",
@@ -3966,8 +3966,8 @@
             "sides": 66,
             "volume": 70576800,
             "isBentleys": false,
-            "sidesPct": 8.33,
-            "volumePct": 10.66
+            "sidesPct": 8.32,
+            "volumePct": 10.63
           },
           {
             "officeId": "AN6888",
@@ -3977,19 +3977,19 @@
             "sides": 64,
             "volume": 61673895,
             "isBentleys": false,
-            "sidesPct": 8.08,
-            "volumePct": 9.31
+            "sidesPct": 8.07,
+            "volumePct": 9.29
           },
           {
             "officeId": "AN7944",
             "officeName": "Gibson Sotheby's International Realty",
             "officeCity": "Newburyport",
             "displayName": "Gibson Sotheby's International Realty — Newburyport",
-            "sides": 45,
-            "volume": 51373700,
+            "sides": 46,
+            "volume": 52773700,
             "isBentleys": false,
-            "sidesPct": 5.68,
-            "volumePct": 7.76
+            "sidesPct": 5.8,
+            "volumePct": 7.95
           },
           {
             "officeId": "AN4850",
@@ -3999,8 +3999,8 @@
             "sides": 28,
             "volume": 28885900,
             "isBentleys": false,
-            "sidesPct": 3.54,
-            "volumePct": 4.36
+            "sidesPct": 3.53,
+            "volumePct": 4.35
           },
           {
             "officeId": "AN8750",
@@ -4010,7 +4010,7 @@
             "sides": 35,
             "volume": 25724950,
             "isBentleys": false,
-            "sidesPct": 4.42,
+            "sidesPct": 4.41,
             "volumePct": 3.88
           },
           {
@@ -4021,8 +4021,8 @@
             "sides": 30,
             "volume": 19250999,
             "isBentleys": false,
-            "sidesPct": 3.79,
-            "volumePct": 2.91
+            "sidesPct": 3.78,
+            "volumePct": 2.9
           },
           {
             "officeId": "AN7000",
@@ -4032,8 +4032,8 @@
             "sides": 20,
             "volume": 18187725,
             "isBentleys": false,
-            "sidesPct": 2.53,
-            "volumePct": 2.75
+            "sidesPct": 2.52,
+            "volumePct": 2.74
           },
           {
             "officeId": "AN6958",
@@ -4044,7 +4044,7 @@
             "volume": 10708000,
             "isBentleys": false,
             "sidesPct": 2.02,
-            "volumePct": 1.62
+            "volumePct": 1.61
           },
           {
             "officeId": "AN6212",
@@ -4065,7 +4065,7 @@
             "sides": 12,
             "volume": 7969000,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 1.2
           },
           {
@@ -4087,7 +4087,7 @@
             "sides": 9,
             "volume": 7364000,
             "isBentleys": false,
-            "sidesPct": 1.14,
+            "sidesPct": 1.13,
             "volumePct": 1.11
           },
           {
@@ -4099,7 +4099,7 @@
             "volume": 7322129,
             "isBentleys": false,
             "sidesPct": 1.39,
-            "volumePct": 1.11
+            "volumePct": 1.1
           },
           {
             "officeId": "AN5155",
@@ -4131,7 +4131,7 @@
             "sides": 12,
             "volume": 6623600,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 1
           },
           {
@@ -4142,7 +4142,7 @@
             "sides": 12,
             "volume": 6561000,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 0.99
           },
           {
@@ -4220,7 +4220,7 @@
             "volume": 3743000,
             "isBentleys": false,
             "sidesPct": 0.63,
-            "volumePct": 0.57
+            "volumePct": 0.56
           },
           {
             "officeId": "AN6566",
@@ -4274,7 +4274,7 @@
             "sides": 4,
             "volume": 3432500,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.52
           },
           {
@@ -4296,7 +4296,7 @@
             "sides": 4,
             "volume": 3369000,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.51
           },
           {
@@ -4385,7 +4385,7 @@
             "volume": 2286100,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.35
+            "volumePct": 0.34
           },
           {
             "officeId": "AN6215",
@@ -4527,7 +4527,7 @@
             "sides": 4,
             "volume": 1694500,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.26
           },
           {
@@ -4594,7 +4594,7 @@
             "volume": 1492000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.23
+            "volumePct": 0.22
           },
           {
             "officeId": "AN0616",
@@ -5364,7 +5364,7 @@
             "volume": 630000,
             "isBentleys": false,
             "sidesPct": 0.13,
-            "volumePct": 0.1
+            "volumePct": 0.09
           },
           {
             "officeId": "AN2670",
@@ -5375,7 +5375,7 @@
             "volume": 630000,
             "isBentleys": false,
             "sidesPct": 0.13,
-            "volumePct": 0.1
+            "volumePct": 0.09
           },
           {
             "officeId": "AN6314",
@@ -5974,8 +5974,8 @@
         ]
       },
       "beyond": {
-        "totalSides": 392,
-        "totalVolume": 322703733,
+        "totalSides": 393,
+        "totalVolume": 323585733,
         "officeCount": 143,
         "bySides": [
           {
@@ -5986,8 +5986,8 @@
             "sides": 28,
             "volume": 21186250,
             "isBentleys": false,
-            "sidesPct": 7.14,
-            "volumePct": 6.57
+            "sidesPct": 7.12,
+            "volumePct": 6.55
           },
           {
             "officeId": "AN6886",
@@ -5997,8 +5997,19 @@
             "sides": 18,
             "volume": 14194600,
             "isBentleys": false,
-            "sidesPct": 4.59,
-            "volumePct": 4.4
+            "sidesPct": 4.58,
+            "volumePct": 4.39
+          },
+          {
+            "officeId": "AN6818",
+            "officeName": "Compass",
+            "officeCity": "Marblehead",
+            "displayName": "Compass — Marblehead",
+            "sides": 14,
+            "volume": 19266000,
+            "isBentleys": false,
+            "sidesPct": 3.56,
+            "volumePct": 5.95
           },
           {
             "officeId": "AN6420",
@@ -6008,19 +6019,8 @@
             "sides": 14,
             "volume": 11727700,
             "isBentleys": false,
-            "sidesPct": 3.57,
-            "volumePct": 3.63
-          },
-          {
-            "officeId": "AN6818",
-            "officeName": "Compass",
-            "officeCity": "Marblehead",
-            "displayName": "Compass — Marblehead",
-            "sides": 13,
-            "volume": 18384000,
-            "isBentleys": false,
-            "sidesPct": 3.32,
-            "volumePct": 5.7
+            "sidesPct": 3.56,
+            "volumePct": 3.62
           },
           {
             "officeId": "C95098",
@@ -6030,7 +6030,7 @@
             "sides": 11,
             "volume": 8307950,
             "isBentleys": false,
-            "sidesPct": 2.81,
+            "sidesPct": 2.8,
             "volumePct": 2.57
           },
           {
@@ -6041,8 +6041,8 @@
             "sides": 10,
             "volume": 9770500,
             "isBentleys": false,
-            "sidesPct": 2.55,
-            "volumePct": 3.03
+            "sidesPct": 2.54,
+            "volumePct": 3.02
           },
           {
             "officeId": "AN7944",
@@ -6052,7 +6052,7 @@
             "sides": 10,
             "volume": 8243500,
             "isBentleys": false,
-            "sidesPct": 2.55,
+            "sidesPct": 2.54,
             "volumePct": 2.55
           },
           {
@@ -6063,8 +6063,8 @@
             "sides": 10,
             "volume": 7897000,
             "isBentleys": true,
-            "sidesPct": 2.55,
-            "volumePct": 2.45
+            "sidesPct": 2.54,
+            "volumePct": 2.44
           },
           {
             "officeId": "AC0342",
@@ -6074,7 +6074,7 @@
             "sides": 10,
             "volume": 7105000,
             "isBentleys": false,
-            "sidesPct": 2.55,
+            "sidesPct": 2.54,
             "volumePct": 2.2
           },
           {
@@ -6086,7 +6086,7 @@
             "volume": 7163000,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.22
+            "volumePct": 2.21
           },
           {
             "officeId": "AC2087",
@@ -6097,7 +6097,7 @@
             "volume": 6992110,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.17
+            "volumePct": 2.16
           },
           {
             "officeId": "AN3418",
@@ -6130,7 +6130,7 @@
             "volume": 7931000,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.46
+            "volumePct": 2.45
           },
           {
             "officeId": "AN8447",
@@ -6140,7 +6140,7 @@
             "sides": 7,
             "volume": 5365000,
             "isBentleys": false,
-            "sidesPct": 1.79,
+            "sidesPct": 1.78,
             "volumePct": 1.66
           },
           {
@@ -6151,8 +6151,8 @@
             "sides": 7,
             "volume": 5349000,
             "isBentleys": false,
-            "sidesPct": 1.79,
-            "volumePct": 1.66
+            "sidesPct": 1.78,
+            "volumePct": 1.65
           },
           {
             "officeId": "C95243",
@@ -6163,7 +6163,7 @@
             "volume": 4186000,
             "isBentleys": false,
             "sidesPct": 1.53,
-            "volumePct": 1.3
+            "volumePct": 1.29
           },
           {
             "officeId": "AN8161",
@@ -6195,8 +6195,8 @@
             "sides": 5,
             "volume": 4021000,
             "isBentleys": false,
-            "sidesPct": 1.28,
-            "volumePct": 1.25
+            "sidesPct": 1.27,
+            "volumePct": 1.24
           },
           {
             "officeId": "AN6664",
@@ -6206,7 +6206,7 @@
             "sides": 5,
             "volume": 3524000,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 1.09
           },
           {
@@ -6217,7 +6217,7 @@
             "sides": 5,
             "volume": 2577200,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 0.8
           },
           {
@@ -6228,7 +6228,7 @@
             "sides": 5,
             "volume": 3490500,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 1.08
           },
           {
@@ -6251,7 +6251,7 @@
             "volume": 5932000,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 1.84
+            "volumePct": 1.83
           },
           {
             "officeId": "AN6191",
@@ -6262,7 +6262,7 @@
             "volume": 3540000,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 1.1
+            "volumePct": 1.09
           },
           {
             "officeId": "AN6724",
@@ -6273,7 +6273,7 @@
             "volume": 4738900,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 1.47
+            "volumePct": 1.46
           },
           {
             "officeId": "AN2383",
@@ -6283,7 +6283,7 @@
             "sides": 3,
             "volume": 3785000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 1.17
           },
           {
@@ -6294,7 +6294,7 @@
             "sides": 3,
             "volume": 3235000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 1
           },
           {
@@ -6305,7 +6305,7 @@
             "sides": 3,
             "volume": 1959000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.61
           },
           {
@@ -6316,7 +6316,7 @@
             "sides": 3,
             "volume": 2163250,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.67
           },
           {
@@ -6327,8 +6327,8 @@
             "sides": 3,
             "volume": 2697500,
             "isBentleys": false,
-            "sidesPct": 0.77,
-            "volumePct": 0.84
+            "sidesPct": 0.76,
+            "volumePct": 0.83
           },
           {
             "officeId": "AN6521",
@@ -6338,7 +6338,7 @@
             "sides": 3,
             "volume": 1904000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.59
           },
           {
@@ -6349,7 +6349,7 @@
             "sides": 3,
             "volume": 1850000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.57
           },
           {
@@ -6360,7 +6360,7 @@
             "sides": 3,
             "volume": 947000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.29
           },
           {
@@ -6371,7 +6371,7 @@
             "sides": 3,
             "volume": 941000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.29
           },
           {
@@ -6427,7 +6427,7 @@
             "volume": 3570000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 1.11
+            "volumePct": 1.1
           },
           {
             "officeId": "B30601",
@@ -6449,7 +6449,7 @@
             "volume": 1533000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.48
+            "volumePct": 0.47
           },
           {
             "officeId": "AN6220",
@@ -6471,7 +6471,7 @@
             "volume": 4283650,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 1.33
+            "volumePct": 1.32
           },
           {
             "officeId": "AN6884",
@@ -6482,7 +6482,7 @@
             "volume": 2310000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.72
+            "volumePct": 0.71
           },
           {
             "officeId": "AN6617",
@@ -6548,7 +6548,7 @@
             "volume": 1824000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.57
+            "volumePct": 0.56
           },
           {
             "officeId": "F19101",
@@ -6603,7 +6603,7 @@
             "volume": 1310000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.41
+            "volumePct": 0.4
           },
           {
             "officeId": "AN0992",
@@ -6668,7 +6668,7 @@
             "sides": 1,
             "volume": 1450000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.45
           },
           {
@@ -6679,7 +6679,7 @@
             "sides": 1,
             "volume": 1150000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.36
           },
           {
@@ -6690,7 +6690,7 @@
             "sides": 1,
             "volume": 610000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -6701,7 +6701,7 @@
             "sides": 1,
             "volume": 1900000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.59
           },
           {
@@ -6712,7 +6712,7 @@
             "sides": 1,
             "volume": 780000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24
           },
           {
@@ -6723,7 +6723,7 @@
             "sides": 1,
             "volume": 969000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.3
           },
           {
@@ -6734,7 +6734,7 @@
             "sides": 1,
             "volume": 510000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16
           },
           {
@@ -6745,7 +6745,7 @@
             "sides": 1,
             "volume": 350000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -6756,7 +6756,7 @@
             "sides": 1,
             "volume": 700000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -6767,7 +6767,7 @@
             "sides": 1,
             "volume": 900000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28
           },
           {
@@ -6778,7 +6778,7 @@
             "sides": 1,
             "volume": 675000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.21
           },
           {
@@ -6789,7 +6789,7 @@
             "sides": 1,
             "volume": 1999999,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.62
           },
           {
@@ -6800,8 +6800,8 @@
             "sides": 1,
             "volume": 1180000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.37
+            "sidesPct": 0.25,
+            "volumePct": 0.36
           },
           {
             "officeId": "AN5516",
@@ -6811,7 +6811,7 @@
             "sides": 1,
             "volume": 822000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -6822,7 +6822,7 @@
             "sides": 1,
             "volume": 750000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -6833,7 +6833,7 @@
             "sides": 1,
             "volume": 1099000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.34
           },
           {
@@ -6844,7 +6844,7 @@
             "sides": 1,
             "volume": 659500,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -6855,7 +6855,7 @@
             "sides": 1,
             "volume": 405000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -6866,7 +6866,7 @@
             "sides": 1,
             "volume": 775000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24
           },
           {
@@ -6877,7 +6877,7 @@
             "sides": 1,
             "volume": 805000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -6888,7 +6888,7 @@
             "sides": 1,
             "volume": 755000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -6899,7 +6899,7 @@
             "sides": 1,
             "volume": 895000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28
           },
           {
@@ -6910,7 +6910,7 @@
             "sides": 1,
             "volume": 2659000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.82
           },
           {
@@ -6921,8 +6921,8 @@
             "sides": 1,
             "volume": 825000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.26
+            "sidesPct": 0.25,
+            "volumePct": 0.25
           },
           {
             "officeId": "AC1714",
@@ -6932,7 +6932,7 @@
             "sides": 1,
             "volume": 360000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -6943,7 +6943,7 @@
             "sides": 1,
             "volume": 610000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -6954,7 +6954,7 @@
             "sides": 1,
             "volume": 560000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17
           },
           {
@@ -6965,7 +6965,7 @@
             "sides": 1,
             "volume": 550000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17
           },
           {
@@ -6976,7 +6976,7 @@
             "sides": 1,
             "volume": 1060000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.33
           },
           {
@@ -6987,7 +6987,7 @@
             "sides": 1,
             "volume": 550000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17
           },
           {
@@ -6998,7 +6998,7 @@
             "sides": 1,
             "volume": 650000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -7009,7 +7009,7 @@
             "sides": 1,
             "volume": 440000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.14
           },
           {
@@ -7020,7 +7020,7 @@
             "sides": 1,
             "volume": 949000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.29
           },
           {
@@ -7031,7 +7031,7 @@
             "sides": 1,
             "volume": 740000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -7042,8 +7042,8 @@
             "sides": 1,
             "volume": 565000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.18
+            "sidesPct": 0.25,
+            "volumePct": 0.17
           },
           {
             "officeId": "AN2885",
@@ -7053,7 +7053,7 @@
             "sides": 1,
             "volume": 640000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -7064,7 +7064,7 @@
             "sides": 1,
             "volume": 705000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -7075,7 +7075,7 @@
             "sides": 1,
             "volume": 627000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -7086,7 +7086,7 @@
             "sides": 1,
             "volume": 730000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -7097,7 +7097,7 @@
             "sides": 1,
             "volume": 755000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -7108,7 +7108,7 @@
             "sides": 1,
             "volume": 880000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27
           },
           {
@@ -7119,7 +7119,7 @@
             "sides": 1,
             "volume": 720000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -7130,7 +7130,7 @@
             "sides": 1,
             "volume": 765000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24
           },
           {
@@ -7141,7 +7141,7 @@
             "sides": 1,
             "volume": 1075000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.33
           },
           {
@@ -7152,7 +7152,7 @@
             "sides": 1,
             "volume": 820000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -7163,7 +7163,7 @@
             "sides": 1,
             "volume": 1099000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.34
           },
           {
@@ -7174,7 +7174,7 @@
             "sides": 1,
             "volume": 650000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -7185,7 +7185,7 @@
             "sides": 1,
             "volume": 625000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -7196,7 +7196,7 @@
             "sides": 1,
             "volume": 650000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -7207,7 +7207,7 @@
             "sides": 1,
             "volume": 975000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.3
           },
           {
@@ -7218,8 +7218,8 @@
             "sides": 1,
             "volume": 986000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.31
+            "sidesPct": 0.25,
+            "volumePct": 0.3
           },
           {
             "officeId": "AN6447",
@@ -7229,7 +7229,7 @@
             "sides": 1,
             "volume": 480000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15
           },
           {
@@ -7240,7 +7240,7 @@
             "sides": 1,
             "volume": 525000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16
           },
           {
@@ -7251,7 +7251,7 @@
             "sides": 1,
             "volume": 875000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27
           },
           {
@@ -7262,7 +7262,7 @@
             "sides": 1,
             "volume": 483000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15
           },
           {
@@ -7273,7 +7273,7 @@
             "sides": 1,
             "volume": 530000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16
           },
           {
@@ -7284,7 +7284,7 @@
             "sides": 1,
             "volume": 584000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.18
           },
           {
@@ -7295,7 +7295,7 @@
             "sides": 1,
             "volume": 815000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -7306,7 +7306,7 @@
             "sides": 1,
             "volume": 400000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.12
           },
           {
@@ -7317,7 +7317,7 @@
             "sides": 1,
             "volume": 610000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -7328,7 +7328,7 @@
             "sides": 1,
             "volume": 850000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.26
           },
           {
@@ -7339,7 +7339,7 @@
             "sides": 1,
             "volume": 950000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.29
           },
           {
@@ -7350,7 +7350,7 @@
             "sides": 1,
             "volume": 735000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -7361,7 +7361,7 @@
             "sides": 1,
             "volume": 620000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -7372,7 +7372,7 @@
             "sides": 1,
             "volume": 234000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.07
           },
           {
@@ -7383,7 +7383,7 @@
             "sides": 1,
             "volume": 600000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -7394,7 +7394,7 @@
             "sides": 1,
             "volume": 140000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.04
           },
           {
@@ -7405,7 +7405,7 @@
             "sides": 1,
             "volume": 432500,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -7416,7 +7416,7 @@
             "sides": 1,
             "volume": 625000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -7427,7 +7427,7 @@
             "sides": 1,
             "volume": 800000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -7438,7 +7438,7 @@
             "sides": 1,
             "volume": 175000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.05
           },
           {
@@ -7449,7 +7449,7 @@
             "sides": 1,
             "volume": 360000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -7460,7 +7460,7 @@
             "sides": 1,
             "volume": 170000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.05
           },
           {
@@ -7471,7 +7471,7 @@
             "sides": 1,
             "volume": 435000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -7482,7 +7482,7 @@
             "sides": 1,
             "volume": 631000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -7493,7 +7493,7 @@
             "sides": 1,
             "volume": 440000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.14
           },
           {
@@ -7504,7 +7504,7 @@
             "sides": 1,
             "volume": 350000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -7515,7 +7515,7 @@
             "sides": 1,
             "volume": 130000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.04
           },
           {
@@ -7526,7 +7526,7 @@
             "sides": 1,
             "volume": 432000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -7537,7 +7537,7 @@
             "sides": 1,
             "volume": 710000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -7548,7 +7548,7 @@
             "sides": 1,
             "volume": 251725,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.08
           }
         ],
@@ -7561,19 +7561,19 @@
             "sides": 28,
             "volume": 21186250,
             "isBentleys": false,
-            "sidesPct": 7.14,
-            "volumePct": 6.57
+            "sidesPct": 7.12,
+            "volumePct": 6.55
           },
           {
             "officeId": "AN6818",
             "officeName": "Compass",
             "officeCity": "Marblehead",
             "displayName": "Compass — Marblehead",
-            "sides": 13,
-            "volume": 18384000,
+            "sides": 14,
+            "volume": 19266000,
             "isBentleys": false,
-            "sidesPct": 3.32,
-            "volumePct": 5.7
+            "sidesPct": 3.56,
+            "volumePct": 5.95
           },
           {
             "officeId": "AN6886",
@@ -7583,8 +7583,8 @@
             "sides": 18,
             "volume": 14194600,
             "isBentleys": false,
-            "sidesPct": 4.59,
-            "volumePct": 4.4
+            "sidesPct": 4.58,
+            "volumePct": 4.39
           },
           {
             "officeId": "AN6420",
@@ -7594,8 +7594,8 @@
             "sides": 14,
             "volume": 11727700,
             "isBentleys": false,
-            "sidesPct": 3.57,
-            "volumePct": 3.63
+            "sidesPct": 3.56,
+            "volumePct": 3.62
           },
           {
             "officeId": "AC1087",
@@ -7605,8 +7605,8 @@
             "sides": 10,
             "volume": 9770500,
             "isBentleys": false,
-            "sidesPct": 2.55,
-            "volumePct": 3.03
+            "sidesPct": 2.54,
+            "volumePct": 3.02
           },
           {
             "officeId": "C95098",
@@ -7616,7 +7616,7 @@
             "sides": 11,
             "volume": 8307950,
             "isBentleys": false,
-            "sidesPct": 2.81,
+            "sidesPct": 2.8,
             "volumePct": 2.57
           },
           {
@@ -7627,7 +7627,7 @@
             "sides": 10,
             "volume": 8243500,
             "isBentleys": false,
-            "sidesPct": 2.55,
+            "sidesPct": 2.54,
             "volumePct": 2.55
           },
           {
@@ -7639,7 +7639,7 @@
             "volume": 7931000,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.46
+            "volumePct": 2.45
           },
           {
             "officeId": "AN8279",
@@ -7649,8 +7649,8 @@
             "sides": 10,
             "volume": 7897000,
             "isBentleys": true,
-            "sidesPct": 2.55,
-            "volumePct": 2.45
+            "sidesPct": 2.54,
+            "volumePct": 2.44
           },
           {
             "officeId": "C95171",
@@ -7661,7 +7661,7 @@
             "volume": 7163000,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.22
+            "volumePct": 2.21
           },
           {
             "officeId": "AC0342",
@@ -7671,7 +7671,7 @@
             "sides": 10,
             "volume": 7105000,
             "isBentleys": false,
-            "sidesPct": 2.55,
+            "sidesPct": 2.54,
             "volumePct": 2.2
           },
           {
@@ -7683,7 +7683,7 @@
             "volume": 6992110,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.17
+            "volumePct": 2.16
           },
           {
             "officeId": "AN8161",
@@ -7716,7 +7716,7 @@
             "volume": 5932000,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 1.84
+            "volumePct": 1.83
           },
           {
             "officeId": "AN6212",
@@ -7737,7 +7737,7 @@
             "sides": 7,
             "volume": 5365000,
             "isBentleys": false,
-            "sidesPct": 1.79,
+            "sidesPct": 1.78,
             "volumePct": 1.66
           },
           {
@@ -7748,8 +7748,8 @@
             "sides": 7,
             "volume": 5349000,
             "isBentleys": false,
-            "sidesPct": 1.79,
-            "volumePct": 1.66
+            "sidesPct": 1.78,
+            "volumePct": 1.65
           },
           {
             "officeId": "AN6958",
@@ -7771,7 +7771,7 @@
             "volume": 4738900,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 1.47
+            "volumePct": 1.46
           },
           {
             "officeId": "C95245",
@@ -7782,7 +7782,7 @@
             "volume": 4283650,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 1.33
+            "volumePct": 1.32
           },
           {
             "officeId": "C95243",
@@ -7793,7 +7793,7 @@
             "volume": 4186000,
             "isBentleys": false,
             "sidesPct": 1.53,
-            "volumePct": 1.3
+            "volumePct": 1.29
           },
           {
             "officeId": "AN6660",
@@ -7814,8 +7814,8 @@
             "sides": 5,
             "volume": 4021000,
             "isBentleys": false,
-            "sidesPct": 1.28,
-            "volumePct": 1.25
+            "sidesPct": 1.27,
+            "volumePct": 1.24
           },
           {
             "officeId": "AN2383",
@@ -7825,7 +7825,7 @@
             "sides": 3,
             "volume": 3785000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 1.17
           },
           {
@@ -7837,7 +7837,7 @@
             "volume": 3570000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 1.11
+            "volumePct": 1.1
           },
           {
             "officeId": "AN6191",
@@ -7848,7 +7848,7 @@
             "volume": 3540000,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 1.1
+            "volumePct": 1.09
           },
           {
             "officeId": "AN6664",
@@ -7858,7 +7858,7 @@
             "sides": 5,
             "volume": 3524000,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 1.09
           },
           {
@@ -7869,7 +7869,7 @@
             "sides": 5,
             "volume": 3490500,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 1.08
           },
           {
@@ -7880,7 +7880,7 @@
             "sides": 3,
             "volume": 3235000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 1
           },
           {
@@ -7891,8 +7891,8 @@
             "sides": 3,
             "volume": 2697500,
             "isBentleys": false,
-            "sidesPct": 0.77,
-            "volumePct": 0.84
+            "sidesPct": 0.76,
+            "volumePct": 0.83
           },
           {
             "officeId": "AN4733",
@@ -7902,7 +7902,7 @@
             "sides": 1,
             "volume": 2659000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.82
           },
           {
@@ -7913,7 +7913,7 @@
             "sides": 5,
             "volume": 2577200,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 0.8
           },
           {
@@ -7947,7 +7947,7 @@
             "volume": 2310000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.72
+            "volumePct": 0.71
           },
           {
             "officeId": "AN5941",
@@ -7957,7 +7957,7 @@
             "sides": 3,
             "volume": 2163250,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.67
           },
           {
@@ -7979,7 +7979,7 @@
             "sides": 1,
             "volume": 1999999,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.62
           },
           {
@@ -7990,7 +7990,7 @@
             "sides": 3,
             "volume": 1959000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.61
           },
           {
@@ -8001,7 +8001,7 @@
             "sides": 3,
             "volume": 1904000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.59
           },
           {
@@ -8012,7 +8012,7 @@
             "sides": 1,
             "volume": 1900000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.59
           },
           {
@@ -8034,7 +8034,7 @@
             "sides": 3,
             "volume": 1850000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.57
           },
           {
@@ -8046,7 +8046,7 @@
             "volume": 1824000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.57
+            "volumePct": 0.56
           },
           {
             "officeId": "AN6617",
@@ -8101,7 +8101,7 @@
             "volume": 1533000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.48
+            "volumePct": 0.47
           },
           {
             "officeId": "AN0992",
@@ -8122,7 +8122,7 @@
             "sides": 1,
             "volume": 1450000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.45
           },
           {
@@ -8167,7 +8167,7 @@
             "volume": 1310000,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.41
+            "volumePct": 0.4
           },
           {
             "officeId": "AN5155",
@@ -8221,8 +8221,8 @@
             "sides": 1,
             "volume": 1180000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.37
+            "sidesPct": 0.25,
+            "volumePct": 0.36
           },
           {
             "officeId": "AN8596",
@@ -8232,7 +8232,7 @@
             "sides": 1,
             "volume": 1150000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.36
           },
           {
@@ -8265,7 +8265,7 @@
             "sides": 1,
             "volume": 1099000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.34
           },
           {
@@ -8276,7 +8276,7 @@
             "sides": 1,
             "volume": 1099000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.34
           },
           {
@@ -8287,7 +8287,7 @@
             "sides": 1,
             "volume": 1075000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.33
           },
           {
@@ -8298,7 +8298,7 @@
             "sides": 1,
             "volume": 1060000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.33
           },
           {
@@ -8309,8 +8309,8 @@
             "sides": 1,
             "volume": 986000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.31
+            "sidesPct": 0.25,
+            "volumePct": 0.3
           },
           {
             "officeId": "AN5445",
@@ -8320,7 +8320,7 @@
             "sides": 1,
             "volume": 975000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.3
           },
           {
@@ -8331,7 +8331,7 @@
             "sides": 1,
             "volume": 969000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.3
           },
           {
@@ -8342,7 +8342,7 @@
             "sides": 1,
             "volume": 950000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.29
           },
           {
@@ -8353,7 +8353,7 @@
             "sides": 1,
             "volume": 949000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.29
           },
           {
@@ -8364,7 +8364,7 @@
             "sides": 3,
             "volume": 947000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.29
           },
           {
@@ -8375,7 +8375,7 @@
             "sides": 3,
             "volume": 941000,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.29
           },
           {
@@ -8386,7 +8386,7 @@
             "sides": 1,
             "volume": 900000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28
           },
           {
@@ -8397,7 +8397,7 @@
             "sides": 1,
             "volume": 895000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28
           },
           {
@@ -8408,7 +8408,7 @@
             "sides": 1,
             "volume": 880000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27
           },
           {
@@ -8419,7 +8419,7 @@
             "sides": 1,
             "volume": 875000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27
           },
           {
@@ -8430,7 +8430,7 @@
             "sides": 1,
             "volume": 850000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.26
           },
           {
@@ -8441,8 +8441,8 @@
             "sides": 1,
             "volume": 825000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.26
+            "sidesPct": 0.25,
+            "volumePct": 0.25
           },
           {
             "officeId": "AN5516",
@@ -8452,7 +8452,7 @@
             "sides": 1,
             "volume": 822000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -8463,7 +8463,7 @@
             "sides": 1,
             "volume": 820000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -8485,7 +8485,7 @@
             "sides": 1,
             "volume": 815000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -8496,7 +8496,7 @@
             "sides": 1,
             "volume": 805000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -8507,7 +8507,7 @@
             "sides": 1,
             "volume": 800000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25
           },
           {
@@ -8518,7 +8518,7 @@
             "sides": 1,
             "volume": 780000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24
           },
           {
@@ -8529,7 +8529,7 @@
             "sides": 1,
             "volume": 775000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24
           },
           {
@@ -8540,7 +8540,7 @@
             "sides": 1,
             "volume": 765000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24
           },
           {
@@ -8551,7 +8551,7 @@
             "sides": 1,
             "volume": 755000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -8562,7 +8562,7 @@
             "sides": 1,
             "volume": 755000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -8573,7 +8573,7 @@
             "sides": 1,
             "volume": 750000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -8584,7 +8584,7 @@
             "sides": 1,
             "volume": 740000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -8595,7 +8595,7 @@
             "sides": 1,
             "volume": 735000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -8606,7 +8606,7 @@
             "sides": 1,
             "volume": 730000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23
           },
           {
@@ -8617,7 +8617,7 @@
             "sides": 1,
             "volume": 720000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -8628,7 +8628,7 @@
             "sides": 1,
             "volume": 710000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -8639,7 +8639,7 @@
             "sides": 1,
             "volume": 705000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -8661,7 +8661,7 @@
             "sides": 1,
             "volume": 700000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22
           },
           {
@@ -8672,7 +8672,7 @@
             "sides": 1,
             "volume": 675000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.21
           },
           {
@@ -8683,7 +8683,7 @@
             "sides": 1,
             "volume": 659500,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -8694,7 +8694,7 @@
             "sides": 1,
             "volume": 650000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -8705,7 +8705,7 @@
             "sides": 1,
             "volume": 650000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -8716,7 +8716,7 @@
             "sides": 1,
             "volume": 650000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -8727,7 +8727,7 @@
             "sides": 1,
             "volume": 640000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -8738,7 +8738,7 @@
             "sides": 1,
             "volume": 631000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2
           },
           {
@@ -8749,7 +8749,7 @@
             "sides": 1,
             "volume": 627000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8760,7 +8760,7 @@
             "sides": 1,
             "volume": 625000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8771,7 +8771,7 @@
             "sides": 1,
             "volume": 625000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8782,7 +8782,7 @@
             "sides": 1,
             "volume": 620000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8793,7 +8793,7 @@
             "sides": 1,
             "volume": 610000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8804,7 +8804,7 @@
             "sides": 1,
             "volume": 610000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8815,7 +8815,7 @@
             "sides": 1,
             "volume": 610000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8826,7 +8826,7 @@
             "sides": 1,
             "volume": 600000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19
           },
           {
@@ -8837,7 +8837,7 @@
             "sides": 1,
             "volume": 584000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.18
           },
           {
@@ -8848,8 +8848,8 @@
             "sides": 1,
             "volume": 565000,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.18
+            "sidesPct": 0.25,
+            "volumePct": 0.17
           },
           {
             "officeId": "AN4972",
@@ -8859,7 +8859,7 @@
             "sides": 1,
             "volume": 560000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17
           },
           {
@@ -8870,7 +8870,7 @@
             "sides": 1,
             "volume": 550000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17
           },
           {
@@ -8881,7 +8881,7 @@
             "sides": 1,
             "volume": 550000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17
           },
           {
@@ -8892,7 +8892,7 @@
             "sides": 1,
             "volume": 530000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16
           },
           {
@@ -8903,7 +8903,7 @@
             "sides": 1,
             "volume": 525000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16
           },
           {
@@ -8914,7 +8914,7 @@
             "sides": 1,
             "volume": 510000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16
           },
           {
@@ -8925,7 +8925,7 @@
             "sides": 1,
             "volume": 483000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15
           },
           {
@@ -8936,7 +8936,7 @@
             "sides": 1,
             "volume": 480000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15
           },
           {
@@ -8947,7 +8947,7 @@
             "sides": 1,
             "volume": 440000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.14
           },
           {
@@ -8958,7 +8958,7 @@
             "sides": 1,
             "volume": 440000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.14
           },
           {
@@ -8969,7 +8969,7 @@
             "sides": 1,
             "volume": 435000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -8980,7 +8980,7 @@
             "sides": 1,
             "volume": 432500,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -8991,7 +8991,7 @@
             "sides": 1,
             "volume": 432000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -9002,7 +9002,7 @@
             "sides": 1,
             "volume": 405000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13
           },
           {
@@ -9013,7 +9013,7 @@
             "sides": 1,
             "volume": 400000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.12
           },
           {
@@ -9024,7 +9024,7 @@
             "sides": 1,
             "volume": 360000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -9035,7 +9035,7 @@
             "sides": 1,
             "volume": 360000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -9046,7 +9046,7 @@
             "sides": 1,
             "volume": 350000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -9057,7 +9057,7 @@
             "sides": 1,
             "volume": 350000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11
           },
           {
@@ -9068,7 +9068,7 @@
             "sides": 1,
             "volume": 251725,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.08
           },
           {
@@ -9079,7 +9079,7 @@
             "sides": 1,
             "volume": 234000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.07
           },
           {
@@ -9090,7 +9090,7 @@
             "sides": 1,
             "volume": 175000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.05
           },
           {
@@ -9101,7 +9101,7 @@
             "sides": 1,
             "volume": 170000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.05
           },
           {
@@ -9112,7 +9112,7 @@
             "sides": 1,
             "volume": 140000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.04
           },
           {
@@ -9123,14 +9123,14 @@
             "sides": 1,
             "volume": 130000,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.04
           }
         ]
       },
       "territory": {
-        "totalSides": 1184,
-        "totalVolume": 984974418,
+        "totalSides": 1186,
+        "totalVolume": 987256418,
         "officeCount": 250,
         "bySides": [
           {
@@ -9141,8 +9141,8 @@
             "sides": 107,
             "volume": 106163400,
             "isBentleys": true,
-            "sidesPct": 9.04,
-            "volumePct": 10.78
+            "sidesPct": 9.02,
+            "volumePct": 10.75
           },
           {
             "officeId": "AN6888",
@@ -9152,8 +9152,8 @@
             "sides": 92,
             "volume": 82860145,
             "isBentleys": false,
-            "sidesPct": 7.77,
-            "volumePct": 8.41
+            "sidesPct": 7.76,
+            "volumePct": 8.39
           },
           {
             "officeId": "AN6420",
@@ -9163,19 +9163,19 @@
             "sides": 80,
             "volume": 82304500,
             "isBentleys": false,
-            "sidesPct": 6.76,
-            "volumePct": 8.36
+            "sidesPct": 6.75,
+            "volumePct": 8.34
           },
           {
             "officeId": "AN7944",
             "officeName": "Gibson Sotheby's International Realty",
             "officeCity": "Newburyport",
             "displayName": "Gibson Sotheby's International Realty — Newburyport",
-            "sides": 55,
-            "volume": 59617200,
+            "sides": 56,
+            "volume": 61017200,
             "isBentleys": false,
-            "sidesPct": 4.65,
-            "volumePct": 6.05
+            "sidesPct": 4.72,
+            "volumePct": 6.18
           },
           {
             "officeId": "AN8750",
@@ -9185,7 +9185,7 @@
             "sides": 40,
             "volume": 28302150,
             "isBentleys": false,
-            "sidesPct": 3.38,
+            "sidesPct": 3.37,
             "volumePct": 2.87
           },
           {
@@ -9196,8 +9196,8 @@
             "sides": 35,
             "volume": 22741499,
             "isBentleys": false,
-            "sidesPct": 2.96,
-            "volumePct": 2.31
+            "sidesPct": 2.95,
+            "volumePct": 2.3
           },
           {
             "officeId": "AN4850",
@@ -9207,8 +9207,8 @@
             "sides": 31,
             "volume": 32120900,
             "isBentleys": false,
-            "sidesPct": 2.62,
-            "volumePct": 3.26
+            "sidesPct": 2.61,
+            "volumePct": 3.25
           },
           {
             "officeId": "AN6886",
@@ -9229,8 +9229,8 @@
             "sides": 24,
             "volume": 15022999,
             "isBentleys": false,
-            "sidesPct": 2.03,
-            "volumePct": 1.53
+            "sidesPct": 2.02,
+            "volumePct": 1.52
           },
           {
             "officeId": "C95098",
@@ -9262,7 +9262,7 @@
             "sides": 22,
             "volume": 13728600,
             "isBentleys": false,
-            "sidesPct": 1.86,
+            "sidesPct": 1.85,
             "volumePct": 1.39
           },
           {
@@ -9273,7 +9273,7 @@
             "sides": 22,
             "volume": 15685000,
             "isBentleys": false,
-            "sidesPct": 1.86,
+            "sidesPct": 1.85,
             "volumePct": 1.59
           },
           {
@@ -9281,11 +9281,11 @@
             "officeName": "Compass",
             "officeCity": "Marblehead",
             "displayName": "Compass — Marblehead",
-            "sides": 16,
-            "volume": 21235500,
+            "sides": 17,
+            "volume": 22117500,
             "isBentleys": false,
-            "sidesPct": 1.35,
-            "volumePct": 2.16
+            "sidesPct": 1.43,
+            "volumePct": 2.24
           },
           {
             "officeId": "AN8613",
@@ -9318,7 +9318,7 @@
             "volume": 10509510,
             "isBentleys": false,
             "sidesPct": 1.1,
-            "volumePct": 1.07
+            "volumePct": 1.06
           },
           {
             "officeId": "AC1087",
@@ -9373,7 +9373,7 @@
             "volume": 8718000,
             "isBentleys": false,
             "sidesPct": 0.93,
-            "volumePct": 0.89
+            "volumePct": 0.88
           },
           {
             "officeId": "AN9011",
@@ -9449,7 +9449,7 @@
             "sides": 8,
             "volume": 5695000,
             "isBentleys": false,
-            "sidesPct": 0.68,
+            "sidesPct": 0.67,
             "volumePct": 0.58
           },
           {
@@ -9460,8 +9460,8 @@
             "sides": 8,
             "volume": 3796000,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.39
+            "sidesPct": 0.67,
+            "volumePct": 0.38
           },
           {
             "officeId": "AN8113",
@@ -9471,7 +9471,7 @@
             "sides": 8,
             "volume": 5896500,
             "isBentleys": false,
-            "sidesPct": 0.68,
+            "sidesPct": 0.67,
             "volumePct": 0.6
           },
           {
@@ -9482,8 +9482,8 @@
             "sides": 8,
             "volume": 7453500,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.76
+            "sidesPct": 0.67,
+            "volumePct": 0.75
           },
           {
             "officeId": "AN3418",
@@ -9493,8 +9493,8 @@
             "sides": 8,
             "volume": 6846500,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.7
+            "sidesPct": 0.67,
+            "volumePct": 0.69
           },
           {
             "officeId": "AN2383",
@@ -9692,7 +9692,7 @@
             "volume": 1923000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.2
+            "volumePct": 0.19
           },
           {
             "officeId": "C63200",
@@ -9802,7 +9802,7 @@
             "volume": 2314900,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.24
+            "volumePct": 0.23
           },
           {
             "officeId": "AN6314",
@@ -11188,7 +11188,7 @@
             "volume": 345000,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.04
+            "volumePct": 0.03
           },
           {
             "officeId": "AN6243",
@@ -11595,7 +11595,7 @@
             "volume": 740000,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.08
+            "volumePct": 0.07
           },
           {
             "officeId": "AC0269",
@@ -11893,8 +11893,8 @@
             "sides": 107,
             "volume": 106163400,
             "isBentleys": true,
-            "sidesPct": 9.04,
-            "volumePct": 10.78
+            "sidesPct": 9.02,
+            "volumePct": 10.75
           },
           {
             "officeId": "AN6888",
@@ -11904,8 +11904,8 @@
             "sides": 92,
             "volume": 82860145,
             "isBentleys": false,
-            "sidesPct": 7.77,
-            "volumePct": 8.41
+            "sidesPct": 7.76,
+            "volumePct": 8.39
           },
           {
             "officeId": "AN6420",
@@ -11915,19 +11915,19 @@
             "sides": 80,
             "volume": 82304500,
             "isBentleys": false,
-            "sidesPct": 6.76,
-            "volumePct": 8.36
+            "sidesPct": 6.75,
+            "volumePct": 8.34
           },
           {
             "officeId": "AN7944",
             "officeName": "Gibson Sotheby's International Realty",
             "officeCity": "Newburyport",
             "displayName": "Gibson Sotheby's International Realty — Newburyport",
-            "sides": 55,
-            "volume": 59617200,
+            "sides": 56,
+            "volume": 61017200,
             "isBentleys": false,
-            "sidesPct": 4.65,
-            "volumePct": 6.05
+            "sidesPct": 4.72,
+            "volumePct": 6.18
           },
           {
             "officeId": "AN4850",
@@ -11937,8 +11937,8 @@
             "sides": 31,
             "volume": 32120900,
             "isBentleys": false,
-            "sidesPct": 2.62,
-            "volumePct": 3.26
+            "sidesPct": 2.61,
+            "volumePct": 3.25
           },
           {
             "officeId": "AN8750",
@@ -11948,7 +11948,7 @@
             "sides": 40,
             "volume": 28302150,
             "isBentleys": false,
-            "sidesPct": 3.38,
+            "sidesPct": 3.37,
             "volumePct": 2.87
           },
           {
@@ -11959,8 +11959,19 @@
             "sides": 35,
             "volume": 22741499,
             "isBentleys": false,
-            "sidesPct": 2.96,
-            "volumePct": 2.31
+            "sidesPct": 2.95,
+            "volumePct": 2.3
+          },
+          {
+            "officeId": "AN6818",
+            "officeName": "Compass",
+            "officeCity": "Marblehead",
+            "displayName": "Compass — Marblehead",
+            "sides": 17,
+            "volume": 22117500,
+            "isBentleys": false,
+            "sidesPct": 1.43,
+            "volumePct": 2.24
           },
           {
             "officeId": "AN6886",
@@ -11972,17 +11983,6 @@
             "isBentleys": false,
             "sidesPct": 2.45,
             "volumePct": 2.18
-          },
-          {
-            "officeId": "AN6818",
-            "officeName": "Compass",
-            "officeCity": "Marblehead",
-            "displayName": "Compass — Marblehead",
-            "sides": 16,
-            "volume": 21235500,
-            "isBentleys": false,
-            "sidesPct": 1.35,
-            "volumePct": 2.16
           },
           {
             "officeId": "AN7000",
@@ -12003,7 +12003,7 @@
             "sides": 22,
             "volume": 15685000,
             "isBentleys": false,
-            "sidesPct": 1.86,
+            "sidesPct": 1.85,
             "volumePct": 1.59
           },
           {
@@ -12014,8 +12014,8 @@
             "sides": 24,
             "volume": 15022999,
             "isBentleys": false,
-            "sidesPct": 2.03,
-            "volumePct": 1.53
+            "sidesPct": 2.02,
+            "volumePct": 1.52
           },
           {
             "officeId": "C95098",
@@ -12036,7 +12036,7 @@
             "sides": 22,
             "volume": 13728600,
             "isBentleys": false,
-            "sidesPct": 1.86,
+            "sidesPct": 1.85,
             "volumePct": 1.39
           },
           {
@@ -12081,7 +12081,7 @@
             "volume": 10509510,
             "isBentleys": false,
             "sidesPct": 1.1,
-            "volumePct": 1.07
+            "volumePct": 1.06
           },
           {
             "officeId": "AN8613",
@@ -12114,7 +12114,7 @@
             "volume": 8718000,
             "isBentleys": false,
             "sidesPct": 0.93,
-            "volumePct": 0.89
+            "volumePct": 0.88
           },
           {
             "officeId": "AN5155",
@@ -12168,8 +12168,8 @@
             "sides": 8,
             "volume": 7453500,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.76
+            "sidesPct": 0.67,
+            "volumePct": 0.75
           },
           {
             "officeId": "C95283",
@@ -12201,8 +12201,8 @@
             "sides": 8,
             "volume": 6846500,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.7
+            "sidesPct": 0.67,
+            "volumePct": 0.69
           },
           {
             "officeId": "AN9011",
@@ -12234,7 +12234,7 @@
             "sides": 8,
             "volume": 5896500,
             "isBentleys": false,
-            "sidesPct": 0.68,
+            "sidesPct": 0.67,
             "volumePct": 0.6
           },
           {
@@ -12245,7 +12245,7 @@
             "sides": 8,
             "volume": 5695000,
             "isBentleys": false,
-            "sidesPct": 0.68,
+            "sidesPct": 0.67,
             "volumePct": 0.58
           },
           {
@@ -12344,8 +12344,8 @@
             "sides": 8,
             "volume": 3796000,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.39
+            "sidesPct": 0.67,
+            "volumePct": 0.38
           },
           {
             "officeId": "AN8827",
@@ -12576,7 +12576,7 @@
             "volume": 2314900,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.24
+            "volumePct": 0.23
           },
           {
             "officeId": "AN9289",
@@ -12708,7 +12708,7 @@
             "volume": 1923000,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.2
+            "volumePct": 0.19
           },
           {
             "officeId": "AN6521",
@@ -13808,7 +13808,7 @@
             "volume": 740000,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.08
+            "volumePct": 0.07
           },
           {
             "officeId": "AC1714",
@@ -14479,7 +14479,7 @@
             "volume": 345000,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.04
+            "volumePct": 0.03
           },
           {
             "officeId": "AN4471",
@@ -15513,8 +15513,8 @@
         ]
       },
       "greaterNewburyport": {
-        "totalSides": 792,
-        "totalVolume": 662270685,
+        "totalSides": 793,
+        "totalVolume": 663670685,
         "firmCount": 103,
         "bySides": [
           {
@@ -15525,9 +15525,9 @@
             "volume": 90808924,
             "officeCount": 12,
             "isBentleys": false,
-            "sidesPct": 14.02,
-            "volumePct": 13.71,
-            "share": 13.71
+            "sidesPct": 14,
+            "volumePct": 13.68,
+            "share": 13.68
           },
           {
             "firmName": "RE/MAX Bentley's",
@@ -15537,9 +15537,9 @@
             "volume": 98266400,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 12.25,
-            "volumePct": 14.84,
-            "share": 14.84
+            "sidesPct": 12.23,
+            "volumePct": 14.81,
+            "share": 14.81
           },
           {
             "firmName": "Lamacchia Realty",
@@ -15549,9 +15549,9 @@
             "volume": 53229949,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 9.47,
-            "volumePct": 8.04,
-            "share": 8.04
+            "sidesPct": 9.46,
+            "volumePct": 8.02,
+            "share": 8.02
           },
           {
             "firmName": "Realty One Group Nest",
@@ -15561,9 +15561,9 @@
             "volume": 72211800,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 8.59,
-            "volumePct": 10.9,
-            "share": 10.9
+            "sidesPct": 8.58,
+            "volumePct": 10.88,
+            "share": 10.88
           },
           {
             "firmName": "Coldwell Banker",
@@ -15573,21 +15573,21 @@
             "volume": 44388600,
             "officeCount": 20,
             "isBentleys": false,
-            "sidesPct": 7.2,
-            "volumePct": 6.7,
-            "share": 6.7
+            "sidesPct": 7.19,
+            "volumePct": 6.69,
+            "share": 6.69
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
             "displayName": "Gibson Sotheby's Int'l Realty",
             "name": "Gibson Sotheby's Int'l Realty",
-            "sides": 46,
-            "volume": 52138700,
+            "sides": 47,
+            "volume": 53538700,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 5.81,
-            "volumePct": 7.87,
-            "share": 7.87
+            "sidesPct": 5.93,
+            "volumePct": 8.07,
+            "share": 8.07
           },
           {
             "firmName": "William Raveis",
@@ -15598,8 +15598,8 @@
             "officeCount": 4,
             "isBentleys": false,
             "sidesPct": 4.67,
-            "volumePct": 5.54,
-            "share": 5.54
+            "volumePct": 5.53,
+            "share": 5.53
           },
           {
             "firmName": "Compass",
@@ -15609,9 +15609,9 @@
             "volume": 24471725,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 3.41,
-            "volumePct": 3.7,
-            "share": 3.7
+            "sidesPct": 3.4,
+            "volumePct": 3.69,
+            "share": 3.69
           },
           {
             "firmName": "eXp Realty",
@@ -15633,9 +15633,9 @@
             "volume": 15146000,
             "officeCount": 4,
             "isBentleys": false,
-            "sidesPct": 2.53,
-            "volumePct": 2.29,
-            "share": 2.29
+            "sidesPct": 2.52,
+            "volumePct": 2.28,
+            "share": 2.28
           },
           {
             "firmName": "Century 21",
@@ -15669,7 +15669,7 @@
             "volume": 9286000,
             "officeCount": 11,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 1.4,
             "share": 1.4
           },
@@ -15717,7 +15717,7 @@
             "volume": 7364000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.14,
+            "sidesPct": 1.13,
             "volumePct": 1.11,
             "share": 1.11
           },
@@ -15801,7 +15801,7 @@
             "volume": 1694500,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.26,
             "share": 0.26
           },
@@ -15813,7 +15813,7 @@
             "volume": 2100000,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.32,
             "share": 0.32
           },
@@ -15934,8 +15934,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.35,
-            "share": 0.35
+            "volumePct": 0.34,
+            "share": 0.34
           },
           {
             "firmName": "LandVest, Inc., Manchester -by-the-Sea",
@@ -15994,8 +15994,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.23,
-            "share": 0.23
+            "volumePct": 0.22,
+            "share": 0.22
           },
           {
             "firmName": "Douglas Elliman Real Estate - The Sarkis Team",
@@ -16522,8 +16522,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.13,
-            "volumePct": 0.1,
-            "share": 0.1
+            "volumePct": 0.09,
+            "share": 0.09
           },
           {
             "firmName": "Fitzgerald Real Estate",
@@ -16763,9 +16763,9 @@
             "volume": 98266400,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 12.25,
-            "volumePct": 14.84,
-            "share": 14.84
+            "sidesPct": 12.23,
+            "volumePct": 14.81,
+            "share": 14.81
           },
           {
             "firmName": "Keller Williams",
@@ -16775,9 +16775,9 @@
             "volume": 90808924,
             "officeCount": 12,
             "isBentleys": false,
-            "sidesPct": 14.02,
-            "volumePct": 13.71,
-            "share": 13.71
+            "sidesPct": 14,
+            "volumePct": 13.68,
+            "share": 13.68
           },
           {
             "firmName": "Realty One Group Nest",
@@ -16787,9 +16787,21 @@
             "volume": 72211800,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 8.59,
-            "volumePct": 10.9,
-            "share": 10.9
+            "sidesPct": 8.58,
+            "volumePct": 10.88,
+            "share": 10.88
+          },
+          {
+            "firmName": "Gibson Sotheby's Int'l Realty",
+            "displayName": "Gibson Sotheby's Int'l Realty",
+            "name": "Gibson Sotheby's Int'l Realty",
+            "sides": 47,
+            "volume": 53538700,
+            "officeCount": 2,
+            "isBentleys": false,
+            "sidesPct": 5.93,
+            "volumePct": 8.07,
+            "share": 8.07
           },
           {
             "firmName": "Lamacchia Realty",
@@ -16799,21 +16811,9 @@
             "volume": 53229949,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 9.47,
-            "volumePct": 8.04,
-            "share": 8.04
-          },
-          {
-            "firmName": "Gibson Sotheby's Int'l Realty",
-            "displayName": "Gibson Sotheby's Int'l Realty",
-            "name": "Gibson Sotheby's Int'l Realty",
-            "sides": 46,
-            "volume": 52138700,
-            "officeCount": 2,
-            "isBentleys": false,
-            "sidesPct": 5.81,
-            "volumePct": 7.87,
-            "share": 7.87
+            "sidesPct": 9.46,
+            "volumePct": 8.02,
+            "share": 8.02
           },
           {
             "firmName": "Coldwell Banker",
@@ -16823,9 +16823,9 @@
             "volume": 44388600,
             "officeCount": 20,
             "isBentleys": false,
-            "sidesPct": 7.2,
-            "volumePct": 6.7,
-            "share": 6.7
+            "sidesPct": 7.19,
+            "volumePct": 6.69,
+            "share": 6.69
           },
           {
             "firmName": "William Raveis",
@@ -16836,8 +16836,8 @@
             "officeCount": 4,
             "isBentleys": false,
             "sidesPct": 4.67,
-            "volumePct": 5.54,
-            "share": 5.54
+            "volumePct": 5.53,
+            "share": 5.53
           },
           {
             "firmName": "Compass",
@@ -16847,9 +16847,9 @@
             "volume": 24471725,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 3.41,
-            "volumePct": 3.7,
-            "share": 3.7
+            "sidesPct": 3.4,
+            "volumePct": 3.69,
+            "share": 3.69
           },
           {
             "firmName": "eXp Realty",
@@ -16871,9 +16871,9 @@
             "volume": 15146000,
             "officeCount": 4,
             "isBentleys": false,
-            "sidesPct": 2.53,
-            "volumePct": 2.29,
-            "share": 2.29
+            "sidesPct": 2.52,
+            "volumePct": 2.28,
+            "share": 2.28
           },
           {
             "firmName": "Cameron Real Estate Group",
@@ -16895,7 +16895,7 @@
             "volume": 9286000,
             "officeCount": 11,
             "isBentleys": false,
-            "sidesPct": 1.52,
+            "sidesPct": 1.51,
             "volumePct": 1.4,
             "share": 1.4
           },
@@ -16931,7 +16931,7 @@
             "volume": 7364000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.14,
+            "sidesPct": 1.13,
             "volumePct": 1.11,
             "share": 1.11
           },
@@ -17076,8 +17076,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.35,
-            "share": 0.35
+            "volumePct": 0.34,
+            "share": 0.34
           },
           {
             "firmName": "Get Listed Realty, LLC",
@@ -17099,7 +17099,7 @@
             "volume": 2100000,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.32,
             "share": 0.32
           },
@@ -17171,7 +17171,7 @@
             "volume": 1694500,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.51,
+            "sidesPct": 0.5,
             "volumePct": 0.26,
             "share": 0.26
           },
@@ -17196,8 +17196,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.23,
-            "share": 0.23
+            "volumePct": 0.22,
+            "share": 0.22
           },
           {
             "firmName": "Arris Realty",
@@ -17580,8 +17580,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.13,
-            "volumePct": 0.1,
-            "share": 0.1
+            "volumePct": 0.09,
+            "share": 0.09
           },
           {
             "firmName": "Beach Homes Realty, LLC",
@@ -17994,8 +17994,8 @@
         ]
       },
       "beyond": {
-        "totalSides": 392,
-        "totalVolume": 322703733,
+        "totalSides": 393,
+        "totalVolume": 323585733,
         "firmCount": 80,
         "bySides": [
           {
@@ -18006,9 +18006,9 @@
             "volume": 48822800,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 16.58,
-            "volumePct": 15.13,
-            "share": 15.13
+            "sidesPct": 16.54,
+            "volumePct": 15.09,
+            "share": 15.09
           },
           {
             "firmName": "Coldwell Banker",
@@ -18018,9 +18018,21 @@
             "volume": 24696899,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 7.91,
-            "volumePct": 7.65,
-            "share": 7.65
+            "sidesPct": 7.89,
+            "volumePct": 7.63,
+            "share": 7.63
+          },
+          {
+            "firmName": "Compass",
+            "displayName": "Compass",
+            "name": "Compass",
+            "sides": 26,
+            "volume": 33674900,
+            "officeCount": 5,
+            "isBentleys": false,
+            "sidesPct": 6.62,
+            "volumePct": 10.41,
+            "share": 10.41
           },
           {
             "firmName": "J. Barrett & Company",
@@ -18030,21 +18042,9 @@
             "volume": 25232260,
             "officeCount": 4,
             "isBentleys": false,
-            "sidesPct": 6.63,
-            "volumePct": 7.82,
-            "share": 7.82
-          },
-          {
-            "firmName": "Compass",
-            "displayName": "Compass",
-            "name": "Compass",
-            "sides": 25,
-            "volume": 32792900,
-            "officeCount": 5,
-            "isBentleys": false,
-            "sidesPct": 6.38,
-            "volumePct": 10.16,
-            "share": 10.16
+            "sidesPct": 6.62,
+            "volumePct": 7.8,
+            "share": 7.8
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -18054,9 +18054,9 @@
             "volume": 17089500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.59,
-            "volumePct": 5.3,
-            "share": 5.3
+            "sidesPct": 4.58,
+            "volumePct": 5.28,
+            "share": 5.28
           },
           {
             "firmName": "Churchill Properties",
@@ -18066,9 +18066,9 @@
             "volume": 15406500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.34,
-            "volumePct": 4.77,
-            "share": 4.77
+            "sidesPct": 4.33,
+            "volumePct": 4.76,
+            "share": 4.76
           },
           {
             "firmName": "Lamacchia Realty",
@@ -18078,9 +18078,9 @@
             "volume": 10111700,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 4.08,
-            "volumePct": 3.13,
-            "share": 3.13
+            "sidesPct": 4.07,
+            "volumePct": 3.12,
+            "share": 3.12
           },
           {
             "firmName": "eXp Realty",
@@ -18090,9 +18090,9 @@
             "volume": 11268250,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 3.83,
-            "volumePct": 3.49,
-            "share": 3.49
+            "sidesPct": 3.82,
+            "volumePct": 3.48,
+            "share": 3.48
           },
           {
             "firmName": "Realty One Group Nest",
@@ -18102,9 +18102,9 @@
             "volume": 12277700,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 3.83,
-            "volumePct": 3.8,
-            "share": 3.8
+            "sidesPct": 3.82,
+            "volumePct": 3.79,
+            "share": 3.79
           },
           {
             "firmName": "William Raveis",
@@ -18114,9 +18114,9 @@
             "volume": 9448500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 2.55,
-            "volumePct": 2.93,
-            "share": 2.93
+            "sidesPct": 2.54,
+            "volumePct": 2.92,
+            "share": 2.92
           },
           {
             "firmName": "RE/MAX Bentley's",
@@ -18126,9 +18126,9 @@
             "volume": 7897000,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 2.55,
-            "volumePct": 2.45,
-            "share": 2.45
+            "sidesPct": 2.54,
+            "volumePct": 2.44,
+            "share": 2.44
           },
           {
             "firmName": "Berkshire Hathaway",
@@ -18138,9 +18138,9 @@
             "volume": 5673000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 2.55,
-            "volumePct": 1.76,
-            "share": 1.76
+            "sidesPct": 2.54,
+            "volumePct": 1.75,
+            "share": 1.75
           },
           {
             "firmName": "Windhill Realty, LLC",
@@ -18151,8 +18151,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.22,
-            "share": 2.22
+            "volumePct": 2.21,
+            "share": 2.21
           },
           {
             "firmName": "Engel & Volkers",
@@ -18163,8 +18163,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 3.17,
-            "share": 3.17
+            "volumePct": 3.16,
+            "share": 3.16
           },
           {
             "firmName": "Heather Klosowski Real Estate",
@@ -18175,8 +18175,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.46,
-            "share": 2.46
+            "volumePct": 2.45,
+            "share": 2.45
           },
           {
             "firmName": "Ocean's Edge Real Estate",
@@ -18186,7 +18186,7 @@
             "volume": 5365000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.79,
+            "sidesPct": 1.78,
             "volumePct": 1.66,
             "share": 1.66
           },
@@ -18198,7 +18198,7 @@
             "volume": 4200000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 1.79,
+            "sidesPct": 1.78,
             "volumePct": 1.3,
             "share": 1.3
           },
@@ -18210,9 +18210,9 @@
             "volume": 4021000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.28,
-            "volumePct": 1.25,
-            "share": 1.25
+            "sidesPct": 1.27,
+            "volumePct": 1.24,
+            "share": 1.24
           },
           {
             "firmName": "Century 21",
@@ -18222,7 +18222,7 @@
             "volume": 2520000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 0.78,
             "share": 0.78
           },
@@ -18234,7 +18234,7 @@
             "volume": 3524000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 1.09,
             "share": 1.09
           },
@@ -18259,8 +18259,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 0.84,
-            "share": 0.84
+            "volumePct": 0.83,
+            "share": 0.83
           },
           {
             "firmName": "Lyv Realty",
@@ -18270,7 +18270,7 @@
             "volume": 2937000,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.91,
             "share": 0.91
           },
@@ -18282,9 +18282,9 @@
             "volume": 1470000,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 0.77,
-            "volumePct": 0.46,
-            "share": 0.46
+            "sidesPct": 0.76,
+            "volumePct": 0.45,
+            "share": 0.45
           },
           {
             "firmName": "MP Realty Group",
@@ -18294,7 +18294,7 @@
             "volume": 941000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.29,
             "share": 0.29
           },
@@ -18319,8 +18319,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 1.11,
-            "share": 1.11
+            "volumePct": 1.1,
+            "share": 1.1
           },
           {
             "firmName": "Boardwalk Real Estate",
@@ -18391,8 +18391,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.41,
-            "share": 0.41
+            "volumePct": 0.4,
+            "share": 0.4
           },
           {
             "firmName": "Jewett Real Estate",
@@ -18414,7 +18414,7 @@
             "volume": 1450000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.45,
             "share": 0.45
           },
@@ -18426,7 +18426,7 @@
             "volume": 1150000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.36,
             "share": 0.36
           },
@@ -18438,7 +18438,7 @@
             "volume": 780000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24,
             "share": 0.24
           },
@@ -18450,7 +18450,7 @@
             "volume": 510000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16,
             "share": 0.16
           },
@@ -18462,7 +18462,7 @@
             "volume": 700000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -18474,7 +18474,7 @@
             "volume": 900000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28,
             "share": 0.28
           },
@@ -18486,7 +18486,7 @@
             "volume": 675000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.21,
             "share": 0.21
           },
@@ -18498,7 +18498,7 @@
             "volume": 1999999,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.62,
             "share": 0.62
           },
@@ -18510,7 +18510,7 @@
             "volume": 822000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25,
             "share": 0.25
           },
@@ -18522,7 +18522,7 @@
             "volume": 1099000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.34,
             "share": 0.34
           },
@@ -18534,7 +18534,7 @@
             "volume": 405000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13,
             "share": 0.13
           },
@@ -18546,7 +18546,7 @@
             "volume": 775000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24,
             "share": 0.24
           },
@@ -18558,7 +18558,7 @@
             "volume": 755000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23,
             "share": 0.23
           },
@@ -18570,7 +18570,7 @@
             "volume": 895000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28,
             "share": 0.28
           },
@@ -18582,7 +18582,7 @@
             "volume": 360000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11,
             "share": 0.11
           },
@@ -18594,7 +18594,7 @@
             "volume": 610000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -18606,7 +18606,7 @@
             "volume": 550000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17,
             "share": 0.17
           },
@@ -18618,7 +18618,7 @@
             "volume": 740000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23,
             "share": 0.23
           },
@@ -18630,7 +18630,7 @@
             "volume": 705000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -18642,7 +18642,7 @@
             "volume": 880000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27,
             "share": 0.27
           },
@@ -18654,7 +18654,7 @@
             "volume": 720000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -18666,7 +18666,7 @@
             "volume": 820000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25,
             "share": 0.25
           },
@@ -18678,7 +18678,7 @@
             "volume": 650000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2,
             "share": 0.2
           },
@@ -18690,7 +18690,7 @@
             "volume": 625000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -18702,7 +18702,7 @@
             "volume": 975000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.3,
             "share": 0.3
           },
@@ -18714,9 +18714,9 @@
             "volume": 986000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.31,
-            "share": 0.31
+            "sidesPct": 0.25,
+            "volumePct": 0.3,
+            "share": 0.3
           },
           {
             "firmName": "Marc LeBlanc Realty",
@@ -18726,7 +18726,7 @@
             "volume": 480000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15,
             "share": 0.15
           },
@@ -18738,7 +18738,7 @@
             "volume": 525000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16,
             "share": 0.16
           },
@@ -18750,7 +18750,7 @@
             "volume": 875000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27,
             "share": 0.27
           },
@@ -18762,7 +18762,7 @@
             "volume": 483000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15,
             "share": 0.15
           },
@@ -18774,7 +18774,7 @@
             "volume": 610000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -18786,7 +18786,7 @@
             "volume": 850000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.26,
             "share": 0.26
           },
@@ -18798,7 +18798,7 @@
             "volume": 950000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.29,
             "share": 0.29
           },
@@ -18810,7 +18810,7 @@
             "volume": 620000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -18822,7 +18822,7 @@
             "volume": 234000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.07,
             "share": 0.07
           },
@@ -18834,7 +18834,7 @@
             "volume": 600000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -18846,7 +18846,7 @@
             "volume": 140000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.04,
             "share": 0.04
           },
@@ -18858,7 +18858,7 @@
             "volume": 432500,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13,
             "share": 0.13
           },
@@ -18870,7 +18870,7 @@
             "volume": 800000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25,
             "share": 0.25
           },
@@ -18882,7 +18882,7 @@
             "volume": 360000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11,
             "share": 0.11
           },
@@ -18894,7 +18894,7 @@
             "volume": 170000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.05,
             "share": 0.05
           },
@@ -18906,7 +18906,7 @@
             "volume": 435000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13,
             "share": 0.13
           },
@@ -18918,7 +18918,7 @@
             "volume": 631000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2,
             "share": 0.2
           },
@@ -18930,7 +18930,7 @@
             "volume": 440000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.14,
             "share": 0.14
           },
@@ -18942,7 +18942,7 @@
             "volume": 710000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -18954,7 +18954,7 @@
             "volume": 251725,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.08,
             "share": 0.08
           }
@@ -18968,21 +18968,21 @@
             "volume": 48822800,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 16.58,
-            "volumePct": 15.13,
-            "share": 15.13
+            "sidesPct": 16.54,
+            "volumePct": 15.09,
+            "share": 15.09
           },
           {
             "firmName": "Compass",
             "displayName": "Compass",
             "name": "Compass",
-            "sides": 25,
-            "volume": 32792900,
+            "sides": 26,
+            "volume": 33674900,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 6.38,
-            "volumePct": 10.16,
-            "share": 10.16
+            "sidesPct": 6.62,
+            "volumePct": 10.41,
+            "share": 10.41
           },
           {
             "firmName": "J. Barrett & Company",
@@ -18992,9 +18992,9 @@
             "volume": 25232260,
             "officeCount": 4,
             "isBentleys": false,
-            "sidesPct": 6.63,
-            "volumePct": 7.82,
-            "share": 7.82
+            "sidesPct": 6.62,
+            "volumePct": 7.8,
+            "share": 7.8
           },
           {
             "firmName": "Coldwell Banker",
@@ -19004,9 +19004,9 @@
             "volume": 24696899,
             "officeCount": 10,
             "isBentleys": false,
-            "sidesPct": 7.91,
-            "volumePct": 7.65,
-            "share": 7.65
+            "sidesPct": 7.89,
+            "volumePct": 7.63,
+            "share": 7.63
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
@@ -19016,9 +19016,9 @@
             "volume": 17089500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.59,
-            "volumePct": 5.3,
-            "share": 5.3
+            "sidesPct": 4.58,
+            "volumePct": 5.28,
+            "share": 5.28
           },
           {
             "firmName": "Churchill Properties",
@@ -19028,9 +19028,9 @@
             "volume": 15406500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.34,
-            "volumePct": 4.77,
-            "share": 4.77
+            "sidesPct": 4.33,
+            "volumePct": 4.76,
+            "share": 4.76
           },
           {
             "firmName": "Realty One Group Nest",
@@ -19040,9 +19040,9 @@
             "volume": 12277700,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 3.83,
-            "volumePct": 3.8,
-            "share": 3.8
+            "sidesPct": 3.82,
+            "volumePct": 3.79,
+            "share": 3.79
           },
           {
             "firmName": "eXp Realty",
@@ -19052,9 +19052,9 @@
             "volume": 11268250,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 3.83,
-            "volumePct": 3.49,
-            "share": 3.49
+            "sidesPct": 3.82,
+            "volumePct": 3.48,
+            "share": 3.48
           },
           {
             "firmName": "Engel & Volkers",
@@ -19065,8 +19065,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 3.17,
-            "share": 3.17
+            "volumePct": 3.16,
+            "share": 3.16
           },
           {
             "firmName": "Lamacchia Realty",
@@ -19076,9 +19076,9 @@
             "volume": 10111700,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 4.08,
-            "volumePct": 3.13,
-            "share": 3.13
+            "sidesPct": 4.07,
+            "volumePct": 3.12,
+            "share": 3.12
           },
           {
             "firmName": "William Raveis",
@@ -19088,9 +19088,9 @@
             "volume": 9448500,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 2.55,
-            "volumePct": 2.93,
-            "share": 2.93
+            "sidesPct": 2.54,
+            "volumePct": 2.92,
+            "share": 2.92
           },
           {
             "firmName": "Heather Klosowski Real Estate",
@@ -19101,8 +19101,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.46,
-            "share": 2.46
+            "volumePct": 2.45,
+            "share": 2.45
           },
           {
             "firmName": "RE/MAX Bentley's",
@@ -19112,9 +19112,9 @@
             "volume": 7897000,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 2.55,
-            "volumePct": 2.45,
-            "share": 2.45
+            "sidesPct": 2.54,
+            "volumePct": 2.44,
+            "share": 2.44
           },
           {
             "firmName": "Windhill Realty, LLC",
@@ -19125,8 +19125,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 2.04,
-            "volumePct": 2.22,
-            "share": 2.22
+            "volumePct": 2.21,
+            "share": 2.21
           },
           {
             "firmName": "Berkshire Hathaway",
@@ -19136,9 +19136,9 @@
             "volume": 5673000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 2.55,
-            "volumePct": 1.76,
-            "share": 1.76
+            "sidesPct": 2.54,
+            "volumePct": 1.75,
+            "share": 1.75
           },
           {
             "firmName": "Ocean's Edge Real Estate",
@@ -19148,7 +19148,7 @@
             "volume": 5365000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.79,
+            "sidesPct": 1.78,
             "volumePct": 1.66,
             "share": 1.66
           },
@@ -19160,7 +19160,7 @@
             "volume": 4200000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 1.79,
+            "sidesPct": 1.78,
             "volumePct": 1.3,
             "share": 1.3
           },
@@ -19172,9 +19172,9 @@
             "volume": 4021000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.28,
-            "volumePct": 1.25,
-            "share": 1.25
+            "sidesPct": 1.27,
+            "volumePct": 1.24,
+            "share": 1.24
           },
           {
             "firmName": "LandVest, Inc., Ipswich",
@@ -19185,8 +19185,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 1.11,
-            "share": 1.11
+            "volumePct": 1.1,
+            "share": 1.1
           },
           {
             "firmName": "Today Real Estate, Inc.",
@@ -19196,7 +19196,7 @@
             "volume": 3524000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 1.09,
             "share": 1.09
           },
@@ -19208,7 +19208,7 @@
             "volume": 2937000,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.91,
             "share": 0.91
           },
@@ -19221,8 +19221,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 1.02,
-            "volumePct": 0.84,
-            "share": 0.84
+            "volumePct": 0.83,
+            "share": 0.83
           },
           {
             "firmName": "Century 21",
@@ -19232,7 +19232,7 @@
             "volume": 2520000,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 1.28,
+            "sidesPct": 1.27,
             "volumePct": 0.78,
             "share": 0.78
           },
@@ -19256,7 +19256,7 @@
             "volume": 1999999,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.62,
             "share": 0.62
           },
@@ -19304,9 +19304,9 @@
             "volume": 1470000,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 0.77,
-            "volumePct": 0.46,
-            "share": 0.46
+            "sidesPct": 0.76,
+            "volumePct": 0.45,
+            "share": 0.45
           },
           {
             "firmName": "Harborside Realty",
@@ -19316,7 +19316,7 @@
             "volume": 1450000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.45,
             "share": 0.45
           },
@@ -19329,8 +19329,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.51,
-            "volumePct": 0.41,
-            "share": 0.41
+            "volumePct": 0.4,
+            "share": 0.4
           },
           {
             "firmName": "Cameron Real Estate Group",
@@ -19364,7 +19364,7 @@
             "volume": 1150000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.36,
             "share": 0.36
           },
@@ -19388,7 +19388,7 @@
             "volume": 1099000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.34,
             "share": 0.34
           },
@@ -19400,9 +19400,9 @@
             "volume": 986000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
-            "volumePct": 0.31,
-            "share": 0.31
+            "sidesPct": 0.25,
+            "volumePct": 0.3,
+            "share": 0.3
           },
           {
             "firmName": "EVO Real Estate Group, LLC",
@@ -19412,7 +19412,7 @@
             "volume": 975000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.3,
             "share": 0.3
           },
@@ -19424,7 +19424,7 @@
             "volume": 950000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.29,
             "share": 0.29
           },
@@ -19436,7 +19436,7 @@
             "volume": 941000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.77,
+            "sidesPct": 0.76,
             "volumePct": 0.29,
             "share": 0.29
           },
@@ -19448,7 +19448,7 @@
             "volume": 900000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28,
             "share": 0.28
           },
@@ -19460,7 +19460,7 @@
             "volume": 895000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.28,
             "share": 0.28
           },
@@ -19472,7 +19472,7 @@
             "volume": 880000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27,
             "share": 0.27
           },
@@ -19484,7 +19484,7 @@
             "volume": 875000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.27,
             "share": 0.27
           },
@@ -19496,7 +19496,7 @@
             "volume": 850000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.26,
             "share": 0.26
           },
@@ -19508,7 +19508,7 @@
             "volume": 822000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25,
             "share": 0.25
           },
@@ -19520,7 +19520,7 @@
             "volume": 820000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25,
             "share": 0.25
           },
@@ -19532,7 +19532,7 @@
             "volume": 800000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.25,
             "share": 0.25
           },
@@ -19544,7 +19544,7 @@
             "volume": 780000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24,
             "share": 0.24
           },
@@ -19556,7 +19556,7 @@
             "volume": 775000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.24,
             "share": 0.24
           },
@@ -19568,7 +19568,7 @@
             "volume": 755000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23,
             "share": 0.23
           },
@@ -19580,7 +19580,7 @@
             "volume": 740000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.23,
             "share": 0.23
           },
@@ -19592,7 +19592,7 @@
             "volume": 720000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -19604,7 +19604,7 @@
             "volume": 710000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -19616,7 +19616,7 @@
             "volume": 705000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -19640,7 +19640,7 @@
             "volume": 700000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.22,
             "share": 0.22
           },
@@ -19652,7 +19652,7 @@
             "volume": 675000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.21,
             "share": 0.21
           },
@@ -19664,7 +19664,7 @@
             "volume": 650000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2,
             "share": 0.2
           },
@@ -19676,7 +19676,7 @@
             "volume": 631000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.2,
             "share": 0.2
           },
@@ -19688,7 +19688,7 @@
             "volume": 625000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -19700,7 +19700,7 @@
             "volume": 620000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -19712,7 +19712,7 @@
             "volume": 610000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -19724,7 +19724,7 @@
             "volume": 610000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -19736,7 +19736,7 @@
             "volume": 600000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.19,
             "share": 0.19
           },
@@ -19748,7 +19748,7 @@
             "volume": 550000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.17,
             "share": 0.17
           },
@@ -19760,7 +19760,7 @@
             "volume": 525000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16,
             "share": 0.16
           },
@@ -19772,7 +19772,7 @@
             "volume": 510000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.16,
             "share": 0.16
           },
@@ -19784,7 +19784,7 @@
             "volume": 483000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15,
             "share": 0.15
           },
@@ -19796,7 +19796,7 @@
             "volume": 480000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.15,
             "share": 0.15
           },
@@ -19808,7 +19808,7 @@
             "volume": 440000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.14,
             "share": 0.14
           },
@@ -19820,7 +19820,7 @@
             "volume": 435000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13,
             "share": 0.13
           },
@@ -19832,7 +19832,7 @@
             "volume": 432500,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13,
             "share": 0.13
           },
@@ -19844,7 +19844,7 @@
             "volume": 405000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.13,
             "share": 0.13
           },
@@ -19856,7 +19856,7 @@
             "volume": 360000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11,
             "share": 0.11
           },
@@ -19868,7 +19868,7 @@
             "volume": 360000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.11,
             "share": 0.11
           },
@@ -19880,7 +19880,7 @@
             "volume": 251725,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.08,
             "share": 0.08
           },
@@ -19892,7 +19892,7 @@
             "volume": 234000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.07,
             "share": 0.07
           },
@@ -19904,7 +19904,7 @@
             "volume": 170000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.05,
             "share": 0.05
           },
@@ -19916,15 +19916,15 @@
             "volume": 140000,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.26,
+            "sidesPct": 0.25,
             "volumePct": 0.04,
             "share": 0.04
           }
         ]
       },
       "territory": {
-        "totalSides": 1184,
-        "totalVolume": 984974418,
+        "totalSides": 1186,
+        "totalVolume": 987256418,
         "firmCount": 142,
         "bySides": [
           {
@@ -19935,9 +19935,9 @@
             "volume": 139631724,
             "officeCount": 15,
             "isBentleys": false,
-            "sidesPct": 14.86,
-            "volumePct": 14.18,
-            "share": 14.18
+            "sidesPct": 14.84,
+            "volumePct": 14.14,
+            "share": 14.14
           },
           {
             "firmName": "RE/MAX Bentley's",
@@ -19947,9 +19947,9 @@
             "volume": 106163400,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 9.04,
-            "volumePct": 10.78,
-            "share": 10.78
+            "sidesPct": 9.02,
+            "volumePct": 10.75,
+            "share": 10.75
           },
           {
             "firmName": "Lamacchia Realty",
@@ -19959,9 +19959,9 @@
             "volume": 63341649,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 7.69,
-            "volumePct": 6.43,
-            "share": 6.43
+            "sidesPct": 7.67,
+            "volumePct": 6.42,
+            "share": 6.42
           },
           {
             "firmName": "Coldwell Banker",
@@ -19971,9 +19971,9 @@
             "volume": 69085499,
             "officeCount": 21,
             "isBentleys": false,
-            "sidesPct": 7.43,
-            "volumePct": 7.01,
-            "share": 7.01
+            "sidesPct": 7.42,
+            "volumePct": 7,
+            "share": 7
           },
           {
             "firmName": "Realty One Group Nest",
@@ -19983,33 +19983,33 @@
             "volume": 84489500,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 7.01,
-            "volumePct": 8.58,
-            "share": 8.58
+            "sidesPct": 7,
+            "volumePct": 8.56,
+            "share": 8.56
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
             "displayName": "Gibson Sotheby's Int'l Realty",
             "name": "Gibson Sotheby's Int'l Realty",
-            "sides": 64,
-            "volume": 69228200,
+            "sides": 65,
+            "volume": 70628200,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 5.41,
-            "volumePct": 7.03,
-            "share": 7.03
+            "sidesPct": 5.48,
+            "volumePct": 7.15,
+            "share": 7.15
           },
           {
             "firmName": "Compass",
             "displayName": "Compass",
             "name": "Compass",
-            "sides": 52,
-            "volume": 57264625,
+            "sides": 53,
+            "volume": 58146625,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.39,
-            "volumePct": 5.81,
-            "share": 5.81
+            "sidesPct": 4.47,
+            "volumePct": 5.89,
+            "share": 5.89
           },
           {
             "firmName": "William Raveis",
@@ -20019,9 +20019,9 @@
             "volume": 46127300,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 3.97,
-            "volumePct": 4.68,
-            "share": 4.68
+            "sidesPct": 3.96,
+            "volumePct": 4.67,
+            "share": 4.67
           },
           {
             "firmName": "eXp Realty",
@@ -20043,9 +20043,9 @@
             "volume": 30552500,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 3.13,
-            "volumePct": 3.1,
-            "share": 3.1
+            "sidesPct": 3.12,
+            "volumePct": 3.09,
+            "share": 3.09
           },
           {
             "firmName": "J. Barrett & Company",
@@ -20056,8 +20056,8 @@
             "officeCount": 4,
             "isBentleys": false,
             "sidesPct": 2.87,
-            "volumePct": 3.12,
-            "share": 3.12
+            "volumePct": 3.11,
+            "share": 3.11
           },
           {
             "firmName": "Berkshire Hathaway",
@@ -20104,8 +20104,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 1.35,
-            "volumePct": 1.16,
-            "share": 1.16
+            "volumePct": 1.15,
+            "share": 1.15
           },
           {
             "firmName": "Engel & Volkers",
@@ -20115,7 +20115,7 @@
             "volume": 16740000,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 1.27,
+            "sidesPct": 1.26,
             "volumePct": 1.7,
             "share": 1.7
           },
@@ -20199,9 +20199,9 @@
             "volume": 7453500,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.76,
-            "share": 0.76
+            "sidesPct": 0.67,
+            "volumePct": 0.75,
+            "share": 0.75
           },
           {
             "firmName": "LAER Realty Partners",
@@ -20332,8 +20332,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.2,
-            "share": 0.2
+            "volumePct": 0.19,
+            "share": 0.19
           },
           {
             "firmName": "Martel Real Estate",
@@ -21136,8 +21136,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.04,
-            "share": 0.04
+            "volumePct": 0.03,
+            "share": 0.03
           },
           {
             "firmName": "Kody & Company, Inc.",
@@ -21388,8 +21388,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.08,
-            "share": 0.08
+            "volumePct": 0.07,
+            "share": 0.07
           },
           {
             "firmName": "Proactive Realty",
@@ -21641,9 +21641,9 @@
             "volume": 139631724,
             "officeCount": 15,
             "isBentleys": false,
-            "sidesPct": 14.86,
-            "volumePct": 14.18,
-            "share": 14.18
+            "sidesPct": 14.84,
+            "volumePct": 14.14,
+            "share": 14.14
           },
           {
             "firmName": "RE/MAX Bentley's",
@@ -21653,9 +21653,9 @@
             "volume": 106163400,
             "officeCount": 1,
             "isBentleys": true,
-            "sidesPct": 9.04,
-            "volumePct": 10.78,
-            "share": 10.78
+            "sidesPct": 9.02,
+            "volumePct": 10.75,
+            "share": 10.75
           },
           {
             "firmName": "Realty One Group Nest",
@@ -21665,21 +21665,21 @@
             "volume": 84489500,
             "officeCount": 2,
             "isBentleys": false,
-            "sidesPct": 7.01,
-            "volumePct": 8.58,
-            "share": 8.58
+            "sidesPct": 7,
+            "volumePct": 8.56,
+            "share": 8.56
           },
           {
             "firmName": "Gibson Sotheby's Int'l Realty",
             "displayName": "Gibson Sotheby's Int'l Realty",
             "name": "Gibson Sotheby's Int'l Realty",
-            "sides": 64,
-            "volume": 69228200,
+            "sides": 65,
+            "volume": 70628200,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 5.41,
-            "volumePct": 7.03,
-            "share": 7.03
+            "sidesPct": 5.48,
+            "volumePct": 7.15,
+            "share": 7.15
           },
           {
             "firmName": "Coldwell Banker",
@@ -21689,9 +21689,9 @@
             "volume": 69085499,
             "officeCount": 21,
             "isBentleys": false,
-            "sidesPct": 7.43,
-            "volumePct": 7.01,
-            "share": 7.01
+            "sidesPct": 7.42,
+            "volumePct": 7,
+            "share": 7
           },
           {
             "firmName": "Lamacchia Realty",
@@ -21701,21 +21701,21 @@
             "volume": 63341649,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 7.69,
-            "volumePct": 6.43,
-            "share": 6.43
+            "sidesPct": 7.67,
+            "volumePct": 6.42,
+            "share": 6.42
           },
           {
             "firmName": "Compass",
             "displayName": "Compass",
             "name": "Compass",
-            "sides": 52,
-            "volume": 57264625,
+            "sides": 53,
+            "volume": 58146625,
             "officeCount": 5,
             "isBentleys": false,
-            "sidesPct": 4.39,
-            "volumePct": 5.81,
-            "share": 5.81
+            "sidesPct": 4.47,
+            "volumePct": 5.89,
+            "share": 5.89
           },
           {
             "firmName": "William Raveis",
@@ -21725,9 +21725,9 @@
             "volume": 46127300,
             "officeCount": 6,
             "isBentleys": false,
-            "sidesPct": 3.97,
-            "volumePct": 4.68,
-            "share": 4.68
+            "sidesPct": 3.96,
+            "volumePct": 4.67,
+            "share": 4.67
           },
           {
             "firmName": "J. Barrett & Company",
@@ -21738,8 +21738,8 @@
             "officeCount": 4,
             "isBentleys": false,
             "sidesPct": 2.87,
-            "volumePct": 3.12,
-            "share": 3.12
+            "volumePct": 3.11,
+            "share": 3.11
           },
           {
             "firmName": "Churchill Properties",
@@ -21749,9 +21749,9 @@
             "volume": 30552500,
             "officeCount": 7,
             "isBentleys": false,
-            "sidesPct": 3.13,
-            "volumePct": 3.1,
-            "share": 3.1
+            "sidesPct": 3.12,
+            "volumePct": 3.09,
+            "share": 3.09
           },
           {
             "firmName": "eXp Realty",
@@ -21773,7 +21773,7 @@
             "volume": 16740000,
             "officeCount": 3,
             "isBentleys": false,
-            "sidesPct": 1.27,
+            "sidesPct": 1.26,
             "volumePct": 1.7,
             "share": 1.7
           },
@@ -21810,8 +21810,8 @@
             "officeCount": 3,
             "isBentleys": false,
             "sidesPct": 1.35,
-            "volumePct": 1.16,
-            "share": 1.16
+            "volumePct": 1.15,
+            "share": 1.15
           },
           {
             "firmName": "Century 21",
@@ -21869,9 +21869,9 @@
             "volume": 7453500,
             "officeCount": 1,
             "isBentleys": false,
-            "sidesPct": 0.68,
-            "volumePct": 0.76,
-            "share": 0.76
+            "sidesPct": 0.67,
+            "volumePct": 0.75,
+            "share": 0.75
           },
           {
             "firmName": "Laffely Real Estate Associates",
@@ -22146,8 +22146,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.25,
-            "volumePct": 0.2,
-            "share": 0.2
+            "volumePct": 0.19,
+            "share": 0.19
           },
           {
             "firmName": "Herrick Lutts Realty Partners",
@@ -22746,8 +22746,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.08,
-            "share": 0.08
+            "volumePct": 0.07,
+            "share": 0.07
           },
           {
             "firmName": "Toner Real Estate, LLC",
@@ -23226,8 +23226,8 @@
             "officeCount": 1,
             "isBentleys": false,
             "sidesPct": 0.08,
-            "volumePct": 0.04,
-            "share": 0.04
+            "volumePct": 0.03,
+            "share": 0.03
           },
           {
             "firmName": "Innovative Real Estate Solutions LLC",
