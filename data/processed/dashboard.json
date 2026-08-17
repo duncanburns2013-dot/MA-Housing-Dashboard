@@ -1,11 +1,11 @@
 {
   "meta": {
-    "generated": "2026-08-16T07:19:43.282Z",
+    "generated": "2026-08-17T07:28:36.771Z",
     "source": "MLSPIN",
     "currentYear": 2026,
     "priorYear": 2025,
-    "closed_records": 97385,
-    "active_records": 13039
+    "closed_records": 97430,
+    "active_records": 12980
   },
   "regional": {
     "ma": {
@@ -17,14 +17,14 @@
           "units": 38870
         },
         "2026": {
-          "price": 864419,
+          "price": 864494,
           "sqft": 396,
           "dom": 38,
-          "units": 38272
+          "units": 38299
         },
-        "supply": 2.21,
-        "active": 7041,
-        "trailing12": 38272
+        "supply": 2.19,
+        "active": 7004,
+        "trailing12": 38299
       },
       "condo": {
         "2025": {
@@ -34,14 +34,14 @@
           "units": 16736
         },
         "2026": {
-          "price": 719677,
+          "price": 719865,
           "sqft": 543,
           "dom": 45,
-          "units": 16804
+          "units": 16819
         },
-        "supply": 3.1,
-        "active": 4347,
-        "trailing12": 16804
+        "supply": 3.09,
+        "active": 4325,
+        "trailing12": 16819
       },
       "mf": {
         "2025": {
@@ -51,14 +51,14 @@
           "units": 5513
         },
         "2026": {
-          "price": 886603,
+          "price": 886687,
           "sqft": 390,
           "dom": 39,
-          "units": 5477
+          "units": 5480
         },
         "supply": 3.62,
         "active": 1651,
-        "trailing12": 5477
+        "trailing12": 5480
       }
     },
     "boston": {
@@ -70,14 +70,14 @@
           "units": 813
         },
         "2026": {
-          "price": 1306190,
+          "price": 1305407,
           "sqft": 586,
           "dom": 38,
-          "units": 812
+          "units": 814
         },
-        "supply": 2.63,
-        "active": 178,
-        "trailing12": 812
+        "supply": 2.59,
+        "active": 176,
+        "trailing12": 814
       },
       "condo": {
         "2025": {
@@ -87,14 +87,14 @@
           "units": 3474
         },
         "2026": {
-          "price": 1134912,
+          "price": 1135242,
           "sqft": 915,
           "dom": 51,
-          "units": 3386
+          "units": 3388
         },
-        "supply": 4.61,
-        "active": 1302,
-        "trailing12": 3386
+        "supply": 4.58,
+        "active": 1292,
+        "trailing12": 3388
       },
       "mf": {
         "2025": {
@@ -128,8 +128,8 @@
           "dom": 34,
           "units": 4252
         },
-        "supply": 1.99,
-        "active": 704,
+        "supply": 1.98,
+        "active": 701,
         "trailing12": 4252
       },
       "condo": {
@@ -140,14 +140,14 @@
           "units": 1926
         },
         "2026": {
-          "price": 547583,
+          "price": 547507,
           "sqft": 412,
           "dom": 41,
-          "units": 1992
+          "units": 1993
         },
-        "supply": 2.34,
-        "active": 389,
-        "trailing12": 1992
+        "supply": 2.3,
+        "active": 382,
+        "trailing12": 1993
       },
       "mf": {
         "2025": {
@@ -162,8 +162,8 @@
           "dom": 32,
           "units": 614
         },
-        "supply": 2.91,
-        "active": 149,
+        "supply": 2.93,
+        "active": 150,
         "trailing12": 614
       }
     },
@@ -313,7 +313,7 @@
       "sqft": 459,
       "dom": 37,
       "units": 467,
-      "activeListings": 100
+      "activeListings": 98
     }
   },
   "beyond": {
@@ -380,7 +380,7 @@
       "sqft": 400,
       "dom": 37,
       "units": 308,
-      "activeListings": 50
+      "activeListings": 49
     }
   },
   "neighborhoods": {
@@ -562,18 +562,18 @@
     "medianIncome": 104800,
     "markets": {
       "ma": {
-        "price": 864419,
-        "down": 172884,
+        "price": 864494,
+        "down": 172899,
         "monthly": 4371,
         "monthlyAll": 5524,
-        "income": 236723
+        "income": 236743
       },
       "boston": {
-        "price": 1306190,
-        "down": 261238,
-        "monthly": 6605,
-        "monthlyAll": 8346,
-        "income": 357703
+        "price": 1305407,
+        "down": 261081,
+        "monthly": 6601,
+        "monthlyAll": 8341,
+        "income": 357488
       },
       "essex": {
         "price": 904393,
@@ -593,7 +593,7 @@
   },
   "marketShare": {
     "window": "12 months trailing",
-    "generated": "2026-08-16T07:19:43.282Z",
+    "generated": "2026-08-17T07:28:36.771Z",
     "coreTowns": [
       "Newburyport",
       "West Newbury",
